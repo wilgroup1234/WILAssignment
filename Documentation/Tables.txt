@@ -1,0 +1,10 @@
+TABLES (User, UserGoals, Goals,) (User, CustomUserGoals, CustomGoals,)
+DailyQuote)
+
+User (UserID, FirstName, LastName, Email, Password)
+UserGoals(USERGOALID,UserID, GoalID)
+CustomUserGoals(CUSTOMUSERGOALID,UserID, GoalID)
+Goals(GoalID, GoalName, GOALDescription)
+CustomGoals(GoalID, GoalName, GOALDescription)
+DailyQuote(QUoteID, DATE, TemplateID, QuoteText, YoutubeLink)
+TemplateTable(TemplateID, TemplateName)

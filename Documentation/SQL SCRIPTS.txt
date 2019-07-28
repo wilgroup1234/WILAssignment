@@ -1,0 +1,85 @@
+CREATE TABLE Users
+(
+    UserID int NOT NULL IDENTITY PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int NOT NULL,
+	Email varchar(255) UNIQUE NOT NULL,
+	Password varchar(255) NOT NULL 
+ 
+); 
+
+
+CREATE TABLE Goals
+(
+    GoalID int NOT NULL IDENTITY PRIMARY KEY,
+    GoalName varchar(255) NOT NULL,
+    GoalDescription varchar(255) NOT NULL
+); 
+
+CREATE TABLE CustomGoals
+(
+    GoalID int NOT NULL IDENTITY PRIMARY KEY,
+    GoalName varchar(255) NOT NULL,
+    GoalDescription varchar(255) NOT NULL
+); 
+
+
+CREATE TABLE DailyQuote
+(
+    QuoteID int NOT NULL IDENTITY PRIMARY KEY,
+    QuoteDate Date NOT NULL,
+	QuoteText varchar(255) NOT NULL,
+    YoutubeLink varchar(255) NOT NULL,
+	TemplateID int NOT NULL
+); 
+
+
+CREATE TABLE Template
+(
+    TemplateID int NOT NULL IDENTITY PRIMARY KEY,
+    TemplateName Date NOT NULL
+); 
+
+
+CREATE TABLE UserGoals
+(
+    UserGoalID int NOT NULL IDENTITY PRIMARY KEY,
+    UserID int NOT NULL,
+	GoalID int NOT NULL
+); 
+
+
+CREATE TABLE CustomUserGoals
+(
+    UserGoalID int NOT NULL IDENTITY PRIMARY KEY,
+    UserID int NOT NULL,
+	GoalID int NOT NULL
+); 
+
+
+ ALTER TABLE UserGoals
+  ADD CONSTRAINT FK_UserID
+   FOREIGN KEY (UserID) REFERENCES Users(UserID);
+
+
+ ALTER TABLE UserGoals
+  ADD CONSTRAINT FK_GoalID
+   FOREIGN KEY (GoalID) REFERENCES Goals(GoalID);
+
+
+ALTER TABLE CustomUserGoals
+  ADD CONSTRAINT FK_UserID2
+   FOREIGN KEY (UserID) REFERENCES Users(UserID);
+
+ ALTER TABLE CustomUserGoals
+  ADD CONSTRAINT FK_GoalID2
+   FOREIGN KEY (GoalID) REFERENCES Goals(GoalID);
+
+
+ ALTER TABLE DailyQuote
+  ADD CONSTRAINT FK_TemplateID
+   FOREIGN KEY (TemplateID) REFERENCES Template(TemplateID);
+
+
+

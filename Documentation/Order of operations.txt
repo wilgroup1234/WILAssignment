@@ -1,0 +1,33 @@
+1.Login/Register. (Tabbed activity)                                TABLES (User)  
+
+ANDROID- Send Post resquest (RegisterUser/ LoginUser Object)  Receive ReturnMessage Object
+API-  Get POST request (RegisterUser/ LoginUser Object)  RETURN ReturnMessage Object
+WEBAPP-   Login using "Admin", "AdMinPasSword1"
+
+2. HOME or GOALS PAGE                                               TABLES (User, UserGoals, Goals,) (User, CustomUserGoals, CustomGoals,)
+
+RETRIEVING GOALS
+ANDROID- Send Post resquest (UserGoal (email, "goal" ))  Receive Goal Object ([goalObjects])
+API-  Get POST request  (UserGoal (email, "goal" )) RETURN ReturnMessage ([goalObjects])
+
+
+ADDING GOALS
+ANDROID- Send Post resquest of normal goal (NormalGoalObject)/custom goal CustomGoalObject) 
+	  Receive ReturnMessage Object
+API-  Get POST request  normal goal (NormalGoalObject)/custom goal CustomGoalObject) 
+	  RETURN ReturnMessage Object
+
+
+3.DAILY QUOTE (youtube too)			     Table(DailyQuote)
+
+ANDROID- Send empty GET resquest  Receive DailyObject
+API-  Get empty GET request  RETURN DailyObject
+WEBAPP-  Add new message (choosing template, choose message), youtube link
+
+
+/UPLOAD/LIFE SKILLS/CV/Calendar/ACHEIVEMENTS
+    /PEDOMETER/LEADERBOARD/Social Media / Additional links (Tabbed activity)
+
+
+
+EXTRAS- mascot, sounds
