@@ -17,8 +17,9 @@ namespace WebApplication1.Models
 
         public int TemplateID { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime TemplateName { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string TemplateName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DailyQuote> DailyQuotes { get; set; }

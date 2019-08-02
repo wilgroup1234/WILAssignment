@@ -29,7 +29,6 @@ namespace WebApplication1.Models
 
         [Required]
         [StringLength(255)]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required]

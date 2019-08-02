@@ -57,6 +57,10 @@ namespace WebApplication1.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Template>()
+                .Property(e => e.TemplateName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Template>()
                 .HasMany(e => e.DailyQuotes)
                 .WithRequired(e => e.Template)
                 .WillCascadeOnDelete(false);
