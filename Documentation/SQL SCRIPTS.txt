@@ -38,7 +38,7 @@ CREATE TABLE DailyQuote
 CREATE TABLE Template
 (
     TemplateID int NOT NULL IDENTITY PRIMARY KEY,
-    TemplateName Date NOT NULL
+    TemplateName Varchar(255) NOT NULL
 ); 
 
 
@@ -46,7 +46,8 @@ CREATE TABLE UserGoals
 (
     UserGoalID int NOT NULL IDENTITY PRIMARY KEY,
     UserID int NOT NULL,
-	GoalID int NOT NULL
+    GoalID int NOT NULL,
+    Completed int NOT NULL
 ); 
 
 
@@ -54,7 +55,8 @@ CREATE TABLE CustomUserGoals
 (
     UserGoalID int NOT NULL IDENTITY PRIMARY KEY,
     UserID int NOT NULL,
-	GoalID int NOT NULL
+    GoalID int NOT NULL,
+    Completed int NOT NULL
 ); 
 
 

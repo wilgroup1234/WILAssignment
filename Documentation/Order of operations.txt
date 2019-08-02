@@ -18,6 +18,14 @@ API-  Get POST request  normal goal (NormalGoalObject)/custom goal CustomGoalObj
 	  RETURN ReturnMessage Object
 
 
+MARK GOAL AS COMPLETED
+
+ANDROID- Send Post resquest UserGoalObject/CustomGoalObject
+	  Receive ReturnMessage Object
+API-  Get POST request  UserGoalObject/CustomGoalObject
+	  RETURN ReturnMessage Object
+
+
 3.DAILY QUOTE (youtube too)			     Table(DailyQuote)
 
 ANDROID- Send empty GET resquest  Receive DailyObject
