@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.a17001922.wil_app.Connection;
 import com.a17001922.wil_app.R;
 
 
@@ -34,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         lblRegister =findViewById(R.id.txt_register);
         et_email=findViewById(R.id.et_userName);
         et_password=findViewById(R.id.et_Password);
-        //#TODO Create the login request in back end class and send the intent to the home page
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

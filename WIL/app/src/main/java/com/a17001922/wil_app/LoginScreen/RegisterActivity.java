@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.a17001922.wil_app.Connection;
 import com.a17001922.wil_app.R;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -33,7 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //#TODO Create method in the backend that accepts all the text fields and validates the inputted data
                 String name,surname,email,password,confirmPassword="";
                 name= et_firstName.getText().toString();
                 surname=et_surname.getText().toString();
