@@ -1,7 +1,4 @@
-package com.a17001922.wil_logins;
-
-import android.app.Activity;
-import android.widget.Toast;
+package com.a17001922.wil_logins.LoginScreen;
 
 import retrofit2.Call;
 import retrofit2.Callback;

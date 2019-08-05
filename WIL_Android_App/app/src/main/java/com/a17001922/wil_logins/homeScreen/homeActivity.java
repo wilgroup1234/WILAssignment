@@ -25,6 +25,7 @@ public class homeActivity extends AppCompatActivity {
         adapter.addFragment(new dailyQuoteFragment(), "Goals");
         adapter.addFragment(new PlannerFragment(),"Planner");
         adapter.addFragment(new uploadDocsFragment(),"Upload");
+        adapter.addFragment(new cvUpload(),"CV");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
