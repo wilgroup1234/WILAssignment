@@ -11,8 +11,8 @@ SIMPLE INTERFACE STRICTLY TO DEAL WITH USER LOGIN AND REGISTER NO OTHER CALLS TO
  */
 public interface loginRegisterService {
     @POST("api/values/PostLogin")
-    Call<ReturnedMessage> userLogin(@Body LoginUserObject user);
+    Call<ReturnMessageObject> userLogin(@Body LoginUserObject user);
 
     @POST("api/values/PostRegister")
-    Call<ReturnedMessage> userRegister(@Body RegisterUserObject user);
+    Call<ReturnMessageObject> userRegister(@Body RegisterUserObject user);
 }

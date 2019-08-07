@@ -3,6 +3,7 @@ package com.a17001922.wil_app.LoginScreen;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText et_email,et_password;
     LoginUserObject user;
     Connection con;
+    private static final String TAG = "LoginActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,13 +45,22 @@ public class LoginActivity extends AppCompatActivity {
                 String password=et_password.getText().toString();
                 user.setEmail(email);
                 user.setPassword(password);
-                String message="";
-                if(con.userLogin(user)==false){
-                    message="false";
-                }else{
-                    message="true";
+                String message;
+                Log.e(TAG,"about to call connection");
+                try {
+                    if(!con.userLogin(user)){
+                        Log.e(TAG,"connection call success");
+                        message="false";
+                    }else{
+                        message="true";
+                        Log.e(TAG,"connection call failed");
+                    }
+                    Toast.makeText(LoginActivity.this,message , Toast.LENGTH_LONG).show();
+
+                }catch (Exception e){
+                    Log.e(TAG, "HERES THE ERROR : "+e);
                 }
-                Toast.makeText(LoginActivity.this,message , Toast.LENGTH_LONG).show();
+
             }
         });
         lblRegister.setOnTouchListener(new View.OnTouchListener() {

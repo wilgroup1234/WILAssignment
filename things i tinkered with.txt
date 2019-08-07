@@ -1,0 +1,13 @@
+Connection class
+try catched all the checking of the response
+added logs to see what was breaking 
+changed the api address to see if it was working
+
+LoginActivity Class
+try catchedc the if statements to find errors
+added log tags to show errors in the logcat
+Found this error :  java.lang.IllegalArgumentException: Unable to create converter for class 
+com.a17001922.wil_app.LoginScreen.ReturnMessageObject for method loginRegisterService.userLogin (needs resolving but first test
+on jarrods machine)
+
+

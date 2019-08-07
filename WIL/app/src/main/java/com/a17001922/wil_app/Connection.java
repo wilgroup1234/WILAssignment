@@ -1,8 +1,10 @@
 package com.a17001922.wil_app;
 
+import android.util.Log;
+
 import com.a17001922.wil_app.LoginScreen.LoginUserObject;
 import com.a17001922.wil_app.LoginScreen.RegisterUserObject;
-import com.a17001922.wil_app.LoginScreen.ReturnedMessage;
+import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.LoginScreen.loginRegisterService;
 import com.a17001922.wil_app.dailyQuote.DailyObject;
 import com.a17001922.wil_app.dailyQuote.DailyQuoteService;
@@ -17,33 +19,46 @@ import retrofit2.Retrofit;
 
 //#TODO TEST ALL METHODS IN THE CLASS TO SEE IF IT WORKS CORRECTLY WITH THE API
 public class Connection {
-    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://105.184.157.179:44317/").build();
+    // #TODO IN ORDER TO TEST API LOCALLY CHANGE THE PORTION UNDER THIS TEXT TO YOUR MACHINES API ADDRESS
+    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://10.0.0.6:44317/").build();
     loginRegisterService service = retrofit.create(loginRegisterService.class);
     private boolean loginAuth=false;
     private boolean registerAuth=false;
     private DailyObject Quote;
+    private static final String TAG = "ConnectionClass";
 
     public boolean userLogin(LoginUserObject user){
-
-        final Call<ReturnedMessage> loginUserCall = service.userLogin(user);
-        loginUserCall.enqueue(new Callback<ReturnedMessage>() {
+        Log.v(TAG,"I CALLED USER LOGIN");
+        Log.e(TAG, "userLogin: ABOUT TO CREATE THE CALL" );
+        final Call<ReturnMessageObject> loginUserCall = service.userLogin(user);
+        loginUserCall.enqueue(new Callback<ReturnMessageObject>() {
             @Override
-            public void onResponse(Call<ReturnedMessage> call, Response<ReturnedMessage> response) {
-                if (!response.isSuccessful()){
-                  loginAuth=false;
-                }
-                ReturnedMessage auth = response.body();
+            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response) {
+                try {
+                    if (!response.isSuccessful()){
+                        loginAuth=false;
+                    }else{
+                        ReturnMessageObject auth = response.body();
 
-                if(auth.isSuccessfulExecution()){
-                    loginAuth=true;
-                }else{
-                    loginAuth=false;
+                        if(auth.getResult()){
+
+                            loginAuth=true;
+                            Log.e(TAG,auth.getLoginMessage() );
+                        }else{
+                            loginAuth=false;
+                        }
+                    }
+
+                }catch(Exception e){
+                    Log.e(TAG,e.toString());
                 }
+
             }
 
             @Override
-            public void onFailure(Call<ReturnedMessage> call, Throwable t) {
+            public void onFailure(Call<ReturnMessageObject> call, Throwable t) {
                 loginAuth=false;
+                Log.e(TAG, "onFailure: "+ "its crashing in the call" );
             }
         });
        return loginAuth;
@@ -51,15 +66,15 @@ public class Connection {
 
     public boolean userRegister(RegisterUserObject user){
 
-        final Call<ReturnedMessage>registerUserCall = service.userRegister(user);
-        registerUserCall.enqueue(new Callback<ReturnedMessage>() {
+        final Call<ReturnMessageObject>registerUserCall = service.userRegister(user);
+        registerUserCall.enqueue(new Callback<ReturnMessageObject>() {
             @Override
-            public void onResponse(Call<ReturnedMessage> call, Response<ReturnedMessage> response) {
+            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response) {
                 if (!response.isSuccessful()){
                     registerAuth=false;
                 }
-                ReturnedMessage registeredAuth = response.body();
-                if (registeredAuth.isSuccessfulExecution()){
+                ReturnMessageObject registeredAuth = response.body();
+                if (registeredAuth.getResult()){
                     registerAuth=true;
                 }else{
                     registerAuth=false;
@@ -68,7 +83,7 @@ public class Connection {
             }
 
             @Override
-            public void onFailure(Call<ReturnedMessage> call, Throwable t) {
+            public void onFailure(Call<ReturnMessageObject> call, Throwable t) {
                 registerAuth=false;
             }
         });
