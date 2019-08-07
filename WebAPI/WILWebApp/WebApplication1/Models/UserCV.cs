@@ -6,17 +6,15 @@ namespace WebApplication1.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class UserGoal
+    public partial class UserCV
     {
-        public int UserGoalID { get; set; }
+        public int UserCVID { get; set; }
 
         public int UserID { get; set; }
 
-        public int GoalID { get; set; }
+        public int CVID { get; set; }
 
-        public int Completed { get; set; }
-
-        public virtual Goal Goal { get; set; }
+        public virtual CV CV { get; set; }
 
         public virtual User User { get; set; }
     }

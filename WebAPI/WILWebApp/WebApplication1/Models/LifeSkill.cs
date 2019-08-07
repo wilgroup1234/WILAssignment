@@ -6,22 +6,21 @@ namespace WebApplication1.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Template")]
-    public partial class Template
+    public partial class LifeSkill
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Template()
+        public LifeSkill()
         {
-            DailyQuotes = new HashSet<DailyQuote>();
+            UserLifeSkills = new HashSet<UserLifeSkill>();
         }
 
-        public int TemplateID { get; set; }
+        public int LifeSkillID { get; set; }
 
         [Required]
         [StringLength(255)]
-        public string TemplateName { get; set; }
+        public string LifeSkillName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DailyQuote> DailyQuotes { get; set; }
+        public virtual ICollection<UserLifeSkill> UserLifeSkills { get; set; }
     }
 }
