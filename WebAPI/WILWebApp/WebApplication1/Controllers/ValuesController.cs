@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using WebApplication1.Classes;
 using WebApplication1.Models;
@@ -23,62 +21,16 @@ namespace WebApplication1.Controllers
         //Mark off custom goal     https://localhost:44317/api/values/PostMarkOffCustomGoal
         //Get Daily Quote          https://localhost:44317/api/values/GetDailyQuote
 
-
         private WILModel db = new WILModel();
 
 
-        // GET api/values
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
-
-        //Custom GET
-        [Route("api/values/GetNumber")]
-        [HttpGet]
-        public int GetNumber()
-        {
-            return 5;
-        }
-
-
-        //Custom POST
-        [Route("api/values/PostNumber")]
-        [HttpPost]
-        public void PostNumber(TestClass t)
-        {
-
-            Debug.WriteLine(t.Number.ToString());
-        }
-
-
-        //Custom POST
+        //This POST method allows users to Register (Create an account for the app)
         [Route("api/values/PostRegister")]
         [HttpPost]
-        public ReturnMessage PostRegister(RegisterUser regUser)
+        public ReturnMessageObject PostRegister(RegisterUserObject regUser)
         {
-            ReturnMessage returnMessage = new ReturnMessage();
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
             returnMessage.result = false;
             returnMessage.errorMessage = "Invalid Details Entered";
 
@@ -91,13 +43,15 @@ namespace WebApplication1.Controllers
                         PasswordEncryption obj = PasswordEncryption.GetInstance;
                         regUser.Password = obj.GetHashedPassword(regUser.Password);
 
-                        User user = new User();
-                        user.Age = regUser.Age;
-                        user.Email = regUser.Email;
-                        user.FirstName = regUser.FirstName;
-                        user.LastName = regUser.LastName;
-                        user.Password = regUser.Password;
-                        
+                        User user = new User
+                        {
+                            Age = regUser.Age,
+                            Email = regUser.Email,
+                            FirstName = regUser.FirstName,
+                            LastName = regUser.LastName,
+                            Password = regUser.Password
+                        };
+
 
                         db.Users.Add(user);
                         db.SaveChanges();
@@ -151,9 +105,9 @@ namespace WebApplication1.Controllers
         //Custom POST
         [Route("api/values/PostLogin")]
         [HttpPost]
-        public ReturnMessage PostLogin(LoginUser loginUser)
+        public ReturnMessageObject PostLogin(LoginUserObject loginUser)
         {
-            ReturnMessage returnMessage = new ReturnMessage();
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
             returnMessage.result = false;
             returnMessage.errorMessage = "Invalid Details Entered";
 
@@ -182,7 +136,7 @@ namespace WebApplication1.Controllers
             if (userFound)
             {
                 PasswordEncryption obj = PasswordEncryption.GetInstance;
-                List<String> possiblePasswords = new List<string>();
+                List<String> possiblePasswords;
                 possiblePasswords = obj.GetPossiblePasswords(loginUser.Password);
 
                 foreach (String p in possiblePasswords)
@@ -222,9 +176,9 @@ namespace WebApplication1.Controllers
         //Custom POST
         [Route("api/values/PostRetrieveGoals")]
         [HttpPost]
-        public ReturnGoal PostRetrieveGoals(Classes.UserGoal userGoal)
+        public ReturnGoalObject PostRetrieveGoals(UserGoalObject userGoal)
         {
-            ReturnGoal returnGoal = new ReturnGoal();
+            ReturnGoalObject returnGoal = new ReturnGoalObject();
             List<Goal> goalList = new List<Goal>();
             String userEmail = userGoal.Email;
             int userID = 0;
@@ -239,32 +193,36 @@ namespace WebApplication1.Controllers
             }
 
             //search and add goals for user
-            foreach(Models.UserGoal goal in db.UserGoals)
+            foreach(UserGoal goal in db.UserGoals)
             {
                 if (goal.UserID == userID)
                 {
                     Goal searchGoal = db.Goals.FirstOrDefault(g => g.GoalID == goal.GoalID);
 
-                    Goal go = new Goal();
-                    go.GoalID = searchGoal.GoalID;
-                    go.GoalName = searchGoal.GoalName;
-                    go.GoalDescription = searchGoal.GoalDescription;
+                    Goal go = new Goal
+                    {
+                        GoalID = searchGoal.GoalID,
+                        GoalName = searchGoal.GoalName,
+                        GoalDescription = searchGoal.GoalDescription
+                    };
 
                     goalList.Add(go);
                 }
             }
 
             //search and add custom goals for user
-            foreach (Models.CustomUserGoal goal in db.CustomUserGoals)
+            foreach (CustomUserGoal goal in db.CustomUserGoals)
             {
                 if (goal.UserID == userID)
                 {
-                    Models.CustomGoal searchGoal = db.CustomGoals.FirstOrDefault(go => go.GoalID == goal.GoalID);
+                    CustomGoal searchGoal = db.CustomGoals.FirstOrDefault(go => go.GoalID == goal.GoalID);
 
-                    Goal g = new Goal();
-                    g.GoalID = searchGoal.GoalID;
-                    g.GoalName = searchGoal.GoalName;
-                    g.GoalDescription = searchGoal.GoalDescription;
+                    Goal g = new Goal
+                    {
+                        GoalID = searchGoal.GoalID,
+                        GoalName = searchGoal.GoalName,
+                        GoalDescription = searchGoal.GoalDescription
+                    };
 
                     goalList.Add(g);
                 }
@@ -281,14 +239,14 @@ namespace WebApplication1.Controllers
         //Custom POST
         [Route("api/values/PostAddNormalGoal")]
         [HttpPost]
-        public ReturnMessage PostAddNormalGoal(Classes.UserGoal userGoal)
+        public ReturnMessageObject PostAddNormalGoal(UserGoalObject userGoal)
         {
 
-            bool valid = false;
+            bool valid;
             String userEmail = userGoal.Email;
             int userID = 0;
-            Models.UserGoal newUserGoal = new Models.UserGoal();
-            ReturnMessage returnMessage = new ReturnMessage();
+            Models.UserGoal newUserGoal = new UserGoal();
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             
             //search for user and get userID
@@ -330,14 +288,14 @@ namespace WebApplication1.Controllers
         //Custom POST
         [Route("api/values/PostAddCustomGoal")]
         [HttpPost]
-        public ReturnMessage PostAddCustomGoal(Classes.CustomGoal customGoal)
+        public ReturnMessageObject PostAddCustomGoal(CustomGoalObject customGoal)
         {
-            bool valid = false;
+            bool valid;
             String userEmail = customGoal.Email;
             int userID = 0;
             CustomUserGoal newUserGoal = new CustomUserGoal();
-            Models.CustomGoal customGoal1 = new Models.CustomGoal();
-            ReturnMessage returnMessage = new ReturnMessage();
+            CustomGoal customGoal1 = new CustomGoal();
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             
             //search for user and get userID
@@ -372,15 +330,15 @@ namespace WebApplication1.Controllers
                 //search for custom goal id
                 int count = 0;
 
-                List<Models.CustomGoal> cgList = new List<Models.CustomGoal>();
+                List<CustomGoal> cgList = new List<CustomGoal>();
 
-                foreach(Models.CustomGoal cg in db.CustomGoals)
+                foreach(CustomGoal cg in db.CustomGoals)
                 {
                     cgList.Add(cg);
                     count++;
                 }
 
-                Models.CustomGoal tempgoal = cgList[(count-1)];
+                CustomGoal tempgoal = cgList[(count-1)];
 
                 int customGoalID = tempgoal.GoalID;
 
@@ -420,13 +378,13 @@ namespace WebApplication1.Controllers
         //Custom POST
         [Route("api/values/PostMarkOffGoal")]
         [HttpPost]
-        public ReturnMessage PostMarkOffGoal(Classes.UserGoal userGoal)
+        public ReturnMessageObject PostMarkOffGoal(UserGoalObject userGoal)
         {
-            bool valid = false;
-            String userEmail = "";
+            bool valid;
+            String userEmail;
             int userSearchID = 0;
             int goalSearchID = userGoal.GoalId;
-            ReturnMessage returnMessage = new ReturnMessage();
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             userEmail = userGoal.Email;
 
@@ -440,7 +398,7 @@ namespace WebApplication1.Controllers
             }
 
             //Search list of userGoals for goal
-            foreach (Models.UserGoal usergoal in db.UserGoals)
+            foreach (UserGoal usergoal in db.UserGoals)
             {
                 if (usergoal.GoalID == goalSearchID && usergoal.UserID == userSearchID)
                 {
@@ -479,13 +437,13 @@ namespace WebApplication1.Controllers
         //Custom POST
         [Route("api/values/PostMarkOffCustomGoal")]
         [HttpPost]
-        public ReturnMessage PostMarkOffCustomGoal(Classes.UserGoal userGoal)
+        public ReturnMessageObject PostMarkOffCustomGoal(UserGoalObject userGoal)
         {
-            bool valid = false;
-            String userEmail = "";
+            bool valid;
+            String userEmail;
             int userSearchID = 0;
             int goalSearchID = userGoal.GoalId;
-            ReturnMessage returnMessage = new ReturnMessage();
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             userEmail = userGoal.Email;
 
@@ -499,7 +457,7 @@ namespace WebApplication1.Controllers
             }
 
             //Search list of userGoals for goal
-            foreach (Models.CustomUserGoal usergoal in db.CustomUserGoals)
+            foreach (CustomUserGoal usergoal in db.CustomUserGoals)
             {
                 if (usergoal.GoalID == goalSearchID && usergoal.UserID == userSearchID)
                 {
@@ -551,6 +509,221 @@ namespace WebApplication1.Controllers
 
             return dailyQuote;
         }
+
+
+        //Custom POST
+        [Route("api/values/PostRetrieveLifeSkills")]
+        [HttpPost]
+        public ReturnLifeSkillsObject PostRetrieveLifeSkills(LifeSkillObject lifeSkillObject)
+        {
+            ReturnLifeSkillsObject returnlifeskills = new ReturnLifeSkillsObject();
+            List<LifeSkill> lifeskillsList = new List<LifeSkill>();
+            String userEmail = lifeSkillObject.Email;
+            int userID = 0;
+
+            //search for user and get userID
+            foreach (User user in db.Users)
+            {
+                if (user.Email.Equals(userEmail))
+                {
+                    userID = user.UserID;
+                }
+            }
+
+            //search and add goals for user
+            foreach (UserLifeSkill userlifeskill in db.UserLifeSkills)
+            {
+                if (userlifeskill.UserID == userID)
+                {
+                    
+                    LifeSkill searchLifeSkill = db.LifeSkills.FirstOrDefault(l => l.LifeSkillID == userlifeskill.LifeSKillID);
+
+                    LifeSkill lo = new LifeSkill
+                    {
+                        LifeSkillID = searchLifeSkill.LifeSkillID,
+                        LifeSkillName = searchLifeSkill.LifeSkillName
+                    };
+                    
+                    lifeskillsList.Add(lo);
+                }
+            }
+
+
+            returnlifeskills.LifeSkillsList = lifeskillsList;
+
+
+            return returnlifeskills;
+        }
+
+
+
+        //Custom POST
+        [Route("api/values/PostMarkOffLifeSkill")]
+        [HttpPost]
+        public ReturnMessageObject PostMarkOffLifeSkill(LifeSkillObject lifeSkillObject)
+        {
+            bool valid;
+            String userEmail;
+            int userSearchID = 0;
+            int lifeskillSearchID = lifeSkillObject.LifeSkillID;
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
+
+            userEmail = lifeSkillObject.Email;
+
+            //search for user and get userID
+            foreach (User user in db.Users)
+            {
+                if (user.Email.Equals(userEmail))
+                {
+                    userSearchID = user.UserID;
+                }
+            }
+
+            //Search list of userLifeSkills for lifeskill
+            foreach (UserLifeSkill userLifeSkill in db.UserLifeSkills)
+            {
+                if (userLifeSkill.LifeSKillID == lifeskillSearchID && userLifeSkill.UserID == userSearchID)
+                {
+                    if (userLifeSkill.Completed == 0)
+                    {
+                        userLifeSkill.Completed = 1;
+                    }
+                    else
+                    {
+                        userLifeSkill.Completed = 0;
+                    }
+                }
+            }
+
+
+            try
+            {
+                db.SaveChanges();
+                valid = true;
+            }
+            catch (DBConcurrencyException e)
+            {
+                Debug.WriteLine("Concurrency Error: " + e.ToString());
+                returnMessage.errorMessage = "Concurrency Error: " + e.ToString();
+                valid = false;
+            }
+
+            returnMessage.result = valid;
+
+            return returnMessage;
+
+
+        }
+
+
+
+        //Custom POST
+        [Route("api/values/PostUpdateCV")]
+        [HttpPost]
+        public ReturnMessageObject PostUpdateCV(UpdateCVObject CVObject)
+        {
+
+            ReturnMessageObject returnMessageObject = new ReturnMessageObject();
+            Boolean valid = false;
+            String userEmail = CVObject.Email;
+            int searchUserID = 0;
+
+            //search for user and get userID
+            foreach (User user in db.Users)
+            {
+                if (user.Email.Equals(userEmail))
+                {
+                    searchUserID = user.UserID;
+                }
+            }
+
+
+            CV cv = new CV
+            {
+                Achievements = CVObject.Acheivements,
+                Address = CVObject.Address,
+                CVID = CVObject.CVID,
+                DateOfBIrth = CVObject.DOB,
+                Email = CVObject.Email,
+                HighSchoolName = CVObject.HighSchoolName,
+                IDNumber = CVObject.IDNumber,
+                Interests = CVObject.Interests,
+                Languages = CVObject.Languages,
+                Nationality = CVObject.Nationality,
+                PhoneNumber = CVObject.PhoneNumber,
+                PreviousWorkExperience = CVObject.PreviousWorkExperience,
+                WorkReferences = CVObject.WorkReferences
+            };
+
+
+            UserCV userCV = new UserCV();
+            userCV.UserID = searchUserID;
+
+
+            //save cv object
+            try
+            {
+
+                db.CVs.Add(cv);
+                db.SaveChanges();
+                valid = true;
+            }
+            catch (DBConcurrencyException e)
+            {
+                Debug.WriteLine("Concurrency Error: " + e.ToString());
+                returnMessageObject.errorMessage = "Concurrency Error: " + e.ToString();
+                valid = false;
+            }
+
+            if (valid == true)
+            {
+                //search for cv id
+                int count = 0;
+
+                List<CV> cvList = new List<CV>();
+
+                foreach (CV searchCV in db.CVs)
+                {
+                    cvList.Add(searchCV);
+                    count++;
+                }
+
+                CV tempcv = cvList[(count - 1)];
+
+                int searchCvID = tempcv.CVID;
+
+                userCV.CVID = searchCvID;
+
+
+                //save custom user goal
+                try
+                {
+
+                    db.UserCVs.Add(userCV);
+                    db.SaveChanges();
+                    valid = true;
+                }
+                catch (DBConcurrencyException e)
+                {
+                    Debug.WriteLine("Concurrency Error: " + e.ToString());
+                    returnMessageObject.errorMessage = "Concurrency Error: " + e.ToString();
+                    valid = false;
+                }
+
+
+                
+
+            }
+
+
+            returnMessageObject.result = valid;
+
+            return returnMessageObject;
+
+
+        }
+
+
 
 
 
