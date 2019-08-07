@@ -13,7 +13,7 @@ import com.a17001922.wil_app.R;
 public class RegisterActivity extends AppCompatActivity {
     Button btnRegister,btnCancel;
     EditText et_firstName,et_surname,et_email,et_age,et_username,et_password,et_confirmPassword;
-    RegisterUser user =new RegisterUser();
+    RegisterUserObject user =new RegisterUserObject();
     Connection connection= new Connection();
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -18,13 +18,13 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView lblRegister;
     EditText et_email,et_password;
-    LoginUser user;
+    LoginUserObject user;
     Connection con;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        user = new LoginUser();
+        user = new LoginUserObject();
         con=new Connection();
     }
 

@@ -1,10 +1,10 @@
 package com.a17001922.wil_app;
 
-import com.a17001922.wil_app.LoginScreen.LoginUser;
-import com.a17001922.wil_app.LoginScreen.RegisterUser;
+import com.a17001922.wil_app.LoginScreen.LoginUserObject;
+import com.a17001922.wil_app.LoginScreen.RegisterUserObject;
 import com.a17001922.wil_app.LoginScreen.ReturnedMessage;
 import com.a17001922.wil_app.LoginScreen.loginRegisterService;
-import com.a17001922.wil_app.dailyQuote.DailyQuote;
+import com.a17001922.wil_app.dailyQuote.DailyObject;
 import com.a17001922.wil_app.dailyQuote.DailyQuoteService;
 
 import retrofit2.Call;
@@ -17,13 +17,13 @@ import retrofit2.Retrofit;
 
 //#TODO TEST ALL METHODS IN THE CLASS TO SEE IF IT WORKS CORRECTLY WITH THE API
 public class Connection {
-    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://localhost:44317/").build();
+    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://105.184.157.179:44317/").build();
     loginRegisterService service = retrofit.create(loginRegisterService.class);
     private boolean loginAuth=false;
     private boolean registerAuth=false;
-    private  DailyQuote Quote;
+    private DailyObject Quote;
 
-    public boolean userLogin(LoginUser user){
+    public boolean userLogin(LoginUserObject user){
 
         final Call<ReturnedMessage> loginUserCall = service.userLogin(user);
         loginUserCall.enqueue(new Callback<ReturnedMessage>() {
@@ -49,7 +49,7 @@ public class Connection {
        return loginAuth;
     }
 
-    public boolean userRegister(RegisterUser user){
+    public boolean userRegister(RegisterUserObject user){
 
         final Call<ReturnedMessage>registerUserCall = service.userRegister(user);
         registerUserCall.enqueue(new Callback<ReturnedMessage>() {
@@ -75,13 +75,13 @@ public class Connection {
         return registerAuth;
     }
 
-    public DailyQuote getDailyQuote(){
-          Quote = new DailyQuote();
+    public DailyObject getDailyQuote(){
+          Quote = new DailyObject();
         DailyQuoteService service = retrofit.create(DailyQuoteService.class);
-        final Call<DailyQuote> quoteCall= service.getQuote();
-        quoteCall.enqueue(new Callback<DailyQuote>() {
+        final Call<DailyObject> quoteCall= service.getQuote();
+        quoteCall.enqueue(new Callback<DailyObject>() {
             @Override
-            public void onResponse(Call<DailyQuote> call, Response<DailyQuote> response) {
+            public void onResponse(Call<DailyObject> call, Response<DailyObject> response) {
                 if(!response.isSuccessful()){
 
                 }else{
@@ -90,7 +90,7 @@ public class Connection {
             }
 
             @Override
-            public void onFailure(Call<DailyQuote> call, Throwable t) {
+            public void onFailure(Call<DailyObject> call, Throwable t) {
 
             }
         });
