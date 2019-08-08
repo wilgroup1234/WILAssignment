@@ -2,6 +2,7 @@ package com.a17001922.wil_app.LoginScreen;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 
@@ -15,4 +16,6 @@ public interface loginRegisterService {
 
     @POST("api/values/PostRegister")
     Call<ReturnMessageObject> userRegister(@Body RegisterUserObject user);
+    @GET("api/values/GetNumber")
+    Call<number>number();
 }

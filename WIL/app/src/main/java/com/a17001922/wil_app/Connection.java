@@ -1,11 +1,13 @@
 package com.a17001922.wil_app;
 
+import android.nfc.Tag;
 import android.util.Log;
 
 import com.a17001922.wil_app.LoginScreen.LoginUserObject;
 import com.a17001922.wil_app.LoginScreen.RegisterUserObject;
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.LoginScreen.loginRegisterService;
+import com.a17001922.wil_app.LoginScreen.number;
 import com.a17001922.wil_app.dailyQuote.DailyObject;
 import com.a17001922.wil_app.dailyQuote.DailyQuoteService;
 
@@ -13,6 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 /*
  NB!!! THIS WHOLE CLASS HAS TO DO STRICTLY WITH THE API CALLS AND GETTING OF AUTHORIZATION OF A USER TO LOGIN AND BE CREATED
  */
@@ -20,7 +23,7 @@ import retrofit2.Retrofit;
 //#TODO TEST ALL METHODS IN THE CLASS TO SEE IF IT WORKS CORRECTLY WITH THE API
 public class Connection {
     // #TODO IN ORDER TO TEST API LOCALLY CHANGE THE PORTION UNDER THIS TEXT TO YOUR MACHINES API ADDRESS
-    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://10.0.0.6:44317/").build();
+    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://10.117.190.135:44317/").addConverterFactory(GsonConverterFactory.create()).build();
     loginRegisterService service = retrofit.create(loginRegisterService.class);
     private boolean loginAuth=false;
     private boolean registerAuth=false;
@@ -30,7 +33,25 @@ public class Connection {
     public boolean userLogin(LoginUserObject user){
         Log.v(TAG,"I CALLED USER LOGIN");
         Log.e(TAG, "userLogin: ABOUT TO CREATE THE CALL" );
-        final Call<ReturnMessageObject> loginUserCall = service.userLogin(user);
+        final Call <number> numberCall =service.number();
+        Log.e(TAG,"Service added +36");
+        numberCall.enqueue(new Callback<number>() {
+
+
+            @Override
+            public void onResponse(Call<number> call, Response<number> response) {
+                if (response.isSuccessful()){
+                    number num = response.body();
+                    Log.e(TAG,"HERE IS THE NUMBER"+num.getNumber());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<number> call, Throwable t) {
+                Log.e(TAG, "onFailure: failed" ,t);
+            }
+        });
+        /*final Call<ReturnMessageObject> loginUserCall = service.userLogin(user);
         loginUserCall.enqueue(new Callback<ReturnMessageObject>() {
             @Override
             public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response) {
@@ -60,7 +81,7 @@ public class Connection {
                 loginAuth=false;
                 Log.e(TAG, "onFailure: "+ "its crashing in the call" );
             }
-        });
+        });*/
        return loginAuth;
     }
 
