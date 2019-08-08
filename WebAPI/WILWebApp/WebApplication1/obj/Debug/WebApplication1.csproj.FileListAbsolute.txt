@@ -83,3 +83,4 @@ C:\Users\Jarrod\source\repos\WILWebApp\WebApplication1\obj\Debug\WebApplication1
 C:\Users\Jarrod\source\repos\WILWebApp\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\Jarrod\source\repos\WILWebApp\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\Jarrod\source\repos\WILWebApp\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Jarrod\source\repos\WILWebApp\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache

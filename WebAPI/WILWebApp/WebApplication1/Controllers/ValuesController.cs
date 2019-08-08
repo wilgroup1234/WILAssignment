@@ -23,7 +23,12 @@ namespace WebApplication1.Controllers
 
         private WILModel db = new WILModel();
 
-
+        [Route("api/values/GetNumber")]
+        [HttpGet]
+        public int GetNumber()
+        {
+            return 5;
+        }
 
         //This POST method allows users to Register (Create an account for the app)
         [Route("api/values/PostRegister")]
