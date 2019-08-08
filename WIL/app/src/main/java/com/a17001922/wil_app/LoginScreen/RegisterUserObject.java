@@ -2,9 +2,9 @@ package com.a17001922.wil_app.LoginScreen;
 /*
 #TODO THIS IS THE MODEL FOR THE REGISTERATION OF A USER IF ANY NEW FIELDS ARE ADDED DATABASE SIDE NEW FIELDS WILL BE REQUIRED IN THIS SECTION
  */
-public class RegisterUser {
+public class RegisterUserObject {
     protected int userID;
-    protected String firstName,surname,email,password,confirmPassword;
+    protected String firstName,LastName,email,password,confirmPassword;
     protected int age;
 
 
@@ -25,11 +25,11 @@ public class RegisterUser {
     }
 
     public String getSurname() {
-        return surname;
+        return LastName;
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        this.LastName = surname;
     }
 
     public String getEmail() {

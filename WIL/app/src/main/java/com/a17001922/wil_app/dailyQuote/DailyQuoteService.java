@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 public interface DailyQuoteService {
 
     @GET("https://localhost44317/api/values/GetDailyQuote")
-    Call<DailyQuote> getQuote();
+    Call<DailyObject> getQuote();
 
 
 }

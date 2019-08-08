@@ -1,6 +1,6 @@
 package com.a17001922.wil_app.dailyQuote;
 
-public class DailyQuote {
+public class DailyObject {
     protected int TemplateID;
     protected String QuoteText;
     protected String YoutubeLink;

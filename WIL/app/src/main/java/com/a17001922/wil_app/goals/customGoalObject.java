@@ -1,7 +1,7 @@
 package com.a17001922.wil_app.goals;
 //TODO THIS IS THE MODEL CLASS FOR A CUSTOM GOAL THE USER CREATES
 
-public class customGoal {
+public class customGoalObject {
     protected String goalName;
     protected String goalDescription;
     protected String Email;
