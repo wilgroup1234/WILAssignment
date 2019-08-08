@@ -1,6 +1,5 @@
 package com.a17001922.wil_app;
 
-import android.nfc.Tag;
 import android.util.Log;
 
 import com.a17001922.wil_app.LoginScreen.LoginUserObject;
@@ -10,6 +9,10 @@ import com.a17001922.wil_app.LoginScreen.loginRegisterService;
 import com.a17001922.wil_app.LoginScreen.number;
 import com.a17001922.wil_app.dailyQuote.DailyObject;
 import com.a17001922.wil_app.dailyQuote.DailyQuoteService;
+import com.a17001922.wil_app.goals.customGoalObject;
+import com.a17001922.wil_app.goals.goalsService;
+import com.a17001922.wil_app.goals.returnGoalObject;
+import com.a17001922.wil_app.goals.userGoalObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,7 +31,12 @@ public class Connection {
     private boolean loginAuth=false;
     private boolean registerAuth=false;
     private DailyObject Quote;
+    private returnGoalObject goalsList;
+    private userGoalObject addGoal;
+    private customGoalObject addingCustomGoal;
+    private boolean flag;
     private static final String TAG = "ConnectionClass";
+
 
     public boolean userLogin(LoginUserObject user){
         Log.v(TAG,"I CALLED USER LOGIN");
@@ -131,5 +139,75 @@ public class Connection {
             }
         });
         return Quote;
+    }
+
+    public returnGoalObject getGoals(userGoalObject userGoals){
+        goalsList = new returnGoalObject();
+        goalsService service = retrofit.create(goalsService.class);
+        final Call<returnGoalObject> goalsCall= service.getGoalsList(userGoals);
+        goalsCall.enqueue(new Callback<returnGoalObject>() {
+            @Override
+            public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response) {
+                if(!response.isSuccessful()){
+
+                }else{
+                    goalsList=response.body();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<returnGoalObject> call, Throwable t) {
+
+            }
+        });
+        return goalsList;
+    }
+
+    public boolean addUserGoal(userGoalObject addingGoal){
+         flag = false;
+        addGoal = new userGoalObject();
+        goalsService service = retrofit.create(goalsService.class);
+        final Call<userGoalObject> addGoalCall = service.addingGoal(addingGoal);
+        addGoalCall.enqueue(new Callback<userGoalObject>() {
+            @Override
+            public void onResponse(Call<userGoalObject> call, Response<userGoalObject> response) {
+                if(!response.isSuccessful()){
+
+                }else{
+                    addGoal=response.body();
+                    flag = true;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<userGoalObject> call, Throwable t) {
+
+            }
+        });
+        return flag;
+    }
+
+    public boolean addCustomGoal(customGoalObject addCustomGoal){
+         flag =false;
+        addingCustomGoal = new customGoalObject();
+        goalsService service = retrofit.create(goalsService.class);
+        final Call<returnGoalObject> customGoalObjectCall = service.addingCustomGoal(addCustomGoal);
+        customGoalObjectCall.enqueue(new Callback<returnGoalObject>() {
+            @Override
+            public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response) {
+                if(!response.isSuccessful()){
+
+                }else{
+                    goalsList=response.body();
+                    flag=true;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<returnGoalObject> call, Throwable t) {
+
+            }
+        });
+        return flag;
     }
 }
