@@ -73,6 +73,12 @@ RETREIVING  UPLOADS
    API-  Get POST request CVUpdate obj (UserID, CVID, IDNumber, DateOfBIrth, HighSchoolName, Previous Work Experience, WorkReferences, Languages, Achievements, Nationality, Interests, Email, PhoneNumber, Address)
 	  RETURN ReturnMessage Object
 
+    WHEN USER VIEWS THEIR CV
+
+    ANDROID- Send GET Request(Email)
+	  Receive CV Object
+   API-  Get  GET Request(Email)
+	  RETURN CV Object
 
 7. Calendar - Save event to user's calender (On user device)
 	Android - open calendar, store info.
