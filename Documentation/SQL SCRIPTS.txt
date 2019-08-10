@@ -139,3 +139,47 @@ ALTER TABLE CustomUserGoals
    FOREIGN KEY (CVID) REFERENCES CVs(CVID);
 
 
+Insert into LifeSkills Values ('Applied for my I.D book');
+Insert into LifeSkills Values ('Applied for my passport');
+Insert into LifeSkills Values ('Opened a bank account');
+Insert into LifeSkills Values ('3 weeks work experience');
+Insert into LifeSkills Values ('1 week free community service');
+Insert into LifeSkills Values ('Have made a telephone call on my own to find a part time job');
+Insert into LifeSkills Values ('Have booked my Learner’s licence');
+Insert into LifeSkills Values ('Have booked my Driver’s Licence');
+Insert into LifeSkills Values ('Have passed my driver’s licence?');
+Insert into LifeSkills Values ('Have asked for help at school for extra lessons or help where needed');
+Insert into LifeSkills Values ('Booked a Doctor/Dentist/Hairdresser appointment on my own');
+Insert into LifeSkills Values ('Have cooked at least 5 different dinners on my own for my family');
+Insert into LifeSkills Values ('Have put to use Google Maps or a navigator with ease');
+Insert into LifeSkills Values ('Have asked for directions and have followed instructions ');
+Insert into LifeSkills Values ('Filled a car with the correct petrol and check oil, water and tyre pressure');
+Insert into LifeSkills Values ('Have changed a light bulb');
+Insert into LifeSkills Values ('Cleaned my whole house on my own');
+Insert into LifeSkills Values ('Have used the washing machine and know how to separate laundry');
+Insert into LifeSkills Values ('Have ironed my own clothes ');
+Insert into LifeSkills Values ('Have washed my/my parents car on my own');
+Insert into LifeSkills Values ('Have looked after children for a few hours on my own');
+Insert into LifeSkills Values ('I am able to ask for what I want');
+Insert into LifeSkills Values ('I am able to ask questions that I need the answers for');
+Insert into LifeSkills Values ('Able to answer any questions, and be able to admit if I do not know the answer');
+Insert into LifeSkills Values ('I am able to get attention appropriately');
+Insert into LifeSkills Values ('I am able to accept criticism and consequences');
+Insert into LifeSkills Values ('I am able to accept NO as an answer');
+Insert into LifeSkills Values ('I am able to work with others');
+Insert into LifeSkills Values ('I am able to ask for permission');
+Insert into LifeSkills Values ('I am able to disagree appropriately');
+Insert into LifeSkills Values ('I am able to follow instructions');
+Insert into LifeSkills Values ('I am able to give constructive criticism');
+Insert into LifeSkills Values ('I am able to listen');
+Insert into LifeSkills Values ('I am able to use an appropriate voice tone');
+Insert into LifeSkills Values ('I am able to ask for help');
+Insert into LifeSkills Values ('I am able to make an apology');
+Insert into LifeSkills Values ('I am able to mind my own business');
+Insert into LifeSkills Values ('I am able to resist peer pressure');
+Insert into LifeSkills Values ('I am able to stay on a task until completion');
+Insert into LifeSkills Values ('I am able to wait patiently until my turn');
+Insert into LifeSkills Values ('I am able to give thanks easily to people who have helped me');
+Insert into LifeSkills Values ('I am considerate of others’ needs ');
+
+
