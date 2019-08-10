@@ -4,45 +4,65 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Login</h2>
+    <head>
+        <link rel="stylesheet" href="~/css/Style.css" />
+        @using WILWebAppNetCore.Classes
+
+    </head>
+
+<body>
 
 
-<h1 class="text-danger">@ViewBag.Message</h1>
+    <div class="loginbox">
+        <img src="~/images/person.png" alt="Alternate Text" class="user" />
+        <h2>Login</h2>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+        @{
+            if (!StaticClass.errorMessage.Equals("NO_ERROR"))
+            {
+                <h1 class="text-danger">@ViewBag.Message</h1>
+            }
+        }
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label class="lblemail">Email:</label>
+                        <input asp-for="Email" class="txtemail" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="lblpass">Password:</label>
+                        <input asp-for="Password" type="password" class="txtpass" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btnsubmit" />
+                    </div>
+
+                    <br>
+                    <br>
+
+
+                    <a href="#">Lost your password?</a><br>
+                    <a href="@Url.Action( "Register","Users")">Don't have an account? Register Here :) </a>
+
+
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" type="password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-default" />
-            </div>
+        </div>
 
-            <br>
-            <br>
-
-
-            <a href="#">Lost your password?</a><br>
-            <a href="@Url.Action( "Register","Users")">Don't have an account? Register Here :) </a>
-
-
-        </form>
     </div>
-</div>
 
 
-@section Scripts
-{
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts
+    {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+</body>
+
