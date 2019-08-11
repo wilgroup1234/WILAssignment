@@ -98,6 +98,13 @@ CREATE TABLE UserCVs
     CVID int NOT NULL
 ); 
 
+CREATE TABLE PasswordReset
+(
+    id int NOT NULL IDENTITY PRIMARY KEY,
+	passwordCode varchar(255) NOT NULL 
+); 
+
+
 
  ALTER TABLE UserGoals
   ADD CONSTRAINT FK_UserID
@@ -181,5 +188,7 @@ Insert into LifeSkills Values ('I am able to stay on a task until completion');
 Insert into LifeSkills Values ('I am able to wait patiently until my turn');
 Insert into LifeSkills Values ('I am able to give thanks easily to people who have helped me');
 Insert into LifeSkills Values ('I am considerate of others’ needs ');
+
+Insert into PasswordReset Values ('C75032CB0C61EBD372C19DF28E3D7948FF9EB73676EDC6FBE7B6E5017FEE67A4');
 
 

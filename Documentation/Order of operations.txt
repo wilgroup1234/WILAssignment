@@ -2,7 +2,7 @@
 
 ANDROID- Send Post resquest (RegisterUser/ LoginUser Object)  Receive ReturnMessage Object, Allow Google logins
 API-  Get POST request (RegisterUser/ LoginUser Object)  RETURN ReturnMessage Object , Allow Google reg, create FB storage container
-WEBAPP-   Login using "Admin", "AdMinPasSword1"
+WEBAPP-   Login using "Admin", "AdMinPasSword1" ResetCode: "aJwb92Omsqp2"
 When user registers, add all lifeskills to userlifeskills table and mark as incomplete.
 
 2. HOME or GOALS PAGE                                               TABLES (User, UserGoals, Goals,) (User, CustomUserGoals, CustomGoals,)
