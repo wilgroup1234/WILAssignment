@@ -20,7 +20,7 @@
         @{
             if (!StaticClass.errorMessage.Equals("NO_ERROR"))
             {
-                <h1 class="text-danger">@ViewBag.Message</h1>
+                <h2 class="text-danger">@ViewBag.Message</h2>
             }
         }
 
@@ -42,15 +42,8 @@
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Login" class="btnsubmit" />
+                        <a href=@Url.Action( "ResetPassword","Users")>Lost your password?</a>
                     </div>
-
-                    <br>
-                    <br>
-
-
-                    <a href="#">Lost your password?</a><br>
-                    <a href="@Url.Action( "Register","Users")">Don't have an account? Register Here :) </a>
-
 
                 </form>
             </div>

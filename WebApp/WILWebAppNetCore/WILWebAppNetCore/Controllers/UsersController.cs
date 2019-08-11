@@ -35,7 +35,7 @@ namespace WILWebAppNetCore.Controllers
             }
 
             var users = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserID == id);
+                .FirstOrDefaultAsync(m => m.UserId == id);
             if (users == null)
             {
                 return NotFound();
@@ -89,7 +89,7 @@ namespace WILWebAppNetCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UserID,LastName,FirstName,Age,Email,Password")] Users users)
         {
-            if (id != users.UserID)
+            if (id != users.UserId)
             {
                 return NotFound();
             }
@@ -103,7 +103,7 @@ namespace WILWebAppNetCore.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsersExists(users.UserID))
+                    if (!UsersExists(users.UserId))
                     {
                         return NotFound();
                     }
@@ -126,7 +126,7 @@ namespace WILWebAppNetCore.Controllers
             }
 
             var users = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserID == id);
+                .FirstOrDefaultAsync(m => m.UserId == id);
             if (users == null)
             {
                 return NotFound();
@@ -148,7 +148,7 @@ namespace WILWebAppNetCore.Controllers
 
         private bool UsersExists(int id)
         {
-            return _context.Users.Any(e => e.UserID == id);
+            return _context.Users.Any(e => e.UserId == id);
         }
 
 
@@ -325,7 +325,115 @@ namespace WILWebAppNetCore.Controllers
 
 
 
+        // GET: Users/ResetPassword
+        public ActionResult ResetPassword()
+        {
+            if (!StaticClass.errorMessage.Equals("NO_ERROR"))
+            {
+                ViewBag.Message = StaticClass.errorMessage;
+            }
 
+            return View();
+        }
+
+        
+        // POST: Users/Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(String resetCode, String password, String confirmPass)
+        {
+            List<Users> userList = _context.Users.ToList();
+            List<PasswordReset> passwordResets = _context.PasswordReset.ToList();
+            PasswordReset passwordReset = new PasswordReset();
+            String hashedpasswordCode = "";
+            PasswordEncryption obj = PasswordEncryption.GetInstance;
+
+            foreach (PasswordReset item in passwordResets)
+            {
+                passwordReset = item;
+            }
+            hashedpasswordCode = passwordReset.PasswordCode;
+
+            Users user = new Users();
+            user = _context.Users.FirstOrDefault(u => u.Email == "info@goalpro.co.za");
+            Boolean valid = false;
+            String error;
+
+            if (password.Equals(confirmPass))
+            {
+                List<String> possiblePasswords = obj.GetPossiblePasswords(resetCode);
+
+
+                foreach(String p in possiblePasswords)
+                {
+                    if (p.Equals(hashedpasswordCode))
+                    {
+                        valid = true;
+                    }
+                }
+
+                if (valid)
+                {
+                    error = "NO_ERROR";
+                }
+                else
+                {
+                    error = "Invalid reset code entered :(";
+                }
+            }
+            else
+            {
+                error = "Passwords do not match :(";
+            }
+
+            if (valid)
+            {
+                //Reset password for admin
+                String newuserPassword = obj.GetHashedPassword(password);
+                user.Password = newuserPassword;
+
+                //set in db and save
+
+                try
+                {
+                    foreach (Users u in _context.Users)
+                    {
+                        if (u.Email.Equals("info@goalpro.co.za"))
+                        {
+                            u.Password = newuserPassword;
+                        }
+                    }
+
+                    _context.SaveChanges();
+                }
+                catch(DBConcurrencyException e)
+                {
+                    error = "Unable to update password :( " + e.ToString();
+                    valid = false;
+                }
+
+               
+
+
+            }
+
+            if (valid == false)
+            {
+                StaticClass.errorMessage = error;
+
+                Debug.WriteLine("ERROR: " + error);
+                return RedirectToAction("ResetPassword", "Users");
+            }
+            else
+            {
+                StaticClass.errorMessage = "NO_ERROR";
+
+                Debug.WriteLine("PASSWORD UPDATED SUCCESSFULLY!!: " + error);
+                return RedirectToAction("Index", "Home");
+            }
+           
+
+        }
 
 
     }
