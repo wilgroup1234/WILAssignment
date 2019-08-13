@@ -43,10 +43,10 @@ public class RegisterFragments extends Fragment {
         et_confirmPassword=v.findViewById(R.id.et_confirmPassword);
         btnRegister=v.findViewById(R.id.btn_Register);
 
-        //btnRegister.setOnClickListener(new View.OnClickListener() {
-            //@Override
-           // public void onClick(View v) {
-                /*String name,surname,email,password,confirmPassword="";
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name,surname,email,password,confirmPassword="";
                 name= et_registerFirstName.getText().toString();
                 surname=et_registerSurname.getText().toString();
                 int age = Integer.parseInt(et_age.getText().toString());
@@ -63,9 +63,9 @@ public class RegisterFragments extends Fragment {
 
                 connection.userRegister(user);
 
-                */
-         //   }
-       // });
+
+          }
+        });
 
     }
 
