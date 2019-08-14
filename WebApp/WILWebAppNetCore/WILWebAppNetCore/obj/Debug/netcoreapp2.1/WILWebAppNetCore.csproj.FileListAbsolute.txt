@@ -37,3 +37,6 @@ C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcore
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.pdb
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csproj.CopyComplete
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\ResetPassword.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\AdminPortal.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\DailyQuote.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csprojAssemblyReference.cache

@@ -436,5 +436,20 @@ namespace WILWebAppNetCore.Controllers
         }
 
 
+
+        // GET: Users/AdminPortal
+        public ActionResult AdminPortal()
+        {
+
+            return View();
+        }
+
+        // GET: Users/DailyQuote
+        public ActionResult DailyQuote()
+        {
+            
+            return View();
+        }
+
     }
 }
