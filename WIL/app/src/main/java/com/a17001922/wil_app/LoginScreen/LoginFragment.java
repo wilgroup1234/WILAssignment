@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.a17001922.wil_app.Connection;
 import com.a17001922.wil_app.R;
+import com.a17001922.wil_app.homeScreen.homeActivity;
 
 
 public class LoginFragment extends Fragment {
@@ -52,19 +53,20 @@ public class LoginFragment extends Fragment {
                 user.setEmail(email);
                 user.setPassword(password);
                 String message;
-                Log.e(TAG,"about to call connection");
+
                 try {
                     if(!con.userLogin(user)){
-                        Log.e(TAG,"connection call success");
+
                         message="false";
                     }else{
                         message="true";
-                        Log.e(TAG,"connection call failed");
+                        Intent variables = new Intent(getContext(), homeActivity.class);
+                        variables.putExtra("userEmail",email);
                     }
                     Toast.makeText(getActivity().getApplicationContext(),message , Toast.LENGTH_LONG).show();
 
                 }catch (Exception e){
-                    Log.e(TAG, "HERES THE ERROR : "+e);
+
                 }
 
             }
