@@ -21,52 +21,67 @@ import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.homeScreen.homeActivity;
 
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment
+{
     Button btnLogin;
     EditText et_email,et_password;
     LoginUserObject user;
     Connection con;
     View v;
+
     private static final String TAG = "LoginActivity";
      @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+     {
          v = inflater.inflate(R.layout.activity_login,container,false);
          user = new LoginUserObject();
-         con=new Connection();
+         con = new Connection();
         return v;
-    }
+     }
 
 
     @Override
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
         btnLogin=v.findViewById(R.id.btn_login);
         et_email=v.findViewById(R.id.et_userName);
         et_password=v.findViewById(R.id.et_Password);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 String email = et_email.getText().toString();
                 String password=et_password.getText().toString();
                 user.setEmail(email);
                 user.setPassword(password);
                 String message;
 
-                try {
-                    if(!con.userLogin(user)){
-
-                        message="false";
-                    }else{
-                        message="true";
-                        Intent variables = new Intent(getContext(), homeActivity.class);
-                        variables.putExtra("userEmail",email);
+                try
+                {
+                    if(con.userLogin(user) == false)
+                    {
+                        message="Invalid Login Details Entered :(";
+                        Toast.makeText(getActivity().getApplicationContext(),message , Toast.LENGTH_LONG).show();
                     }
+                    else
+                    {
+                        message="Login Successful :)";
+                        Toast.makeText(getActivity().getApplicationContext(),message , Toast.LENGTH_LONG).show();
+                        Intent variables = new Intent(getContext(), homeActivity.class);
+                        variables.putExtra("userEmail" , email);
+                    }
+
+
+
+                }
+                catch (Exception e)
+                {
+                    message="Something Broke :(";
                     Toast.makeText(getActivity().getApplicationContext(),message , Toast.LENGTH_LONG).show();
-
-                }catch (Exception e){
-
                 }
 
             }

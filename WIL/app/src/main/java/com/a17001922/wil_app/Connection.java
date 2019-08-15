@@ -36,9 +36,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 //#TODO TEST ALL METHODS IN THE CLASS TO SEE IF IT WORKS CORRECTLY WITH THE API
 public class Connection {
     // #TODO IN ORDER TO TEST API LOCALLY CHANGE THE PORTION UNDER THIS TEXT TO YOUR MACHINES API ADDRESS
-    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://10.117.190.135:44317/").addConverterFactory(GsonConverterFactory.create())
+    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://192.168.43.178:45456/").addConverterFactory(GsonConverterFactory.create())
             .client(getUnsafeOkHttpClient().build()).build();
-    loginRegisterService service = retrofit.create(loginRegisterService.class);
+    loginRegisterService loginRegisterService = retrofit.create(loginRegisterService.class);
     private boolean loginAuth=false;
     private boolean registerAuth=false;
     private DailyObject Quote;
@@ -49,200 +49,254 @@ public class Connection {
     private static final String TAG = "ConnectionClass";
 
 
-    public boolean userLogin(LoginUserObject user){
-        Log.v(TAG,"I CALLED USER LOGIN");
-        Log.e(TAG, "userLogin: ABOUT TO CREATE THE CALL" );
-        final Call <number> numberCall =service.number();
-        Log.e(TAG,"Service added +36");
-        numberCall.enqueue(new Callback<number>() {
 
 
+    //________Register New User__________
+
+    public boolean userRegister(RegisterUserObject user)
+    {
+
+        final Call<ReturnMessageObject>registerUserCall = loginRegisterService.userRegister(user);
+        registerUserCall.enqueue(new Callback<ReturnMessageObject>()
+        {
             @Override
-            public void onResponse(Call<number> call, Response<number> response) {
-                if (response.isSuccessful()){
-                    number num = response.body();
-                    Log.e(TAG,"HERE IS THE NUMBER"+num.getNumber());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<number> call, Throwable t) {
-                Log.e(TAG, "onFailure: failed" ,t);
-            }
-        });
-        /*final Call<ReturnMessageObject> loginUserCall = service.userLogin(user);
-        loginUserCall.enqueue(new Callback<ReturnMessageObject>() {
-            @Override
-            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response) {
-                try {
-                    if (!response.isSuccessful()){
-                        loginAuth=false;
-                    }else{
-                        ReturnMessageObject auth = response.body();
-
-                        if(auth.getResult()){
-
-                            loginAuth=true;
-                            Log.e(TAG,auth.getLoginMessage() );
-                        }else{
-                            loginAuth=false;
-                        }
-                    }
-
-                }catch(Exception e){
-                    Log.e(TAG,e.toString());
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ReturnMessageObject> call, Throwable t) {
-                loginAuth=false;
-                Log.e(TAG, "onFailure: "+ "its crashing in the call" );
-            }
-        });*/
-       return loginAuth;
-    }
-
-    public boolean userRegister(RegisterUserObject user){
-
-        final Call<ReturnMessageObject>registerUserCall = service.userRegister(user);
-        registerUserCall.enqueue(new Callback<ReturnMessageObject>() {
-            @Override
-            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response) {
-                if (!response.isSuccessful()){
+            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+            {
+                if (!response.isSuccessful())
+                {
                     registerAuth=false;
                 }
                 ReturnMessageObject registeredAuth = response.body();
-                if (registeredAuth.getResult()){
+                if (registeredAuth.getResult())
+                {
                     registerAuth=true;
-                }else{
+                }
+                else
+                {
                     registerAuth=false;
                 }
 
             }
 
             @Override
-            public void onFailure(Call<ReturnMessageObject> call, Throwable t) {
+            public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+            {
                 registerAuth=false;
             }
         });
+
         return registerAuth;
     }
 
-    public DailyObject getDailyQuote(){
+
+    //________Login__________
+
+    public boolean userLogin(LoginUserObject user)
+    {
+
+        final Call<ReturnMessageObject>loginUserCall = loginRegisterService.userLogin(user);
+        loginUserCall.enqueue(new Callback<ReturnMessageObject>()
+        {
+            @Override
+            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+            {
+                if (!response.isSuccessful())
+                {
+                    loginAuth=false;
+                }
+                ReturnMessageObject loggedInAuth = response.body();
+                if (loggedInAuth.getResult())
+                {
+                    loginAuth=true;
+                }
+                else
+                {
+                    loginAuth=false;
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+            {
+                loginAuth=false;
+            }
+        });
+
+        return loginAuth;
+    }
+
+
+
+
+
+    //________Get Daily Quote__________
+
+    public DailyObject getDailyQuote()
+    {
           Quote = new DailyObject();
         DailyQuoteService service = retrofit.create(DailyQuoteService.class);
         final Call<DailyObject> quoteCall= service.getQuote();
-        quoteCall.enqueue(new Callback<DailyObject>() {
+        quoteCall.enqueue(new Callback<DailyObject>()
+        {
             @Override
-            public void onResponse(Call<DailyObject> call, Response<DailyObject> response) {
-                if(!response.isSuccessful()){
+            public void onResponse(Call<DailyObject> call, Response<DailyObject> response)
+            {
+                if(!response.isSuccessful())
+                {
 
-                }else{
+                }
+                else
+                {
                     Quote=response.body();
                 }
             }
 
             @Override
-            public void onFailure(Call<DailyObject> call, Throwable t) {
+            public void onFailure(Call<DailyObject> call, Throwable t)
+            {
 
             }
         });
+
         return Quote;
     }
 
-    public returnGoalObject getGoals(userGoalObject userGoals){
+
+    //________Get Goals__________
+
+    public returnGoalObject getGoals(userGoalObject userGoals)
+    {
         goalsList = new returnGoalObject();
         goalsService service = retrofit.create(goalsService.class);
         final Call<returnGoalObject> goalsCall= service.getGoalsList(userGoals);
-        goalsCall.enqueue(new Callback<returnGoalObject>() {
+        goalsCall.enqueue(new Callback<returnGoalObject>()
+        {
             @Override
-            public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response) {
-                if(!response.isSuccessful()){
+            public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response)
+            {
+                if(!response.isSuccessful())
+                {
 
-                }else{
+                }
+                else
+                {
                     goalsList=response.body();
                 }
             }
 
             @Override
-            public void onFailure(Call<returnGoalObject> call, Throwable t) {
+            public void onFailure(Call<returnGoalObject> call, Throwable t)
+            {
 
             }
         });
+
         return goalsList;
     }
 
-    public boolean addUserGoal(userGoalObject addingGoal){
+
+    //________Add User Goal__________
+
+    public boolean addUserGoal(userGoalObject addingGoal)
+    {
          flag = false;
         addGoal = new userGoalObject();
         goalsService service = retrofit.create(goalsService.class);
         final Call<userGoalObject> addGoalCall = service.addingGoal(addingGoal);
-        addGoalCall.enqueue(new Callback<userGoalObject>() {
+        addGoalCall.enqueue(new Callback<userGoalObject>()
+        {
             @Override
-            public void onResponse(Call<userGoalObject> call, Response<userGoalObject> response) {
-                if(!response.isSuccessful()){
+            public void onResponse(Call<userGoalObject> call, Response<userGoalObject> response)
+            {
+                if(!response.isSuccessful())
+                {
 
-                }else{
+                }
+                else
+                {
                     addGoal=response.body();
                     flag = true;
                 }
             }
 
             @Override
-            public void onFailure(Call<userGoalObject> call, Throwable t) {
+            public void onFailure(Call<userGoalObject> call, Throwable t)
+            {
 
             }
         });
+
         return flag;
     }
 
-    public boolean addCustomGoal(customGoalObject addCustomGoal){
+
+    //________Add Custom Goal__________
+
+    public boolean addCustomGoal(customGoalObject addCustomGoal)
+    {
          flag =false;
         addingCustomGoal = new customGoalObject();
         goalsService service = retrofit.create(goalsService.class);
         final Call<returnGoalObject> customGoalObjectCall = service.addingCustomGoal(addCustomGoal);
-        customGoalObjectCall.enqueue(new Callback<returnGoalObject>() {
+        customGoalObjectCall.enqueue(new Callback<returnGoalObject>()
+        {
             @Override
-            public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response) {
-                if(!response.isSuccessful()){
+            public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response)
+            {
+                if(!response.isSuccessful())
+                {
 
-                }else{
+                }
+                else
+                {
                     goalsList=response.body();
                     flag=true;
                 }
             }
 
             @Override
-            public void onFailure(Call<returnGoalObject> call, Throwable t) {
+            public void onFailure(Call<returnGoalObject> call, Throwable t)
+            {
 
             }
         });
+
         return flag;
     }
+
+
+    //________Method to Bypass SSL Certificate Error__________
 
     public static OkHttpClient.Builder getUnsafeOkHttpClient()
     {
 
-        try {
+        try
+        {
             // Create a trust manager that does not validate certificate chains
-            final TrustManager[] trustAllCerts = new TrustManager[]{
-                    new X509TrustManager() {
-                        @Override
-                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                        }
+                final TrustManager[] trustAllCerts = new TrustManager[]
+                {
+                        new X509TrustManager()
+                        {
+                            @Override
+                            public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException
+                            {
 
-                        @Override
-                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                        }
+                            }
 
-                        @Override
-                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                            return new java.security.cert.X509Certificate[]{};
+                            @Override
+                            public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException
+                            {
+
+                            }
+
+                            @Override
+                            public java.security.cert.X509Certificate[] getAcceptedIssuers()
+                            {
+                                return new java.security.cert.X509Certificate[]{};
+                            }
                         }
-                    }
-            };
+                };
 
             // Install the all-trusting trust manager
             final SSLContext sslContext = SSLContext.getInstance("SSL");
@@ -260,10 +314,15 @@ public class Connection {
                 }
             });
             return builder;
-        } catch (Exception e) {
+
+        }
+        catch (Exception e)
+        {
             throw new RuntimeException(e);
         }
 
     }
+
+
 
 }
