@@ -1,11 +1,16 @@
 package com.a17001922.wil_app;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.a17001922.wil_app.LoginScreen.LoginFragment;
 import com.a17001922.wil_app.LoginScreen.LoginUserObject;
 import com.a17001922.wil_app.LoginScreen.RegisterUserObject;
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.LoginScreen.loginRegisterService;
+import com.a17001922.wil_app.LoginScreen.mainLogin;
 import com.a17001922.wil_app.LoginScreen.number;
 import com.a17001922.wil_app.dailyQuote.DailyObject;
 import com.a17001922.wil_app.dailyQuote.DailyQuoteService;
@@ -13,6 +18,7 @@ import com.a17001922.wil_app.goals.customGoalObject;
 import com.a17001922.wil_app.goals.goalsService;
 import com.a17001922.wil_app.goals.returnGoalObject;
 import com.a17001922.wil_app.goals.userGoalObject;
+import com.a17001922.wil_app.homeScreen.homeActivity;
 
 import java.security.cert.CertificateException;
 
@@ -34,12 +40,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 //#TODO TEST ALL METHODS IN THE CLASS TO SEE IF IT WORKS CORRECTLY WITH THE API
-public class Connection {
+public class Connection
+{
     // #TODO IN ORDER TO TEST API LOCALLY CHANGE THE PORTION UNDER THIS TEXT TO YOUR MACHINES API ADDRESS
-    Retrofit retrofit = new Retrofit.Builder().baseUrl("https://192.168.43.178:45456/").addConverterFactory(GsonConverterFactory.create())
-            .client(getUnsafeOkHttpClient().build()).build();
-    loginRegisterService loginRegisterService = retrofit.create(loginRegisterService.class);
-    private boolean loginAuth=false;
+
+
     private boolean registerAuth=false;
     private DailyObject Quote;
     private returnGoalObject goalsList;
@@ -47,6 +52,9 @@ public class Connection {
     private customGoalObject addingCustomGoal;
     private boolean flag;
     private static final String TAG = "ConnectionClass";
+    LoginFragment obj = new LoginFragment();
+
+
 
 
 
@@ -56,34 +64,7 @@ public class Connection {
     public boolean userRegister(RegisterUserObject user)
     {
 
-        final Call<ReturnMessageObject>registerUserCall = loginRegisterService.userRegister(user);
-        registerUserCall.enqueue(new Callback<ReturnMessageObject>()
-        {
-            @Override
-            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
-            {
-                if (!response.isSuccessful())
-                {
-                    registerAuth=false;
-                }
-                ReturnMessageObject registeredAuth = response.body();
-                if (registeredAuth.getResult())
-                {
-                    registerAuth=true;
-                }
-                else
-                {
-                    registerAuth=false;
-                }
 
-            }
-
-            @Override
-            public void onFailure(Call<ReturnMessageObject> call, Throwable t)
-            {
-                registerAuth=false;
-            }
-        });
 
         return registerAuth;
     }
@@ -91,39 +72,11 @@ public class Connection {
 
     //________Login__________
 
-    public boolean userLogin(LoginUserObject user)
+    public void userLogin(final LoginUserObject user, final Context context)
     {
 
-        final Call<ReturnMessageObject>loginUserCall = loginRegisterService.userLogin(user);
-        loginUserCall.enqueue(new Callback<ReturnMessageObject>()
-        {
-            @Override
-            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
-            {
-                if (!response.isSuccessful())
-                {
-                    loginAuth=false;
-                }
-                ReturnMessageObject loggedInAuth = response.body();
-                if (loggedInAuth.getResult())
-                {
-                    loginAuth=true;
-                }
-                else
-                {
-                    loginAuth=false;
-                }
 
-            }
 
-            @Override
-            public void onFailure(Call<ReturnMessageObject> call, Throwable t)
-            {
-                loginAuth=false;
-            }
-        });
-
-        return loginAuth;
     }
 
 
@@ -135,7 +88,7 @@ public class Connection {
     public DailyObject getDailyQuote()
     {
           Quote = new DailyObject();
-        DailyQuoteService service = retrofit.create(DailyQuoteService.class);
+        DailyQuoteService service = StaticClass.retrofit.create(DailyQuoteService.class);
         final Call<DailyObject> quoteCall= service.getQuote();
         quoteCall.enqueue(new Callback<DailyObject>()
         {
@@ -168,7 +121,7 @@ public class Connection {
     public returnGoalObject getGoals(userGoalObject userGoals)
     {
         goalsList = new returnGoalObject();
-        goalsService service = retrofit.create(goalsService.class);
+        goalsService service = StaticClass.retrofit.create(goalsService.class);
         final Call<returnGoalObject> goalsCall= service.getGoalsList(userGoals);
         goalsCall.enqueue(new Callback<returnGoalObject>()
         {
@@ -202,7 +155,7 @@ public class Connection {
     {
          flag = false;
         addGoal = new userGoalObject();
-        goalsService service = retrofit.create(goalsService.class);
+        goalsService service = StaticClass.retrofit.create(goalsService.class);
         final Call<userGoalObject> addGoalCall = service.addingGoal(addingGoal);
         addGoalCall.enqueue(new Callback<userGoalObject>()
         {
@@ -237,7 +190,7 @@ public class Connection {
     {
          flag =false;
         addingCustomGoal = new customGoalObject();
-        goalsService service = retrofit.create(goalsService.class);
+        goalsService service = StaticClass.retrofit.create(goalsService.class);
         final Call<returnGoalObject> customGoalObjectCall = service.addingCustomGoal(addCustomGoal);
         customGoalObjectCall.enqueue(new Callback<returnGoalObject>()
         {
@@ -266,62 +219,7 @@ public class Connection {
     }
 
 
-    //________Method to Bypass SSL Certificate Error__________
 
-    public static OkHttpClient.Builder getUnsafeOkHttpClient()
-    {
-
-        try
-        {
-            // Create a trust manager that does not validate certificate chains
-                final TrustManager[] trustAllCerts = new TrustManager[]
-                {
-                        new X509TrustManager()
-                        {
-                            @Override
-                            public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException
-                            {
-
-                            }
-
-                            @Override
-                            public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException
-                            {
-
-                            }
-
-                            @Override
-                            public java.security.cert.X509Certificate[] getAcceptedIssuers()
-                            {
-                                return new java.security.cert.X509Certificate[]{};
-                            }
-                        }
-                };
-
-            // Install the all-trusting trust manager
-            final SSLContext sslContext = SSLContext.getInstance("SSL");
-            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-
-            // Create an ssl socket factory with our all-trusting manager
-            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-            OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
-            builder.hostnameVerifier(new HostnameVerifier() {
-                @Override
-                public boolean verify(String hostname, SSLSession session) {
-                    return true;
-                }
-            });
-            return builder;
-
-        }
-        catch (Exception e)
-        {
-            throw new RuntimeException(e);
-        }
-
-    }
 
 
 

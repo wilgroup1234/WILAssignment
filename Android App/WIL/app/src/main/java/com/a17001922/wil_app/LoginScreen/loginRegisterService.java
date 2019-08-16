@@ -17,6 +17,5 @@ public interface loginRegisterService
 
     @POST("api/values/PostRegister")
     Call<ReturnMessageObject> userRegister(@Body RegisterUserObject user);
-    @GET("api/values/GetNumber")
-    Call<number>number();
+
 }

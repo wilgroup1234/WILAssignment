@@ -1,5 +1,7 @@
 package com.a17001922.wil_app.LoginScreen;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TabLayout.TabLayoutOnPageChangeListener;
 import android.support.v4.view.ViewPager;
@@ -10,21 +12,26 @@ import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
 import com.a17001922.wil_app.R;
+import com.a17001922.wil_app.StaticClass;
+import com.a17001922.wil_app.homeScreen.homeActivity;
 
-public class mainLogin extends AppCompatActivity {
+public class mainLogin extends AppCompatActivity
+{
     private LoginTabAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private static final String TAG ="loginActivity";
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
 
 
     }
 
-    protected void onStart() {
+    protected void onStart()
+    {
      super.onStart();
         viewPager = (ViewPager) findViewById(R.id.loginpager);
         tabLayout = (TabLayout) findViewById(R.id.LtabLayout);
@@ -44,5 +51,14 @@ public class mainLogin extends AppCompatActivity {
         }
 
     }
+
+
+    public void OpenHomePage(Intent intent)
+    {
+
+        startActivity(intent);
+
+    }
+
 
 }
