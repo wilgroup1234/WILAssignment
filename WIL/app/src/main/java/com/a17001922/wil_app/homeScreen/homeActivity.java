@@ -12,12 +12,14 @@ import android.content.Intent;
 
 import com.a17001922.wil_app.R;
 
-public class homeActivity extends AppCompatActivity {
+public class homeActivity extends AppCompatActivity
+{
     private TabAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         Intent i = getIntent();
         setContentView(R.layout.activity_home);

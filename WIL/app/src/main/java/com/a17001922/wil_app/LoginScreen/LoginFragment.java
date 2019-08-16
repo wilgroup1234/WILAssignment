@@ -18,7 +18,12 @@ import android.widget.Toast;
 
 import com.a17001922.wil_app.Connection;
 import com.a17001922.wil_app.R;
+import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.homeScreen.homeActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginFragment extends Fragment
@@ -26,8 +31,10 @@ public class LoginFragment extends Fragment
     Button btnLogin;
     EditText et_email,et_password;
     LoginUserObject user;
-    Connection con;
     View v;
+    loginRegisterService loginRegisterService = StaticClass.retrofit.create(loginRegisterService.class);
+    String email, password;
+
 
     private static final String TAG = "LoginActivity";
      @Nullable
@@ -36,7 +43,6 @@ public class LoginFragment extends Fragment
      {
          v = inflater.inflate(R.layout.activity_login,container,false);
          user = new LoginUserObject();
-         con = new Connection();
         return v;
      }
 
@@ -54,38 +60,72 @@ public class LoginFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                String email = et_email.getText().toString();
-                String password=et_password.getText().toString();
+                email = et_email.getText().toString();
+                password=et_password.getText().toString();
                 user.setEmail(email);
                 user.setPassword(password);
-                String message;
-
-                try
-                {
-                    if(con.userLogin(user) == false)
-                    {
-                        message="Invalid Login Details Entered :(";
-                        Toast.makeText(getActivity().getApplicationContext(),message , Toast.LENGTH_LONG).show();
-                    }
-                    else
-                    {
-                        message="Login Successful :)";
-                        Toast.makeText(getActivity().getApplicationContext(),message , Toast.LENGTH_LONG).show();
-                        Intent variables = new Intent(getContext(), homeActivity.class);
-                        variables.putExtra("userEmail" , email);
-                    }
 
 
+               try
+               {
+                   final Call<ReturnMessageObject> loginUserCall = loginRegisterService.userLogin(user);
+                   loginUserCall.enqueue(new Callback<ReturnMessageObject>()
+                   {
+                       @Override
+                       public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                       {
 
-                }
-                catch (Exception e)
-                {
-                    message="Something Broke :(";
-                    Toast.makeText(getActivity().getApplicationContext(),message , Toast.LENGTH_LONG).show();
-                }
+                           ReturnMessageObject loggedInAuth = response.body();
+                           if (loggedInAuth.getResult())
+                           {
+                               Log.e(TAG,"GetResult true");
+
+                               Toast.makeText(getActivity().getApplicationContext(), "Login Successful" , Toast.LENGTH_LONG).show();
+
+                               Intent intent = new Intent(getActivity().getApplicationContext(), homeActivity.class);
+                               StaticClass.currentUser = email;
+                               startActivity(intent);
+
+                           }
+                           else
+                           {
+                               Log.e(TAG,"GetResult false");
+                               Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(" , Toast.LENGTH_LONG).show();
+                           }
+
+
+
+                       }
+
+                       @Override
+                       public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+                       {
+                           Log.e(TAG,"Connection onFailure");
+                           Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(" , Toast.LENGTH_LONG).show();
+
+                       }
+
+
+
+
+                   });
+
+
+               }
+               catch(Exception e)
+               {
+                   Log.e(TAG,"Exception " + e.toString());
+                   Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(" , Toast.LENGTH_LONG).show();
+               }
+
 
             }
         });
 
     }
+
+
+
+
+
 }
