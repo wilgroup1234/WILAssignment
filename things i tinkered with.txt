@@ -1,9 +1,10 @@
-Connection class
-no changes made here this time 
+Layouts
+Added our layouts we designed into the layout package and gave them the names needed to function
+Renamed variables so there would be no conflicts
 
-LoginScreens Package
-Changed the layout for the login page to tab layout with fragments
--encountered an issue with the on click listener for the register button so need to fix that
+Login Package
+tweaked the login and register fragments class to fix naming conflicts from updated resource file
 
-
+Home Screen package
+Tweaked the Daily Quote and View goals fragments to fix naming conflicts from updated resource file
 

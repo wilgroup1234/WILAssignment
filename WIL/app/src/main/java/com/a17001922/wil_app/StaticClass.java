@@ -1,7 +1,5 @@
 package com.a17001922.wil_app;
 
-import com.a17001922.wil_app.LoginScreen.loginRegisterService;
-
 import java.security.cert.CertificateException;
 
 import javax.net.ssl.HostnameVerifier;
@@ -15,8 +13,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class StaticClass
-{
+public class StaticClass {
     public static String currentUser = "No_User";
 
     public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://10.117.190.63:45456/").addConverterFactory(GsonConverterFactory.create())
@@ -25,31 +22,25 @@ public class StaticClass
 
     //________Method to Bypass SSL Certificate Error__________
 
-    public static OkHttpClient.Builder getUnsafeOkHttpClient()
-    {
+    public static OkHttpClient.Builder getUnsafeOkHttpClient() {
 
-        try
-        {
+        try {
             // Create a trust manager that does not validate certificate chains
             final TrustManager[] trustAllCerts = new TrustManager[]
                     {
-                            new X509TrustManager()
-                            {
+                            new X509TrustManager() {
                                 @Override
-                                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException
-                                {
+                                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
 
                                 }
 
                                 @Override
-                                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException
-                                {
+                                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
 
                                 }
 
                                 @Override
-                                public java.security.cert.X509Certificate[] getAcceptedIssuers()
-                                {
+                                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
                                     return new java.security.cert.X509Certificate[]{};
                                 }
                             }
@@ -72,9 +63,7 @@ public class StaticClass
             });
             return builder;
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 

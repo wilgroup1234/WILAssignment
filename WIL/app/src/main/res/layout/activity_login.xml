@@ -2,76 +2,97 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    tools:context=".LoginScreen.mainLogin">
+    android:background="@drawable/background2"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".homeScreen.homeActivity">
 
-    <EditText
-        android:id="@+id/et_Password"
-        android:layout_width="260dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="96dp"
-        android:background="@color/colorEditTextbackground"
-        android:ems="10"
-        android:hint="password"
-        android:inputType="textPassword"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorEditText"
-        android:textColorHint="@color/colorEditText"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_userName"
-        android:layout_width="260dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="76dp"
-        android:background="@color/colorEditTextbackground"
-        android:ems="10"
-        android:hint="username"
-        android:inputType="textPersonName"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorEditText"
-        android:textColorHint="@color/colorEditText"
-        app:layout_constraintBottom_toTopOf="@+id/et_Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="123dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="72dp"
-        android:background="@color/colorButtons"
-        android:text="Login"
-        android:textColor="@color/colorButtonText"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txt_loginLabel"
-        android:layout_width="342dp"
-        android:layout_height="65dp"
+    <ImageView
+        android:id="@+id/imgLoginGoalPro"
+        android:layout_width="188dp"
+        android:layout_height="172dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/lblLoginHere"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.319"
+        app:srcCompat="@drawable/log" />
+
+    <PlainText
+        android:id="@+id/lblLoginHere"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="60dp"
+        android:paddingLeft="10dp"
+        android:text="Login Here:"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_Email"
+        android:layout_width="275dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="44dp"
+        android:hint="Email"
+        android:inputType="textWebEmailAddress"
+        android:textColorHint="#0C0707"
+        app:layout_constraintBottom_toTopOf="@+id/et_LoginPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_LoginPassword"
+        android:layout_width="273dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="36dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="#0C0707"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="104dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
         android:text="Login"
-        android:textAlignment="center"
-        android:textColor="@color/colorButtons"
-        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/imgGoogleLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgGoogleLogin"
+        android:layout_width="123dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/gmail"
+        tools:layout_editor_absoluteY="543dp" />
+
+
 </android.support.constraint.ConstraintLayout>

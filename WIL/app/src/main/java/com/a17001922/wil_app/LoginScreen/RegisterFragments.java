@@ -41,7 +41,7 @@ public class RegisterFragments extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        v = inflater.inflate(R.layout.fragment_register_fragments,container,false);
+        v = inflater.inflate(R.layout.activity_register,container,false);
         user =new RegisterUserObject();
         return v;
     }
@@ -49,13 +49,13 @@ public class RegisterFragments extends Fragment
     public void onStart()
     {
         super.onStart();
-        et_registerFirstName = v.findViewById(R.id.et_registerFirstName);
-        et_registerSurname = v.findViewById(R.id.et_registerSurname);
+        et_registerFirstName = v.findViewById(R.id.et_firstName);
+        et_registerSurname = v.findViewById(R.id.et_surname);
         et_registerEmail=v.findViewById(R.id.et_registerEmail);
-        et_age=v.findViewById(R.id.et_registerAge);
+        et_age=v.findViewById(R.id.et_Age);
         et_registerPassword=v.findViewById(R.id.et_registerPassword);
         et_confirmPassword=v.findViewById(R.id.et_confirmPassword);
-        btnRegister=v.findViewById(R.id.btn_Register);
+        btnRegister=v.findViewById(R.id.btnRegister);
 
         btnRegister.setOnClickListener(new View.OnClickListener()
         {
