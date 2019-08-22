@@ -191,4 +191,25 @@ Insert into LifeSkills Values ('I am considerate of others’ needs ');
 
 Insert into PasswordReset Values ('C75032CB0C61EBD372C19DF28E3D7948FF9EB73676EDC6FBE7B6E5017FEE67A4');
 
+insert into template values ('Image 1');
+insert into template values ('Image 2');
+insert into template values ('Image 3');
+insert into template values ('Image 4');
+insert into template values ('Image 5');
+insert into template values ('Image 6');
+insert into template values ('Image 7');
+insert into template values ('Image 8');
+insert into template values ('Image 9');
+insert into template values ('Image 10');
+insert into template values ('Image 11');
+insert into template values ('Image 12');
+insert into template values ('Image 13');
+insert into template values ('Image 14');
+insert into template values ('Image 15');
+insert into template values ('Image 16');
+insert into template values ('Image 17');
+insert into template values ('Image 18');
+insert into template values ('Image 19');
+insert into template values ('Image 20');
+
 

@@ -23,7 +23,12 @@ namespace WebApplication1.Controllers
 
         private WILModel db = new WILModel();
 
-
+        [Route("api/values/GetNumber")]
+        [HttpGet]
+        public int GetNumber()
+        {
+            return 5;
+        }
 
         //This POST method allows users to Register (Create an account for the app)
         [Route("api/values/PostRegister")]
@@ -46,10 +51,10 @@ namespace WebApplication1.Controllers
                         User user = new User
                         {
                             Age = regUser.Age,
-                            Email = regUser.Email,
-                            FirstName = regUser.FirstName,
-                            LastName = regUser.LastName,
-                            Password = regUser.Password
+                            Email = regUser.Email.Trim(),
+                            FirstName = regUser.FirstName.Trim(),
+                            LastName = regUser.LastName.Trim(),
+                            Password = regUser.Password.Trim()
                         };
 
 
@@ -63,7 +68,7 @@ namespace WebApplication1.Controllers
 
 
                     }
-                    catch (DBConcurrencyException e)
+                    catch (Exception e)
                     {
                         Debug.WriteLine("Concurrency Error: " + e.ToString());
 
@@ -121,12 +126,15 @@ namespace WebApplication1.Controllers
 
 
             foreach (User searchUser in usersList)
-            {
-                if (searchUser.Email.Equals(loginUser.Email))
+            {;
+
+
+                if (searchUser.Email.Trim().Equals(loginUser.Email))
                 {
                     Debug.WriteLine("USER FOUND");
                     userFound = true;
                     userPass = searchUser.Password;
+                    Debug.WriteLine("USER DETAILS: " + loginUser.Email + " " + userPass);
                 }
             }
 
@@ -141,6 +149,7 @@ namespace WebApplication1.Controllers
 
                 foreach (String p in possiblePasswords)
                 {
+                    Debug.WriteLine("possible pass: " + p);
                     if (p.Equals(userPass))
                     {
                         passFound = true;

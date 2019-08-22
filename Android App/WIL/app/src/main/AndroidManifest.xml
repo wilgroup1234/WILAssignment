@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginScreen.RegisterFragment" />
         <activity android:name=".homeScreen.homeActivity" />
     </application>
 
