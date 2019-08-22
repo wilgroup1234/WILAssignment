@@ -447,9 +447,220 @@ namespace WILWebAppNetCore.Controllers
         // GET: Users/DailyQuote
         public ActionResult DailyQuote()
         {
-            
+            if (!StaticClass.errorMessage.Equals("NO_ERROR"))
+            {
+                ViewBag.Message = StaticClass.errorMessage;
+            }
+
             return View();
         }
+
+
+        // POST: Users/DailyQuote
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DailyQuote(int imageNumber, String quote, String link)
+        {
+            DailyQuote obj = new DailyQuote();
+            Boolean valid = false;
+            String error = "";
+            String oldLink = "";
+
+            try
+            {
+                foreach (DailyQuote dailyQuote in _context.DailyQuote)
+                {
+                    oldLink = dailyQuote.YoutubeLink;
+                }
+
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("get old link error: " + e.ToString());
+            }
+
+            
+
+            if (imageNumber == null || quote == null)
+            {
+                error = "Please choose an image number and a quote";
+                StaticClass.errorMessage = error;
+                Debug.WriteLine("Daily Quote update Failed :( " + error);
+                return RedirectToAction("DailyQuote", "Users");
+
+            }
+
+            
+            try
+            {
+                obj.YoutubeLink = oldLink;
+                DateTime today = DateTime.Today;
+                obj.QuoteDate = today;
+                obj.QuoteText = quote;
+                obj.TemplateId = imageNumber;
+
+                if (link != null)
+                {
+                    obj.YoutubeLink = link;
+
+                }
+
+                _context.DailyQuote.Add(obj);
+                _context.SaveChanges();
+
+                valid = true;
+                StaticClass.errorMessage = "NO_ERROR";
+                Debug.WriteLine("Daily Quote updated");
+                return RedirectToAction("Index", "Home");
+                
+
+            }
+            catch(Exception e)
+            {
+                valid = false;
+                error = e.ToString();
+                StaticClass.errorMessage = error;
+                Debug.WriteLine("Daily Quote update Failed :( " + error);
+                return RedirectToAction("DailyQuote", "Users");
+
+            }
+
+            
+
+        }
+
+
+        // GET: Users/Goal
+        public ActionResult Goals()
+        {
+            if (!StaticClass.errorMessage.Equals("NO_ERROR"))
+            {
+                ViewBag.Message = StaticClass.errorMessage;
+            }
+
+            List<Goals> goalList = new List<Goals>();
+            goalList = _context.Goals.ToList();
+
+            ViewBag.GoalList = goalList;
+
+            return View();
+        }
+
+
+        // POST: Users/Goal
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Goals(String goalName, String goalDescription)
+        {
+            Boolean valid = false;
+            String error = "";
+            Goals goal = new Goals();
+            
+
+            if (goalName == null || goalDescription == null)
+            {
+                error = "Please choose an goal name and a goal description";
+                StaticClass.errorMessage = error;
+                Debug.WriteLine("Goal addition Failed :( " + error);
+                return RedirectToAction("Goals", "Users");
+            }
+
+            try
+            {
+                goal.GoalName = goalName;
+                goal.GoalDescription = goalDescription;
+
+
+                _context.Goals.Add(goal);
+                _context.SaveChanges();
+
+                valid = true;
+                StaticClass.errorMessage = "NO_ERROR";
+                Debug.WriteLine("Goal added");
+                return RedirectToAction("Index", "Home");
+
+
+            }
+            catch (Exception e)
+            {
+                valid = false;
+                error = e.ToString();
+                StaticClass.errorMessage = error;
+                Debug.WriteLine("goal addition Failed :( " + error);
+                return RedirectToAction("Goals", "Users");
+
+            }
+
+
+
+        }
+
+
+
+        // GET: Users/SkillsList
+        public ActionResult SkillsList()
+        {
+            if (!StaticClass.errorMessage.Equals("NO_ERROR"))
+            {
+                ViewBag.Message = StaticClass.errorMessage;
+            }
+
+            List<LifeSkills> lifeSkillsList = new List<LifeSkills>();
+            lifeSkillsList = _context.LifeSkills.ToList();
+
+            ViewBag.LifeSkillsList = lifeSkillsList;
+
+            return View();
+        }
+
+
+        // POST: Users/SkillsList
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SkillsList(String lifeSkillName)
+        {
+            Boolean valid = false;
+            String error = "";
+            LifeSkills lifeSkills = new LifeSkills();
+
+
+            if (lifeSkillName == null)
+            {
+                error = "Please enter a Life Skill name";
+                StaticClass.errorMessage = error;
+                Debug.WriteLine("Life Skill addition Failed :( " + error);
+                return RedirectToAction("SkillsList", "Users");
+            }
+
+            try
+            {
+                lifeSkills.LifeSkillName = lifeSkillName;
+
+
+                _context.LifeSkills.Add(lifeSkills);
+                _context.SaveChanges();
+
+                valid = true;
+                StaticClass.errorMessage = "NO_ERROR";
+                Debug.WriteLine("Life Skill added");
+                return RedirectToAction("Index", "Home");
+
+
+            }
+            catch (Exception e)
+            {
+                valid = false;
+                error = e.ToString();
+                StaticClass.errorMessage = error;
+                Debug.WriteLine("life Skill addition Failed :( " + error);
+                return RedirectToAction("SkillsList", "Users");
+
+            }
+
+
+
+        }
+
 
     }
 }

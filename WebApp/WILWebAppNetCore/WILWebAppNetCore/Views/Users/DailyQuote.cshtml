@@ -1,15 +1,24 @@
 ﻿
 @{
     ViewData["Title"] = "DailyQuote";
+    @using WILWebAppNetCore.Classes
 }
+
 
 <h2 align="center">DailyQuote</h2>
 
+@{
+    if (!StaticClass.errorMessage.Equals("NO_ERROR"))
+    {
+        <h2 class="text-danger">@ViewBag.Message</h2>
+    }
+}
+
 <br>
 <br>
 <br>
 
-@{ 
+@{
     List<String> numbers = new List<string>();
 
     for (int i = 0; i < 20; i++)
@@ -26,15 +35,15 @@
 
             <div class="form-group">
                 <label>Image Number:</label>
-                @Html.DropDownList("ImageNumber", numbers.Select(m => new SelectListItem { Value = m.ToString(), Text = m.ToString() }), new { @class = "form-control", @name = "imageNumber"})
+                @Html.DropDownList("ImageNumber", numbers.Select(m => new SelectListItem { Value = m.ToString(), Text = m.ToString() }), new { @class = "form-control", @name = "imageNumber" })
             </div>
             <div class="form-group">
                 <label>Quote:</label>
-                <input type="text" name="quote" class=" form-control"/>
+                <input type="text" name="quote" class=" form-control" />
             </div>
             <div class="form-group">
                 <label>Youtube Link:</label>
-                <input type="text" name="link" class=" form-control"/>
+                <input type="text" name="link" class=" form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Update Daily Quote" class="btnsubmit" />
@@ -44,7 +53,7 @@
     </div>
 </div>
 
-    
+
 
 <h3 align="center"> Background Images:</h3>
 
