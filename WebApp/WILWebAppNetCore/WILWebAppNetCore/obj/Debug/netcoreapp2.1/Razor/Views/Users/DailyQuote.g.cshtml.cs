@@ -112,7 +112,7 @@ using WILWebAppNetCore.Classes;
             WriteLiteral("\r\n<h3 align=\"center\"> Enter information for Daily Quote:</h3>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n        ");
             EndContext();
             BeginContext(541, 841, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97dcf92d8b214776aa8fe34b177385d6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "866367eacd314080b4f67c61870d62c0", async() => {
                 BeginContext(571, 104, true);
                 WriteLiteral("\r\n\r\n            <div class=\"form-group\">\r\n                <label>Image Number:</label>\r\n                ");
                 EndContext();
