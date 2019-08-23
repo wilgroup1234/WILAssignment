@@ -18,5 +18,8 @@ namespace WebApplication1.Models
         [Required]
         [StringLength(255)]
         public string GoalDescription { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? FinishDate { get; set; }
     }
 }

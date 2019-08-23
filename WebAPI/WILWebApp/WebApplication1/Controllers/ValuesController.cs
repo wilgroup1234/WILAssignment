@@ -58,8 +58,47 @@ namespace WebApplication1.Controllers
                         };
 
 
+                        
+
+
                         db.Users.Add(user);
+
                         db.SaveChanges();
+
+                        int streakUserID = 0;
+
+                        foreach(User sUser in db.Users)
+                        {
+                            streakUserID = sUser.UserID;
+                        }
+
+                        Streak streak = new Streak
+                        {
+                            UserID = streakUserID,
+                            StreakLength = 0
+                        };
+
+                        db.Streaks.Add(streak);
+
+                        db.SaveChanges();
+
+
+                        foreach(LifeSkill lifeSkill in db.LifeSkills)
+                        {
+                            UserLifeSkill userLifeSkill = new UserLifeSkill
+                            {
+                                LifeSKillID = lifeSkill.LifeSkillID,
+                                UserID = streakUserID,
+                                Completed = 0
+
+                            };
+
+                            db.UserLifeSkills.Add(userLifeSkill);
+                            db.SaveChanges();
+                        }
+
+
+
 
                         returnMessage.result = true;
                         returnMessage.errorMessage = "Success";
@@ -254,7 +293,7 @@ namespace WebApplication1.Controllers
             bool valid;
             String userEmail = userGoal.Email;
             int userID = 0;
-            Models.UserGoal newUserGoal = new UserGoal();
+            UserGoal newUserGoal = new UserGoal();
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             
@@ -266,6 +305,8 @@ namespace WebApplication1.Controllers
                     userID = user.UserID;
                 }
             }
+
+          
 
             newUserGoal.UserID = userID;
             newUserGoal.GoalID = userGoal.GoalId;
@@ -318,11 +359,11 @@ namespace WebApplication1.Controllers
 
             customGoal1.GoalDescription = customGoal.goalDescription;
             customGoal1.GoalName = customGoal.goalName;
+            customGoal1.FinishDate = customGoal.finishDate;
 
             //save custom goal
             try
             {
-
                 db.CustomGoals.Add(customGoal1);
                 db.SaveChanges();
                 valid = true;
@@ -620,114 +661,6 @@ namespace WebApplication1.Controllers
             returnMessage.result = valid;
 
             return returnMessage;
-
-
-        }
-
-
-
-        //Custom POST
-        [Route("api/values/PostUpdateCV")]
-        [HttpPost]
-        public ReturnMessageObject PostUpdateCV(UpdateCVObject CVObject)
-        {
-
-            ReturnMessageObject returnMessageObject = new ReturnMessageObject();
-            Boolean valid = false;
-            String userEmail = CVObject.Email;
-            int searchUserID = 0;
-
-            //search for user and get userID
-            foreach (User user in db.Users)
-            {
-                if (user.Email.Equals(userEmail))
-                {
-                    searchUserID = user.UserID;
-                }
-            }
-
-
-            CV cv = new CV
-            {
-                Achievements = CVObject.Acheivements,
-                Address = CVObject.Address,
-                CVID = CVObject.CVID,
-                DateOfBIrth = CVObject.DOB,
-                Email = CVObject.Email,
-                HighSchoolName = CVObject.HighSchoolName,
-                IDNumber = CVObject.IDNumber,
-                Interests = CVObject.Interests,
-                Languages = CVObject.Languages,
-                Nationality = CVObject.Nationality,
-                PhoneNumber = CVObject.PhoneNumber,
-                PreviousWorkExperience = CVObject.PreviousWorkExperience,
-                WorkReferences = CVObject.WorkReferences
-            };
-
-
-            UserCV userCV = new UserCV();
-            userCV.UserID = searchUserID;
-
-
-            //save cv object
-            try
-            {
-
-                db.CVs.Add(cv);
-                db.SaveChanges();
-                valid = true;
-            }
-            catch (DBConcurrencyException e)
-            {
-                Debug.WriteLine("Concurrency Error: " + e.ToString());
-                returnMessageObject.errorMessage = "Concurrency Error: " + e.ToString();
-                valid = false;
-            }
-
-            if (valid == true)
-            {
-                //search for cv id
-                int count = 0;
-
-                List<CV> cvList = new List<CV>();
-
-                foreach (CV searchCV in db.CVs)
-                {
-                    cvList.Add(searchCV);
-                    count++;
-                }
-
-                CV tempcv = cvList[(count - 1)];
-
-                int searchCvID = tempcv.CVID;
-
-                userCV.CVID = searchCvID;
-
-
-                //save custom user goal
-                try
-                {
-
-                    db.UserCVs.Add(userCV);
-                    db.SaveChanges();
-                    valid = true;
-                }
-                catch (DBConcurrencyException e)
-                {
-                    Debug.WriteLine("Concurrency Error: " + e.ToString());
-                    returnMessageObject.errorMessage = "Concurrency Error: " + e.ToString();
-                    valid = false;
-                }
-
-
-                
-
-            }
-
-
-            returnMessageObject.result = valid;
-
-            return returnMessageObject;
 
 
         }
