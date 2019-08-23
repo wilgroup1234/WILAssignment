@@ -12,7 +12,7 @@ namespace WebApplication1.Models
         public User()
         {
             CustomUserGoals = new HashSet<CustomUserGoal>();
-            UserCVs = new HashSet<UserCV>();
+            Streaks = new HashSet<Streak>();
             UserGoals = new HashSet<UserGoal>();
             UserLifeSkills = new HashSet<UserLifeSkill>();
         }
@@ -41,7 +41,7 @@ namespace WebApplication1.Models
         public virtual ICollection<CustomUserGoal> CustomUserGoals { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserCV> UserCVs { get; set; }
+        public virtual ICollection<Streak> Streaks { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserGoal> UserGoals { get; set; }

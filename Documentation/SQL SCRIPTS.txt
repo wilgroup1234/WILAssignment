@@ -21,7 +21,8 @@ CREATE TABLE CustomGoals
 (
     GoalID int NOT NULL IDENTITY PRIMARY KEY,
     GoalName varchar(255) NOT NULL,
-    GoalDescription varchar(255) NOT NULL
+    GoalDescription varchar(255) NOT NULL,
+    FinishDate Date NULL
 ); 
 
 
@@ -30,8 +31,9 @@ CREATE TABLE DailyQuote
     QuoteID int NOT NULL IDENTITY PRIMARY KEY,
     QuoteDate Date NOT NULL,
 	QuoteText varchar(255) NOT NULL,
-    YoutubeLink varchar(255) NOT NULL,
-	TemplateID int NOT NULL
+                YoutubeLink varchar(255) NOT NULL,
+	TemplateID int NOT NULL,
+               Views int NOT NULL
 ); 
 
 
@@ -65,23 +67,6 @@ CREATE TABLE LifeSkills
     LifeSkillName Varchar(255) NOT NULL
 ); 
 
-CREATE TABLE CVs
-(
-    CVID int NOT NULL IDENTITY PRIMARY KEY,
-    LifeSkillName Varchar(255) NOT NULL,
-	IDNumber Varchar(255) NOT NULL,
-    DateOfBIrth Date NOT NULL,
-	HighSchoolName Varchar(255) NOT NULL,
-	PreviousWorkExperience Varchar(255) NOT NULL,
-	WorkReferences Varchar(255) NOT NULL,
-	Languages Varchar(255) NOT NULL,
-	Achievements Varchar(255) NOT NULL,
-	Nationality Varchar(255) NOT NULL,
-	Interests Varchar(255) NOT NULL,
-	Email Varchar(255) NOT NULL,
-	PhoneNumber Varchar(255) NOT NULL,
-	Address Varchar(255) NOT NULL
-); 
 
 CREATE TABLE UserLifeSkills
 (
@@ -91,17 +76,19 @@ CREATE TABLE UserLifeSkills
     Completed int NOT NULL
 ); 
 
-CREATE TABLE UserCVs
-(
-    UserCVID int NOT NULL IDENTITY PRIMARY KEY,
-    UserID int NOT NULL,
-    CVID int NOT NULL
-); 
 
 CREATE TABLE PasswordReset
 (
     id int NOT NULL IDENTITY PRIMARY KEY,
 	passwordCode varchar(255) NOT NULL 
+); 
+
+
+CREATE TABLE Streaks
+(
+    StreakID int NOT NULL IDENTITY PRIMARY KEY,
+    UserID int NOT NULL,
+    StreakLength int NOT NULL
 ); 
 
 
@@ -137,13 +124,12 @@ ALTER TABLE CustomUserGoals
   ADD CONSTRAINT FK_LifeSkill3
    FOREIGN KEY (LifeSkillID) REFERENCES LifeSkills(LifeSkillID);
 
- ALTER TABLE UserCVs
-  ADD CONSTRAINT FK_UserID4
+ ALTER TABLE Streaks
+  ADD CONSTRAINT FK_UserID5
    FOREIGN KEY (UserID) REFERENCES Users(UserID);
 
- ALTER TABLE UserCVs
-  ADD CONSTRAINT FK_CVID
-   FOREIGN KEY (CVID) REFERENCES CVs(CVID);
+
+Insert into Users Values ('De Vincenzo','Catherine', '20', 'info@goalpro.co.za', '80464A580858C1E9AA52FDEA606590A2D059A696433361259D3FA734759561FA');
 
 
 Insert into LifeSkills Values ('Applied for my I.D book');

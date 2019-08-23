@@ -6,15 +6,13 @@ namespace WebApplication1.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class UserCV
+    public partial class Streak
     {
-        public int UserCVID { get; set; }
+        public int StreakID { get; set; }
 
         public int UserID { get; set; }
 
-        public int CVID { get; set; }
-
-        public virtual CV CV { get; set; }
+        public int StreakLength { get; set; }
 
         public virtual User User { get; set; }
     }

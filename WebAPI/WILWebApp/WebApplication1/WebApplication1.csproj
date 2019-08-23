@@ -180,14 +180,13 @@
     </Compile>
     <Compile Include="Models\CustomGoal.cs" />
     <Compile Include="Models\CustomUserGoal.cs" />
-    <Compile Include="Models\CV.cs" />
     <Compile Include="Models\DailyQuote.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\LifeSkill.cs" />
+    <Compile Include="Models\PasswordReset.cs" />
+    <Compile Include="Models\Streak.cs" />
     <Compile Include="Models\Template.cs" />
-    <Compile Include="Classes\UpdateCVObject.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserCV.cs" />
     <Compile Include="Models\UserGoal.cs" />
     <Compile Include="Models\UserLifeSkill.cs" />
     <Compile Include="Models\WILModel.cs" />

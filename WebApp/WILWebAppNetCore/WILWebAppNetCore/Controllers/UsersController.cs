@@ -155,80 +155,6 @@ namespace WILWebAppNetCore.Controllers
 
 
 
-        //REGISTER AND LOGIN METHODS!!!
-
-
-        // GET: Users/Register
-        public ActionResult Register()
-        {
-            if (!StaticClass.errorMessage.Equals("NO_ERROR"))
-            {
-                ViewBag.Message = StaticClass.errorMessage;
-            }
-
-            return View();
-        }
-
-        // POST: Users/Register
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind("FirstName,LastName,Age,Email,Password")] Users user, String confirmPass)
-        {
-
-            //Hash and Salt Password
-
-            if (ModelState.IsValid)
-            {
-                if (user.Password.Equals(confirmPass))
-                {
-                    try
-                    {
-                        PasswordEncryption obj = PasswordEncryption.GetInstance;
-                        user.Password = obj.GetHashedPassword(user.Password);
-
-                        _context.Users.Add(user);
-                        _context.SaveChanges();
-                        StaticClass.errorMessage = "NO_ERROR";
-                        StaticClass.currentUser = user.FirstName + " " + user.LastName;
-
-                        return RedirectToAction("Index", "Home");
-
-                    }
-                    catch (DBConcurrencyException e)
-                    {
-
-                        Debug.WriteLine("Concurrency Error: " + e.ToString());
-                        StaticClass.errorMessage = "Concurrency Error";
-                        return RedirectToAction("Register", "Users");
-                    }
-
-                }
-                else
-                {
-                    StaticClass.errorMessage = "Passwords Don't Match";
-                    return RedirectToAction("Register", "Users");
-                }
-
-
-            }
-            else
-            {
-                StaticClass.errorMessage = "ERROR: Invalid Information Entered";
-
-                Debug.WriteLine("DEBUG!!!    " + StaticClass.errorMessage);
-
-                return RedirectToAction("Register", "Users");
-
-            }
-
-        }
-
-
-
-
-
-
-
         // GET: Users/Login
         public ActionResult Login()
         {
@@ -437,13 +363,6 @@ namespace WILWebAppNetCore.Controllers
 
 
 
-        // GET: Users/AdminPortal
-        public ActionResult AdminPortal()
-        {
-
-            return View();
-        }
-
         // GET: Users/DailyQuote
         public ActionResult DailyQuote()
         {
@@ -498,6 +417,7 @@ namespace WILWebAppNetCore.Controllers
                 obj.QuoteDate = today;
                 obj.QuoteText = quote;
                 obj.TemplateId = imageNumber;
+                obj.Views = 0;
 
                 if (link != null)
                 {
@@ -640,6 +560,34 @@ namespace WILWebAppNetCore.Controllers
                 _context.LifeSkills.Add(lifeSkills);
                 _context.SaveChanges();
 
+                int sLifeSkillID = 0;
+
+                foreach(LifeSkills lifeSkills1 in _context.LifeSkills)
+                {
+                    sLifeSkillID = lifeSkills1.LifeSkillId;
+                }
+
+                
+
+                foreach(Users user in _context.Users)
+                {
+                    if (user.UserId !=1 )
+                    {
+                        UserLifeSkills userLifeSkills = new UserLifeSkills
+                        {
+                            LifeSkillId = sLifeSkillID,
+                            UserId = user.UserId,
+                            Completed = 0
+                        };
+
+                        _context.UserLifeSkills.Add(userLifeSkills);
+                        _context.SaveChanges();
+
+
+                    };
+                }
+                  
+
                 valid = true;
                 StaticClass.errorMessage = "NO_ERROR";
                 Debug.WriteLine("Life Skill added");
@@ -660,6 +608,36 @@ namespace WILWebAppNetCore.Controllers
 
 
         }
+
+
+        // GET: Users/Streaks
+        public ActionResult Streaks()
+        {
+            List<Streaks> streaksList = new List<Streaks>();
+            streaksList = _context.Streaks.ToList();
+
+            List<UserStreak> streaks = new List<UserStreak>();
+
+
+            foreach (Streaks streaks1 in streaksList)
+            {
+                if (streaks1.UserId != 1)
+                {
+                    UserStreak userStreak = new UserStreak
+                    {
+                        Email = streaks1.User.Email,
+                        Streak = streaks1.StreakLength
+
+                    };
+                }
+
+            }
+
+            ViewBag.StreaksList = streaks;
+
+            return View();
+        }
+
 
 
     }
