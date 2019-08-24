@@ -12,14 +12,15 @@ namespace WebApplication1.Controllers
     public class ValuesController : ApiController
     {
 
-        //Login                    https://localhost:44317/api/values/PostLogin
-        //Register                 https://localhost:44317/api/values/PostRegister         
-        //Retrieve goals           https://localhost:44317/api/values/PostRetrieveGoals    
-        //Add normal  goal         https://localhost:44317/api/values/PostAddNormalGoal
-        //Add custom goal          https://localhost:44317/api/values/PostAddCustomGoal
-        //Mark off normal goal     https://localhost:44317/api/values/PostMarkOffGoal
-        //Mark off custom goal     https://localhost:44317/api/values/PostMarkOffCustomGoal
-        //Get Daily Quote          https://localhost:44317/api/values/GetDailyQuote
+        //Login                           https://localhost:44317/api/values/PostLogin
+        //Register                        https://localhost:44317/api/values/PostRegister         
+        //Retrieve goals                  https://localhost:44317/api/values/PostRetrieveGoals    
+        //Add normal  goal                https://localhost:44317/api/values/PostAddNormalGoal
+        //Add custom goal                 https://localhost:44317/api/values/PostAddCustomGoal
+        //Mark off normal goal            https://localhost:44317/api/values/PostMarkOffGoal
+        //Mark off custom goal            https://localhost:44317/api/values/PostMarkOffCustomGoal
+        //Get Daily Quote                 https://localhost:44317/api/values/GetDailyQuote
+        //Update dailyquote youtube views https://localhost:44317/api/values/PostUpdateViews
 
         private WILModel db = new WILModel();
 
@@ -667,6 +668,56 @@ namespace WebApplication1.Controllers
 
 
 
+        //Custom POST
+        [Route("api/values/PostUpdateViews")]
+        [HttpPost]
+        public ReturnMessageObject PostUpdateViews()
+        {
+            
+            ReturnMessageObject returnMessageObject = new ReturnMessageObject();
+
+            int count = 0;
+
+            foreach(DailyQuote dailyQuote in db.DailyQuotes)
+            {
+                count++;
+            }
+
+            int count2 = 0;
+
+            try
+            {
+                foreach (DailyQuote dailyQuote in db.DailyQuotes)
+                {
+                    count2++;
+
+                    if (count2 == count)
+                    {
+                        dailyQuote.Views = dailyQuote.Views + 1;
+
+                        
+                        returnMessageObject.result = true;
+                    }
+
+
+                }
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Exception: " + e.ToString());
+                returnMessageObject.result = false;
+                returnMessageObject.errorMessage = e.ToString();
+            }
+
+            return returnMessageObject;
+
+
+
+            
+
+
+        }
 
 
 
