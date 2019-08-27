@@ -2,42 +2,53 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background4"
-    tools:context=".ViewGoals"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:id="@+id/linearLayout2">
+    android:orientation="vertical"
+    tools:context=".ViewGoals">
 
-    <ImageView
-        android:id="@+id/imgGoalsGoalPro"
-        android:layout_width="343dp"
-        android:layout_height="138dp"
+    <Button
+        android:id="@+id/btn_AddCustomGoal"
+        android:layout_width="287dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#ECB900"
+        android:text="Add Custom Goal"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ViewGoals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="334dp" />
+
+    <Button
+        android:id="@+id/btn_ViewGoals"
+        android:layout_width="287dp"
+        android:layout_height="51dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="72dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_AddGoal"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="#ECB900"
+        android:text="View Goals"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186"
-        app:srcCompat="@drawable/log2"
-        tools:layout_conversion_absoluteHeight="129dp"
-        tools:layout_conversion_absoluteWidth="411dp" />
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="334dp" />
 
     <Button
         android:id="@+id/btn_AddGoal"
         android:layout_width="287dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="48dp"
         android:backgroundTint="#ECB900"
         android:text="Add Goals"
         android:textAllCaps="true"
@@ -47,19 +58,28 @@
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="334dp" />
 
-    <Button
-        android:id="@+id/btn_AddCustomGoal"
-        android:layout_width="287dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="180dp"
-        android:backgroundTint="#ECB900"
-        android:text="Add Custom Goal"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imgGoalsGoalPro"
+        android:layout_width="343dp"
+        android:layout_height="138dp"
+        android:layout_marginBottom="156dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_AddGoal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="334dp" />
+        app:srcCompat="@drawable/log2"
+        tools:layout_conversion_absoluteHeight="129dp"
+        tools:layout_conversion_absoluteWidth="411dp" />
+
+    <ImageView
+        android:id="@+id/btnLogoutGoals"
+        android:layout_width="59dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/logoutbtn"
+        app:layout_constraintBottom_toTopOf="@+id/imgGoalsGoalPro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.337" />
 </android.support.constraint.ConstraintLayout>
