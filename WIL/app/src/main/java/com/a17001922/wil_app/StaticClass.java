@@ -13,7 +13,15 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class StaticClass {
+public class StaticClass
+{
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String LOGGED_IN_USER = "Logged in user";
+    public static final String LOGGED_IN_USER_EMAIL = "Logged in user email";
+    public static final String LOGGED_IN_TYPE = "Logged in type";
+
+
     public static String currentUser = "No_User";
 
     public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://10.117.190.63:45456/").addConverterFactory(GsonConverterFactory.create())
@@ -22,7 +30,8 @@ public class StaticClass {
 
     //________Method to Bypass SSL Certificate Error__________
 
-    public static OkHttpClient.Builder getUnsafeOkHttpClient() {
+    public static OkHttpClient.Builder getUnsafeOkHttpClient()
+    {
 
         try {
             // Create a trust manager that does not validate certificate chains
@@ -63,7 +72,9 @@ public class StaticClass {
             });
             return builder;
 
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             throw new RuntimeException(e);
         }
 
