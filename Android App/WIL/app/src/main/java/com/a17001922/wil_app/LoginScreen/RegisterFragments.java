@@ -66,62 +66,69 @@ public class RegisterFragments extends Fragment
             public void onClick(View v)
             {
 
-                name= et_registerFirstName.getText().toString();
-                surname=et_registerSurname.getText().toString();
-                int age = Integer.parseInt(et_age.getText().toString());
-                email= et_registerEmail.getText().toString();
-                password=et_registerPassword.getText().toString();
-                confirmPassword=et_confirmPassword.getText().toString();
-
-                user.setFirstName(name);
-                user.setSurname(surname);
-                user.setAge(age);
-                user.setEmail(email);
-                user.setPassword(password);
-                user.setConfirmPassword(confirmPassword);
-
-
-                try
+                if (StaticClass.hasInternet)
                 {
-                    final Call<ReturnMessageObject> registerUserCall = loginRegisterService.userRegister(user);
-                    registerUserCall.enqueue(new Callback<ReturnMessageObject>()
+                    name= et_registerFirstName.getText().toString();
+                    surname=et_registerSurname.getText().toString();
+                    int age = Integer.parseInt(et_age.getText().toString());
+                    email= et_registerEmail.getText().toString();
+                    password=et_registerPassword.getText().toString();
+                    confirmPassword=et_confirmPassword.getText().toString();
+
+                    user.setFirstName(name);
+                    user.setSurname(surname);
+                    user.setAge(age);
+                    user.setEmail(email);
+                    user.setPassword(password);
+                    user.setConfirmPassword(confirmPassword);
+
+
+                    try
                     {
-                        @Override
-                        public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                        final Call<ReturnMessageObject> registerUserCall = loginRegisterService.userRegister(user);
+                        registerUserCall.enqueue(new Callback<ReturnMessageObject>()
                         {
-
-                            ReturnMessageObject registeredAuth = response.body();
-                            if (registeredAuth.getResult())
+                            @Override
+                            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
                             {
-                                Log.e(TAG,"GetResult true");
 
-                                Toast.makeText(getActivity().getApplicationContext(), "Register Successful" , Toast.LENGTH_LONG).show();
+                                ReturnMessageObject registeredAuth = response.body();
+                                if (registeredAuth.getResult())
+                                {
+                                    Log.e(TAG,"GetResult true");
 
-                                LogUserIn(email, "email");
+                                    Toast.makeText(getActivity().getApplicationContext(), "Register Successful" , Toast.LENGTH_LONG).show();
+
+                                    LogUserIn(email, "email");
+                                }
+                                else
+                                {
+                                    Log.e(TAG,"GetResult false");
+                                    Toast.makeText(getActivity().getApplicationContext(), "Register Failed Invalid Details entered Bro :(" , Toast.LENGTH_LONG).show();
+                                }
+
                             }
-                            else
+
+                            @Override
+                            public void onFailure(Call<ReturnMessageObject> call, Throwable t)
                             {
-                                Log.e(TAG,"GetResult false");
-                                Toast.makeText(getActivity().getApplicationContext(), "Register Failed Invalid Details entered Bro :(" , Toast.LENGTH_LONG).show();
+                                Log.e(TAG,"Connection onFailure");
+                                Toast.makeText(getActivity().getApplicationContext(), "No Internet connection :(" , Toast.LENGTH_LONG).show();
                             }
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<ReturnMessageObject> call, Throwable t)
-                        {
-                            Log.e(TAG,"Connection onFailure");
-                            Toast.makeText(getActivity().getApplicationContext(), "No Internet connection :(" , Toast.LENGTH_LONG).show();
-                        }
-                    });
+                        });
 
 
 
+                    }
+                    catch (Exception e)
+                    {
+                        message="Exception " + e.toString();
+                        Toast.makeText(getActivity().getApplicationContext(),message , Toast.LENGTH_LONG).show();
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-                    message="Exception " + e.toString();
-                    Toast.makeText(getActivity().getApplicationContext(),message , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "Cannot Register new User - No Internet connection :(", Toast.LENGTH_LONG).show();
                 }
 
 
