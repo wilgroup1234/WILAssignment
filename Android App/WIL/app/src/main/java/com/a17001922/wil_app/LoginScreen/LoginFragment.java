@@ -58,6 +58,9 @@ public class LoginFragment extends Fragment
     {
         v = inflater.inflate(R.layout.activity_login, container, false);
         user = new LoginUserObject();
+
+        CheckForLoggedInUser();
+
         return v;
     }
 
@@ -67,7 +70,8 @@ public class LoginFragment extends Fragment
     {
         super.onStart();
 
-        CheckForLoggedInUser();
+
+
 
          gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -117,7 +121,7 @@ public class LoginFragment extends Fragment
                         @Override
                         public void onFailure(Call<ReturnMessageObject> call, Throwable t) {
                             Log.e(TAG, "Connection onFailure");
-                            Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity().getApplicationContext(), "No Internet connection :(", Toast.LENGTH_LONG).show();
 
                         }
 
@@ -155,6 +159,9 @@ public class LoginFragment extends Fragment
         editor.putBoolean(StaticClass.LOGGED_IN_USER, true);
         editor.putString(StaticClass.LOGGED_IN_USER_EMAIL, email);
         editor.putString(StaticClass.LOGGED_IN_TYPE, type);
+        editor.commit();
+
+        Toast.makeText(getActivity().getApplicationContext(), "user: " + email + " loggedin: " + sharedPreferences.getBoolean(StaticClass.LOGGED_IN_USER, false) , Toast.LENGTH_LONG).show();
 
         //Open Home activity
         Intent intent = new Intent(getActivity().getApplicationContext(), homeActivity.class);
@@ -224,6 +231,8 @@ public class LoginFragment extends Fragment
 
         }
     }
+
+
 
 
 

@@ -21,10 +21,12 @@ public class StaticClass
     public static final String LOGGED_IN_USER_EMAIL = "Logged in user email";
     public static final String LOGGED_IN_TYPE = "Logged in type";
 
+    public static boolean hasInternet = false;
+
 
     public static String currentUser = "No_User";
 
-    public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://10.117.190.63:45456/").addConverterFactory(GsonConverterFactory.create())
+    public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://192.168.43.178:45456/").addConverterFactory(GsonConverterFactory.create())
             .client(getUnsafeOkHttpClient().build()).build();
 
 

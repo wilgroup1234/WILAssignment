@@ -2,6 +2,7 @@ package com.a17001922.wil_app.LoginScreen;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,6 +23,8 @@ import com.a17001922.wil_app.homeScreen.homeActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,9 +97,7 @@ public class RegisterFragments extends Fragment
 
                                 Toast.makeText(getActivity().getApplicationContext(), "Register Successful" , Toast.LENGTH_LONG).show();
 
-                                Intent intent = new Intent(getActivity().getApplicationContext(), homeActivity.class);
-                                StaticClass.currentUser = email;
-                                startActivity(intent);
+                                LogUserIn(email, "email");
                             }
                             else
                             {
@@ -110,7 +111,7 @@ public class RegisterFragments extends Fragment
                         public void onFailure(Call<ReturnMessageObject> call, Throwable t)
                         {
                             Log.e(TAG,"Connection onFailure");
-                            Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(" , Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity().getApplicationContext(), "No Internet connection :(" , Toast.LENGTH_LONG).show();
                         }
                     });
 
@@ -127,6 +128,25 @@ public class RegisterFragments extends Fragment
           }
         });
 
+    }
+
+
+    public void LogUserIn(String email, String type)
+    {
+        //Store user details in shared preferences
+        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(StaticClass.LOGGED_IN_USER, true);
+        editor.putString(StaticClass.LOGGED_IN_USER_EMAIL, email);
+        editor.putString(StaticClass.LOGGED_IN_TYPE, type);
+        editor.commit();
+
+        Toast.makeText(getActivity().getApplicationContext(), "user: " + email + " loggedin: " + sharedPreferences.getBoolean(StaticClass.LOGGED_IN_USER, false) , Toast.LENGTH_LONG).show();
+
+        //Open Home activity
+        Intent intent = new Intent(getActivity().getApplicationContext(), homeActivity.class);
+        StaticClass.currentUser = email;
+        startActivity(intent);
     }
 
 

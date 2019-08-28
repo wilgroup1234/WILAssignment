@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.content.Intent;
 
 import com.a17001922.wil_app.R;
+import com.a17001922.wil_app.StaticClass;
 
 public class homeActivity extends AppCompatActivity
 {
@@ -38,6 +39,15 @@ public class homeActivity extends AppCompatActivity
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+        if (StaticClass.hasInternet)
+        {
+            Toast.makeText(getApplicationContext(), "Working Online", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Offline, Limited functionality available...", Toast.LENGTH_LONG).show();
+        }
     }
 }
 

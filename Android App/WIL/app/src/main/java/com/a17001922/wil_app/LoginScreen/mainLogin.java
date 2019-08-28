@@ -33,6 +33,16 @@ public class mainLogin extends AppCompatActivity
     protected void onStart()
     {
      super.onStart();
+
+        if (StaticClass.hasInternet)
+        {
+            Toast.makeText(getApplicationContext(), "Working Online", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Offline, Cannot Login", Toast.LENGTH_LONG).show();
+        }
+
         viewPager = (ViewPager) findViewById(R.id.loginpager);
         tabLayout = (TabLayout) findViewById(R.id.LtabLayout);
         adapter = new LoginTabAdapter(getSupportFragmentManager());
@@ -57,6 +67,13 @@ public class mainLogin extends AppCompatActivity
     {
 
         startActivity(intent);
+
+    }
+
+    //________Do nothing when the back button is pressed________
+    @Override
+    public void onBackPressed()
+    {
 
     }
 

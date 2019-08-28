@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBackground">#000000</color>
-    <color name="colorButtons">#ffffff</color>
+    <color name="colorButtons">#FFFFFF</color>
     <color name="colorButtonText">#000000</color>
     <color name="colorEditTextbackground">#ffffff</color>
     <color name="colorEditText">#000000</color>

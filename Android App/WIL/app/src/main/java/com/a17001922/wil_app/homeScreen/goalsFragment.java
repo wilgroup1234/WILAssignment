@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ public class goalsFragment extends Fragment
     {
         v = inflater.inflate(R.layout.fragment_goals, container, false);
 
+
+
         return v;
     }
 
@@ -50,6 +53,8 @@ public class goalsFragment extends Fragment
     public void onStart()
     {
         super.onStart();
+
+
 
         btnAddGoals = v.findViewById(R.id.btn_AddGoal);
         btnAddCustomGoals = v.findViewById(R.id.btn_AddCustomGoal);
@@ -78,6 +83,7 @@ public class goalsFragment extends Fragment
         String type = sharedPreferences.getString(StaticClass.LOGGED_IN_TYPE, "");
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(StaticClass.LOGGED_IN_USER, false);
+        editor.commit();
 
         if (type.equals("google"))
         {
