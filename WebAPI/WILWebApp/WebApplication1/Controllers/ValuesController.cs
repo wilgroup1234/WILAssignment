@@ -95,10 +95,10 @@ namespace WebApplication1.Controllers
                             };
 
                             db.UserLifeSkills.Add(userLifeSkill);
-                            db.SaveChanges();
+                            
                         }
 
-
+                        db.SaveChanges();
 
 
                         returnMessage.result = true;
