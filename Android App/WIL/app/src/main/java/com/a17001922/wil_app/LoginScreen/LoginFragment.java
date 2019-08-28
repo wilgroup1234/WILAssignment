@@ -85,53 +85,62 @@ public class LoginFragment extends Fragment
         et_password = v.findViewById(R.id.et_LoginPassword);
         googleSignInButton = v.findViewById(R.id.imgGoogleLogin);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                email = et_email.getText().toString();
-                password = et_password.getText().toString();
-                user.setEmail(email);
-                user.setPassword(password);
+            public void onClick(View v)
+            {
+                if (StaticClass.hasInternet)
+                {
+                    email = et_email.getText().toString();
+                    password = et_password.getText().toString();
+                    user.setEmail(email);
+                    user.setPassword(password);
 
 
-                try {
-                    final Call<ReturnMessageObject> loginUserCall = loginRegisterService.userLogin(user);
-                    loginUserCall.enqueue(new Callback<ReturnMessageObject>() {
-                        @Override
-                        public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response) {
+                    try {
+                        final Call<ReturnMessageObject> loginUserCall = loginRegisterService.userLogin(user);
+                        loginUserCall.enqueue(new Callback<ReturnMessageObject>() {
+                            @Override
+                            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response) {
 
-                            ReturnMessageObject loggedInAuth = response.body();
-                            if (loggedInAuth.getResult()) {
-                                Log.e(TAG, "GetResult true");
+                                ReturnMessageObject loggedInAuth = response.body();
+                                if (loggedInAuth.getResult()) {
+                                    Log.e(TAG, "GetResult true");
 
-                                Toast.makeText(getActivity().getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getActivity().getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
 
-                                type = "email";
-                                LogUserIn();
+                                    type = "email";
+                                    LogUserIn();
 
 
-                            } else {
-                                Log.e(TAG, "GetResult false");
-                                Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Log.e(TAG, "GetResult false");
+                                    Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<ReturnMessageObject> call, Throwable t) {
+                                Log.e(TAG, "Connection onFailure");
+                                Toast.makeText(getActivity().getApplicationContext(), "No Internet connection :(", Toast.LENGTH_LONG).show();
+
                             }
 
 
-                        }
-
-                        @Override
-                        public void onFailure(Call<ReturnMessageObject> call, Throwable t) {
-                            Log.e(TAG, "Connection onFailure");
-                            Toast.makeText(getActivity().getApplicationContext(), "No Internet connection :(", Toast.LENGTH_LONG).show();
-
-                        }
+                        });
 
 
-                    });
-
-
-                } catch (Exception e) {
-                    Log.e(TAG, "Exception " + e.toString());
-                    Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+                    } catch (Exception e) {
+                        Log.e(TAG, "Exception " + e.toString());
+                        Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getActivity().getApplicationContext(), "Cannot Log in - No Internet connection :(", Toast.LENGTH_LONG).show();
                 }
 
 
@@ -144,7 +153,15 @@ public class LoginFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                GoogleSignIn();
+                if (StaticClass.hasInternet)
+                {
+                    GoogleSignIn();
+                }
+                else
+                {
+                    Toast.makeText(getActivity().getApplicationContext(), "Cannot Log in - No Internet connection :(", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -216,9 +233,72 @@ public class LoginFragment extends Fragment
             Log.e(TAG, "DUNZO2");
 
             email = account.getEmail();
+            String name = account.getDisplayName();
+            String surname = "a";
+            if (account.getFamilyName() != null)
+            {
+                surname = account.getFamilyName();
+            }
+            String password = "a";
+
+            GoogleSignInObject googleSignInObject = new GoogleSignInObject();
+            googleSignInObject.setEmail(email);
+            googleSignInObject.setFirstName(name);
+            googleSignInObject.setLastName(surname);
+            googleSignInObject.setPassword(password);
+
+
+            //Check if account already exists
+
+            try
+            {
+                final Call<ReturnMessageObject> googleSignInCall = loginRegisterService.googleSignIn(googleSignInObject);
+                googleSignInCall.enqueue(new Callback<ReturnMessageObject>()
+                {
+                    @Override
+                    public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                    {
+
+                        ReturnMessageObject loggedInAuth = response.body();
+
+                        if (loggedInAuth.getResult() == false)
+                        {
+                            Log.e(TAG, "Google sign in - New account created");
+                        }
+                        else
+                        {
+                            Log.e(TAG, "Google sign in - Account already exists");
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+                    {
+                        Log.e(TAG, "Connection onFailure Google signin in OUR api call");
+                        Toast.makeText(getActivity().getApplicationContext(), " Google sign in OUR API No Internet connection :(", Toast.LENGTH_LONG).show();
+                    }
+
+
+                });
+
+
+            }
+            catch (Exception e)
+            {
+                Log.e(TAG, "Exception " + e.toString());
+                Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+            }
+
+
+
             type = "google";
             Toast.makeText(getActivity().getApplicationContext(), "Google Sign-in Successful", Toast.LENGTH_LONG).show();
             LogUserIn();
+
+
+
 
         }
         catch (ApiException e)
