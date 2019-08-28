@@ -17,7 +17,6 @@ namespace WebApplication1.Classes
             [Required]
             [StringLength(255)]
             public string FirstName { get; set; }
-            public int Age { get; set; }
 
             [Required]
             [StringLength(255)]

@@ -21,6 +21,7 @@ namespace WebApplication1.Controllers
         //Mark off custom goal            https://localhost:44317/api/values/PostMarkOffCustomGoal
         //Get Daily Quote                 https://localhost:44317/api/values/GetDailyQuote
         //Update dailyquote youtube views https://localhost:44317/api/values/PostUpdateViews
+        //Google sign-in Reg              https://localhost:44317/api/values/PostGoogleSignIn
 
         private WILModel db = new WILModel();
 
@@ -51,7 +52,6 @@ namespace WebApplication1.Controllers
 
                         User user = new User
                         {
-                            Age = regUser.Age,
                             Email = regUser.Email.Trim(),
                             FirstName = regUser.FirstName.Trim(),
                             LastName = regUser.LastName.Trim(),
@@ -715,6 +715,115 @@ namespace WebApplication1.Controllers
 
 
             
+
+
+        }
+
+
+        //Custom POST
+        [Route("api/values/PostGoogleSignIn")]
+        [HttpPost]
+        public ReturnMessageObject PostGoogleSignIn(GoogleSignInObject googleSignInObject)
+        {
+
+            ReturnMessageObject returnMessageObject = new ReturnMessageObject();
+
+            Boolean exists = false;
+            
+            foreach(User user in db.Users)
+            {
+                if (user.Email.Equals(googleSignInObject.Email.Trim()))
+                {
+                    exists = true;
+                }
+            }
+
+            if (exists)
+            {
+                returnMessageObject.result = true;
+                returnMessageObject.errorMessage = "Account exists already";
+            }
+            else
+            {
+                
+
+                //Create New account
+
+                try
+                {
+                    
+
+                    User user = new User
+                    {
+                        Email = googleSignInObject.Email.Trim(),
+                        FirstName = googleSignInObject.FirstName.Trim(),
+                        LastName = googleSignInObject.LastName.Trim(),
+                        Password = googleSignInObject.Password.Trim()
+                    };
+
+
+
+
+
+                    db.Users.Add(user);
+
+                    db.SaveChanges();
+
+                    int streakUserID = 0;
+
+                    foreach (User sUser in db.Users)
+                    {
+                        streakUserID = sUser.UserID;
+                    }
+
+                    Streak streak = new Streak
+                    {
+                        UserID = streakUserID,
+                        StreakLength = 0
+                    };
+
+                    db.Streaks.Add(streak);
+
+                    db.SaveChanges();
+
+
+                    foreach (LifeSkill lifeSkill in db.LifeSkills)
+                    {
+                        UserLifeSkill userLifeSkill = new UserLifeSkill
+                        {
+                            LifeSKillID = lifeSkill.LifeSkillID,
+                            UserID = streakUserID,
+                            Completed = 0
+
+                        };
+
+                        db.UserLifeSkills.Add(userLifeSkill);
+
+                    }
+
+                    db.SaveChanges();
+
+
+                    returnMessageObject.result = false;
+                    returnMessageObject.errorMessage = "New Account created";
+
+
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("Concurrency Error: " + e.ToString());
+
+                    returnMessageObject.result = true;
+                    returnMessageObject.errorMessage = "Account exists already";
+                }
+
+            }
+
+
+
+            
+
+            return returnMessageObject;
 
 
         }

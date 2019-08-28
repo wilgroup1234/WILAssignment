@@ -223,7 +223,7 @@ namespace WILWebAppNetCore.Models
                 entity.HasKey(e => e.UserId);
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__Users__A9D10534F79D1671")
+                    .HasName("UQ__Users__A9D1053412E71E45")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");

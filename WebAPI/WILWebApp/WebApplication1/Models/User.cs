@@ -27,8 +27,6 @@ namespace WebApplication1.Models
         [StringLength(255)]
         public string FirstName { get; set; }
 
-        public int Age { get; set; }
-
         [Required]
         [StringLength(255)]
         public string Email { get; set; }
