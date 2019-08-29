@@ -66,6 +66,22 @@ public class goalsFragment extends Fragment
             }
         });
 
+        btnAddCustomGoals.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent i = new Intent(getActivity().getApplicationContext(),addCustomGoalActivity.class);
+                startActivity(i);
+            }
+        });
+        btnAddGoals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(),addNormalGoalActivity.class);
+                startActivity(i);
+            }
+        });
 
 
     }
