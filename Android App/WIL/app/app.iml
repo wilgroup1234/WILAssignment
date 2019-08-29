@@ -25,7 +25,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/build/intermediates/javac/debug/classes" />
     <output-test url="file://$MODULE_DIR$/build/intermediates/javac/debugUnitTest/classes" />
     <exclude-output />
@@ -96,7 +96,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: net.sf.kxml:kxml2:2.3.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: javax.inject:javax.inject:1@jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:jsr305:2.0.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test.espresso:espresso-core:3.0.2@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:runner:1.0.2@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:monitor:1.0.2@aar" level="project" />
@@ -110,7 +109,23 @@
     <orderEntry type="library" name="Gradle: com.squareup.retrofit2:retrofit:2.4.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp:3.12.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.15.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-gson:1.26.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.7@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.api-client:google-api-client-android:1.26.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-android:1.26.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.apis:google-api-services-drive:v3-rev136-1.25.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.api-client:google-api-client:1.26.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.oauth-client:google-oauth-client:1.26.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-jackson2:1.26.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client:1.26.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpclient:4.5.5@jar" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.4.9@jar" level="project" />
+    <orderEntry type="library" name="Gradle: commons-logging:commons-logging:1.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.10@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.j2objc:j2objc-annotations:1.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.guava:guava:20.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.9.6@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design:28.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7:28.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-auth:16.0.0@aar" level="project" />
