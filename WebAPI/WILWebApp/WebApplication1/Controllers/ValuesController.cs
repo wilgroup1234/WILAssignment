@@ -23,6 +23,7 @@ namespace WebApplication1.Controllers
         //Update dailyquote youtube views https://localhost:44317/api/values/PostUpdateViews
         //Google sign-in Reg              https://localhost:44317/api/values/PostGoogleSignIn
         //Update Streak                   https://localhost:44317/api/values/PostUpdateStreak
+        //Get User Streak                 https://localhost:44317/api/values/PostUserStreak
 
         private WILModel db = new WILModel();
 
@@ -931,6 +932,43 @@ namespace WebApplication1.Controllers
 
 
 
+
+        }
+
+
+        //Custom POST
+        [Route("api/values/PostUserStreak")]
+        [HttpPost]
+        public Streak PostUserStreak(LoginUserObject loginUserObject)
+        {
+
+            Streak returnStreak = new Streak(); 
+            
+            String userEmail;
+            int userSearchID = 0;
+
+            userEmail = loginUserObject.Email;
+
+            //search for user and get userID
+            foreach (User user in db.Users)
+            {
+                if (user.Email.Equals(userEmail))
+                {
+                    userSearchID = user.UserID;
+                }
+            }
+
+            //Update streak if first login for today
+
+            foreach(Streak streak in db.Streaks)
+            {
+                if (userSearchID == streak.UserID)
+                {
+                    returnStreak.StreakLength = streak.StreakLength;
+                }
+            }
+
+            return returnStreak;
 
         }
 

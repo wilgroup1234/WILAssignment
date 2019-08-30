@@ -16,6 +16,7 @@ namespace WebApplication1.Models
         public virtual DbSet<CustomUserGoal> CustomUserGoals { get; set; }
         public virtual DbSet<DailyQuote> DailyQuotes { get; set; }
         public virtual DbSet<Goal> Goals { get; set; }
+        public virtual DbSet<Gratitude> Gratitudes { get; set; }
         public virtual DbSet<LifeSkill> LifeSkills { get; set; }
         public virtual DbSet<PasswordReset> PasswordResets { get; set; }
         public virtual DbSet<Streak> Streaks { get; set; }
@@ -24,6 +25,7 @@ namespace WebApplication1.Models
         public virtual DbSet<UserLifeSkill> UserLifeSkills { get; set; }
         public virtual DbSet<UserLoginDate> UserLoginDates { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserStep> UserSteps { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -60,6 +62,10 @@ namespace WebApplication1.Models
                 .HasMany(e => e.UserGoals)
                 .WithRequired(e => e.Goal)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Gratitude>()
+                .Property(e => e.GratitudeItems)
+                .IsUnicode(false);
 
             modelBuilder.Entity<LifeSkill>()
                 .Property(e => e.LifeSkillName)
@@ -105,6 +111,11 @@ namespace WebApplication1.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
+                .HasMany(e => e.Gratitudes)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
                 .HasMany(e => e.Streaks)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
@@ -121,6 +132,11 @@ namespace WebApplication1.Models
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.UserLoginDates)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.UserSteps)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
         }

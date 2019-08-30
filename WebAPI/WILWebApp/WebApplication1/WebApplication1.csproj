@@ -183,6 +183,7 @@
     <Compile Include="Models\CustomUserGoal.cs" />
     <Compile Include="Models\DailyQuote.cs" />
     <Compile Include="Models\Goal.cs" />
+    <Compile Include="Models\Gratitude.cs" />
     <Compile Include="Models\LifeSkill.cs" />
     <Compile Include="Models\PasswordReset.cs" />
     <Compile Include="Models\Streak.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Models\UserGoal.cs" />
     <Compile Include="Models\UserLifeSkill.cs" />
     <Compile Include="Models\UserLoginDate.cs" />
+    <Compile Include="Models\UserStep.cs" />
     <Compile Include="Models\WILModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
