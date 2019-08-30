@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background6"
+    tools:context=".Pedometer">
+
+    <Button
+        android:id="@+id/btnStartCountingSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="32dp"
+        android:text="Start"
+        app:layout_constraintBottom_toTopOf="@+id/btnBackPedometer"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSaveSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="32dp"
+        android:text="Save steps"
+        app:layout_constraintBottom_toTopOf="@+id/btnBackPedometer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toEndOf="@+id/btnStartCountingSteps" />
+
+    <Button
+        android:id="@+id/btnBackPedometer"
+        android:layout_width="81dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="52dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="241dp"
+        android:layout_height="147dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/walkingimage"
+        app:layout_constraintBottom_toTopOf="@+id/wdawd3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.672"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="STEP TRACKER"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTodaysSteps"
+        android:layout_width="103dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="72dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toEndOf="@+id/wdawd3"
+        tools:layout_editor_absoluteY="393dp" />
+
+    <TextView
+        android:id="@+id/txtCurrentSteps"
+        android:layout_width="103dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="52dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveSteps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintStart_toEndOf="@+id/calorieerwe2" />
+
+    <TextView
+        android:id="@+id/wdawd3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:text="Today's Steps:"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="393dp" />
+
+    <TextView
+        android:id="@+id/calorieerwe2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="52dp"
+        android:text="Current Steps:"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnStartCountingSteps"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -227,6 +227,7 @@ public class LoginFragment extends Fragment
 
         Toast.makeText(getActivity().getApplicationContext(), "user: " + email + " loggedin: " + sharedPreferences.getBoolean(StaticClass.LOGGED_IN_USER, false) , Toast.LENGTH_LONG).show();
 
+
         //Open Home activity
         Intent intent = new Intent(getActivity().getApplicationContext(), homeActivity.class);
         StaticClass.currentUser = email;
