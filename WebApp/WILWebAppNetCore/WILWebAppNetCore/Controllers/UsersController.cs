@@ -618,20 +618,34 @@ namespace WILWebAppNetCore.Controllers
 
             List<UserStreak> streaks = new List<UserStreak>();
 
-
-            foreach (Streaks streaks1 in streaksList)
+            foreach(Streaks str in streaksList)
             {
-                if (streaks1.UserId != 1)
-                {
-                    UserStreak userStreak = new UserStreak
-                    {
-                        Email = streaks1.User.Email,
-                        Streak = streaks1.StreakLength
+                Debug.WriteLine("Streak!! " + str.StreakId + " " + str.UserId + " " + str.UserId);
 
-                    };
+                String userMail = "";
+
+                foreach(Users users in _context.Users)
+                {
+                    if (users.UserId == str.UserId)
+                    {
+                        userMail = users.Email;
+                    }
                 }
 
+                UserStreak userStreak = new UserStreak
+                {
+                    Email = userMail,
+                    Streak = str.StreakLength
+
+                };
+
+                if (str.UserId != 1)
+                {
+                    streaks.Add(userStreak);
+                }
             }
+
+            
 
             ViewBag.StreaksList = streaks;
 

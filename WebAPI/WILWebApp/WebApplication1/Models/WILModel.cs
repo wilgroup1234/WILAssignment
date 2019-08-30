@@ -22,6 +22,7 @@ namespace WebApplication1.Models
         public virtual DbSet<Template> Templates { get; set; }
         public virtual DbSet<UserGoal> UserGoals { get; set; }
         public virtual DbSet<UserLifeSkill> UserLifeSkills { get; set; }
+        public virtual DbSet<UserLoginDate> UserLoginDates { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -115,6 +116,11 @@ namespace WebApplication1.Models
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.UserLifeSkills)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.UserLoginDates)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
         }

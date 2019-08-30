@@ -90,6 +90,14 @@ CREATE TABLE Streaks
     StreakLength int NOT NULL
 ); 
 
+CREATE TABLE UserLoginDates
+(
+    UserLoginDatesID int NOT NULL IDENTITY PRIMARY KEY,
+    UserID int NOT NULL,
+    UserLoginDate Date NOT NULL
+ 
+); 
+
 
 
  ALTER TABLE UserGoals
@@ -125,6 +133,10 @@ ALTER TABLE CustomUserGoals
 
  ALTER TABLE Streaks
   ADD CONSTRAINT FK_UserID5
+   FOREIGN KEY (UserID) REFERENCES Users(UserID);
+
+ ALTER TABLE UserLoginDates
+  ADD CONSTRAINT FK_UserID6
    FOREIGN KEY (UserID) REFERENCES Users(UserID);
 
 

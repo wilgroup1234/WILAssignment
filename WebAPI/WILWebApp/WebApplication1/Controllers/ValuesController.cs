@@ -22,6 +22,7 @@ namespace WebApplication1.Controllers
         //Get Daily Quote                 https://localhost:44317/api/values/GetDailyQuote
         //Update dailyquote youtube views https://localhost:44317/api/values/PostUpdateViews
         //Google sign-in Reg              https://localhost:44317/api/values/PostGoogleSignIn
+        //Update Streak                   https://localhost:44317/api/values/PostUpdateStreak
 
         private WILModel db = new WILModel();
 
@@ -100,6 +101,19 @@ namespace WebApplication1.Controllers
 
                         db.SaveChanges();
 
+                        DateTime today = DateTime.Today;
+
+                        UserLoginDate userLoginDate = new UserLoginDate
+                        {
+                            UserID = streakUserID,
+                            UserLoginDate1 = today
+
+                        };
+
+                        db.UserLoginDates.Add(userLoginDate);
+
+                        db.SaveChanges();
+
 
                         returnMessage.result = true;
                         returnMessage.errorMessage = "Success";
@@ -163,6 +177,7 @@ namespace WebApplication1.Controllers
             Boolean userFound = false;
             Boolean passFound = false;
             String userPass = "";
+            int userID = 0;
 
 
             foreach (User searchUser in usersList)
@@ -175,6 +190,7 @@ namespace WebApplication1.Controllers
                     userFound = true;
                     userPass = searchUser.Password;
                     Debug.WriteLine("USER DETAILS: " + loginUser.Email + " " + userPass);
+                    userID = searchUser.UserID;
                 }
             }
 
@@ -201,6 +217,10 @@ namespace WebApplication1.Controllers
 
             if (userFound && passFound)
             {
+                
+
+                db.SaveChanges();
+
                 Debug.WriteLine("SUCCESSSSSSSS!!!!!!!!!!!!!!");
 
                 returnMessage.result = true;
@@ -803,6 +823,19 @@ namespace WebApplication1.Controllers
 
                     db.SaveChanges();
 
+                    DateTime today = DateTime.Today;
+
+                    UserLoginDate userLoginDate = new UserLoginDate
+                    {
+                        UserID = streakUserID,
+                        UserLoginDate1 = today
+
+                    };
+
+                    db.UserLoginDates.Add(userLoginDate);
+
+                    db.SaveChanges();
+
 
                     returnMessageObject.result = false;
                     returnMessageObject.errorMessage = "New Account created";
@@ -829,6 +862,91 @@ namespace WebApplication1.Controllers
         }
 
 
+        //Custom POST
+        [Route("api/values/PostUpdateStreak")]
+        [HttpPost]
+        public ReturnMessageObject PostUpdateStreak(LoginUserObject loginUserObject)
+        {
+
+            ReturnMessageObject returnMessageObject = new ReturnMessageObject();
+
+            bool valid;
+            String userEmail;
+            int userSearchID = 0;
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
+
+            userEmail = loginUserObject.Email;
+
+            //search for user and get userID
+            foreach (User user in db.Users)
+            {
+                if (user.Email.Equals(userEmail))
+                {
+                    userSearchID = user.UserID;
+                }
+            }
+
+            //Update streak if first login for today
+
+            try
+            {
+                Boolean updateStreak = false;
+
+                DateTime today = DateTime.Today;
+
+                foreach (UserLoginDate userLoginDate in db.UserLoginDates)
+                {
+                    if (userLoginDate.UserLoginDate1 != today)
+                    {
+                        userLoginDate.UserLoginDate1 = today;
+                        updateStreak = true;
+                    }
+                }
+
+                db.SaveChanges();
+
+                if (updateStreak)
+                {
+                    foreach (Streak streak in db.Streaks)
+                    {
+                        if (streak.UserID == userSearchID)
+                        {
+                            streak.StreakLength = streak.StreakLength + 1;
+                        }
+                    }
+                }
+
+                returnMessage.result = true;
+
+            }
+
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+                returnMessage.result = false;
+                returnMessage.errorMessage = e.ToString();
+            }
+
+            return returnMessage;
+
+
+
+
+        }
+
+
+
+
+
+
+
 
     }
+
+
+
+
+
+
+    
 }
