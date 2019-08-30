@@ -190,6 +190,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserGoal.cs" />
     <Compile Include="Models\UserLifeSkill.cs" />
+    <Compile Include="Models\UserLoginDate.cs" />
     <Compile Include="Models\WILModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

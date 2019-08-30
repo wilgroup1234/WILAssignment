@@ -15,6 +15,7 @@ namespace WebApplication1.Models
             Streaks = new HashSet<Streak>();
             UserGoals = new HashSet<UserGoal>();
             UserLifeSkills = new HashSet<UserLifeSkill>();
+            UserLoginDates = new HashSet<UserLoginDate>();
         }
 
         public int UserID { get; set; }
@@ -46,5 +47,8 @@ namespace WebApplication1.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserLifeSkill> UserLifeSkills { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserLoginDate> UserLoginDates { get; set; }
     }
 }
