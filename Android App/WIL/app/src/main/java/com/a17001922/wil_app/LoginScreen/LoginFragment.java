@@ -178,6 +178,53 @@ public class LoginFragment extends Fragment
         editor.putString(StaticClass.LOGGED_IN_TYPE, type);
         editor.commit();
 
+
+        LoginUserObject loginUserObject = new LoginUserObject();
+        loginUserObject.email = email;
+
+        try
+        {
+            final Call<ReturnMessageObject> updateStreakCall = loginRegisterService.updateStreak(user);
+            updateStreakCall.enqueue(new Callback<ReturnMessageObject>()
+            {
+                @Override
+                public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                {
+                    ReturnMessageObject loggedInAuth = response.body();
+
+                    if (loggedInAuth.getResult())
+                    {
+
+                        Log.e(TAG, "Streak updated");
+
+                    }
+                    else
+                    {
+                        Log.e(TAG, "Streak update error :(");
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+                {
+                    Log.e(TAG, "UpdateStreak OnFailure - Cannot update Streak");
+
+                }
+
+
+            });
+
+
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "Exception " + e.toString());
+            Toast.makeText(getActivity().getApplicationContext(), "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+        }
+
+
         Toast.makeText(getActivity().getApplicationContext(), "user: " + email + " loggedin: " + sharedPreferences.getBoolean(StaticClass.LOGGED_IN_USER, false) , Toast.LENGTH_LONG).show();
 
         //Open Home activity
