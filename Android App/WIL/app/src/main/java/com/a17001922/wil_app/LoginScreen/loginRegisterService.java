@@ -22,4 +22,9 @@ public interface loginRegisterService
     @POST("api/values/PostGoogleSignIn")
     Call<ReturnMessageObject> googleSignIn(@Body GoogleSignInObject user);
 
+    @POST("api/values/PostUpdateStreak")
+    Call<ReturnMessageObject> updateStreak(@Body LoginUserObject user);
+
+
+
 }

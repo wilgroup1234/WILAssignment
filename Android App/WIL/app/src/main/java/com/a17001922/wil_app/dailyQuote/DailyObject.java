@@ -4,6 +4,7 @@ public class DailyObject {
     protected int TemplateID;
     protected String QuoteText;
     protected String YoutubeLink;
+    protected int Views;
 
     public int getTemplateID() {
         return TemplateID;
@@ -27,5 +28,13 @@ public class DailyObject {
 
     public void setYoutubeLink(String youtubeLink) {
         YoutubeLink = youtubeLink;
+    }
+
+    public int getViews() {
+        return Views;
+    }
+
+    public void setViews(int views) {
+        Views = views;
     }
 }

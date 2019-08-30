@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,19 +24,21 @@ import com.a17001922.wil_app.goals.userGoalObject;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
+import java.util.concurrent.Executor;
 
 import static android.content.Context.MODE_PRIVATE;
 
 
 public class goalsFragment extends Fragment
 {
-    private ListView lvGoals;
-    Connection con;
-    userGoalObject user = new userGoalObject();
     Button btnAddGoals, btnAddCustomGoals, btnViewGoals;
     View v;
     ImageView btnLogout;
-
+    GoogleSignInOptions gso;
+    GoogleSignInClient mGoogleSignInClient;
 
     @Nullable
     @Override
@@ -85,22 +88,7 @@ public class goalsFragment extends Fragment
         editor.putBoolean(StaticClass.LOGGED_IN_USER, false);
         editor.commit();
 
-        if (type.equals("google"))
-        {
-            try
-            {
-                GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestEmail()
-                        .build();
-                GoogleSignInClient gSignInClient = GoogleSignIn.getClient(getActivity().getApplicationContext(), googleSignInOptions);
-
-                gSignInClient.signOut();
-            }
-            catch(NullPointerException e)
-            {
-                e.printStackTrace();
-            }
-        }
+        googleSignOut();
 
         Toast.makeText(getActivity().getApplicationContext(), "Signed Out...", Toast.LENGTH_LONG).show();
 
@@ -114,6 +102,52 @@ public class goalsFragment extends Fragment
         Intent intent = new Intent(getActivity().getApplicationContext(), mainLogin.class);
         StaticClass.currentUser = "No_User";
         startActivity(intent);
+    }
+
+
+    private void googleSignOut()
+    {
+
+        try
+        {
+            gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .build();
+
+            mGoogleSignInClient = GoogleSignIn.getClient(getActivity().getApplicationContext(), gso);
+
+            mGoogleSignInClient.signOut()
+                    .addOnCompleteListener((Activity) getActivity().getApplicationContext(), new OnCompleteListener<Void>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task)
+                        {
+
+                        }
+                    });
+
+
+
+                try
+                {
+                    GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                            .requestEmail()
+                            .build();
+                    GoogleSignInClient gSignInClient = GoogleSignIn.getClient(getActivity().getApplicationContext(), googleSignInOptions);
+
+                    gSignInClient.signOut();
+                }
+                catch(NullPointerException e)
+                {
+                    e.printStackTrace();
+                }
+
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
 

@@ -4,13 +4,14 @@
     package="com.a17001922.wil_app">
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="LOGIN"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".homeScreen.Pedometer"></activity>
         <activity android:name="com.a17001922.wil_logins.Start">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,14 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LoginScreen.mainLogin"/>
+        <activity android:name=".LoginScreen.mainLogin" />
         <activity android:name=".LoginScreen.RegisterFragments" />
         <activity android:name=".homeScreen.homeActivity" />
     </application>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>
