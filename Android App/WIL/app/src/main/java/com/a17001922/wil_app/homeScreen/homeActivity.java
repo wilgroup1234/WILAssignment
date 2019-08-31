@@ -30,6 +30,7 @@ public class homeActivity extends AppCompatActivity
         adapter.addFragment(new goalsFragment(), "Goals");
         adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
         adapter.addFragment(new streakFragment(),"Streak");
+        adapter.addFragment(new gratitudeFragment(),"Gratitude Page");
         adapter.addFragment(new PlannerFragment(),"Planner");
         adapter.addFragment(new uploadDocsFragment(),"Upload");
         adapter.addFragment(new cvUpload(),"CV");
@@ -47,5 +48,15 @@ public class homeActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "Offline, Limited functionality available...", Toast.LENGTH_LONG).show();
         }
     }
+
+
+    //________Do nothing when the back button is pressed________
+    @Override
+    public void onBackPressed()
+    {
+
+    }
+
+
 }
 
