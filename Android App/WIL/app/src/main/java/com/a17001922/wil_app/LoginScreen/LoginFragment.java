@@ -184,7 +184,7 @@ public class LoginFragment extends Fragment
 
         try
         {
-            final Call<ReturnMessageObject> updateStreakCall = loginRegisterService.updateStreak(user);
+            final Call<ReturnMessageObject> updateStreakCall = loginRegisterService.updateStreak(loginUserObject);
             updateStreakCall.enqueue(new Callback<ReturnMessageObject>()
             {
                 @Override
@@ -275,10 +275,8 @@ public class LoginFragment extends Fragment
     {
         try
         {
-            Log.e(TAG, "DUNZO1");
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
-            Log.e(TAG, "DUNZO2");
 
             email = account.getEmail();
             String name = account.getDisplayName();

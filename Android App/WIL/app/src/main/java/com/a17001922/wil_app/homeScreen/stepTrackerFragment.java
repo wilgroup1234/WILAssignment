@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -37,10 +38,18 @@ public class stepTrackerFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                
+                ChangeForm();
             }
         });
 
 
     }
+
+    public void ChangeForm()
+    {
+        //Open Pedometer activity
+        Intent intent = new Intent(getActivity().getApplicationContext(), Pedometer.class);
+        startActivity(intent);
+    }
+
 }

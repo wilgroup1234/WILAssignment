@@ -165,6 +165,7 @@
     <Compile Include="Classes\CustomGoalObject.cs" />
     <Compile Include="Classes\DailyObject.cs" />
     <Compile Include="Classes\GoogleSignInObject.cs" />
+    <Compile Include="Classes\GratitudeObject.cs" />
     <Compile Include="Classes\LifeSkillObject.cs" />
     <Compile Include="Classes\LoginUserObject.cs" />
     <Compile Include="Classes\PasswordEncryption.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Classes\ReturnMessageObject.cs" />
     <Compile Include="Classes\StaticClass.cs" />
     <Compile Include="Classes\UserGoalObject.cs" />
+    <Compile Include="Classes\UserStepsObject.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

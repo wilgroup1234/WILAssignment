@@ -8,7 +8,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:background="@drawable/background3"
-    tools:context=".homeScreen.homeActivity">
+    tools:context=".homeScreen.dailyQuoteFragment">
 
     <EditText
         android:id="@+id/lblQuote"
