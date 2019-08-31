@@ -24,6 +24,10 @@ namespace WebApplication1.Controllers
         //Google sign-in Reg              https://localhost:44317/api/values/PostGoogleSignIn
         //Update Streak                   https://localhost:44317/api/values/PostUpdateStreak
         //Get User Streak                 https://localhost:44317/api/values/PostUserStreak
+        //Update Steps                    https://localhost:44317/api/values/PostUpdateSteps
+        //Get User Steps                  https://localhost:44317/api/values/PostUserSteps
+        //Update Gratitude                https://localhost:44317/api/values/PostUpdateGratitude
+        //Get User Gratitude              https://localhost:44317/api/values/PostUserGratitude
 
         private WILModel db = new WILModel();
 
@@ -869,8 +873,6 @@ namespace WebApplication1.Controllers
         public ReturnMessageObject PostUpdateStreak(LoginUserObject loginUserObject)
         {
 
-            ReturnMessageObject returnMessageObject = new ReturnMessageObject();
-
             bool valid;
             String userEmail;
             int userSearchID = 0;
@@ -897,7 +899,7 @@ namespace WebApplication1.Controllers
 
                 foreach (UserLoginDate userLoginDate in db.UserLoginDates)
                 {
-                    if (userLoginDate.UserLoginDate1 != today)
+                    if (userLoginDate.UserID == userSearchID && userLoginDate.UserLoginDate1 != today)
                     {
                         userLoginDate.UserLoginDate1 = today;
                         updateStreak = true;
@@ -908,7 +910,7 @@ namespace WebApplication1.Controllers
 
                 if (updateStreak)
                 {
-                    foreach (Streak streak in db.Streaks)
+                    foreach(Streak streak in db.Streaks)
                     {
                         if (streak.UserID == userSearchID)
                         {
@@ -917,7 +919,10 @@ namespace WebApplication1.Controllers
                     }
                 }
 
+                db.SaveChanges();
+
                 returnMessage.result = true;
+
 
             }
 
@@ -958,7 +963,7 @@ namespace WebApplication1.Controllers
                 }
             }
 
-            //Update streak if first login for today
+            //Get streak for user
 
             foreach(Streak streak in db.Streaks)
             {
@@ -974,17 +979,262 @@ namespace WebApplication1.Controllers
 
 
 
+        //Custom POST
+        [Route("api/values/PostUserSteps")]
+        [HttpPost]
+        public UserStepsObject PostUserSteps(UserStepsObject userStepsObject)
+        {
+
+            UserStepsObject returnSteps = new UserStepsObject();
+
+            String userEmail;
+            int userSearchID = 0;
+            DateTime today = DateTime.Today;
+
+            userEmail = userStepsObject.Email;
+
+            //search for user and get userID
+            foreach (User user in db.Users)
+            {
+                if (user.Email.Equals(userEmail))
+                {
+                    userSearchID = user.UserID;
+                }
+            }
+
+            //Get userSteps for today
+
+            Boolean hasSteps = false;
+
+            foreach(UserStep userSteps in db.UserSteps)
+            {
+                if (userSteps.UserID == userSearchID && userSteps.UserStepsDate == today)
+                {
+                    returnSteps.numSteps = userSteps.Steps;
+                    hasSteps = true;
+                }
+            }
+
+            if (!hasSteps)
+            {
+                returnSteps.numSteps = 0;
+            }
+
+            return returnSteps;
+
+        }
+
+
+
+
+
+        //Custom POST
+        [Route("api/values/PostUpdateSteps")]
+        [HttpPost]
+        public ReturnMessageObject PostUpdateSteps(UserStepsObject userStepsObject)
+        {
+
+            String userEmail;
+            int userSearchID = 0;
+            DateTime today = DateTime.Today;
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
+
+            userEmail = userStepsObject.Email;
+
+            //search for user and get userID
+            foreach (User user in db.Users)
+            {
+                if (user.Email.Equals(userEmail))
+                {
+                    userSearchID = user.UserID;
+                }
+            }
+
+            //Check if user has steps for today
+
+
+            try
+            {
+                Boolean hasSteps = false;
+
+                foreach (UserStep userSteps in db.UserSteps)
+                {
+                    if (userSteps.UserID == userSearchID && userSteps.UserStepsDate == today)
+                    {
+                        userSteps.Steps = userSteps.Steps + userStepsObject.numSteps;
+                        hasSteps = true;
+                    }
+
+                    //delete old steps
+                    if (userSteps.UserID == userSearchID && userSteps.UserStepsDate != today)
+                    {
+                        db.UserSteps.Remove(userSteps);
+                    }
+                }
+
+                db.SaveChanges();
+
+
+                if (!hasSteps)
+                {
+                    UserStep userStep = new UserStep
+                    {
+                        UserID = userSearchID,
+                        Steps = userStepsObject.numSteps,
+                        UserStepsDate = today
+                    };
+
+                    db.UserSteps.Add(userStep);
+                    db.SaveChanges();
+
+                }
+
+                returnMessage.result = true;
+
+
+
+            }
+            catch(Exception e)
+            {
+                returnMessage.result = false;
+                returnMessage.errorMessage = e.ToString();
+            }
+
+
+            return returnMessage;
+            
+
+        }
+
+
+        //Custom POST
+        [Route("api/values/PostUserGratitude")]
+        [HttpPost]
+        public GratitudeObject PostUserGratitude(GratitudeObject gratitudeObject)
+        {
+
+            GratitudeObject returnGratitude = new GratitudeObject();
+
+            String userEmail;
+            int userSearchID = 0;
+            DateTime today = DateTime.Today;
+
+            userEmail = gratitudeObject.Email;
+
+            //search for user and get userID
+            foreach (User user in db.Users)
+            {
+                if (user.Email.Equals(userEmail))
+                {
+                    userSearchID = user.UserID;
+                }
+            }
+
+            //Get user Gratitude for today
+
+            Boolean hasGratitude = false;
+
+            foreach (Gratitude gratitude in db.Gratitudes)
+            {
+                if (gratitude.UserID == userSearchID && gratitude.GratitudeDate == today)
+                {
+                    returnGratitude.Items = gratitude.GratitudeItems;
+                    hasGratitude = true;
+                }
+            }
+
+            if (!hasGratitude)
+            {
+                returnGratitude.Items = "No_Items";
+            }
+
+            return returnGratitude;
+
+        }
+
+
+        //Custom POST
+        [Route("api/values/PostUpdateGratitude")]
+        [HttpPost]
+        public ReturnMessageObject PostUpdateGratitude(GratitudeObject gratitudeObject)
+        {
+
+            String userEmail;
+            int userSearchID = 0;
+            DateTime today = DateTime.Today;
+            ReturnMessageObject returnMessage = new ReturnMessageObject();
+
+            userEmail = gratitudeObject.Email;
+
+            //search for user and get userID
+            foreach (User user in db.Users)
+            {
+                if (user.Email.Equals(userEmail))
+                {
+                    userSearchID = user.UserID;
+                }
+            }
+
+            //Check if user has gratitude for today
+
+            try
+            {
+                Boolean hasGratitude = false;
+
+                foreach (Gratitude gratitude in db.Gratitudes)
+                {
+                    if (gratitude.UserID == userSearchID && gratitude.GratitudeDate == today)
+                    {
+                        gratitude.GratitudeItems = gratitudeObject.Items;
+                        hasGratitude = true;
+                    }
+
+                    //delete old steps
+                    if (gratitude.UserID == userSearchID && gratitude.GratitudeDate != today)
+                    {
+                        db.Gratitudes.Remove(gratitude);
+                    }
+                }
+
+                db.SaveChanges();
+
+
+                if (!hasGratitude)
+                {
+                    Gratitude userGratitude = new Gratitude
+                    {
+                        UserID = userSearchID,
+                        GratitudeItems = gratitudeObject.Items,
+                        GratitudeDate = today
+                    };
+
+                    db.Gratitudes.Add(userGratitude);
+                    db.SaveChanges();
+
+                }
+
+                returnMessage.result = true;
+
+
+
+            }
+            catch (Exception e)
+            {
+                returnMessage.result = false;
+                returnMessage.errorMessage = e.ToString();
+            }
+
+
+            return returnMessage;
+
+
+        }
+
 
 
 
 
 
     }
-
-
-
-
-
-
-    
+ 
 }

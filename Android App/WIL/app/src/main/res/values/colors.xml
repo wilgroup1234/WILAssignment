@@ -6,7 +6,7 @@
     <color name="colorBackground">#000000</color>
     <color name="colorButtons">#FFFFFF</color>
     <color name="colorButtonText">#000000</color>
-    <color name="colorEditTextbackground">#ffffff</color>
+    <color name="colorEditTextbackground">#FFFFFF</color>
     <color name="colorEditText">#000000</color>
     <color name="colorRegister">#40e0d0</color>
 </resources>
