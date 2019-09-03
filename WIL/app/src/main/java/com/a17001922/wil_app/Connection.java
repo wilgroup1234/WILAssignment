@@ -8,6 +8,7 @@ import com.a17001922.wil_app.LoginScreen.RegisterUserObject;
 import com.a17001922.wil_app.dailyQuote.DailyObject;
 import com.a17001922.wil_app.dailyQuote.DailyQuoteService;
 import com.a17001922.wil_app.goals.customGoalObject;
+import com.a17001922.wil_app.goals.goals;
 import com.a17001922.wil_app.goals.goalsService;
 import com.a17001922.wil_app.goals.returnGoalObject;
 import com.a17001922.wil_app.goals.userGoalObject;
@@ -27,8 +28,8 @@ public class Connection {
     private boolean registerAuth = false;
     private DailyObject Quote;
     private returnGoalObject goalsList;
-    private userGoalObject addGoal;
-    private customGoalObject addingCustomGoal;
+    private goals addGoal;
+    private goals addingCustomGoal;
     private boolean flag;
     private static final String TAG = "ConnectionClass";
     LoginFragment obj = new LoginFragment();
@@ -107,12 +108,12 @@ public class Connection {
 
     public boolean addUserGoal(userGoalObject addingGoal) {
         flag = false;
-        addGoal = new userGoalObject();
+        addGoal = new goals();
         goalsService service = StaticClass.retrofit.create(goalsService.class);
-        final Call<userGoalObject> addGoalCall = service.addingGoal(addingGoal);
-        addGoalCall.enqueue(new Callback<userGoalObject>() {
+        final Call<goals> addGoalCall = service.addingGoal(addingGoal);
+        addGoalCall.enqueue(new Callback<goals>() {
             @Override
-            public void onResponse(Call<userGoalObject> call, Response<userGoalObject> response) {
+            public void onResponse(Call<goals> call, Response<goals> response) {
                 if (!response.isSuccessful()) {
 
                 } else {
@@ -122,7 +123,7 @@ public class Connection {
             }
 
             @Override
-            public void onFailure(Call<userGoalObject> call, Throwable t) {
+            public void onFailure(Call<goals> call, Throwable t) {
 
             }
         });
@@ -135,22 +136,22 @@ public class Connection {
 
     public boolean addCustomGoal(customGoalObject addCustomGoal) {
         flag = false;
-        addingCustomGoal = new customGoalObject();
+        addingCustomGoal = new goals();
         goalsService service = StaticClass.retrofit.create(goalsService.class);
-        final Call<returnGoalObject> customGoalObjectCall = service.addingCustomGoal(addCustomGoal);
-        customGoalObjectCall.enqueue(new Callback<returnGoalObject>() {
+        final Call<goals> customGoalObjectCall = service.addingCustomGoal(addCustomGoal);
+        customGoalObjectCall.enqueue(new Callback<goals>() {
             @Override
-            public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response) {
+            public void onResponse(Call<goals> call, Response<goals> response) {
                 if (!response.isSuccessful()) {
 
                 } else {
-                    goalsList = response.body();
+                   addingCustomGoal = response.body();
                     flag = true;
                 }
             }
 
             @Override
-            public void onFailure(Call<returnGoalObject> call, Throwable t) {
+            public void onFailure(Call<goals> call, Throwable t) {
 
             }
         });

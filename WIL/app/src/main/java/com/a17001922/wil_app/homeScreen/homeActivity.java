@@ -30,7 +30,8 @@ public class homeActivity extends AppCompatActivity
         Fragment goalsfragment = new goalsFragment();
         goalsfragment.setArguments(username);
         adapter = new TabAdapter(getSupportFragmentManager());
-        adapter.addFragment(goalsfragment, "Goals");
+        adapter.addFragment(new viewGoalsFragment(),"view Goals");
+        adapter.addFragment(goalsfragment, "Add Goals");
         adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
         adapter.addFragment(new PlannerFragment(),"Planner");
         adapter.addFragment(new uploadDocsFragment(),"Upload");

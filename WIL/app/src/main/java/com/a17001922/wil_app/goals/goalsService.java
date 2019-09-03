@@ -2,6 +2,7 @@ package com.a17001922.wil_app.goals;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface goalsService {

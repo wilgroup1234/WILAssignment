@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
+import com.a17001922.wil_app.homeScreen.PlannerFragment;
 import com.a17001922.wil_app.homeScreen.homeActivity;
 
 public class mainLogin extends AppCompatActivity
@@ -42,6 +43,7 @@ public class mainLogin extends AppCompatActivity
             Log.e(TAG,"we added login");
             adapter.addFragment(new RegisterFragments(),"REGISTER");
             Log.e(TAG,"Added register");
+           // adapter.addFragment(new PlannerFragment(),"Planner");
             viewPager.setAdapter(adapter);
             Log.e(TAG,"set the adapter");
             tabLayout.setupWithViewPager(viewPager);
