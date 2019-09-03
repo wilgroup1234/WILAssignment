@@ -28,6 +28,7 @@ namespace WebApplication1.Controllers
         //Get User Steps                  https://localhost:44317/api/values/PostUserSteps
         //Update Gratitude                https://localhost:44317/api/values/PostUpdateGratitude
         //Get User Gratitude              https://localhost:44317/api/values/PostUserGratitude
+        //Get All Goals                   https://localhost:44317/api/values/GetAllGoals
 
         private WILModel db = new WILModel();
 
@@ -1228,6 +1229,27 @@ namespace WebApplication1.Controllers
             return returnMessage;
 
 
+        }
+
+
+        [Route("api/values/GetAllGoals")]
+        [HttpGet]
+        public List<Goal> GetAllGoals()
+        {
+            List<Goal> goalList = new List<Goal>();
+
+            foreach(Goal goal in db.Goals)
+            {
+                Goal goal1 = new Goal
+                {
+                    GoalID = goal.GoalID,
+                    GoalName = goal.GoalName,
+                    GoalDescription = goal.GoalDescription
+                };
+                goalList.Add(goal);
+            }
+
+            return goalList;
         }
 
 
