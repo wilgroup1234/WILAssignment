@@ -1,5 +1,7 @@
 package com.a17001922.wil_app.goals;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -21,5 +23,6 @@ public interface goalsService {
     @POST("https://api/values/PostMarkOffNormalGoal")
     Call<returnGoalObject> markOfCustomGoal(@Body userGoalObject markoffGoal);
 
-
+    @GET("https://api/values/GetAllGoals")
+    Call<List<goals>>getAllGoals();
 }
