@@ -12,8 +12,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".homeScreen.addCustomGoalScreen"></activity>
         <activity android:name=".homeScreen.addNormalGoalScreen" />
-        <activity android:name=".homeScreen.addNormalGoalActivity" />
-        <activity android:name=".homeScreen.addCustomGoalActivity" />
         <activity android:name=".LoginScreen.mainLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

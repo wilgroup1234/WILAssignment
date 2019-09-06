@@ -12,10 +12,10 @@ public interface goalsService {
     Call<returnGoalObject> getGoalsList(@Body userGoalObject Goals);
 
     @POST("https://api/values/PostAddNormalGoal")
-    Call<goals> addingGoal(@Body userGoalObject usersGoal);
+    Call<userGoalObject> addingGoal(@Body userGoalObject usersGoal);
 
     @POST("https://api/values/PostAddCustomGoal")
-    Call<goals> addingCustomGoal(@Body customGoalObject customsGoal);
+    Call<userGoalObject> addingCustomGoal(@Body customGoalObject customsGoal);
 
     @POST("https://api/values/PostMarkOffCustomGoal")
     Call<returnGoalObject> markOfCustomGoal(@Body customGoalObject markoffGoal);

@@ -6,4 +6,23 @@
     android:layout_height="match_parent"
     tools:context="com.a17001922.wil_app.homeScreen.addNormalGoalScreen">
 
+    <Spinner
+        android:id="@+id/cmbListOfGoals"
+        android:layout_width="386dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="156dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddGoalScreen"
+        android:layout_width="128dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="192dp"
+        android:text="Add Goal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cmbListOfGoals" />
 </android.support.constraint.ConstraintLayout>

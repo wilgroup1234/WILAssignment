@@ -11,6 +11,7 @@ import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.customGoalObject;
 import com.a17001922.wil_app.goals.goals;
 import com.a17001922.wil_app.goals.goalsService;
+import com.a17001922.wil_app.goals.userGoalObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +20,7 @@ import retrofit2.Response;
 public class addCustomGoalScreen extends AppCompatActivity {
         Button btnCustomGoal;
         EditText et_GoalName,et_GoalDescription;
-    private goals addingCustomGoal;
+    private userGoalObject addingCustomGoal;
     private boolean flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +44,12 @@ public class addCustomGoalScreen extends AppCompatActivity {
                 pushingGoal.setGoalDescription(goalDescription);
 
                 try{
-                    addingCustomGoal = new goals();
+                    addingCustomGoal = new userGoalObject();
                     goalsService service = StaticClass.retrofit.create(goalsService.class);
-                    final Call<goals> customGoalObjectCall = service.addingCustomGoal(pushingGoal);
-                    customGoalObjectCall.enqueue(new Callback<goals>() {
+                    final Call<userGoalObject> customGoalObjectCall = service.addingCustomGoal(pushingGoal);
+                    customGoalObjectCall.enqueue(new Callback<userGoalObject>() {
                         @Override
-                        public void onResponse(Call<goals> call, Response<goals> response) {
+                        public void onResponse(Call<userGoalObject> call, Response<userGoalObject> response) {
                             if (!response.isSuccessful()) {
 
                             } else {
@@ -58,7 +59,7 @@ public class addCustomGoalScreen extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<goals> call, Throwable t) {
+                        public void onFailure(Call<userGoalObject> call, Throwable t) {
 
                         }
                     });
