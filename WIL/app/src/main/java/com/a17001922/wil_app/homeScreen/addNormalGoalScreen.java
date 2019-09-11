@@ -38,76 +38,80 @@ public class addNormalGoalScreen extends AppCompatActivity {
         final goalsService service = StaticClass.retrofit.create(goalsService.class);
         final Call<List<goals>> getGoals = service.getAllGoals();
 
+        try {
+            getGoals.enqueue(new Callback<List<goals>>() {
+                @Override
+                public void onResponse(Call<List<goals>> call, Response<List<goals>> response) {
+                    if (!response.isSuccessful()) {
 
-        getGoals.enqueue(new Callback<List<goals>>() {
-            @Override
-            public void onResponse(Call<List<goals>> call, Response<List<goals>> response) {
-                if (!response.isSuccessful()) {
-
-                } else {
-                    allListedGoals = response.body();
-                    if (allListedGoals == null) {
-                        Toast.makeText(getApplicationContext(), "Unfortunately we had an error retrieving the list of goals to choose from.", Toast.LENGTH_SHORT).show();
                     } else {
+                        allListedGoals = response.body();
+                        if (allListedGoals == null) {
+                            Toast.makeText(getApplicationContext(), "Unfortunately we had an error retrieving the list of goals to choose from.", Toast.LENGTH_SHORT).show();
+                        } else {
 
-                        flag = true;
+                            flag = true;
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<goals>> call, Throwable t) {
-
-            }
-        });
-        if (flag) {
-            for (goals item : allListedGoals) {
-                arrGoals.add(item.getGoalName());
-            }
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrGoals);
-            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            cmbListOfGoals.setAdapter(arrayAdapter);
-
-            btnAddGoals.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    flag = false;
-                    userGoalObject usersGoal = new userGoalObject();
-                    String goalName = cmbListOfGoals.getSelectedItem().toString();
-                    for (goals item : allListedGoals) {
-                        if (item.getGoalName().equals(goalName)) {
-                            int goalID = item.getGoalID();
-                            usersGoal.setEmail(StaticClass.currentUser);
-                            usersGoal.setGoalId((goalID + "").trim());
-                            flag =true;
-                        }
-                    }if(flag)
-                    {
-                        Call<userGoalObject> addingGoal = service.addingGoal(usersGoal);
-                        addingGoal.enqueue(new Callback<userGoalObject>() {
-                            @Override
-                            public void onResponse(Call<userGoalObject> call, Response<userGoalObject> response) {
-                                if(response.isSuccessful()){
-                                    Toast.makeText(addNormalGoalScreen.this, "New Goal Added successfully", Toast.LENGTH_LONG).show();
-                                    finalFlag=true;
-
-                                }else{
-                                    Toast.makeText(addNormalGoalScreen.this, "we Encountered an error with adding your goal please try again later" +
-                                            " or make sure you connected to the internet", Toast.LENGTH_LONG).show();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<userGoalObject> call, Throwable t) {
-                                Toast.makeText(addNormalGoalScreen.this, "we Encountered an error with adding your goal please try again later" +
-                                        " or make sure you connected to the internet as we had trouble connecting to our services", Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                    }
+                public void onFailure(Call<List<goals>> call, Throwable t) {
 
                 }
             });
+            if (flag) {
+                for (goals item : allListedGoals) {
+                    arrGoals.add(item.getGoalName());
+                }
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrGoals);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                cmbListOfGoals.setAdapter(arrayAdapter);
+
+                btnAddGoals.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        flag = false;
+                        userGoalObject usersGoal = new userGoalObject();
+                        String goalName = cmbListOfGoals.getSelectedItem().toString();
+                        for (goals item : allListedGoals) {
+                            if (item.getGoalName().equals(goalName)) {
+                                int goalID = item.getGoalID();
+                                usersGoal.setEmail(StaticClass.currentUser);
+                                usersGoal.setGoalId((goalID + "").trim());
+                                flag = true;
+                            }
+                        }
+                        if (flag) {
+                            Call<userGoalObject> addingGoal = service.addingGoal(usersGoal);
+                            addingGoal.enqueue(new Callback<userGoalObject>() {
+                                @Override
+                                public void onResponse(Call<userGoalObject> call, Response<userGoalObject> response) {
+                                    if (response.isSuccessful()) {
+                                        Toast.makeText(addNormalGoalScreen.this, "New Goal Added successfully", Toast.LENGTH_LONG).show();
+                                        finalFlag = true;
+
+                                    } else {
+                                        Toast.makeText(addNormalGoalScreen.this, "we Encountered an error with adding your goal please try again later" +
+                                                " or make sure you connected to the internet", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<userGoalObject> call, Throwable t) {
+                                    Toast.makeText(addNormalGoalScreen.this, "we Encountered an error with adding your goal please try again later" +
+                                            " or make sure you connected to the internet as we had trouble connecting to our services", Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                        }
+
+                    }
+                });
+            }
+        } catch (Exception e) {
+            Toast.makeText(addNormalGoalScreen.this, "we Encountered an exception with adding your goal please try again later" +
+                    " or make sure you connected to the internet as we had trouble connecting to our services", Toast.LENGTH_LONG).show();
         }
     }
 }
