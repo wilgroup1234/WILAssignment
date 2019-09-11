@@ -106,7 +106,7 @@ public class Connection {
 
     //________Add User Goal__________
 
-    public boolean addUserGoal(userGoalObject addingGoal) {
+    /*public boolean addUserGoal(userGoalObject addingGoal) {
         flag = false;
         addGoal = new goals();
         goalsService service = StaticClass.retrofit.create(goalsService.class);
@@ -158,6 +158,6 @@ public class Connection {
 
         return flag;
     }
-
+*/
 
 }
