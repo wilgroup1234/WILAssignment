@@ -29,6 +29,9 @@ namespace WebApplication1.Controllers
         //Update Gratitude                https://localhost:44317/api/values/PostUpdateGratitude
         //Get User Gratitude              https://localhost:44317/api/values/PostUserGratitude
         //Get All Goals                   https://localhost:44317/api/values/GetAllGoals
+        //Get user lifeskills             https://localhost:44317/api/values/PostRetrieveLifeSkills
+        //Mark off life skill             https://localhost:44317/api/values/PostMarkOffLifeSkill
+
 
         private WILModel db = new WILModel();
 
@@ -873,8 +876,6 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ReturnMessageObject PostUpdateStreak(LoginUserObject loginUserObject)
         {
-
-            bool valid;
             String userEmail;
             int userSearchID = 0;
             ReturnMessageObject returnMessage = new ReturnMessageObject();
@@ -895,17 +896,35 @@ namespace WebApplication1.Controllers
             try
             {
                 Boolean updateStreak = false;
+                Boolean setToZero = false;
 
                 DateTime today = DateTime.Today;
+
+                //Check if user streak must be updated or set to 0;
 
                 foreach (UserLoginDate userLoginDate in db.UserLoginDates)
                 {
                     if (userLoginDate.UserID == userSearchID && userLoginDate.UserLoginDate1 != today)
                     {
+
+                        if ((today - userLoginDate.UserLoginDate1).TotalDays < 2)
+                        {
+
+                        }
+                        else
+                        {
+                            setToZero = true;
+                        }
+
                         userLoginDate.UserLoginDate1 = today;
                         updateStreak = true;
                     }
+
+                   
                 }
+
+
+
 
                 db.SaveChanges();
 
@@ -915,7 +934,15 @@ namespace WebApplication1.Controllers
                     {
                         if (streak.UserID == userSearchID)
                         {
-                            streak.StreakLength = streak.StreakLength + 1;
+                            if (setToZero)
+                            {
+                                streak.StreakLength = 0;
+                            }
+                            else
+                            {
+                                streak.StreakLength = streak.StreakLength + 1;
+                            }
+                            
                         }
                     }
                 }
