@@ -1260,8 +1260,8 @@ namespace WebApplication1.Controllers
 
 
         [Route("api/values/GetAllGoals")]
-        [HttpGet]
-        public List<Goal> GetAllGoals()
+        [HttpPost]
+        public ReturnGoalObject GetAllGoals()
         {
             List<Goal> goalList = new List<Goal>();
 
@@ -1273,10 +1273,13 @@ namespace WebApplication1.Controllers
                     GoalName = goal.GoalName,
                     GoalDescription = goal.GoalDescription
                 };
-                goalList.Add(goal);
+                goalList.Add(goal1);
             }
 
-            return goalList;
+            ReturnGoalObject returnGoalObject = new ReturnGoalObject();
+            returnGoalObject.goalList = goalList;
+
+            return returnGoalObject;
         }
 
 
