@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.a17001922.wil_app.Connection;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.homeScreen.homeActivity;

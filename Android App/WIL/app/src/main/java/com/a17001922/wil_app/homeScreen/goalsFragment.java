@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.a17001922.wil_app.Connection;
 import com.a17001922.wil_app.LoginScreen.mainLogin;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
@@ -57,8 +56,6 @@ public class goalsFragment extends Fragment
     {
         super.onStart();
 
-
-
         btnAddGoals = v.findViewById(R.id.btn_AddGoal);
         btnAddCustomGoals = v.findViewById(R.id.btn_AddCustomGoal);
         btnViewGoals = v.findViewById(R.id.btn_ViewGoals);
@@ -74,6 +71,22 @@ public class goalsFragment extends Fragment
             }
         });
 
+        btnAddCustomGoals.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent i = new Intent(getActivity().getApplicationContext(),addCustomGoalScreen.class);
+                startActivity(i);
+            }
+        });
+        btnAddGoals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(),addNormalGoalScreen.class);
+                startActivity(i);
+            }
+        });
 
 
     }
@@ -86,9 +99,23 @@ public class goalsFragment extends Fragment
         String type = sharedPreferences.getString(StaticClass.LOGGED_IN_TYPE, "");
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(StaticClass.LOGGED_IN_USER, false);
-        editor.commit();
 
-        googleSignOut();
+        if (type.equals("google"))
+        {
+            try
+            {
+                GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestEmail()
+                        .build();
+                GoogleSignInClient gSignInClient = GoogleSignIn.getClient(getActivity().getApplicationContext(), googleSignInOptions);
+
+                gSignInClient.signOut();
+            }
+            catch(NullPointerException e)
+            {
+                e.printStackTrace();
+            }
+        }
 
         Toast.makeText(getActivity().getApplicationContext(), "Signed Out...", Toast.LENGTH_LONG).show();
 
@@ -102,52 +129,6 @@ public class goalsFragment extends Fragment
         Intent intent = new Intent(getActivity().getApplicationContext(), mainLogin.class);
         StaticClass.currentUser = "No_User";
         startActivity(intent);
-    }
-
-
-    private void googleSignOut()
-    {
-
-        try
-        {
-            gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestEmail()
-                    .build();
-
-            mGoogleSignInClient = GoogleSignIn.getClient(getActivity().getApplicationContext(), gso);
-
-            mGoogleSignInClient.signOut()
-                    .addOnCompleteListener((Activity) getActivity().getApplicationContext(), new OnCompleteListener<Void>()
-                    {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task)
-                        {
-
-                        }
-                    });
-
-
-
-                try
-                {
-                    GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                            .requestEmail()
-                            .build();
-                    GoogleSignInClient gSignInClient = GoogleSignIn.getClient(getActivity().getApplicationContext(), googleSignInOptions);
-
-                    gSignInClient.signOut();
-                }
-                catch(NullPointerException e)
-                {
-                    e.printStackTrace();
-                }
-
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-
     }
 
 
