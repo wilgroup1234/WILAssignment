@@ -22,6 +22,8 @@
         <activity android:name=".LoginScreen.mainLogin" />
         <activity android:name=".LoginScreen.RegisterFragments" />
         <activity android:name=".homeScreen.homeActivity" />
+        <activity android:name=".homeScreen.addNormalGoalScreen" />
+        <activity android:name=".homeScreen.addCustomGoalScreen" />
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
