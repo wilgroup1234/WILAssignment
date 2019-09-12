@@ -16,24 +16,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ecf85ec-acd2-4ee8-8f20-6abc9a92fd5a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/customGoalObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/customGoalObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WIL/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WIL/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/LoginScreen/ReturnMessageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/LoginScreen/ReturnMessageObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/goals/customGoalObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/goals/customGoalObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/goals/goals.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/goals/Goal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/goals/goalsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/goals/goalsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/goals/returnGoalObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/goals/returnGoalObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/homeScreen/goalsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/homeScreen/goalsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/StaticClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/StaticClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/homeScreen/viewGoalsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/java/com/a17001922/wil_app/homeScreen/viewGoalsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../WIL/app/src/main/res/layout/activity_add_custom_goal_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../WIL/app/src/main/res/layout/activity_add_custom_goal_screen.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -470,7 +456,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49808428" visible="true" weight="0.2577121" />

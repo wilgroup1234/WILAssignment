@@ -51,9 +51,13 @@ public class viewGoalsFragment extends Fragment {
                         goalsArrayList = (ArrayList<Goal>) goalsList.getGoalList();
                         goalsRecycler = v.findViewById(R.id.listViewGoals);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+
                         goalsRecycler.setLayoutManager(layoutManager);
+                        Log.d(TAG,"OnResponse: Layout manager done");
                         adapter = new CityAdapter(goalsArrayList);
+                        Log.d(TAG,"OnResponse: adapter created");
                         goalsRecycler.setAdapter(adapter);
+                        Log.d(TAG,"OnResponse: adapter set");
                     }
                 }
 

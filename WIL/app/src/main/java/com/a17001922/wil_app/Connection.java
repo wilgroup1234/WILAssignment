@@ -8,7 +8,7 @@ import com.a17001922.wil_app.LoginScreen.RegisterUserObject;
 import com.a17001922.wil_app.dailyQuote.DailyObject;
 import com.a17001922.wil_app.dailyQuote.DailyQuoteService;
 import com.a17001922.wil_app.goals.customGoalObject;
-import com.a17001922.wil_app.goals.goals;
+import com.a17001922.wil_app.goals.Goal;
 import com.a17001922.wil_app.goals.goalsService;
 import com.a17001922.wil_app.goals.returnGoalObject;
 import com.a17001922.wil_app.goals.userGoalObject;
@@ -25,11 +25,13 @@ public class Connection {
     // #TODO IN ORDER TO TEST API LOCALLY CHANGE THE PORTION UNDER THIS TEXT TO YOUR MACHINES API ADDRESS
 
 
-    private boolean registerAuth = false;
+   /* private boolean registerAuth = false;
     private DailyObject Quote;
     private returnGoalObject goalsList;
-    private goals addGoal;
-    private goals addingCustomGoal;
+    private Goal addGoal;
+    //<editor-fold desc="Description">
+    private Goal addingCustomGoal;
+    //</editor-fold>
     private boolean flag;
     private static final String TAG = "ConnectionClass";
     LoginFragment obj = new LoginFragment();
@@ -159,5 +161,6 @@ public class Connection {
         return flag;
     }
 */
+
 
 }
