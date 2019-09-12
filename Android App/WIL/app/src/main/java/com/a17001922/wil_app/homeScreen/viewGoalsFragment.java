@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
-import com.a17001922.wil_app.goals.goals;
+import com.a17001922.wil_app.goals.Goal;
 import com.a17001922.wil_app.goals.goalsService;
 import com.a17001922.wil_app.goals.returnGoalObject;
 import com.a17001922.wil_app.goals.userGoalObject;
@@ -29,7 +29,7 @@ public class viewGoalsFragment extends Fragment {
     private final String TAG="View Goals Page";
     returnGoalObject goalsList =new returnGoalObject();
     userGoalObject userGoals = new userGoalObject();
-    ArrayList<goals> goalsArrayList= new ArrayList<>();
+    ArrayList<Goal> goalsArrayList= new ArrayList<>();
     boolean flag = false;
     RecyclerView.Adapter adapter;
     private RecyclerView goalsRecycler;
@@ -48,7 +48,7 @@ public class viewGoalsFragment extends Fragment {
 
                     } else {
                         goalsList = response.body();
-                        goalsArrayList = (ArrayList<goals>) goalsList.getGoalList();
+                        goalsArrayList = (ArrayList<Goal>) goalsList.getGoalList();
                         flag = true;
                     }
                 }
@@ -58,6 +58,7 @@ public class viewGoalsFragment extends Fragment {
 
                 }
             });
+
 
             if (flag){
                 goalsRecycler = v.findViewById(R.id.listViewGoals);

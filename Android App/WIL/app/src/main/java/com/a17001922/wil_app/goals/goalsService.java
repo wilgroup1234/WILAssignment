@@ -5,8 +5,11 @@ import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.homeScreen.GratitudeObject;
 import com.a17001922.wil_app.homeScreen.UserStepsObject;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface goalsService
@@ -15,10 +18,13 @@ public interface goalsService
     Call<returnGoalObject> getGoalsList(@Body userGoalObject Goals);
 
     @POST("api/values/PostAddNormalGoal")
-    Call<userGoalObject> addingGoal(@Body userGoalObject usersGoal);
+    Call<ReturnMessageObject> addingGoal(@Body userGoalObject usersGoal);
+
+    @POST("api/values/GetAllGoals")
+    Call<returnGoalObject> getAllGoals();
 
     @POST("api/values/PostAddCustomGoal")
-    Call<returnGoalObject> addingCustomGoal(@Body customGoalObject customsGoal);
+    Call<ReturnMessageObject> addingCustomGoal(@Body customGoalObject customsGoal);
 
     @POST("api/values/PostMarkOffCustomGoal")
     Call<returnGoalObject> markOfCustomGoal(@Body customGoalObject markoffGoal);

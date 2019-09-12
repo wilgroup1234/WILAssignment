@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.a17001922.wil_app.R;
-import com.a17001922.wil_app.goals.goals;
+import com.a17001922.wil_app.goals.Goal;
 
 import java.util.ArrayList;
 
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
 
-    private ArrayList<goals> goals;
+    private ArrayList<Goal> goals;
 
-    public CityAdapter(ArrayList<goals> goals) {
+    public CityAdapter(ArrayList<Goal> goals) {
         this.goals = goals;
     }
 
@@ -31,7 +31,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        goals goal = goals.get(position);
+        Goal goal = goals.get(position);
 
         holder.name.setText(goal.getGoalName());
         holder.description.setText(goal.getGoalDescription());
