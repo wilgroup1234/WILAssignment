@@ -71,14 +71,15 @@ public class goalsFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(getActivity().getApplicationContext(),addCustomGoalActivity.class);
+                Intent i = new Intent(getActivity().getApplicationContext(),addCustomGoalScreen
+                        .class);
                 startActivity(i);
             }
         });
         btnAddGoals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(),addNormalGoalActivity.class);
+                Intent i = new Intent(getActivity().getApplicationContext(),addNormalGoalScreen.class);
                 startActivity(i);
             }
         });

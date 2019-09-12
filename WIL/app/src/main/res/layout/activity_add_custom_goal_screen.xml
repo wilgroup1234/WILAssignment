@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/et_goalDate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.a17001922.wil_app.homeScreen.addCustomGoalScreen">
+
+    <Button
+        android:id="@+id/btnCreateCustomGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Add Custom Goal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dp_customGoalDatePicker" />
+
+    <EditText
+        android:id="@+id/et_CustomGoalName"
+        android:layout_width="352dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="164dp"
+        android:ems="10"
+        android:hint="Goal Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.271"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_CustomGoalDescription"
+        android:layout_width="365dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Goal Description"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_CustomGoalName" />
+
+
+    <DatePicker
+        android:id="@+id/dp_customGoalDatePicker"
+        android:layout_width="276dp"
+        android:layout_height="134dp"
+        android:layout_marginTop="24dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPickEndDate" />
+
+    <TextView
+        android:id="@+id/txtPickEndDate"
+        android:layout_width="326dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="44dp"
+        android:text="Pick goal end date below"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_CustomGoalDescription" />
+
+
+</android.support.constraint.ConstraintLayout>

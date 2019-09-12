@@ -1,6 +1,6 @@
 package com.a17001922.wil_app.goals;
 
-public class goals {
+public class Goal {
     protected int goalID;
     protected String goalName;
     protected String goalDescription;

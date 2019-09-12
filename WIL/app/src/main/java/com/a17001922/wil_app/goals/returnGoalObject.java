@@ -6,13 +6,13 @@ import java.util.List;
 
 
 public class returnGoalObject {
-    protected List<goals> goalList;
+    protected List<Goal> goalList;
 
-    public List<goals> getGoalList() {
+    public List<Goal> getGoalList() {
         return goalList;
     }
 
-    public void setGoalList(List<goals> goalList) {
+    public void setGoalList(List<Goal> goalList) {
         this.goalList = goalList;
     }
 }

@@ -18,12 +18,12 @@ public class ReturnMessageObject
         this.result = successfulExecution;
     }
 
-    public String getLoginMessage()
+    public String getErrorMessage()
     {
         return errorMessage;
     }
 
-    public void setLoginMessage(String loginMessage)
+    public void setErrorMessage(String loginMessage)
     {
         this.errorMessage = loginMessage;
     }
