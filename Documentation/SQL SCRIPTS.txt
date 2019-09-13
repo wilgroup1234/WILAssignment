@@ -134,7 +134,7 @@ ALTER TABLE CustomUserGoals
 
  ALTER TABLE CustomUserGoals
   ADD CONSTRAINT FK_GoalID2
-   FOREIGN KEY (GoalID) REFERENCES Goals(GoalID);
+   FOREIGN KEY (GoalID) REFERENCES CustomGoals(GoalID);
 
 
  ALTER TABLE DailyQuote

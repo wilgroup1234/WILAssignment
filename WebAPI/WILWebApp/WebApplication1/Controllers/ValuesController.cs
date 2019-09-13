@@ -412,15 +412,14 @@ namespace WebApplication1.Controllers
 
                 List<CustomGoal> cgList = new List<CustomGoal>();
 
-                foreach(CustomGoal cg in db.CustomGoals)
+                int customGoalID = 0;
+
+                foreach (CustomGoal cg in db.CustomGoals)
                 {
-                    cgList.Add(cg);
-                    count++;
+                    customGoalID = cg.GoalID;
                 }
 
-                CustomGoal tempgoal = cgList[(count-1)];
-
-                int customGoalID = tempgoal.GoalID;
+                
 
                 newUserGoal.UserID = userID;
                 newUserGoal.Completed = 0;
@@ -597,7 +596,7 @@ namespace WebApplication1.Controllers
         public ReturnLifeSkillsObject PostRetrieveLifeSkills(LifeSkillObject lifeSkillObject)
         {
             ReturnLifeSkillsObject returnlifeskills = new ReturnLifeSkillsObject();
-            List<LifeSkill> lifeskillsList = new List<LifeSkill>();
+            List<LifeSkillObject> lifeskillsList = new List<LifeSkillObject>();
             String userEmail = lifeSkillObject.Email;
             int userID = 0;
 
@@ -610,19 +609,37 @@ namespace WebApplication1.Controllers
                 }
             }
 
-            //search and add goals for user
+            //search and add life skills for user
             foreach (UserLifeSkill userlifeskill in db.UserLifeSkills)
             {
                 if (userlifeskill.UserID == userID)
                 {
-                    
+                    Boolean completed = false;
+
+                    if (userlifeskill.UserID == userID)
+                    {
+                        if (userlifeskill.Completed == 1)
+                        {
+                            completed = true;
+                        }
+                    }
+
                     LifeSkill searchLifeSkill = db.LifeSkills.FirstOrDefault(l => l.LifeSkillID == userlifeskill.LifeSKillID);
 
-                    LifeSkill lo = new LifeSkill
+                    LifeSkillObject lo = new LifeSkillObject
                     {
                         LifeSkillID = searchLifeSkill.LifeSkillID,
                         LifeSkillName = searchLifeSkill.LifeSkillName
                     };
+
+                    if (completed)
+                    {
+                        lo.Completed = 1;
+                    }
+                    else
+                    {
+                        lo.Completed = 0;
+                    }
                     
                     lifeskillsList.Add(lo);
                 }

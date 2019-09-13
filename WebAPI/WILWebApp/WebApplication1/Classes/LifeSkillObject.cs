@@ -10,5 +10,9 @@ namespace WebApplication1.Classes
         public String Email { get; set; }
 
         public int LifeSkillID { get; set; }
+
+        public String LifeSkillName { get; set; }
+
+        public int Completed { get; set; }
     }
 }
