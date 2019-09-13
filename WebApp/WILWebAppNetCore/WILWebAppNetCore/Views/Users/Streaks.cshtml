@@ -1,0 +1,49 @@
+﻿@model WILWebAppNetCore.Classes.UserStreak
+@using WILWebAppNetCore.Classes
+
+@{
+    ViewData["Title"] = "Streaks";
+}
+
+<h2>Streaks</h2>
+
+
+<br>
+<br>
+
+<h3 align="center"> These are the User Streaks:</h3>
+
+
+@{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Streak)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (UserStreak streak in ViewBag.StreaksList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => streak.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => streak.Streak)
+                    </td>
+                    
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
