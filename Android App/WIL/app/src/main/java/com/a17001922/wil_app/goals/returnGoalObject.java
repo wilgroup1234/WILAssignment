@@ -5,7 +5,7 @@ import java.util.List;
 // #TODO THIS IS THE LIST OF GOALS THAT WE RETRIEVE FROM THE DATABASE FOR A GIVEN USER
 
 
-public class returnGoalObject
+public class ReturnGoalObject
 {
     private List<Goal> goalList;
 

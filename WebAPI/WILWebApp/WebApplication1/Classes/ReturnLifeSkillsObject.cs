@@ -8,6 +8,6 @@ namespace WebApplication1.Classes
 {
     public class ReturnLifeSkillsObject
     {
-        public List<LifeSkill> LifeSkillsList { get; set; }
+        public List<LifeSkillObject> LifeSkillsList { get; set; }
     }
 }

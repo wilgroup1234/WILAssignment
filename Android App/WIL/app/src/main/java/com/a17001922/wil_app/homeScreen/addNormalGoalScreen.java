@@ -16,7 +16,7 @@ import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.Goal;
 import com.a17001922.wil_app.goals.Goal;
 import com.a17001922.wil_app.goals.goalsService;
-import com.a17001922.wil_app.goals.returnGoalObject;
+import com.a17001922.wil_app.goals.ReturnGoalObject;
 import com.a17001922.wil_app.goals.userGoalObject;
 
 import java.util.ArrayList;
@@ -51,18 +51,18 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
 
 
 
-        final Call<returnGoalObject> getGoals = service.getAllGoals();
+        final Call<ReturnGoalObject> getGoals = service.getAllGoals();
 
         try
         {
-            getGoals.enqueue(new Callback<returnGoalObject>()
+            getGoals.enqueue(new Callback<ReturnGoalObject>()
             {
                 @Override
-                public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response)
+                public void onResponse(Call<ReturnGoalObject> call, Response<ReturnGoalObject> response)
                 {
                     if (response.isSuccessful())
                     {
-                        returnGoalObject returnGoalObject = response.body();
+                        ReturnGoalObject returnGoalObject = response.body();
 
                         allListedGoals = returnGoalObject.getGoalList();
 
@@ -94,7 +94,7 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
                 }
 
                 @Override
-                public void onFailure(Call<returnGoalObject> call, Throwable t)
+                public void onFailure(Call<ReturnGoalObject> call, Throwable t)
                 {
 
                 }
@@ -102,57 +102,57 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
 
 
 
-                btnAddGoals.setOnClickListener(new View.OnClickListener()
+            btnAddGoals.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
                 {
-                    @Override
-                    public void onClick(View v)
+                    userGoalObject usersGoal = new userGoalObject();
+                    usersGoal.setEmail(StaticClass.currentUser);
+
+                    String goalName = cmbListOfGoals.getSelectedItem().toString();
+
+                    String[] parts = goalName.split("-");
+                    String goalid = parts[0];
+
+                    usersGoal.setGoalId(goalid);
+
+                    Call<ReturnMessageObject> addingGoal = service.addingGoal(usersGoal);
+                    addingGoal.enqueue(new Callback<ReturnMessageObject>()
                     {
-                        userGoalObject usersGoal = new userGoalObject();
-                        usersGoal.setEmail(StaticClass.currentUser);
-
-                        String goalName = cmbListOfGoals.getSelectedItem().toString();
-
-                        String[] parts = goalName.split("-");
-                        String goalid = parts[0];
-
-                        usersGoal.setGoalId(goalid);
-
-                            Call<ReturnMessageObject> addingGoal = service.addingGoal(usersGoal);
-                            addingGoal.enqueue(new Callback<ReturnMessageObject>()
+                        @Override
+                        public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                        {
+                            if (response.isSuccessful())
                             {
-                                @Override
-                                public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                                ReturnMessageObject returnMessage = response.body();
+
+                                if(returnMessage.getResult())
                                 {
-                                    if (response.isSuccessful())
-                                    {
-                                        ReturnMessageObject returnMessage = response.body();
-
-                                        if(returnMessage.getResult())
-                                        {
-                                            Toast.makeText(getApplicationContext(), "Goal added",Toast.LENGTH_LONG);
-                                            Log.e(TAG, "goal added: " + returnMessage.getErrorMessage());
-                                        }
-                                        else
-                                        {
-                                            Log.e(TAG, "error: goal not added: " + returnMessage.getErrorMessage());
-                                        }
-
-
-                                    }
+                                    Toast.makeText(getApplicationContext(), "Goal added",Toast.LENGTH_LONG);
+                                    Log.e(TAG, "goal added: " + returnMessage.getErrorMessage());
+                                }
+                                else
+                                {
+                                    Log.e(TAG, "error: goal not added: " + returnMessage.getErrorMessage());
                                 }
 
-                                @Override
-                                public void onFailure(Call<ReturnMessageObject> call, Throwable t)
-                                {
-                                    Toast.makeText(getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG);
-                                    Log.e(TAG, " OnFailure error: can't connect");
-                                }
-                            });
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+                        {
+                            Toast.makeText(getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG);
+                            Log.e(TAG, " OnFailure error: can't connect");
+                        }
+                    });
 
 
 
-                    }
-                });
+                }
+            });
 
         }
         catch (Exception e)

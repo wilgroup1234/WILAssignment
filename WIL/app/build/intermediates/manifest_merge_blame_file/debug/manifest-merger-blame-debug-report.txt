@@ -1,0 +1,118 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.a17001922.wil_logins"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+11-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:28:5-80
+11-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:28:22-77
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:29:5-67
+12-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:29:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:30:5-79
+13-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:30:22-76
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:32:5-81
+14-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:32:22-78
+15
+16    <application
+16-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:6:5-27:19
+17        android:allowBackup="true"
+17-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:7:9-35
+18        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+18-->[com.android.support:support-compat:28.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\895559d2bf708e950c8f9daa6bb1fb41\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+19        android:debuggable="true"
+20        android:icon="@mipmap/ic_launcher"
+20-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:8:9-43
+21        android:label="LOGIN"
+21-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:9:9-30
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:10:9-54
+23        android:supportsRtl="true"
+23-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:11:9-35
+24        android:testOnly="true"
+25        android:theme="@style/AppTheme"
+25-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:12:9-40
+26        android:usesCleartextTraffic="true" >
+26-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:13:9-44
+27        <activity android:name="com.a17001922.wil_app.homeScreen.Pedometer" />
+27-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:14:9-67
+27-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:14:19-55
+28        <activity android:name="com.a17001922.wil_logins.Start" >
+28-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:15:9-21:20
+28-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:15:19-64
+29            <intent-filter>
+29-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:16:13-20:29
+30                <action android:name="android.intent.action.MAIN" />
+30-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:17:17-69
+30-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:17:25-66
+31
+32                <category android:name="android.intent.category.LAUNCHER" />
+32-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:19:17-77
+32-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:19:27-74
+33            </intent-filter>
+34        </activity>
+35        <activity android:name="com.a17001922.wil_app.LoginScreen.mainLogin" />
+35-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:22:9-59
+35-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:22:19-56
+36        <activity android:name="com.a17001922.wil_app.LoginScreen.RegisterFragments" />
+36-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:23:9-67
+36-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:23:19-64
+37        <activity android:name="com.a17001922.wil_app.homeScreen.homeActivity" />
+37-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:24:9-61
+37-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:24:19-58
+38        <activity android:name="com.a17001922.wil_app.homeScreen.addNormalGoalScreen" />
+38-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:25:9-68
+38-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:25:19-65
+39        <activity android:name="com.a17001922.wil_app.homeScreen.addCustomGoalScreen" />
+39-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:26:9-68
+39-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\WIL\app\src\main\AndroidManifest.xml:26:19-65
+40        <activity
+40-->[com.google.android.gms:play-services-auth:16.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\55824029a8db6a90a24ba6eb891ed1e7\play-services-auth-16.0.0\AndroidManifest.xml:23:9-27:75
+41            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+41-->[com.google.android.gms:play-services-auth:16.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\55824029a8db6a90a24ba6eb891ed1e7\play-services-auth-16.0.0\AndroidManifest.xml:24:13-93
+42            android:excludeFromRecents="true"
+42-->[com.google.android.gms:play-services-auth:16.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\55824029a8db6a90a24ba6eb891ed1e7\play-services-auth-16.0.0\AndroidManifest.xml:25:13-46
+43            android:exported="false"
+43-->[com.google.android.gms:play-services-auth:16.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\55824029a8db6a90a24ba6eb891ed1e7\play-services-auth-16.0.0\AndroidManifest.xml:26:13-37
+44            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+44-->[com.google.android.gms:play-services-auth:16.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\55824029a8db6a90a24ba6eb891ed1e7\play-services-auth-16.0.0\AndroidManifest.xml:27:13-72
+45        <!--
+46            Service handling Google Sign-In user revocation. For apps that do not integrate with
+47            Google Sign-In, this service will never be started.
+48        -->
+49        <service
+49-->[com.google.android.gms:play-services-auth:16.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\55824029a8db6a90a24ba6eb891ed1e7\play-services-auth-16.0.0\AndroidManifest.xml:33:9-36:110
+50            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+50-->[com.google.android.gms:play-services-auth:16.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\55824029a8db6a90a24ba6eb891ed1e7\play-services-auth-16.0.0\AndroidManifest.xml:34:13-89
+51            android:exported="true"
+51-->[com.google.android.gms:play-services-auth:16.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\55824029a8db6a90a24ba6eb891ed1e7\play-services-auth-16.0.0\AndroidManifest.xml:35:13-36
+52            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+52-->[com.google.android.gms:play-services-auth:16.0.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\55824029a8db6a90a24ba6eb891ed1e7\play-services-auth-16.0.0\AndroidManifest.xml:36:13-107
+53
+54        <activity
+54-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\b9b6020ae7333a2aac0935f3e5dd6e97\play-services-base-15.0.1\AndroidManifest.xml:23:9-26:75
+55            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+55-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\b9b6020ae7333a2aac0935f3e5dd6e97\play-services-base-15.0.1\AndroidManifest.xml:24:13-79
+56            android:exported="false"
+56-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\b9b6020ae7333a2aac0935f3e5dd6e97\play-services-base-15.0.1\AndroidManifest.xml:25:13-37
+57            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+57-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\b9b6020ae7333a2aac0935f3e5dd6e97\play-services-base-15.0.1\AndroidManifest.xml:26:13-72
+58
+59        <meta-data
+59-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\63c123735d6d886f1566d9a70edbc12c\play-services-basement-15.0.1\AndroidManifest.xml:23:9-25:69
+60            android:name="com.google.android.gms.version"
+60-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\63c123735d6d886f1566d9a70edbc12c\play-services-basement-15.0.1\AndroidManifest.xml:24:13-58
+61            android:value="@integer/google_play_services_version" />
+61-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\63c123735d6d886f1566d9a70edbc12c\play-services-basement-15.0.1\AndroidManifest.xml:25:13-66
+62    </application>
+63
+64</manifest>

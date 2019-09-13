@@ -5,32 +5,29 @@ import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.homeScreen.GratitudeObject;
 import com.a17001922.wil_app.homeScreen.UserStepsObject;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface goalsService
 {
     @POST("api/values/PostRetrieveGoals")
-    Call<returnGoalObject> getGoalsList(@Body userGoalObject Goals);
+    Call<ReturnGoalObject> getGoalsList(@Body userGoalObject Goals);
 
     @POST("api/values/PostAddNormalGoal")
     Call<ReturnMessageObject> addingGoal(@Body userGoalObject usersGoal);
 
     @POST("api/values/GetAllGoals")
-    Call<returnGoalObject> getAllGoals();
+    Call<ReturnGoalObject> getAllGoals();
 
     @POST("api/values/PostAddCustomGoal")
-    Call<ReturnMessageObject> addingCustomGoal(@Body customGoalObject customsGoal);
+    Call<ReturnMessageObject> addingCustomGoal(@Body CustomGoalObject customsGoal);
 
     @POST("api/values/PostMarkOffCustomGoal")
-    Call<returnGoalObject> markOfCustomGoal(@Body customGoalObject markoffGoal);
+    Call<ReturnGoalObject> markOfCustomGoal(@Body CustomGoalObject markoffGoal);
 
     @POST("api/values/PostMarkOffNormalGoal")
-    Call<returnGoalObject> markOfCustomGoal(@Body userGoalObject markoffGoal);
+    Call<ReturnGoalObject> markOfCustomGoal(@Body userGoalObject markoffGoal);
 
     @POST("api/values/PostUserStreak")
     Call<Streak> getUserStreak(@Body LoginUserObject loginUserObject);
