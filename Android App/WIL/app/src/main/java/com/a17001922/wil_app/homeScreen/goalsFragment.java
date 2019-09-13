@@ -99,6 +99,7 @@ public class goalsFragment extends Fragment
         String type = sharedPreferences.getString(StaticClass.LOGGED_IN_TYPE, "");
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(StaticClass.LOGGED_IN_USER, false);
+		editor.commit();
 
         if (type.equals("google"))
         {
