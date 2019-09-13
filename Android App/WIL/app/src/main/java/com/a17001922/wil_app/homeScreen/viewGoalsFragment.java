@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,8 +14,8 @@ import android.view.ViewGroup;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.Goal;
+import com.a17001922.wil_app.goals.ReturnGoalObject;
 import com.a17001922.wil_app.goals.goalsService;
-import com.a17001922.wil_app.goals.returnGoalObject;
 import com.a17001922.wil_app.goals.userGoalObject;
 import com.a17001922.wil_app.goalsRecyclerView.CityAdapter;
 
@@ -27,7 +28,7 @@ import retrofit2.Response;
 
 public class viewGoalsFragment extends Fragment {
     private final String TAG="View Goals Page";
-    returnGoalObject goalsList =new returnGoalObject();
+    ReturnGoalObject goalsList =new ReturnGoalObject();
     userGoalObject userGoals = new userGoalObject();
     ArrayList<Goal> goalsArrayList= new ArrayList<>();
     boolean flag = false;
@@ -40,33 +41,33 @@ public class viewGoalsFragment extends Fragment {
 
         userGoals.setEmail(StaticClass.currentUser);
         try {
-            final Call<returnGoalObject> goalsCall = service.getGoalsList(userGoals);
-            goalsCall.enqueue(new Callback<returnGoalObject>() {
+            final Call<ReturnGoalObject> goalsCall = service.getGoalsList(userGoals);
+            goalsCall.enqueue(new Callback<ReturnGoalObject>() {
                 @Override
-                public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response) {
-                    if (!response.isSuccessful()) {
 
+                public void onResponse(Call<ReturnGoalObject> call, Response<ReturnGoalObject> response) {
+                    Log.e(TAG,"onResponse: made it into onResponse"+response);
+                    if (!response.isSuccessful()) {
+                        Log.e(TAG,"Failed to get user goals ");
                     } else {
                         goalsList = response.body();
                         goalsArrayList = (ArrayList<Goal>) goalsList.getGoalList();
-                        flag = true;
+                        goalsRecycler = v.findViewById(R.id.listViewGoals);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                        goalsRecycler.setLayoutManager(layoutManager);
+                        adapter = new CityAdapter(goalsArrayList);
+                        goalsRecycler.setAdapter(adapter);
                     }
                 }
 
                 @Override
-                public void onFailure(Call<returnGoalObject> call, Throwable t) {
-
+                public void onFailure(Call<ReturnGoalObject> call, Throwable t) {
+                    Log.e(TAG, "onFailure: failed to populate user goals" );
                 }
             });
 
 
-            if (flag){
-                goalsRecycler = v.findViewById(R.id.listViewGoals);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-                goalsRecycler.setLayoutManager(layoutManager);
-                adapter = new CityAdapter(goalsArrayList);
-                goalsRecycler.setAdapter(adapter);
-            }
+
         }catch(Exception e) {
             Log.e(TAG, "onCreateView: Error that occured",e );
         }

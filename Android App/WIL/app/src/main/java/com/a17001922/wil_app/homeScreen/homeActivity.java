@@ -28,6 +28,7 @@ public class homeActivity extends AppCompatActivity
         tabLayout = (TabLayout) findViewById(R.id.HtabLayout);
         adapter = new TabAdapter(getSupportFragmentManager());
         adapter.addFragment(new goalsFragment(), "Goals");
+        adapter.addFragment(new viewGoalsFragment(),"View Goals");
         adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
         adapter.addFragment(new streakFragment(),"Streak");
         adapter.addFragment(new gratitudeFragment(),"Gratitude Page");
@@ -35,6 +36,7 @@ public class homeActivity extends AppCompatActivity
         adapter.addFragment(new uploadDocsFragment(),"Upload");
         adapter.addFragment(new cvUpload(),"CV");
         adapter.addFragment(new stepTrackerFragment(),"Step Tracker");
+
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);

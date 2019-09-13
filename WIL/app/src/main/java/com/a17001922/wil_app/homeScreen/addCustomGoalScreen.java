@@ -12,10 +12,11 @@ import android.widget.Toast;
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
-import com.a17001922.wil_app.goals.customGoalObject;
+import com.a17001922.wil_app.goals.CustomGoalObject;
 import com.a17001922.wil_app.goals.goalsService;
 import com.google.api.client.util.DateTime;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -47,37 +48,78 @@ public class addCustomGoalScreen extends AppCompatActivity
         Date date = new Date();
         datePicker.updateDate(year,month,day);
         datePicker.setMinDate(date.getTime());
+
         btnCustomGoal.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                customGoalObject pushingGoal = new customGoalObject();
+
 
                 String goalName = et_GoalName.getText().toString();
                 String goalDescription = et_GoalDescription.getText().toString();
-                String goalDate = datePicker.getYear()+"/"+datePicker.getMonth()+"/"+datePicker.getDayOfMonth();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-                Date finalDate=null;
+
+                String stringDay = "", stringMonth = "", selectedDate = "";
+                int thisMonth = month, dayOfMonth = day, thisYear = year;
+
+
+                thisMonth = datePicker.getMonth();
+                dayOfMonth = datePicker.getDayOfMonth();
+                thisYear = datePicker.getYear();
+
+
+
+                if (dayOfMonth < 10)
+                {
+                    stringDay = "0" + dayOfMonth;
+                }
+                else
+                {
+                    stringDay = dayOfMonth + "";
+                }
+
+                thisMonth++;
+
+                if (thisMonth < 10)
+                {
+                    stringMonth = "0" + thisMonth;
+                }
+                else
+                {
+                    stringMonth = thisMonth + "";
+                }
+
+
+
+                selectedDate = thisYear + "-" + stringMonth + "-" + stringDay;
+
+
+
+
+                DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+                Date date1 = null;
                 try {
-                     finalDate =sdf.parse(goalDate);
+                    date1 = df2.parse(selectedDate);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                DateTime dtDate = new DateTime(finalDate);
-                Log.e(TAG,"final Date : "+goalDate);
+
+                DateTime dateTime = new DateTime(date1);
+
+                Log.e(TAG,"final Date : "+ dateTime);
+                Log.e(TAG,"goal Name : "+goalName);
+                Log.e(TAG,"final Desc. : "+goalDescription);
 
 
-                Log.e(TAG,"here is the value of final Date : "+goalDate);
                 try
                 {
+                    CustomGoalObject pushingGoal = new CustomGoalObject();
                     pushingGoal.setEmail(StaticClass.currentUser);
                     pushingGoal.setGoalName(goalName);
                     pushingGoal.setGoalDescription(goalDescription);
-                    pushingGoal.setFinishDate(dtDate);
+                    pushingGoal.setFinishDate(selectedDate);
 
-                    Log.e(TAG,"trying :email: "+pushingGoal.getEmail()+"Goal Name: "
-                            +pushingGoal.getGoalName()+"Goal Description: "+pushingGoal.getGoalDescription()+"finish Date: "+pushingGoal.getFinishDate());
+
                     goalsService service = StaticClass.retrofit.create(goalsService.class);
                     final Call<ReturnMessageObject> customGoalObjectCall = service.addingCustomGoal(pushingGoal);
                     customGoalObjectCall.enqueue(new Callback<ReturnMessageObject>() {
@@ -85,7 +127,6 @@ public class addCustomGoalScreen extends AppCompatActivity
                         public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
                         {
 
-                            Log.e(TAG,"onResponse: we in onResponse "+response);
                             if (response.isSuccessful())
                             {
                                 ReturnMessageObject returnMessage = response.body();
