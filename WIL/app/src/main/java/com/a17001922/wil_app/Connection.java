@@ -1,21 +1,5 @@
 package com.a17001922.wil_app;
 
-import android.content.Context;
-
-import com.a17001922.wil_app.LoginScreen.LoginFragment;
-import com.a17001922.wil_app.LoginScreen.LoginUserObject;
-import com.a17001922.wil_app.LoginScreen.RegisterUserObject;
-import com.a17001922.wil_app.dailyQuote.DailyObject;
-import com.a17001922.wil_app.dailyQuote.DailyQuoteService;
-import com.a17001922.wil_app.goals.customGoalObject;
-import com.a17001922.wil_app.goals.Goal;
-import com.a17001922.wil_app.goals.goalsService;
-import com.a17001922.wil_app.goals.returnGoalObject;
-import com.a17001922.wil_app.goals.userGoalObject;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 /*
  NB!!! THIS WHOLE CLASS HAS TO DO STRICTLY WITH THE API CALLS AND GETTING OF AUTHORIZATION OF A USER TO LOGIN AND BE CREATED
  */
@@ -27,7 +11,7 @@ public class Connection {
 
    /* private boolean registerAuth = false;
     private DailyObject Quote;
-    private returnGoalObject goalsList;
+    private ReturnGoalObject goalsList;
     private Goal addGoal;
     //<editor-fold desc="Description">
     private Goal addingCustomGoal;
@@ -82,13 +66,13 @@ public class Connection {
 
     //________Get Goals__________
 
-    public returnGoalObject getGoals(userGoalObject userGoals) {
-        goalsList = new returnGoalObject();
+    public ReturnGoalObject getGoals(userGoalObject userGoals) {
+        goalsList = new ReturnGoalObject();
         goalsService service = StaticClass.retrofit.create(goalsService.class);
-        final Call<returnGoalObject> goalsCall = service.getGoalsList(userGoals);
-        goalsCall.enqueue(new Callback<returnGoalObject>() {
+        final Call<ReturnGoalObject> goalsCall = service.getGoalsList(userGoals);
+        goalsCall.enqueue(new Callback<ReturnGoalObject>() {
             @Override
-            public void onResponse(Call<returnGoalObject> call, Response<returnGoalObject> response) {
+            public void onResponse(Call<ReturnGoalObject> call, Response<ReturnGoalObject> response) {
                 if (!response.isSuccessful()) {
 
                 } else {
@@ -97,7 +81,7 @@ public class Connection {
             }
 
             @Override
-            public void onFailure(Call<returnGoalObject> call, Throwable t) {
+            public void onFailure(Call<ReturnGoalObject> call, Throwable t) {
 
             }
         });

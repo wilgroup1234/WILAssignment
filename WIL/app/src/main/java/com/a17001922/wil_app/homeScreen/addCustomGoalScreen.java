@@ -13,12 +13,11 @@ import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.customGoalObject;
-import com.a17001922.wil_app.goals.Goal;
 import com.a17001922.wil_app.goals.goalsService;
-import com.a17001922.wil_app.goals.returnGoalObject;
-import com.a17001922.wil_app.goals.userGoalObject;
 import com.google.api.client.util.DateTime;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -58,16 +57,27 @@ public class addCustomGoalScreen extends AppCompatActivity
                 String goalName = et_GoalName.getText().toString();
                 String goalDescription = et_GoalDescription.getText().toString();
                 String goalDate = datePicker.getYear()+"/"+datePicker.getMonth()+"/"+datePicker.getDayOfMonth();
-                DateTime finalDate =DateTime.parseRfc3339(goalDate);
-                pushingGoal.setEmail(StaticClass.currentUser);
-                pushingGoal.setGoalName(goalName);
-                pushingGoal.setGoalDescription(goalDescription);
-                pushingGoal.setFinishDate(finalDate);
-                Toast.makeText(addCustomGoalScreen.this, finalDate.toString(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG,"here is the value of final Date : "+finalDate);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                Date finalDate=null;
+                try {
+                     finalDate =sdf.parse(goalDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                DateTime dtDate = new DateTime(finalDate);
+                Log.e(TAG,"final Date : "+goalDate);
+
+
+                Log.e(TAG,"here is the value of final Date : "+goalDate);
                 try
                 {
+                    pushingGoal.setEmail(StaticClass.currentUser);
+                    pushingGoal.setGoalName(goalName);
+                    pushingGoal.setGoalDescription(goalDescription);
+                    pushingGoal.setFinishDate(dtDate);
 
+                    Log.e(TAG,"trying :email: "+pushingGoal.getEmail()+"Goal Name: "
+                            +pushingGoal.getGoalName()+"Goal Description: "+pushingGoal.getGoalDescription()+"finish Date: "+pushingGoal.getFinishDate());
                     goalsService service = StaticClass.retrofit.create(goalsService.class);
                     final Call<ReturnMessageObject> customGoalObjectCall = service.addingCustomGoal(pushingGoal);
                     customGoalObjectCall.enqueue(new Callback<ReturnMessageObject>() {
@@ -75,7 +85,7 @@ public class addCustomGoalScreen extends AppCompatActivity
                         public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
                         {
 
-
+                            Log.e(TAG,"onResponse: we in onResponse "+response);
                             if (response.isSuccessful())
                             {
                                 ReturnMessageObject returnMessage = response.body();
