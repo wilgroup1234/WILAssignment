@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.Goal;
@@ -29,13 +30,12 @@ public class viewGoalsFragment extends Fragment {
     returnGoalObject goalsList =new returnGoalObject();
     userGoalObject userGoals = new userGoalObject();
     ArrayList<Goal> goalsArrayList= new ArrayList<>();
-    private View v;
     boolean flag = false;
     RecyclerView.Adapter adapter;
     private RecyclerView goalsRecycler;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         v = inflater.inflate(R.layout.fragment_view_goals, container, false);
+        View v = inflater.inflate(R.layout.fragment_view_goals, container, false);
         goalsService service = StaticClass.retrofit.create(goalsService.class);
 
         userGoals.setEmail(StaticClass.currentUser);
@@ -51,13 +51,9 @@ public class viewGoalsFragment extends Fragment {
                         goalsArrayList = (ArrayList<Goal>) goalsList.getGoalList();
                         goalsRecycler = v.findViewById(R.id.listViewGoals);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-
                         goalsRecycler.setLayoutManager(layoutManager);
-                        Log.d(TAG,"OnResponse: Layout manager done");
                         adapter = new CityAdapter(goalsArrayList);
-                        Log.d(TAG,"OnResponse: adapter created");
                         goalsRecycler.setAdapter(adapter);
-                        Log.d(TAG,"OnResponse: adapter set");
                     }
                 }
 
@@ -68,11 +64,9 @@ public class viewGoalsFragment extends Fragment {
             });
 
 
-            if (flag){
-
-            }
+           
         }catch(Exception e) {
-            Log.e(TAG, "onCreateView: Error that occurred",e );
+            Log.e(TAG, "onCreateView: Error that occured",e );
         }
 
         return v;

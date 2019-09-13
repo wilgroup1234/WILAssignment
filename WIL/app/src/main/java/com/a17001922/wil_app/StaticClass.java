@@ -21,6 +21,8 @@ public class StaticClass
     public static final String LOGGED_IN_USER_EMAIL = "Logged in user email";
     public static final String LOGGED_IN_TYPE = "Logged in type";
 
+    public static boolean hasInternet = false;
+
 
     public static String currentUser = "No_User";
 

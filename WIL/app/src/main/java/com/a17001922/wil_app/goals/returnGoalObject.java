@@ -5,14 +5,17 @@ import java.util.List;
 // #TODO THIS IS THE LIST OF GOALS THAT WE RETRIEVE FROM THE DATABASE FOR A GIVEN USER
 
 
-public class returnGoalObject {
-    protected List<Goal> goalList;
+public class returnGoalObject
+{
+    private List<Goal> goalList;
 
-    public List<Goal> getGoalList() {
+    public List<Goal> getGoalList()
+    {
         return goalList;
     }
 
-    public void setGoalList(List<Goal> goalList) {
+    public void setGoalList(List<Goal> goalList)
+    {
         this.goalList = goalList;
     }
 }

@@ -1,31 +1,32 @@
 package com.a17001922.wil_app.goals;
 
-public class Goal {
-    protected int goalID;
-    protected String goalName;
-    protected String goalDescription;
+public class Goal
+{
+    private int GoalID;
+    private String GoalName;
+    private String GoalDescription;
 
     public int getGoalID() {
-        return goalID;
+        return GoalID;
     }
 
     public void setGoalID(int goalID) {
-        this.goalID = goalID;
+        GoalID = goalID;
     }
 
     public String getGoalName() {
-        return goalName;
+        return GoalName;
     }
 
     public void setGoalName(String goalName) {
-        this.goalName = goalName;
+        GoalName = goalName;
     }
 
     public String getGoalDescription() {
-        return goalDescription;
+        return GoalDescription;
     }
 
     public void setGoalDescription(String goalDescription) {
-        this.goalDescription = goalDescription;
+        GoalDescription = goalDescription;
     }
 }

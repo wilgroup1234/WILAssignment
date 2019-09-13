@@ -14,6 +14,7 @@ import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.Goal;
+import com.a17001922.wil_app.goals.Goal;
 import com.a17001922.wil_app.goals.goalsService;
 import com.a17001922.wil_app.goals.returnGoalObject;
 import com.a17001922.wil_app.goals.userGoalObject;
@@ -24,6 +25,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.R.layout.simple_spinner_item;
 
 public class addNormalGoalScreen extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
@@ -43,6 +46,7 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
         cmbListOfGoals = findViewById(R.id.cmbListOfGoals);
         btnAddGoals = findViewById(R.id.btnAddGoalScreen);
         final goalsService service = StaticClass.retrofit.create(goalsService.class);
+
 
 
 

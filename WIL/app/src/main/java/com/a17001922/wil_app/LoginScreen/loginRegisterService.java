@@ -1,5 +1,7 @@
 package com.a17001922.wil_app.LoginScreen;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -16,5 +18,13 @@ public interface loginRegisterService
 
     @POST("api/values/PostRegister")
     Call<ReturnMessageObject> userRegister(@Body RegisterUserObject user);
+
+    @POST("api/values/PostGoogleSignIn")
+    Call<ReturnMessageObject> googleSignIn(@Body GoogleSignInObject user);
+
+    @POST("api/values/PostUpdateStreak")
+    Call<ReturnMessageObject> updateStreak(@Body LoginUserObject user);
+
+
 
 }
