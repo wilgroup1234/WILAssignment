@@ -170,6 +170,8 @@
     <Compile Include="Classes\LoginUserObject.cs" />
     <Compile Include="Classes\PasswordEncryption.cs" />
     <Compile Include="Classes\RegisterUserObject.cs" />
+    <Compile Include="Classes\ReturnAllGoalObject.cs" />
+    <Compile Include="Classes\ReturnAnyTypeGoalObject.cs" />
     <Compile Include="Classes\ReturnGoalObject.cs" />
     <Compile Include="Classes\ReturnLifeSkillsObject.cs" />
     <Compile Include="Classes\ReturnMessageObject.cs" />
