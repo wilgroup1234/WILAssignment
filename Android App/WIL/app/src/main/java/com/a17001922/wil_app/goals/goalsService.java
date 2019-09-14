@@ -12,10 +12,10 @@ import retrofit2.http.POST;
 public interface goalsService
 {
     @POST("api/values/PostRetrieveGoals")
-    Call<ReturnGoalObject> getGoalsList(@Body userGoalObject Goals);
+    Call<ReturnAllGoalObject> getGoalsList(@Body UserGoalObject Goals);
 
     @POST("api/values/PostAddNormalGoal")
-    Call<ReturnMessageObject> addingGoal(@Body userGoalObject usersGoal);
+    Call<ReturnMessageObject> addingGoal(@Body UserGoalObject usersGoal);
 
     @POST("api/values/GetAllGoals")
     Call<ReturnGoalObject> getAllGoals();
@@ -24,10 +24,10 @@ public interface goalsService
     Call<ReturnMessageObject> addingCustomGoal(@Body CustomGoalObject customsGoal);
 
     @POST("api/values/PostMarkOffCustomGoal")
-    Call<ReturnGoalObject> markOfCustomGoal(@Body CustomGoalObject markoffGoal);
+    Call<ReturnGoalObject> markOffCustomGoal(@Body CustomGoalObject markoffGoal);
 
     @POST("api/values/PostMarkOffNormalGoal")
-    Call<ReturnGoalObject> markOfCustomGoal(@Body userGoalObject markoffGoal);
+    Call<ReturnGoalObject> markOfNormalGoal(@Body UserGoalObject markoffGoal);
 
     @POST("api/values/PostUserStreak")
     Call<Streak> getUserStreak(@Body LoginUserObject loginUserObject);
