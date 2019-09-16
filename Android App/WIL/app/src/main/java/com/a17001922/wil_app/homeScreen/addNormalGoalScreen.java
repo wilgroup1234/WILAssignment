@@ -112,7 +112,9 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
                     String[] parts = goalName.split("-");
                     String goalid = parts[0];
 
-                    usersGoal.setGoalId(goalid);
+                    int gID = Integer.parseInt(goalid);
+
+                    usersGoal.setGoalId(gID);
 
                     Call<ReturnMessageObject> addingGoal = service.addingGoal(usersGoal);
                     addingGoal.enqueue(new Callback<ReturnMessageObject>()

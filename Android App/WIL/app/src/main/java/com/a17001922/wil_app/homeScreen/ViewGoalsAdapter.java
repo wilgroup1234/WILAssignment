@@ -2,41 +2,28 @@ package com.a17001922.wil_app.homeScreen;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.a17001922.wil_app.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ViewGoalsAdapter extends RecyclerView.Adapter<ViewGoalsAdapter.ViewGoalsViewHolder>
+public class ViewGoalsAdapter extends RecyclerView.Adapter<ViewGoalsViewHolder>
 {
     private ArrayList<cardViewItem> cardViewItems;
+    private ArrayList<GoalsCheckedClass> originalGoalsList;
+    private ArrayList<GoalsCheckedClass> changedGoalList = new ArrayList<>();
 
-    public static class ViewGoalsViewHolder extends RecyclerView.ViewHolder
-    {
-        public ImageView imageView;
-        public TextView textView1;
-        public TextView textView2;
-        public CheckBox checkBox;
 
-        public ViewGoalsViewHolder(@NonNull View itemView)
-        {
-            super(itemView);
-            imageView = itemView.findViewById(R.id.imgIconCardView);
-            textView1 = itemView.findViewById(R.id.txtGoalNameCardView);
-            textView2 = itemView.findViewById(R.id.txtGoalDescriptionCardView);
-            checkBox = itemView.findViewById(R.id.cBoxIsCompleted);
-        }
-    }
-
-    public ViewGoalsAdapter(ArrayList<cardViewItem> cvItems)
+    public ViewGoalsAdapter(ArrayList<cardViewItem> cvItems, ArrayList<GoalsCheckedClass> ogItems)
     {
         cardViewItems = cvItems;
+        originalGoalsList = ogItems;
     }
 
     @NonNull
@@ -63,11 +50,68 @@ public class ViewGoalsAdapter extends RecyclerView.Adapter<ViewGoalsAdapter.View
       {
           viewHolder.checkBox.setChecked(false);
       }
+
+      viewHolder.setItemClickListener(new CardViewItemClickListener()
+      {
+          @Override
+          public void onItemClick(View v, int pos)
+          {
+              CheckBox checkBox = (CheckBox) v;
+
+              GoalsCheckedClass changedGoal = originalGoalsList.get(pos);
+
+              if (checkBox.isChecked())
+              {
+                  changedGoal.setChecked(true);
+
+                  if (changedGoalList.contains(changedGoal))
+                  {
+
+                  }
+                  else
+                  {
+                      changedGoalList.add(changedGoal);
+                  }
+              }
+              else
+              {
+                  changedGoal.setChecked(false);
+
+                  if (changedGoalList.contains(changedGoal))
+                  {
+
+                  }
+                  else
+                  {
+                      changedGoalList.add(changedGoal);
+                  }
+              }
+
+
+
+          }
+      });
     }
 
     @Override
     public int getItemCount()
     {
         return cardViewItems.size();
+    }
+
+    public ArrayList<cardViewItem> getCardViewItems()
+    {
+        return cardViewItems;
+    }
+
+
+    public ArrayList<GoalsCheckedClass> getOriginalGoalsList()
+    {
+        return originalGoalsList;
+    }
+
+    public ArrayList<GoalsCheckedClass> getChangedGoalList()
+    {
+        return changedGoalList;
     }
 }

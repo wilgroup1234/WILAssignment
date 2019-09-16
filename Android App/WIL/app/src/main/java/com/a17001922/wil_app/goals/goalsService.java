@@ -24,10 +24,10 @@ public interface goalsService
     Call<ReturnMessageObject> addingCustomGoal(@Body CustomGoalObject customsGoal);
 
     @POST("api/values/PostMarkOffCustomGoal")
-    Call<ReturnGoalObject> markOffCustomGoal(@Body CustomGoalObject markoffGoal);
+    Call<ReturnMessageObject> markOffCustomGoal(@Body UserGoalObject markoffGoal);
 
-    @POST("api/values/PostMarkOffNormalGoal")
-    Call<ReturnGoalObject> markOfNormalGoal(@Body UserGoalObject markoffGoal);
+    @POST("api/values/PostMarkOffGoal")
+    Call<ReturnMessageObject> markOffNormalGoal(@Body UserGoalObject markoffGoal);
 
     @POST("api/values/PostUserStreak")
     Call<Streak> getUserStreak(@Body LoginUserObject loginUserObject);

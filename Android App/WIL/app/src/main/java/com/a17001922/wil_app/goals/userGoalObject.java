@@ -7,7 +7,7 @@ import com.google.api.client.util.DateTime;
 public class UserGoalObject
 {
     private String Email;
-    private String GoalId;
+    private int GoalId;
     private DateTime finishDate;
 
     public String getEmail() {
@@ -18,19 +18,19 @@ public class UserGoalObject
         Email = email;
     }
 
-    public String getGoalId() {
-        return GoalId;
-    }
-
-    public void setGoalId(String goalId) {
-        GoalId = goalId;
-    }
-
     public DateTime getFinishDate() {
         return finishDate;
     }
 
     public void setFinishDate(DateTime finishDate) {
         this.finishDate = finishDate;
+    }
+
+    public int getGoalId() {
+        return GoalId;
+    }
+
+    public void setGoalId(int goalId) {
+        GoalId = goalId;
     }
 }
