@@ -20,6 +20,11 @@ public class StaticClass
     public static final String LOGGED_IN_USER = "Logged in user";
     public static final String LOGGED_IN_USER_EMAIL = "Logged in user email";
     public static final String LOGGED_IN_TYPE = "Logged in type";
+    public static final String USER_GOALIDS = "user_goal_IDS";
+    public static final String USER_GOALNAMES = "user_goal_NAMES";
+    public static final String USER_GOALDESCRIPTIONS = "user_goal_DESCRIPTIONS";
+    public static final String USER_GOALTYPE = "user_goal_TYPES";
+    public static final String USER_GOALCOMPLETED = "user_goal_COMPLETED";
 
     public static boolean hasInternet = false;
 
