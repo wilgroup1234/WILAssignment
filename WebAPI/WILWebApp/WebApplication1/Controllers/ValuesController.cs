@@ -138,10 +138,10 @@ namespace WebApplication1.Controllers
                         }
                         catch (Exception e)
                         {
-                            Debug.WriteLine("Concurrency Error: " + e.ToString());
+                            Debug.WriteLine("Error: " + e.ToString());
 
                             returnMessage.result = false;
-                            returnMessage.errorMessage = "Concurrency Error";
+                            returnMessage.errorMessage = "Error";
 
                             return returnMessage;
                         }
@@ -281,6 +281,7 @@ namespace WebApplication1.Controllers
         public ReturnAllGoalObject PostRetrieveGoals(UserGoalObject userGoal)
         {
             ReturnAllGoalObject returnGoal = new ReturnAllGoalObject();
+            DateTime today = DateTime.Today;
 
             try
             {
@@ -317,7 +318,8 @@ namespace WebApplication1.Controllers
                             GoalID = searchGoal.GoalID,
                             GoalName = searchGoal.GoalName,
                             GoalDescription = searchGoal.GoalDescription,
-                            isNormalGoal = true
+                            isNormalGoal = true,
+                            finishDate = today.ToString()
                             
                         };
 
@@ -349,12 +351,68 @@ namespace WebApplication1.Controllers
 
                         CustomGoal searchGoal = db.CustomGoals.FirstOrDefault(go => go.GoalID == goal.GoalID);
 
+                        String stringDate, stringTodaysDate;
+                        int day = 0, month = 0, year = 0;
+                        String sDay = "", sMonth = "";
+
+                        day = searchGoal.FinishDate.Value.Day;
+                        month = searchGoal.FinishDate.Value.Month;
+                        year = searchGoal.FinishDate.Value.Year;
+
+                        if (day < 10)
+                        {
+                            sDay = "0" + day;
+                        }
+                        else
+                        {
+                            sDay = day + "";
+                        }
+
+
+                        if (month < 10)
+                        {
+                            sMonth = "0" + month;
+                        }
+                        else
+                        {
+                            sMonth = month + "";
+                        }
+
+                        stringDate = year + "-" + sMonth + "-" + sDay;
+
+                        day = today.Day;
+                        month = today.Month;
+                        year = today.Year;
+
+                        if (day < 10)
+                        {
+                            sDay = "0" + day;
+                        }
+                        else
+                        {
+                            sDay = day + "";
+                        }
+
+
+                        if (month < 10)
+                        {
+                            sMonth = "0" + month;
+                        }
+                        else
+                        {
+                            sMonth = month + "";
+                        }
+
+                        stringTodaysDate = year + "-" + sMonth + "-" + sDay;
+
                         ReturnAnyTypeGoalObject g = new ReturnAnyTypeGoalObject
                         {
                             GoalID = searchGoal.GoalID,
                             GoalName = searchGoal.GoalName,
                             GoalDescription = searchGoal.GoalDescription,
-                            isNormalGoal = false
+                            isNormalGoal = false,
+                            finishDate = stringDate,
+                            currentDate = stringTodaysDate
                         };
 
                         if (completed)
@@ -429,8 +487,8 @@ namespace WebApplication1.Controllers
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("Concurrency Error: " + e.ToString());
-                    returnMessage.errorMessage = "Concurrency Error: " + e.ToString();
+                    Debug.WriteLine("Error: " + e.ToString());
+                    returnMessage.errorMessage = "Error: " + e.ToString();
                     valid = false;
                 }
 
@@ -489,8 +547,8 @@ namespace WebApplication1.Controllers
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("Concurrency Error: " + e.ToString());
-                    returnMessage.errorMessage = "Concurrency Error: " + e.ToString();
+                    Debug.WriteLine("Error: " + e.ToString());
+                    returnMessage.errorMessage = "Error: " + e.ToString();
                     valid = false;
                 }
 
@@ -524,8 +582,8 @@ namespace WebApplication1.Controllers
                     }
                     catch (Exception e)
                     {
-                        Debug.WriteLine("Concurrency Error: " + e.ToString());
-                        returnMessage.errorMessage = "Concurrency Error: " + e.ToString();
+                        Debug.WriteLine("Error: " + e.ToString());
+                        returnMessage.errorMessage = "Error: " + e.ToString();
                         valid = false;
                     }
 
@@ -600,10 +658,10 @@ namespace WebApplication1.Controllers
                     db.SaveChanges();
                     valid = true;
                 }
-                catch (DBConcurrencyException e)
+                catch (Exception e)
                 {
-                    Debug.WriteLine("Concurrency Error: " + e.ToString());
-                    returnMessage.errorMessage = "Concurrency Error: " + e.ToString();
+                    Debug.WriteLine("Error: " + e.ToString());
+                    returnMessage.errorMessage = "Error: " + e.ToString();
                     valid = false;
                 }
 
@@ -675,8 +733,8 @@ namespace WebApplication1.Controllers
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("Concurrency Error: " + e.ToString());
-                    returnMessage.errorMessage = "Concurrency Error: " + e.ToString();
+                    Debug.WriteLine("Error: " + e.ToString());
+                    returnMessage.errorMessage = "Error: " + e.ToString();
                     valid = false;
                 }
 
@@ -854,8 +912,8 @@ namespace WebApplication1.Controllers
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("Concurrency Error: " + e.ToString());
-                    returnMessage.errorMessage = "Concurrency Error: " + e.ToString();
+                    Debug.WriteLine("Error: " + e.ToString());
+                    returnMessage.errorMessage = "Error: " + e.ToString();
                     valid = false;
                 }
 
@@ -1030,7 +1088,7 @@ namespace WebApplication1.Controllers
                     }
                     catch (Exception e)
                     {
-                        Debug.WriteLine("Concurrency Error: " + e.ToString());
+                        Debug.WriteLine("Error: " + e.ToString());
 
                         returnMessageObject.result = true;
                         returnMessageObject.errorMessage = "Account exists already";

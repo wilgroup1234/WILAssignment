@@ -29,6 +29,7 @@ public class homeActivity extends AppCompatActivity
         adapter = new TabAdapter(getSupportFragmentManager());
         adapter.addFragment(new goalsFragment(), "Goals");
         adapter.addFragment(new viewGoalsFragment(),"View Goals");
+        adapter.addFragment(new viewLifeSkillsFragment(),"View LifeSkills");
         adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
         adapter.addFragment(new streakFragment(),"Streak");
         adapter.addFragment(new gratitudeFragment(),"Gratitude Page");

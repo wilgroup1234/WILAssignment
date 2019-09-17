@@ -44,5 +44,11 @@ public interface goalsService
     @POST("api/values/PostUpdateGratitude")
     Call<ReturnMessageObject> updateGratitude(@Body GratitudeObject gratitudeObject);
 
+    @POST("api/values/PostRetrieveLifeSkills")
+    Call<ReturnLifeSkillsObject> getLifeSkills(@Body LifeSkillObject lifeSkillObject);
+
+    @POST("api/values/PostMarkOffLifeSkill")
+    Call<ReturnMessageObject> markOffLifeSkill(@Body LifeSkillObject lifeSkillObject);
+
 
 }

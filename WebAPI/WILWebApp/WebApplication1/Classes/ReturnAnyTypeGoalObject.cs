@@ -13,6 +13,10 @@ namespace WebApplication1.Classes
 
         public int Completed { get; set; }
 
+        public String finishDate { get; set; }
+
+        public String currentDate { get; set; }
+
         public Boolean isNormalGoal { get; set; }
     }
 }
