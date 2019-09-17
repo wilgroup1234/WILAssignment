@@ -23,8 +23,14 @@ import com.a17001922.wil_app.goals.ReturnAnyTypeGoalObject;
 import com.a17001922.wil_app.goals.ReturnGoalObject;
 import com.a17001922.wil_app.goals.UserGoalObject;
 import com.a17001922.wil_app.goals.goalsService;
+import com.google.api.client.util.DateTime;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -48,6 +54,7 @@ public class viewGoalsFragment extends Fragment
 
     private final static int tickImage = R.drawable.greentick;
     private final static int exclamationImage = R.drawable.exclamationmark;
+    private final static int crossImage = R.drawable.redx;
     final goalsService service = StaticClass.retrofit.create(goalsService.class);
     List<ReturnAnyTypeGoalObject> allListedGoals;
     ArrayList<GoalsCheckedClass> originalGoalList = new ArrayList<>();
@@ -77,11 +84,7 @@ public class viewGoalsFragment extends Fragment
         recyclerViewLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
 
 
-
         cardList.add(new cardViewItem(tickImage,"No goals added yet", "-", true));
-
-
-
 
 
         GetAndDisplayUserGoals();
@@ -366,14 +369,63 @@ public class viewGoalsFragment extends Fragment
 
                                 if (goal.getCompleted() == 1)
                                 {
-                                    cardList.add(new cardViewItem(tickImage, goal.getGoalName(), goal.getGoalDescription(), true));
-                                    goalsCheckedClass.setChecked(true);
+                                    Boolean proceed = true;
+
+                                    if (goal.getNormalGoal() == false)
+                                    {
+                                        Boolean goalExpired = IsGoalExpired(goal.getFinishDate(), goal.getCurrentDate());
+
+                                        if(!goalExpired)
+                                        {
+                                            proceed = true;
+                                        }
+                                        else
+                                        {
+                                            proceed = false;
+                                            cardList.add(new cardViewItem(crossImage, goal.getGoalName(), goal.getGoalDescription(), true));
+                                            goalsCheckedClass.setChecked(true);
+                                        }
+                                    }
+
+                                    if (proceed)
+                                    {
+                                        cardList.add(new cardViewItem(tickImage, goal.getGoalName(), goal.getGoalDescription(), true));
+                                        goalsCheckedClass.setChecked(true);
+                                    }
+
+
                                 }
                                 else
                                 {
-                                    cardList.add(new cardViewItem(exclamationImage, goal.getGoalName(), goal.getGoalDescription(), false));
-                                    goalsCheckedClass.setChecked(false);
+                                    Boolean proceed = true;
+
+                                    if (goal.getNormalGoal() == false)
+                                    {
+                                        Boolean goalExpired = IsGoalExpired(goal.getFinishDate(), goal.getCurrentDate());
+
+                                        if(!goalExpired)
+                                        {
+                                            proceed = true;
+                                        }
+                                        else
+                                        {
+                                            proceed = false;
+                                            cardList.add(new cardViewItem(crossImage, goal.getGoalName(), goal.getGoalDescription(), false));
+                                            goalsCheckedClass.setChecked(false);
+                                        }
+                                    }
+
+                                    if (proceed)
+                                    {
+                                        cardList.add(new cardViewItem(exclamationImage, goal.getGoalName(), goal.getGoalDescription(), false));
+                                        goalsCheckedClass.setChecked(false);
+                                    }
+
+
                                 }
+
+
+
 
                                 originalGoalList.add(goalsCheckedClass);
 
@@ -479,6 +531,46 @@ public class viewGoalsFragment extends Fragment
             Toast.makeText(getActivity().getApplicationContext(), "An error occurred :(",Toast.LENGTH_LONG);
             Log.e(TAG, " Exception error: " + e.getMessage());
         }
+    }
+
+
+
+    public Boolean IsGoalExpired(String date, String currentDate)
+    {
+        Boolean goalExpired = false;
+
+        //Compare Dates
+        DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = null;
+        try
+        {
+            date1 = df2.parse(currentDate);
+        } catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+
+        Log.e(TAG,"Today : "+ date1);
+
+        String getDate = date;
+
+        Date date2 = null;
+        try
+        {
+            date2 = df2.parse(getDate);
+        } catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+
+        Log.e(TAG,"Get Date : "+ date2);
+
+        if (date1.compareTo(date2) < 0)
+        {
+            goalExpired = true;
+        }
+
+        return goalExpired;
     }
 
 
