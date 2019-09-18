@@ -1,5 +1,8 @@
 package com.a17001922.wil_app;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.security.cert.CertificateException;
 
 import javax.net.ssl.HostnameVerifier;
@@ -30,6 +33,10 @@ public class StaticClass
     public static final String USER_LIFESKILLSCOMPLETED = "user_LIFESKILLS_COMPLETED";
 
     public static boolean hasInternet = false;
+    public static boolean ongoingOperation = false;
+
+    public static Context homeContext;
+    public static Context loginContext;
 
 
     public static String currentUser = "No_User";
@@ -89,4 +96,6 @@ public class StaticClass
         }
 
     }
+
+
 }

@@ -65,4 +65,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_CustomGoalDescription" />
 
+    <Button
+        android:id="@+id/btnBackCustomGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCreateCustomGoal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateCustomGoal" />
+
 </android.support.constraint.ConstraintLayout>
