@@ -59,6 +59,7 @@ public class ViewLifeSkillsAdapter extends RecyclerView.Adapter<ViewLifeSkillsVi
 
                 if (checkBox.isChecked())
                 {
+                    cardViewItems.get(i).setCompleted(true);
                     changedLifeSkill.setCompleted(true);
 
                     if (changedLifeSkillsList.contains(changedLifeSkill))
@@ -72,6 +73,7 @@ public class ViewLifeSkillsAdapter extends RecyclerView.Adapter<ViewLifeSkillsVi
                 }
                 else
                 {
+                    cardViewItems.get(i).setCompleted(false);
                     changedLifeSkill.setCompleted(false);
 
                     if (changedLifeSkillsList.contains(changedLifeSkill))

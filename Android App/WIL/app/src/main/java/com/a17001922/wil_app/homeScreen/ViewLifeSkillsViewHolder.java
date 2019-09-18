@@ -24,8 +24,8 @@ public class ViewLifeSkillsViewHolder extends RecyclerView.ViewHolder implements
         textView1 = itemView.findViewById(R.id.txtLifeSkillNameCardView);
         checkBox = itemView.findViewById(R.id.cBoxIsCompleted2);
 
-
         checkBox.setOnClickListener(this);
+
     }
 
     public void setItemClickListener(CardViewItemClickListener itemClickListener)

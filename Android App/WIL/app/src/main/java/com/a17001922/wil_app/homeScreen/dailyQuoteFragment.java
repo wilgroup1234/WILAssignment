@@ -4,6 +4,7 @@ package com.a17001922.wil_app.homeScreen;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class dailyQuoteFragment extends Fragment
     ImageView DailyImage;
     DailyObject Quote;
     int templateID;
+    private final String TAG = "Daily Quote Page";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,16 +63,25 @@ public class dailyQuoteFragment extends Fragment
                         }
                         else
                         {
-                            templateID = Quote.getTemplateID();
 
-                            String uri = "i" + templateID;  // where my resource (without the extension) is the file
+                            try
+                            {
+                                templateID = Quote.getTemplateID();
 
-                            int imageId = getResources().getIdentifier(uri, "drawable", getActivity().getPackageName());
+                                String uri = "i" + templateID;  // where my resource (without the extension) is the file
 
-                            DailyImage.setImageResource(imageId);
+                                int imageId = getResources().getIdentifier(uri, "drawable", getActivity().getApplicationContext().getPackageName());
 
-                            lblDailyQuote.setText(Quote.getQuoteText());
-                            lblDailyYoutubeLink.setText(Quote.getYoutubeLink());
+                                DailyImage.setImageResource(imageId);
+
+                                lblDailyQuote.setText(Quote.getQuoteText());
+                                lblDailyYoutubeLink.setText(Quote.getYoutubeLink());
+                            }
+                            catch(Exception e)
+                            {
+                                Log.e(TAG, "Exception caught: " + e.getMessage());
+                            }
+
                         }
                     }
                 }
@@ -78,13 +89,13 @@ public class dailyQuoteFragment extends Fragment
                 @Override
                 public void onFailure(Call<DailyObject> call, Throwable t)
                 {
-                    Toast.makeText(getActivity().getApplicationContext(), "Response from API failed", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(StaticClass.homeContext, "Response from API failed", Toast.LENGTH_SHORT).show();
                 }
             });
         }
         catch (NullPointerException e)
         {
-            Toast.makeText(getActivity().getApplicationContext(), "UNABLE TO GET DAILY QUOTE", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "UNABLE TO GET DAILY QUOTE", Toast.LENGTH_LONG).show();
         }
 
 

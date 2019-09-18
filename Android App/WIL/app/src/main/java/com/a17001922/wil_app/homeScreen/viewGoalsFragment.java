@@ -352,147 +352,156 @@ public class viewGoalsFragment extends Fragment
                         {
                             cardList = new ArrayList<>();
 
-                            SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            String goalNames = "", goalIds = "", goalDescs = "", goalCompleteds = "", goalTypes = "";
-
-                            int count = 0;
-
-                            for(ReturnAnyTypeGoalObject goal: allListedGoals)
+                            try
                             {
+                                SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                String goalNames = "", goalIds = "", goalDescs = "", goalCompleteds = "", goalTypes = "";
 
-                                GoalsCheckedClass goalsCheckedClass = new GoalsCheckedClass();
-                                goalsCheckedClass.setGoalID(goal.getGoalID());
-                                goalsCheckedClass.setNormalGoal(goal.getNormalGoal());
+                                int count = 0;
 
-                                Log.e(TAG, "Goal: " + goal.getGoalName() + " " +  goal.getGoalDescription() + " " + goal.getCompleted() + " is normal: " + goal.getNormalGoal());
-
-                                if (goal.getCompleted() == 1)
+                                for(ReturnAnyTypeGoalObject goal: allListedGoals)
                                 {
-                                    Boolean proceed = true;
 
-                                    if (goal.getNormalGoal() == false)
+                                    GoalsCheckedClass goalsCheckedClass = new GoalsCheckedClass();
+                                    goalsCheckedClass.setGoalID(goal.getGoalID());
+                                    goalsCheckedClass.setNormalGoal(goal.getNormalGoal());
+
+                                    Log.e(TAG, "Goal: " + goal.getGoalName() + " " +  goal.getGoalDescription() + " " + goal.getCompleted() + " is normal: " + goal.getNormalGoal());
+
+                                    if (goal.getCompleted() == 1)
                                     {
-                                        Boolean goalExpired = IsGoalExpired(goal.getFinishDate(), goal.getCurrentDate());
+                                        Boolean proceed = true;
 
-                                        if(!goalExpired)
+                                        if (goal.getNormalGoal() == false)
                                         {
-                                            proceed = true;
+                                            Boolean goalExpired = IsGoalExpired(goal.getFinishDate(), goal.getCurrentDate());
+
+                                            if(!goalExpired)
+                                            {
+                                                proceed = true;
+                                            }
+                                            else
+                                            {
+                                                proceed = false;
+                                                cardList.add(new cardViewItem(crossImage, goal.getGoalName(), goal.getGoalDescription(), true));
+                                                goalsCheckedClass.setChecked(true);
+                                            }
                                         }
-                                        else
+
+                                        if (proceed)
                                         {
-                                            proceed = false;
-                                            cardList.add(new cardViewItem(crossImage, goal.getGoalName(), goal.getGoalDescription(), true));
+                                            cardList.add(new cardViewItem(tickImage, goal.getGoalName(), goal.getGoalDescription(), true));
                                             goalsCheckedClass.setChecked(true);
                                         }
+
+
                                     }
-
-                                    if (proceed)
+                                    else
                                     {
-                                        cardList.add(new cardViewItem(tickImage, goal.getGoalName(), goal.getGoalDescription(), true));
-                                        goalsCheckedClass.setChecked(true);
-                                    }
+                                        Boolean proceed = true;
 
-
-                                }
-                                else
-                                {
-                                    Boolean proceed = true;
-
-                                    if (goal.getNormalGoal() == false)
-                                    {
-                                        Boolean goalExpired = IsGoalExpired(goal.getFinishDate(), goal.getCurrentDate());
-
-                                        if(!goalExpired)
+                                        if (goal.getNormalGoal() == false)
                                         {
-                                            proceed = true;
+                                            Boolean goalExpired = IsGoalExpired(goal.getFinishDate(), goal.getCurrentDate());
+
+                                            if(!goalExpired)
+                                            {
+                                                proceed = true;
+                                            }
+                                            else
+                                            {
+                                                proceed = false;
+                                                cardList.add(new cardViewItem(crossImage, goal.getGoalName(), goal.getGoalDescription(), false));
+                                                goalsCheckedClass.setChecked(false);
+                                            }
+                                        }
+
+                                        if (proceed)
+                                        {
+                                            cardList.add(new cardViewItem(exclamationImage, goal.getGoalName(), goal.getGoalDescription(), false));
+                                            goalsCheckedClass.setChecked(false);
+                                        }
+
+
+                                    }
+
+
+
+
+                                    originalGoalList.add(goalsCheckedClass);
+
+                                    if(count == 0)
+                                    {
+                                        goalIds = goal.getGoalID() + "";
+
+                                        if (goal.getCompleted() == 1)
+                                        {
+                                            goalCompleteds = "1";
                                         }
                                         else
                                         {
-                                            proceed = false;
-                                            cardList.add(new cardViewItem(crossImage, goal.getGoalName(), goal.getGoalDescription(), false));
-                                            goalsCheckedClass.setChecked(false);
+                                            goalCompleteds = "0";
+                                        }
+
+                                        goalDescs = goal.getGoalDescription();
+                                        goalNames = goal.getGoalName();
+
+                                        if (goal.getNormalGoal())
+                                        {
+                                            goalTypes = "0";
+                                        }
+                                        else
+                                        {
+                                            goalTypes = "1";
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        goalIds = goalIds + "#" + goal.getGoalID();
+
+                                        if (goal.getCompleted() == 1)
+                                        {
+                                            goalCompleteds = goalCompleteds + "#" + "1";
+                                        }
+                                        else
+                                        {
+                                            goalCompleteds = goalCompleteds + "#" + "0";
+                                        }
+
+                                        goalDescs = goalDescs + "#" + goal.getGoalDescription();
+                                        goalNames = goalNames + "#" + goal.getGoalName();
+
+                                        if (goal.getNormalGoal())
+                                        {
+                                            goalTypes = goalTypes + "#" + "0";
+                                        }
+                                        else
+                                        {
+                                            goalTypes = goalTypes + "#" + "1";
                                         }
                                     }
 
-                                    if (proceed)
-                                    {
-                                        cardList.add(new cardViewItem(exclamationImage, goal.getGoalName(), goal.getGoalDescription(), false));
-                                        goalsCheckedClass.setChecked(false);
-                                    }
 
-
+                                    count ++;
                                 }
 
 
+                                editor.putString(StaticClass.USER_GOALIDS, goalIds);
+                                editor.putString(StaticClass.USER_GOALCOMPLETED, goalCompleteds);
+                                editor.putString(StaticClass.USER_GOALNAMES, goalNames);
+                                editor.putString(StaticClass.USER_GOALTYPE, goalTypes);
+                                editor.putString(StaticClass.USER_GOALDESCRIPTIONS, goalDescs);
 
-
-                                originalGoalList.add(goalsCheckedClass);
-
-                                if(count == 0)
-                                {
-                                    goalIds = goal.getGoalID() + "";
-
-                                    if (goal.getCompleted() == 1)
-                                    {
-                                        goalCompleteds = "1";
-                                    }
-                                    else
-                                    {
-                                        goalCompleteds = "0";
-                                    }
-
-                                    goalDescs = goal.getGoalDescription();
-                                    goalNames = goal.getGoalName();
-
-                                    if (goal.getNormalGoal())
-                                    {
-                                        goalTypes = "0";
-                                    }
-                                    else
-                                    {
-                                        goalTypes = "1";
-                                    }
-
-                                }
-                                else
-                                {
-                                    goalIds = goalIds + "#" + goal.getGoalID();
-
-                                    if (goal.getCompleted() == 1)
-                                    {
-                                        goalCompleteds = goalCompleteds + "#" + "1";
-                                    }
-                                    else
-                                    {
-                                        goalCompleteds = goalCompleteds + "#" + "0";
-                                    }
-
-                                    goalDescs = goalDescs + "#" + goal.getGoalDescription();
-                                    goalNames = goalNames + "#" + goal.getGoalName();
-
-                                    if (goal.getNormalGoal())
-                                    {
-                                        goalTypes = goalTypes + "#" + "0";
-                                    }
-                                    else
-                                    {
-                                        goalTypes = goalTypes + "#" + "1";
-                                    }
-                                }
-
-
-                                count ++;
+                                editor.commit();
+                            }
+                            catch(Exception e)
+                            {
+                                Log.e(TAG, "Exception: " + e.getMessage());
                             }
 
 
-                            editor.putString(StaticClass.USER_GOALIDS, goalIds);
-                            editor.putString(StaticClass.USER_GOALCOMPLETED, goalCompleteds);
-                            editor.putString(StaticClass.USER_GOALNAMES, goalNames);
-                            editor.putString(StaticClass.USER_GOALTYPE, goalTypes);
-                            editor.putString(StaticClass.USER_GOALDESCRIPTIONS, goalDescs);
-
-                            editor.commit();
 
                             recyclerViewAdapter = new ViewGoalsAdapter(cardList, originalGoalList);
                             viewGoalsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
@@ -520,7 +529,7 @@ public class viewGoalsFragment extends Fragment
                 @Override
                 public void onFailure(Call<ReturnAllGoalObject> call, Throwable t)
                 {
-                    Toast.makeText(getActivity().getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG);
+                    //Toast.makeText(getActivity().getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG);
                     Log.e(TAG, " OnFailure error: can't connect");
                 }
             });
@@ -528,7 +537,7 @@ public class viewGoalsFragment extends Fragment
         }
         catch(Exception e)
         {
-            Toast.makeText(getActivity().getApplicationContext(), "An error occurred :(",Toast.LENGTH_LONG);
+            //Toast.makeText(getActivity().getApplicationContext(), "An error occurred :(",Toast.LENGTH_LONG);
             Log.e(TAG, " Exception error: " + e.getMessage());
         }
     }

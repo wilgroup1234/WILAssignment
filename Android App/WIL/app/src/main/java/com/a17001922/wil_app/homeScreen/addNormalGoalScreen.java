@@ -1,5 +1,7 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -28,28 +30,32 @@ import retrofit2.Response;
 public class addNormalGoalScreen extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
 
+    //_____________Declarations_________________
+    Button btnBack;
     List<Goal> allListedGoals;
     Spinner cmbListOfGoals;
     Button btnAddGoals;
     ArrayList<String> arrGoals = new ArrayList<String>();
     private static final String TAG = "AddNormalGoalActivity";
     public static ArrayList<Goal> publicGoalList = new ArrayList<Goal>();
+    Context context;
 
+    //____________________OnCreate Method_____________
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_normal_goal_screen);
+
+        //_____________Binding fields and widgets_____________
         cmbListOfGoals = findViewById(R.id.cmbListOfGoals);
         btnAddGoals = findViewById(R.id.btnAddGoalScreen);
         final goalsService service = StaticClass.retrofit.create(goalsService.class);
+        context = getApplicationContext();
+        btnBack = findViewById(R.id.btnBackNormalGoal);
 
-
-
-
-
+        //Get goals
         final Call<ReturnGoalObject> getGoals = service.getAllGoals();
-
         try
         {
             getGoals.enqueue(new Callback<ReturnGoalObject>()
@@ -97,14 +103,31 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
                 }
             });
 
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG).show();
+            Log.e(TAG, " Exception error: can't connect");
+        }
 
 
-            btnAddGoals.setOnClickListener(new View.OnClickListener()
+
+
+//_____________Add Goals button Click Event Listener_____________
+        btnAddGoals.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
             {
-                @Override
-                public void onClick(View v)
+                boolean valid = false;
+                String errorMessage = "Select a goal from the available list and try again..";
+
+
+
+                UserGoalObject usersGoal = new UserGoalObject();
+
+                try
                 {
-                    UserGoalObject usersGoal = new UserGoalObject();
                     usersGoal.setEmail(StaticClass.currentUser);
 
                     String goalName = cmbListOfGoals.getSelectedItem().toString();
@@ -116,6 +139,20 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
 
                     usersGoal.setGoalId(gID);
 
+                    if(usersGoal.getGoalId() > 0 && usersGoal.getEmail().length() > 7)
+                    {
+                        valid = true;
+                    }
+
+                }
+                catch(Exception e)
+                {
+                    Toast.makeText(context, " getting user input: " + e.getMessage() , Toast.LENGTH_LONG).show();
+                }
+
+
+                if(valid)
+                {
                     Call<ReturnMessageObject> addingGoal = service.addingGoal(usersGoal);
                     addingGoal.enqueue(new Callback<ReturnMessageObject>()
                     {
@@ -128,7 +165,7 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
 
                                 if(returnMessage.getResult())
                                 {
-                                    Toast.makeText(getApplicationContext(), "Goal added",Toast.LENGTH_LONG);
+                                    Toast.makeText(getApplicationContext(), "Goal added",Toast.LENGTH_LONG).show();
                                     Log.e(TAG, "goal added: " + returnMessage.getErrorMessage());
                                 }
                                 else
@@ -143,23 +180,36 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
                         @Override
                         public void onFailure(Call<ReturnMessageObject> call, Throwable t)
                         {
-                            Toast.makeText(getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG);
+                            Toast.makeText(getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG).show();
                             Log.e(TAG, " OnFailure error: can't connect");
                         }
                     });
-
-
-
                 }
-            });
+                else
+                {
+                    Toast.makeText(context, errorMessage ,Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, errorMessage);
+                }
 
-        }
-        catch (Exception e)
+
+
+
+
+            }
+        });
+
+
+
+        //_____________Back button Click Event Listener_____________
+
+        btnBack.setOnClickListener(new View.OnClickListener()
         {
-            Toast.makeText(getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG);
-            Log.e(TAG, " Exception error: can't connect");
-        }
-
+            @Override
+            public void onClick(View v)
+            {
+                GoBack();
+            }
+        });
 
 
     }
@@ -175,4 +225,20 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
     {
 
     }
+
+    //Changes screen back to home screen
+    public void GoBack()
+    {
+        //Open Home activity
+        Intent intent = new Intent(context, homeActivity.class);
+        startActivity(intent);
+    }
+
+    //________Do nothing when the back button is pressed________
+    @Override
+    public void onBackPressed()
+    {
+
+    }
+
 }

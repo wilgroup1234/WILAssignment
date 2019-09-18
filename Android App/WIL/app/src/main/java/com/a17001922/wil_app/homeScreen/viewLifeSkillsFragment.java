@@ -10,17 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.LifeSkillObject;
-import com.a17001922.wil_app.goals.ReturnAllGoalObject;
-import com.a17001922.wil_app.goals.ReturnAnyTypeGoalObject;
 import com.a17001922.wil_app.goals.ReturnLifeSkillsObject;
-import com.a17001922.wil_app.goals.UserGoalObject;
 import com.a17001922.wil_app.goals.goalsService;
 
 import java.util.ArrayList;
@@ -39,6 +35,7 @@ public class viewLifeSkillsFragment extends Fragment
 
     private ViewLifeSkillsAdapter recyclerViewAdapter;
     private RecyclerView.LayoutManager recyclerViewLayoutManager;
+    SharedPreferences sharedPreferences;
 
     RecyclerView viewLifeSkillsRecyclerView;
 
@@ -69,6 +66,8 @@ public class viewLifeSkillsFragment extends Fragment
     {
         super.onStart();
 
+        sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+
         btnSaveLifeSkillChanges = v.findViewById(R.id.btnSaveLifeSkillChanges);
         viewLifeSkillsRecyclerView = v.findViewById(R.id.viewLifeSkillsRecyclerView);
         viewLifeSkillsRecyclerView.setHasFixedSize(true);
@@ -83,7 +82,7 @@ public class viewLifeSkillsFragment extends Fragment
             public void onClick(View v)
             {
 
-                SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+
                 String lNameList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSNAMES, "");
                 String lIDList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSIDS, "");
                 String lCompList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSCOMPLETED, "");
@@ -259,7 +258,7 @@ public class viewLifeSkillsFragment extends Fragment
                         {
                             cardList = new ArrayList<>();
 
-                            SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             String LifeSkillsNames = "", LifeSkillsIds = "", LifeSkillsCompleteds = "";
 
@@ -359,7 +358,7 @@ public class viewLifeSkillsFragment extends Fragment
                 @Override
                 public void onFailure(Call<ReturnLifeSkillsObject> call, Throwable t)
                 {
-                    Toast.makeText(getActivity().getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG);
+                   // Toast.makeText(getActivity().getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG);
                     Log.e(TAG, " OnFailure error: can't connect");
                 }
             });
@@ -367,7 +366,7 @@ public class viewLifeSkillsFragment extends Fragment
         }
         catch(Exception e)
         {
-            Toast.makeText(getActivity().getApplicationContext(), "An error occurred :(",Toast.LENGTH_LONG);
+          //  Toast.makeText(getActivity().getApplicationContext(), "An error occurred :(",Toast.LENGTH_LONG);
             Log.e(TAG, " Exception error: " + e.getMessage());
         }
     }
