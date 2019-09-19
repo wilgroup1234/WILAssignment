@@ -1,17 +1,13 @@
 package com.a17001922.wil_app.homeScreen;
-
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-
 import com.a17001922.wil_app.R;
-
+import com.a17001922.wil_app.StaticClass;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ViewGoalsAdapter extends RecyclerView.Adapter<ViewGoalsViewHolder>
 {
@@ -42,6 +38,7 @@ public class ViewGoalsAdapter extends RecyclerView.Adapter<ViewGoalsViewHolder>
       viewHolder.imageView.setImageResource(cardViewItem.getImageResource());
       viewHolder.textView1.setText(cardViewItem.getGoalName());
       viewHolder.textView2.setText(cardViewItem.getGoalDescription());
+      viewHolder.textView3.setText(cardViewItem.getDate());
       if (cardViewItem.isCompleted())
       {
           viewHolder.checkBox.setChecked(true);
@@ -56,34 +53,37 @@ public class ViewGoalsAdapter extends RecyclerView.Adapter<ViewGoalsViewHolder>
           @Override
           public void onItemClick(View v, int pos)
           {
-              CheckBox checkBox = (CheckBox) v;
-
-              GoalsCheckedClass changedGoal = originalGoalsList.get(pos);
-
-              if (checkBox.isChecked())
+              if(StaticClass.hasInternet)
               {
-                  changedGoal.setChecked(true);
+                  CheckBox checkBox = (CheckBox) v;
 
-                  if (changedGoalList.contains(changedGoal))
+                  GoalsCheckedClass changedGoal = originalGoalsList.get(pos);
+
+                  if (checkBox.isChecked())
                   {
+                      changedGoal.setChecked(true);
 
+                      if (changedGoalList.contains(changedGoal))
+                      {
+
+                      }
+                      else
+                      {
+                          changedGoalList.add(changedGoal);
+                      }
                   }
                   else
                   {
-                      changedGoalList.add(changedGoal);
-                  }
-              }
-              else
-              {
-                  changedGoal.setChecked(false);
+                      changedGoal.setChecked(false);
 
-                  if (changedGoalList.contains(changedGoal))
-                  {
+                      if (changedGoalList.contains(changedGoal))
+                      {
 
-                  }
-                  else
-                  {
-                      changedGoalList.add(changedGoal);
+                      }
+                      else
+                      {
+                          changedGoalList.add(changedGoal);
+                      }
                   }
               }
 

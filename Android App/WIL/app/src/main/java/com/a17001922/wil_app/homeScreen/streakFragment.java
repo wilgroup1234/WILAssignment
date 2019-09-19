@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class streakFragment extends Fragment
 {
-
+    //_____________Declarations_________________
     View v;
     goalsService goalService = StaticClass.retrofit.create(goalsService.class);
     int currentStreak = 0;
@@ -28,25 +28,28 @@ public class streakFragment extends Fragment
     TextView txtCurrentStreak;
 
 
+    //____________________OnCreate Method_____________
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
         v = inflater.inflate(R.layout.fragment_streak,container,false);
         return v;
-
-
     }
 
+
+    //____________________OnStart Method_____________
     @Override
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
 
+        //_____________Binding fields and widgets_____________
         txtCurrentStreak = v.findViewById(R.id.txtCurrentStreak);
-
         LoginUserObject loginUserObject = new LoginUserObject();
         loginUserObject.setEmail(StaticClass.currentUser);
 
+        //API call to get user's streak
         try
         {
             final Call<Streak> streakCall = goalService.getUserStreak(loginUserObject);
