@@ -14,6 +14,7 @@ public class ViewGoalsViewHolder extends RecyclerView.ViewHolder implements View
     public ImageView imageView;
     public TextView textView1;
     public TextView textView2;
+    public TextView textView3;
     public CheckBox checkBox;
 
     CardViewItemClickListener itemClickListener;
@@ -24,6 +25,7 @@ public class ViewGoalsViewHolder extends RecyclerView.ViewHolder implements View
         imageView = itemView.findViewById(R.id.imgIconCardView);
         textView1 = itemView.findViewById(R.id.txtGoalNameCardView);
         textView2 = itemView.findViewById(R.id.txtGoalDescriptionCardView);
+        textView3 = itemView.findViewById(R.id.txtGoalDateCardView);
         checkBox = itemView.findViewById(R.id.cBoxIsCompleted);
 
 

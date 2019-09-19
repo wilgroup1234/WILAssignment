@@ -1,7 +1,5 @@
 package com.a17001922.wil_app.homeScreen;
 
-
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -24,82 +22,95 @@ import retrofit2.Response;
 
 public class dailyQuoteFragment extends Fragment
 {
+    //_____________Declarations_________________
     TextView lblDailyQuote, lblDailyYoutubeLink;
     ImageView DailyImage;
     DailyObject Quote;
     int templateID;
     private final String TAG = "Daily Quote Page";
+    View v;
 
+    //____________________OnCreate Method_____________
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View v = inflater.inflate(R.layout.fragment_daily_quote, container, false);
+        v = inflater.inflate(R.layout.fragment_daily_quote, container, false);
+        return v;
+    }
+
+
+    //____________________OnStart Method_____________
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+        //_____________Binding fields and widgets_____________
         lblDailyQuote = v.findViewById(R.id.lblQuote);
         lblDailyYoutubeLink = v.findViewById(R.id.lbl_QuoteYoutubeLink);
         DailyImage = v.findViewById(R.id.imgDailyImage);
 
-
-        try
+        if(StaticClass.hasInternet)
         {
-            Quote = new DailyObject();
-            DailyQuoteService service = StaticClass.retrofit.create(DailyQuoteService.class);
-            final Call<DailyObject> quoteCall = service.getQuote();
-            quoteCall.enqueue(new Callback<DailyObject>()
+            try
             {
-                @Override
-                public void onResponse(Call<DailyObject> call, Response<DailyObject> response)
+                Quote = new DailyObject();
+                DailyQuoteService service = StaticClass.retrofit.create(DailyQuoteService.class);
+                final Call<DailyObject> quoteCall = service.getQuote();
+                quoteCall.enqueue(new Callback<DailyObject>()
                 {
-                    if (!response.isSuccessful())
+                    @Override
+                    public void onResponse(Call<DailyObject> call, Response<DailyObject> response)
                     {
-
-                    }
-                    else
-                    {
-                        Quote = response.body();
-                        if(Quote == null)
+                        if (!response.isSuccessful())
                         {
-                            Toast.makeText(getActivity().getApplicationContext(), "Unfortunately we had an error retrieving the daily quote", Toast.LENGTH_SHORT).show();
+
                         }
                         else
                         {
-
-                            try
+                            Quote = response.body();
+                            if(Quote == null)
                             {
-                                templateID = Quote.getTemplateID();
-
-                                String uri = "i" + templateID;  // where my resource (without the extension) is the file
-
-                                int imageId = getResources().getIdentifier(uri, "drawable", getActivity().getApplicationContext().getPackageName());
-
-                                DailyImage.setImageResource(imageId);
-
-                                lblDailyQuote.setText(Quote.getQuoteText());
-                                lblDailyYoutubeLink.setText(Quote.getYoutubeLink());
+                                Toast.makeText(StaticClass.homeContext, "Unfortunately we had an error retrieving the daily quote", Toast.LENGTH_SHORT).show();
                             }
-                            catch(Exception e)
+                            else
                             {
-                                Log.e(TAG, "Exception caught: " + e.getMessage());
-                            }
 
+                                try
+                                {
+                                    templateID = Quote.getTemplateID();
+
+                                    String uri = "i" + templateID;  // where my resource (without the extension) is the file
+
+                                    int imageId = getResources().getIdentifier(uri, "drawable", StaticClass.homeContext.getPackageName());
+
+                                    DailyImage.setImageResource(imageId);
+
+                                    lblDailyQuote.setText(Quote.getQuoteText());
+                                    lblDailyYoutubeLink.setText(Quote.getYoutubeLink());
+                                }
+                                catch(Exception e)
+                                {
+                                    Log.e(TAG, "Exception caught: " + e.getMessage());
+                                }
+
+                            }
                         }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<DailyObject> call, Throwable t)
-                {
-                    //Toast.makeText(StaticClass.homeContext, "Response from API failed", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<DailyObject> call, Throwable t)
+                    {
+                        Toast.makeText(StaticClass.homeContext, "Response from API failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            catch (NullPointerException e)
+            {
+                Toast.makeText(StaticClass.homeContext, "UNABLE TO GET DAILY QUOTE", Toast.LENGTH_LONG).show();
+            }
         }
-        catch (NullPointerException e)
-        {
-            //Toast.makeText(getActivity(), "UNABLE TO GET DAILY QUOTE", Toast.LENGTH_LONG).show();
-        }
-
-
-        return v;
     }
+
 
 }

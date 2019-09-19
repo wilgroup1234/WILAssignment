@@ -478,23 +478,44 @@ namespace WebApplication1.Controllers
                 newUserGoal.GoalID = userGoal.GoalId;
                 newUserGoal.Completed = 0;
 
-                try
-                {
+                //check if user already has goal, if not procced, if they do, don't allow them to add it again.
+                Boolean hasGoal = false;
 
-                    db.UserGoals.Add(newUserGoal);
-                    db.SaveChanges();
-                    valid = true;
-                }
-                catch (Exception e)
+                foreach(UserGoal userGoal1 in db.UserGoals)
                 {
-                    Debug.WriteLine("Error: " + e.ToString());
-                    returnMessage.errorMessage = "Error: " + e.ToString();
-                    valid = false;
+                    if(userGoal1.GoalID == userGoal.GoalId)
+                    {
+                        hasGoal = true;
+                    }
                 }
 
-                returnMessage.result = valid;
+                if(hasGoal)
+                {
+                    returnMessage.result = false;
+                    returnMessage.errorMessage = "duplicate";
 
-                return returnMessage;
+                    return returnMessage;
+                }
+                else
+                {
+                    try
+                    {
+
+                        db.UserGoals.Add(newUserGoal);
+                        db.SaveChanges();
+                        valid = true;
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine("Error: " + e.ToString());
+                        returnMessage.errorMessage = "Error: " + e.ToString();
+                        valid = false;
+                    }
+
+                    returnMessage.result = valid;
+
+                    return returnMessage;
+                }
 
             }
             catch (Exception e)

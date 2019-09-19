@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,40 +37,41 @@ import retrofit2.Response;
 
 public class Pedometer extends AppCompatActivity implements SensorEventListener, StepListener
 {
-
+    //_____________Declarations_________________
+    ProgressBar progressBar;
     Button btnBack, btnStart, btnSaveSteps;
-
     TextView txtTodaysSteps, txtCurrentSteps;
-
     goalsService goalService = StaticClass.retrofit.create(goalsService.class);
-
     private StepDetectorClass simpleStepDetector;
     private static SensorManager sensorManager;
     private Sensor accel;
     private int numSteps;
     private static final String TAG = "Pedometer Class";
-
     int todaysSteps = 0, currentSteps = 0, addSteps = 0;
+    Context context;
 
+
+    //____________________OnCreate Method_____________
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedometer);
-
-
     }
 
 
+    //____________________OnStart Method_____________
     @Override
     protected void onStart()
     {
         super.onStart();
 
+        //_____________Binding fields and widgets_____________
+        progressBar = findViewById(R.id.pBarPedometer);
+        progressBar.setVisibility(View.INVISIBLE);
         btnBack = findViewById(R.id.btnBackPedometer);
         btnStart = findViewById(R.id.btnStartCountingSteps);
         btnSaveSteps = findViewById(R.id.btnSaveSteps);
-
         txtCurrentSteps = findViewById(R.id.txtCurrentSteps);
         txtTodaysSteps = findViewById(R.id.txtTodaysSteps);
 
@@ -77,46 +80,81 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
         accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         simpleStepDetector = new StepDetectorClass();
         simpleStepDetector.registerListener(this);
+        context = getApplicationContext();
 
+
+        StaticClass.ongoingOperation = true;
+        progressBar.setVisibility(View.VISIBLE);
         GetCurrentSteps();
 
+
+        //_____________Back button Click Event Listener_____________
         btnBack.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                ChangeFormHome();
+                if (!StaticClass.ongoingOperation)
+                {
+                    ChangeFormHome();
+                }
+                else
+                {
+                    Toast.makeText(context, "Please Wait...", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
+
+        //_____________Start button Click Event Listener_____________
         btnStart.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                numSteps = 0;
-                sensorManager.registerListener(Pedometer.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
+                if (!StaticClass.ongoingOperation)
+                {
+                    numSteps = 0;
+                    sensorManager.registerListener(Pedometer.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
+                }
+                else
+                {
+                    Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+        //_____________Save Steps button Click Event Listener_____________
         btnSaveSteps.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                sensorManager.unregisterListener( Pedometer.this);
-
-                if (txtCurrentSteps.getText().length() > 0)
+                if (!StaticClass.ongoingOperation)
                 {
-                    double sCount = Double.parseDouble(txtCurrentSteps.getText() + "");
-                    addSteps = (int) sCount;
-                    todaysSteps = todaysSteps + addSteps;
+                    StaticClass.ongoingOperation = true;
+                    progressBar.setVisibility(View.VISIBLE);
 
-                    txtTodaysSteps.setText(todaysSteps + "");
+                    sensorManager.unregisterListener(Pedometer.this);
 
-                    UpdateSteps();
-                    ChangeFormHome();
+                    if (txtCurrentSteps.getText().length() > 0)
+                    {
+                        double sCount = Double.parseDouble(txtCurrentSteps.getText() + "");
+                        addSteps = (int) sCount;
+                        todaysSteps = todaysSteps + addSteps;
+
+                        txtTodaysSteps.setText(todaysSteps + "");
+
+                        UpdateSteps();
+                    }
                 }
+                else
+                {
+                    Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
@@ -155,6 +193,8 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
         txtCurrentSteps.setText(numSteps + "");
     }
 
+
+    //_____________This Method Gets the user's current step count for today and displays it_____________
     public void GetCurrentSteps()
     {
         UserStepsObject userStepsObject = new UserStepsObject();
@@ -173,6 +213,8 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
 
                     todaysSteps = returnSteps.getNumSteps();
                     txtTodaysSteps.setText(returnSteps.getNumSteps() + "");
+                    StaticClass.ongoingOperation = false;
+                    progressBar.setVisibility(View.INVISIBLE);
 
                 }
 
@@ -180,6 +222,8 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
                 public void onFailure(Call<UserStepsObject> call, Throwable t)
                 {
                     Log.e(TAG, "Connection onFailure Get user steps");
+                    StaticClass.ongoingOperation = false;
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
 
 
@@ -190,6 +234,8 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
         {
             Log.e(TAG, "Error retrieving steps: " + e.toString());
             txtTodaysSteps.setText("Cannot Get steps - No Internet connection :(");
+            StaticClass.ongoingOperation = false;
+            progressBar.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -224,10 +270,16 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
                     {
                         Toast.makeText(getApplicationContext(), "Today's Steps updated", Toast.LENGTH_LONG).show();
                         Log.e(TAG, "Steps Updated :)");
+                        StaticClass.ongoingOperation = false;
+                        progressBar.setVisibility(View.INVISIBLE);
+                        ChangeFormHome();
                     }
                     else
                     {
                         Log.e(TAG, "Steps Update Failed :(");
+                        StaticClass.ongoingOperation = false;
+                        progressBar.setVisibility(View.INVISIBLE);
+                        ChangeFormHome();
                     }
 
                 }
@@ -236,6 +288,9 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
                 public void onFailure(Call<ReturnMessageObject> call, Throwable t)
                 {
                     Log.e(TAG, "Connection onFailure Update user steps");
+                    StaticClass.ongoingOperation = false;
+                    progressBar.setVisibility(View.INVISIBLE);
+                    ChangeFormHome();
                 }
 
 
@@ -246,6 +301,9 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
         {
             Log.e(TAG, "Error updating steps: " + e.toString());
             txtTodaysSteps.setText("Cannot update steps - No Internet connection :(");
+            StaticClass.ongoingOperation = false;
+            progressBar.setVisibility(View.INVISIBLE);
+            ChangeFormHome();
         }
     }
 
