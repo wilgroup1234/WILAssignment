@@ -28,4 +28,8 @@ public class cardViewItem2
     {
         return lifeSkillName;
     }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
 }

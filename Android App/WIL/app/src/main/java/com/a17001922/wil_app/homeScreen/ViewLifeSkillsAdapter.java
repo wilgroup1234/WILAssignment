@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import com.a17001922.wil_app.R;
+import com.a17001922.wil_app.StaticClass;
 
 import java.util.ArrayList;
 
@@ -53,38 +54,41 @@ public class ViewLifeSkillsAdapter extends RecyclerView.Adapter<ViewLifeSkillsVi
             @Override
             public void onItemClick(View v, int pos)
             {
-                CheckBox checkBox = (CheckBox) v;
-
-                LifeSkillChecked changedLifeSkill = originalLifeSkillsList.get(pos);
-
-                if (checkBox.isChecked())
+                if(StaticClass.hasInternet)
                 {
-                    changedLifeSkill.setCompleted(true);
+                    CheckBox checkBox = (CheckBox) v;
 
-                    if (changedLifeSkillsList.contains(changedLifeSkill))
+                    LifeSkillChecked changedLifeSkill = originalLifeSkillsList.get(pos);
+
+                    if (checkBox.isChecked())
                     {
+                        cardViewItems.get(i).setCompleted(true);
+                        changedLifeSkill.setCompleted(true);
 
+                        if (changedLifeSkillsList.contains(changedLifeSkill))
+                        {
+
+                        }
+                        else
+                        {
+                            changedLifeSkillsList.add(changedLifeSkill);
+                        }
                     }
                     else
                     {
-                        changedLifeSkillsList.add(changedLifeSkill);
+                        cardViewItems.get(i).setCompleted(false);
+                        changedLifeSkill.setCompleted(false);
+
+                        if (changedLifeSkillsList.contains(changedLifeSkill))
+                        {
+
+                        }
+                        else
+                        {
+                            changedLifeSkillsList.add(changedLifeSkill);
+                        }
                     }
                 }
-                else
-                {
-                    changedLifeSkill.setCompleted(false);
-
-                    if (changedLifeSkillsList.contains(changedLifeSkill))
-                    {
-
-                    }
-                    else
-                    {
-                        changedLifeSkillsList.add(changedLifeSkill);
-                    }
-                }
-
-
 
             }
         });

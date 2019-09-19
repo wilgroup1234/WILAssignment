@@ -25,24 +25,24 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class goalsFragment extends Fragment
 {
-    Button btnAddGoals, btnAddCustomGoals, btnViewGoals;
+    //_____________Declarations_________________
+    Button btnAddGoals, btnAddCustomGoals;
     View v;
     ImageView btnLogout;
     GoogleSignInOptions gso;
     GoogleSignInClient mGoogleSignInClient;
 
+    //____________________OnCreate Method_____________
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         v = inflater.inflate(R.layout.fragment_goals, container, false);
-
-
-
         return v;
     }
 
 
+    //____________________OnStart Method_____________
     @Override
     public void onStart()
     {
@@ -50,10 +50,10 @@ public class goalsFragment extends Fragment
 
         btnAddGoals = v.findViewById(R.id.btn_AddGoal);
         btnAddCustomGoals = v.findViewById(R.id.btn_AddCustomGoal);
-        btnViewGoals = v.findViewById(R.id.btn_ViewGoals);
         btnLogout = v.findViewById(R.id.btnLogoutGoals);
 
 
+        //_____________Logout button Click Event Listener_____________
         btnLogout.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -63,19 +63,22 @@ public class goalsFragment extends Fragment
             }
         });
 
+        //_____________Add Custom Goals button Click Event Listener_____________
         btnAddCustomGoals.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(getActivity().getApplicationContext(),addCustomGoalScreen.class);
+                Intent i = new Intent(StaticClass.homeContext,addCustomGoalScreen.class);
                 startActivity(i);
             }
         });
+
+        //_____________Add Goals button Click Event Listener_____________
         btnAddGoals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(),addNormalGoalScreen.class);
+                Intent i = new Intent(StaticClass.homeContext,addNormalGoalScreen.class);
                 startActivity(i);
             }
         });
@@ -87,7 +90,7 @@ public class goalsFragment extends Fragment
     public void ResetUser()
     {
         //Set logged in user to false;
-        SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
         String type = sharedPreferences.getString(StaticClass.LOGGED_IN_TYPE, "");
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(StaticClass.LOGGED_IN_USER, false);
@@ -100,7 +103,7 @@ public class goalsFragment extends Fragment
                 GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestEmail()
                         .build();
-                GoogleSignInClient gSignInClient = GoogleSignIn.getClient(getActivity().getApplicationContext(), googleSignInOptions);
+                GoogleSignInClient gSignInClient = GoogleSignIn.getClient(StaticClass.homeContext, googleSignInOptions);
 
                 gSignInClient.signOut();
             }
@@ -110,7 +113,7 @@ public class goalsFragment extends Fragment
             }
         }
 
-        Toast.makeText(getActivity().getApplicationContext(), "Signed Out...", Toast.LENGTH_LONG).show();
+        Toast.makeText(StaticClass.homeContext, "Signed Out...", Toast.LENGTH_LONG).show();
 
         OpenLogin();
     }
@@ -119,7 +122,7 @@ public class goalsFragment extends Fragment
     public void OpenLogin()
     {
         //Open Login activity
-        Intent intent = new Intent(getActivity().getApplicationContext(), mainLogin.class);
+        Intent intent = new Intent(StaticClass.homeContext, mainLogin.class);
         StaticClass.currentUser = "No_User";
         startActivity(intent);
     }
