@@ -645,9 +645,9 @@ namespace WILWebAppNetCore.Controllers
                 }
             }
 
-            
+            List<UserStreak> streaks2 = streaks.OrderByDescending(c => c.Streak).ToList();
 
-            ViewBag.StreaksList = streaks;
+            ViewBag.StreaksList = streaks2;
 
             return View();
         }
