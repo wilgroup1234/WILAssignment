@@ -80,11 +80,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-<<<<<<< HEAD
                         item1 = txtItem1.getText().toString().trim();
-=======
-                        item1 = txtItem1.getText().toString();
->>>>>>> 60b1129e6204b34ad62628cd4a985299d2b96359
                     }
                     catch(Exception e)
                     {
@@ -93,11 +89,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-<<<<<<< HEAD
                         item2 = txtItem2.getText().toString().trim();
-=======
-                        item2 = txtItem2.getText().toString();
->>>>>>> 60b1129e6204b34ad62628cd4a985299d2b96359
                     }
                     catch(Exception e)
                     {
@@ -106,11 +98,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-<<<<<<< HEAD
                         item3 = txtItem3.getText().toString().trim();
-=======
-                        item3 = txtItem3.getText().toString();
->>>>>>> 60b1129e6204b34ad62628cd4a985299d2b96359
                     }
                     catch(Exception e)
                     {
@@ -119,11 +107,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-<<<<<<< HEAD
                         item4 = txtItem4.getText().toString().trim();
-=======
-                        item4 = txtItem4.getText().toString();
->>>>>>> 60b1129e6204b34ad62628cd4a985299d2b96359
                     }
                     catch(Exception e)
                     {
@@ -132,11 +116,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-<<<<<<< HEAD
                         item5 = txtItem5.getText().toString().trim();
-=======
-                        item5 = txtItem5.getText().toString();
->>>>>>> 60b1129e6204b34ad62628cd4a985299d2b96359
                     }
                     catch(Exception e)
                     {
