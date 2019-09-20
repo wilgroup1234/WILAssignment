@@ -1,5 +1,8 @@
 package com.a17001922.wil_app;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.security.cert.CertificateException;
 
 import javax.net.ssl.HostnameVerifier;
@@ -20,13 +23,25 @@ public class StaticClass
     public static final String LOGGED_IN_USER = "Logged in user";
     public static final String LOGGED_IN_USER_EMAIL = "Logged in user email";
     public static final String LOGGED_IN_TYPE = "Logged in type";
+    public static final String USER_GOALIDS = "user_goal_IDS";
+    public static final String USER_GOALNAMES = "user_goal_NAMES";
+    public static final String USER_GOALDESCRIPTIONS = "user_goal_DESCRIPTIONS";
+    public static final String USER_GOALTYPE = "user_goal_TYPES";
+    public static final String USER_GOALCOMPLETED = "user_goal_COMPLETED";
+    public static final String USER_LIFESKILLSIDS = "user_LIFESKILLS_IDS";
+    public static final String USER_LIFESKILLSNAMES = "user_LIFESKILLS_NAMES";
+    public static final String USER_LIFESKILLSCOMPLETED = "user_LIFESKILLS_COMPLETED";
 
     public static boolean hasInternet = false;
+    public static boolean ongoingOperation = false;
+
+    public static Context homeContext;
+    public static Context loginContext;
 
 
     public static String currentUser = "No_User";
 
-    public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://10.117.190.63:45456/").addConverterFactory(GsonConverterFactory.create())
+    public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://192.168.43.178:45457/").addConverterFactory(GsonConverterFactory.create())
             .client(getUnsafeOkHttpClient().build()).build();
 
 
@@ -81,4 +96,6 @@ public class StaticClass
         }
 
     }
+
+
 }

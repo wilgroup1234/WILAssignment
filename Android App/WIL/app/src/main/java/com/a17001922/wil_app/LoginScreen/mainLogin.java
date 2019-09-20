@@ -27,6 +27,8 @@ public class mainLogin extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
 
+        Context thisContext = getApplicationContext();
+        StaticClass.loginContext = thisContext;
 
     }
 
@@ -34,39 +36,52 @@ public class mainLogin extends AppCompatActivity
     {
      super.onStart();
 
-        if (StaticClass.hasInternet)
-        {
-            Toast.makeText(getApplicationContext(), "Working Online", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Offline, Cannot Login", Toast.LENGTH_LONG).show();
-        }
-
         viewPager = (ViewPager) findViewById(R.id.loginpager);
         tabLayout = (TabLayout) findViewById(R.id.LtabLayout);
         adapter = new LoginTabAdapter(getSupportFragmentManager());
 
-        try{
-            adapter.addFragment(new LoginFragment(),"LOGIN");
-            Log.e(TAG,"we added login");
-            adapter.addFragment(new RegisterFragments(),"REGISTER");
-            Log.e(TAG,"Added register");
-            viewPager.setAdapter(adapter);
-            Log.e(TAG,"set the adapter");
-            tabLayout.setupWithViewPager(viewPager);
-            Log.e(TAG,"Added tablayout correctly");
-        }catch (Exception e){
-            Log.e(TAG,"here is the error :",e);
+        if (StaticClass.hasInternet)
+        {
+            Toast.makeText(getApplicationContext(), "Working Online", Toast.LENGTH_LONG).show();
+
+            try
+            {
+                adapter.addFragment(new LoginFragment(),"LOGIN");
+                Log.e(TAG,"we added login");
+                adapter.addFragment(new RegisterFragments(),"REGISTER");
+                Log.e(TAG,"Added register");
+                viewPager.setAdapter(adapter);
+                Log.e(TAG,"set the adapter");
+                tabLayout.setupWithViewPager(viewPager);
+                Log.e(TAG,"Added tablayout correctly");
+            }
+            catch (Exception e)
+            {
+                Log.e(TAG,"here is the error :",e);
+            }
+
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Offline, Cannot Login", Toast.LENGTH_LONG).show();
+
+            try
+            {
+                adapter.addFragment(new LoginFragment(),"LOGIN");
+                Log.e(TAG,"we added login");
+                viewPager.setAdapter(adapter);
+                tabLayout.setupWithViewPager(viewPager);
+            }
+            catch (Exception e)
+            {
+                Log.e(TAG,"here is the error :",e);
+            }
         }
 
-    }
 
 
-    public void OpenHomePage(Intent intent)
-    {
 
-        startActivity(intent);
+
 
     }
 
