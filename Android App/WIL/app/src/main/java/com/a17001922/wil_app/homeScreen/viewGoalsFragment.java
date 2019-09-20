@@ -216,6 +216,7 @@ public class viewGoalsFragment extends Fragment
 
                         for(String val : gNames)
                         {
+<<<<<<< HEAD
                             try
                             {
                                 String gID = gIDs[index];
@@ -258,6 +259,43 @@ public class viewGoalsFragment extends Fragment
                             {
 
                             }
+=======
+                            String gID = gIDs[index];
+                            String gName = gNames[index];
+                            String gDesc= gDescs[index];
+                            boolean gComp;
+                            boolean gType;
+
+
+                            if (gComps[index].equals("1"))
+                            {
+                                gComp = true;
+                            }
+                            else
+                            {
+                                gComp = false;
+                            }
+
+                            if (gTypes[index].contains("1"))
+                            {
+                                gType = false;
+                            }
+                            else
+                            {
+                                gType = true;
+                            }
+
+                            Log.e(TAG, " SP Goal: " + gID + " isNormal" + gType + " isChecked: " + gComp + "");
+
+                            GoalsCheckedClass newGCC = new GoalsCheckedClass();
+                            newGCC.setChecked(gComp);
+                            newGCC.setNormalGoal(gType);
+                            newGCC.setGoalID(Integer.parseInt(gID));
+
+                            originalList.add(newGCC);
+
+                            index++;
+>>>>>>> 60b1129e6204b34ad62628cd4a985299d2b96359
                         }
 
 

@@ -45,7 +45,10 @@ public class homeActivity extends AppCompatActivity
             adapter.addFragment(new uploadDocsFragment(),"Upload");
             adapter.addFragment(new cvUpload(),"CV");
             adapter.addFragment(new stepTrackerFragment(),"Step Tracker");
+<<<<<<< HEAD
             adapter.addFragment(new socialMediaFragment(),"Social Media");
+=======
+>>>>>>> 60b1129e6204b34ad62628cd4a985299d2b96359
 
             Toast.makeText(getApplicationContext(), "Working Online", Toast.LENGTH_LONG).show();
         }
@@ -56,7 +59,10 @@ public class homeActivity extends AppCompatActivity
             adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
             adapter.addFragment(new PlannerFragment(),"Planner");
             adapter.addFragment(new cvUpload(),"CV");
+<<<<<<< HEAD
             adapter.addFragment(new socialMediaFragment(),"Social Media");
+=======
+>>>>>>> 60b1129e6204b34ad62628cd4a985299d2b96359
             Toast.makeText(getApplicationContext(), "Offline, Limited functionality available...", Toast.LENGTH_LONG).show();
         }
 
