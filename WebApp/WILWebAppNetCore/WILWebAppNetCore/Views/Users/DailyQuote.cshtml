@@ -21,7 +21,7 @@
 @{
     List<String> numbers = new List<string>();
 
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 30; i++)
     {
         numbers.Add((i + 1) + "");
     }
@@ -62,56 +62,80 @@
     <tbody>
         @for (int i = 0; i < 5; i++)
         {
-            <tr style="width:50%">
-                <td>
-                    @{
-                        string imageName = "Image Number: " + (i + 1);
+        <tr style="width:50%">
+            <td>
+                @{
+                    string imageName = "Image Number: " + (i + 1);
 
-                        string imageLocation = "/images/dailyquote/" + (i + 1) + ".jpg";
+                    string imageLocation = "/images/dailyquote/" + (i + 1) + ".jpg";
 
-                    }
-                    <label>@imageName</label>
-                    <br>
-                    <img src="@imageLocation" alt="backgroundImage" width="100" height="100">
-                </td>
+                }
+                <label>@imageName</label>
+                <br>
+                <img src="@imageLocation" alt="backgroundImage" width="100" height="100">
+            </td>
 
-                <td>
-                    @{
-                        string imageName2 = "Image Number: " + (i + 6);
+            <td>
+                @{
+                    string imageName2 = "Image Number: " + (i + 6);
 
-                        string imageLocation2 = "/images/dailyquote/" + (i + 6) + ".jpg";
+                    string imageLocation2 = "/images/dailyquote/" + (i + 6) + ".jpg";
 
-                    }
-                    <label>@imageName2</label>
-                    <br>
-                    <img src="@imageLocation2" alt="backgroundImage" width="100" height="100">
-                </td>
+                }
+                <label>@imageName2</label>
+                <br>
+                <img src="@imageLocation2" alt="backgroundImage" width="100" height="100">
+            </td>
 
-                <td>
-                    @{
-                        string imageName3 = "Image Number: " + (i + 11);
+            <td>
+                @{
+                    string imageName3 = "Image Number: " + (i + 11);
 
-                        string imageLocation3 = "/images/dailyquote/" + (i + 11) + ".jpg";
+                    string imageLocation3 = "/images/dailyquote/" + (i + 11) + ".jpg";
 
-                    }
-                    <label>@imageName3</label>
-                    <br>
-                    <img src="@imageLocation3" alt="backgroundImage" width="100" height="100">
-                </td>
+                }
+                <label>@imageName3</label>
+                <br>
+                <img src="@imageLocation3" alt="backgroundImage" width="100" height="100">
+            </td>
 
-                <td>
-                    @{
-                        string imageName4 = "Image Number: " + (i + 16);
+            <td>
+                @{
+                    string imageName4 = "Image Number: " + (i + 16);
 
-                        string imageLocation4 = "/images/dailyquote/" + (i + 16) + ".jpg";
+                    string imageLocation4 = "/images/dailyquote/" + (i + 16) + ".jpg";
 
-                    }
-                    <label>@imageName4</label>
-                    <br>
-                    <img src="@imageLocation4" alt="backgroundImage" width="100" height="100">
-                </td>
+                }
+                <label>@imageName4</label>
+                <br>
+                <img src="@imageLocation4" alt="backgroundImage" width="100" height="100">
+            </td>
 
-            </tr>
+            <td>
+                @{
+                    string imageName5 = "Image Number: " + (i + 21);
+
+                    string imageLocation5 = "/images/dailyquote/" + (i + 21) + ".jpg";
+
+                }
+                <label>@imageName5</label>
+                <br>
+                <img src="@imageLocation5" alt="backgroundImage" width="100" height="100">
+            </td>
+
+            <td>
+                @{
+                    string imageName6 = "Image Number: " + (i + 26);
+
+                    string imageLocation6 = "/images/dailyquote/" + (i + 26) + ".jpg";
+
+                }
+                <label>@imageName6</label>
+                <br>
+                <img src="@imageLocation6" alt="backgroundImage" width="100" height="100">
+            </td>
+
+        </tr>
         }
     </tbody>
 </table>

@@ -1,0 +1,162 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.a17001922.pushnotifications"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="22"
+8-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+11-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:22:5-79
+11-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:22:22-76
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:23:5-67
+12-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:23:22-64
+13    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+13-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:24:5-68
+13-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:24:22-65
+14    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+14-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:26:5-82
+14-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:26:22-79
+15
+16    <application
+16-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:5:5-22:19
+17        android:allowBackup="true"
+17-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:6:9-35
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.1.0] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\b6b5951a20836cbe843a8e306a5032d5\core-1.1.0\AndroidManifest.xml:24:18-86
+19        android:debuggable="true"
+20        android:icon="@mipmap/ic_launcher"
+20-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:7:9-43
+21        android:label="@string/app_name"
+21-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:8:9-41
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:9:9-54
+23        android:supportsRtl="true"
+23-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:10:9-35
+24        android:testOnly="true"
+25        android:theme="@style/AppTheme" >
+25-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:11:9-40
+26        <activity android:name="com.a17001922.pushnotifications.MainActivity" >
+26-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:12:9-18:20
+26-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:12:19-47
+27            <intent-filter>
+27-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:13:13-17:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:14:17-69
+28-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:14:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:16:17-77
+30-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:16:27-74
+31            </intent-filter>
+32        </activity>
+33
+34        <service android:name="com.a17001922.pushnotifications.services.FirebaseInstanceService" />
+34-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:19:9-69
+34-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:19:18-66
+35        <service android:name="com.a17001922.pushnotifications.MessagingService" />
+35-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:20:9-53
+35-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:20:18-50
+36        <service android:name="com.a17001922.pushnotifications.MessagingInstance" />
+36-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:21:9-54
+36-->C:\Users\Jarrod\Desktop\WIL\WILAssignment\push notifications\PushNotifications\app\src\main\AndroidManifest.xml:21:18-51
+37        <!--
+38             FirebaseMessagingService performs security checks at runtime,
+39             no need for explicit permissions despite exported="true"
+40        -->
+41        <service
+41-->[com.google.firebase:firebase-messaging:17.3.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\92580c7715d95da64bdf9bf1092843d7\jetified-firebase-messaging-17.3.4\AndroidManifest.xml:28:9-34:19
+42            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+42-->[com.google.firebase:firebase-messaging:17.3.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\92580c7715d95da64bdf9bf1092843d7\jetified-firebase-messaging-17.3.4\AndroidManifest.xml:29:13-82
+43            android:exported="true" >
+43-->[com.google.firebase:firebase-messaging:17.3.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\92580c7715d95da64bdf9bf1092843d7\jetified-firebase-messaging-17.3.4\AndroidManifest.xml:30:13-36
+44            <intent-filter android:priority="-500" >
+44-->[com.google.firebase:firebase-messaging:17.3.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\92580c7715d95da64bdf9bf1092843d7\jetified-firebase-messaging-17.3.4\AndroidManifest.xml:31:13-33:29
+44-->[com.google.firebase:firebase-messaging:17.3.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\92580c7715d95da64bdf9bf1092843d7\jetified-firebase-messaging-17.3.4\AndroidManifest.xml:31:28-51
+45                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+45-->[com.google.firebase:firebase-messaging:17.3.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\92580c7715d95da64bdf9bf1092843d7\jetified-firebase-messaging-17.3.4\AndroidManifest.xml:32:17-78
+45-->[com.google.firebase:firebase-messaging:17.3.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\92580c7715d95da64bdf9bf1092843d7\jetified-firebase-messaging-17.3.4\AndroidManifest.xml:32:25-75
+46            </intent-filter>
+47        </service>
+48        <service
+48-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:29:9-35:19
+49            android:name="com.google.firebase.components.ComponentDiscoveryService"
+49-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:30:13-84
+50            android:exported="false" >
+50-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:31:13-37
+51            <meta-data
+51-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:32:13-34:85
+52                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+52-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:33:17-96
+53                android:value="com.google.firebase.components.ComponentRegistrar" />
+53-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:34:17-82
+54        </service>
+55
+56        <receiver
+56-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:37:9-44:20
+57            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+57-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:38:13-78
+58            android:exported="true"
+58-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:39:13-36
+59            android:permission="com.google.android.c2dm.permission.SEND" >
+59-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:40:13-73
+60            <intent-filter>
+60-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:41:13-43:29
+61                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+61-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:42:17-81
+61-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:42:25-78
+62            </intent-filter>
+63        </receiver>
+64        <!--
+65             FirebaseInstanceIdService performs security checks at runtime,
+66             no need for explicit permissions despite exported="true"
+67        -->
+68        <service
+68-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:50:9-56:19
+69            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+69-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:51:13-77
+70            android:exported="true" >
+70-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:52:13-36
+71            <intent-filter android:priority="-500" >
+71-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:53:13-55:29
+71-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:53:28-51
+72                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+72-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:54:17-80
+72-->[com.google.firebase:firebase-iid:17.0.4] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\1319c5ff7ce6070e8296b5788fb99f27\jetified-firebase-iid-17.0.4\AndroidManifest.xml:54:25-77
+73            </intent-filter>
+74        </service>
+75
+76        <provider
+76-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\6e296dc861de535d1f0bf93abfda4a7b\jetified-firebase-common-16.0.3\AndroidManifest.xml:10:9-14:39
+77            android:name="com.google.firebase.provider.FirebaseInitProvider"
+77-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\6e296dc861de535d1f0bf93abfda4a7b\jetified-firebase-common-16.0.3\AndroidManifest.xml:11:13-77
+78            android:authorities="com.a17001922.pushnotifications.firebaseinitprovider"
+78-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\6e296dc861de535d1f0bf93abfda4a7b\jetified-firebase-common-16.0.3\AndroidManifest.xml:12:13-72
+79            android:exported="false"
+79-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\6e296dc861de535d1f0bf93abfda4a7b\jetified-firebase-common-16.0.3\AndroidManifest.xml:13:13-37
+80            android:initOrder="100" />
+80-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\6e296dc861de535d1f0bf93abfda4a7b\jetified-firebase-common-16.0.3\AndroidManifest.xml:14:13-36
+81
+82        <activity
+82-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\d852a0c30525d17ab22158b896bd3524\jetified-play-services-base-16.0.1\AndroidManifest.xml:23:9-26:75
+83            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+83-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\d852a0c30525d17ab22158b896bd3524\jetified-play-services-base-16.0.1\AndroidManifest.xml:24:13-79
+84            android:exported="false"
+84-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\d852a0c30525d17ab22158b896bd3524\jetified-play-services-base-16.0.1\AndroidManifest.xml:25:13-37
+85            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+85-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\d852a0c30525d17ab22158b896bd3524\jetified-play-services-base-16.0.1\AndroidManifest.xml:26:13-72
+86
+87        <meta-data
+87-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\dc030cbea3195f852ab59c893f21cd42\jetified-play-services-basement-16.0.1\AndroidManifest.xml:23:9-25:69
+88            android:name="com.google.android.gms.version"
+88-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\dc030cbea3195f852ab59c893f21cd42\jetified-play-services-basement-16.0.1\AndroidManifest.xml:24:13-58
+89            android:value="@integer/google_play_services_version" />
+89-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\Jarrod\.gradle\caches\transforms-2\files-2.1\dc030cbea3195f852ab59c893f21cd42\jetified-play-services-basement-16.0.1\AndroidManifest.xml:25:13-66
+90    </application>
+91
+92</manifest>

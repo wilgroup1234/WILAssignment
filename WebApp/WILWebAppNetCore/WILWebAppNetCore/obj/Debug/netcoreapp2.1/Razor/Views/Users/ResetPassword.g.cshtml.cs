@@ -77,12 +77,12 @@ using WILWebAppNetCore.Classes;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(56, 108, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ed8c1ffe6dd4a5ea49ac8ff4e43ea79", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "775e2285119f4764be8686ddcf1863ac", async() => {
                 BeginContext(62, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(68, 48, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b3523e2bbfee4c499c4b87521de450b9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "702a09e727a14dac9300cc51f61743b9", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -119,12 +119,12 @@ using WILWebAppNetCore.Classes;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(168, 1559, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "745bcce200324a07a85c32b15177850f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "587012c493724abaab4580a64c9e44ef", async() => {
                 BeginContext(174, 42, true);
                 WriteLiteral("\r\n\r\n    <div class=\"loginbox\">\r\n\r\n        ");
                 EndContext();
                 BeginContext(216, 67, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "bdbf1836d0a340bfaba82254c4295313", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "daaefcbfaebc43f2906809a83e0f1e1c", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -173,7 +173,7 @@ using WILWebAppNetCore.Classes;
                 WriteLiteral("\r\n        \r\n        <div class=\"row\">\r\n            <div class=\"col-md-4\">\r\n                ");
                 EndContext();
                 BeginContext(593, 964, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9cf4e2b026384a83b2d05981a28b5af1", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a4687f3bd43046b3a7c2a246c1cd5a27", async() => {
                     BeginContext(626, 924, true);
                     WriteLiteral(@"
                     <div class=""form-group"">

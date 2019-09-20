@@ -97,7 +97,7 @@ using WILWebAppNetCore.Classes;
             WriteLiteral("\r\n<br>\r\n<br>\r\n\r\n<h3 align=\"center\"> Enter information for the new Life Skill:</h3>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n        ");
             EndContext();
             BeginContext(423, 380, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8b2fec15cbf9442e999fb50b8ba8f729", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efa7962323ac4f7398ddcc6eb49e0935", async() => {
                 BeginContext(453, 343, true);
                 WriteLiteral(@"
 
