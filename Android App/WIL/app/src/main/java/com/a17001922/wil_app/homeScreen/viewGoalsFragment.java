@@ -216,41 +216,48 @@ public class viewGoalsFragment extends Fragment
 
                         for(String val : gNames)
                         {
-                            String gID = gIDs[index];
-                            String gName = gNames[index];
-                            String gDesc= gDescs[index];
-                            boolean gComp;
-                            boolean gType;
-
-
-                            if (gComps[index].equals("1"))
+                            try
                             {
-                                gComp = true;
+                                String gID = gIDs[index];
+                                String gName = gNames[index];
+                                String gDesc= gDescs[index];
+                                boolean gComp;
+                                boolean gType;
+
+
+                                if (gComps[index].equals("1"))
+                                {
+                                    gComp = true;
+                                }
+                                else
+                                {
+                                    gComp = false;
+                                }
+
+                                if (gTypes[index].contains("1"))
+                                {
+                                    gType = false;
+                                }
+                                else
+                                {
+                                    gType = true;
+                                }
+
+                                Log.e(TAG, " SP Goal: " + gID + " isNormal" + gType + " isChecked: " + gComp + "");
+
+                                GoalsCheckedClass newGCC = new GoalsCheckedClass();
+                                newGCC.setChecked(gComp);
+                                newGCC.setNormalGoal(gType);
+                                newGCC.setGoalID(Integer.parseInt(gID));
+
+                                originalList.add(newGCC);
+
+                                index++;
                             }
-                            else
+                            catch(Exception e)
                             {
-                                gComp = false;
+
                             }
-
-                            if (gTypes[index].contains("1"))
-                            {
-                                gType = false;
-                            }
-                            else
-                            {
-                                gType = true;
-                            }
-
-                            Log.e(TAG, " SP Goal: " + gID + " isNormal" + gType + " isChecked: " + gComp + "");
-
-                            GoalsCheckedClass newGCC = new GoalsCheckedClass();
-                            newGCC.setChecked(gComp);
-                            newGCC.setNormalGoal(gType);
-                            newGCC.setGoalID(Integer.parseInt(gID));
-
-                            originalList.add(newGCC);
-
-                            index++;
                         }
 
 
