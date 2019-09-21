@@ -28,6 +28,7 @@ public class StaticClass
     public static final String USER_GOALDESCRIPTIONS = "user_goal_DESCRIPTIONS";
     public static final String USER_GOALTYPE = "user_goal_TYPES";
     public static final String USER_GOALCOMPLETED = "user_goal_COMPLETED";
+    public static final String USER_GOALDATES = "user_goal_DATES ";
     public static final String USER_LIFESKILLSIDS = "user_LIFESKILLS_IDS";
     public static final String USER_LIFESKILLSNAMES = "user_LIFESKILLS_NAMES";
     public static final String USER_LIFESKILLSCOMPLETED = "user_LIFESKILLS_COMPLETED";
@@ -41,7 +42,7 @@ public class StaticClass
 
     public static String currentUser = "No_User";
 
-    public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://192.168.43.178:45457/").addConverterFactory(GsonConverterFactory.create())
+    public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://192.168.43.178:45456/").addConverterFactory(GsonConverterFactory.create())
             .client(getUnsafeOkHttpClient().build()).build();
 
 
