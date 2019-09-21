@@ -97,6 +97,7 @@ public class viewGoalsFragment extends Fragment
                 String gCompList = sharedPreferences.getString(StaticClass.USER_GOALCOMPLETED, "");
                 String gDescList = sharedPreferences.getString(StaticClass.USER_GOALDESCRIPTIONS, "");
                 String gTypeList = sharedPreferences.getString(StaticClass.USER_GOALTYPE, "");
+                String gDatesList = sharedPreferences.getString(StaticClass.USER_GOALDATES, "");
 
                 String [] typesArr = gTypeList.split("#");
 
@@ -115,6 +116,7 @@ public class viewGoalsFragment extends Fragment
                 String[] gComps = gCompList.split("#");
                 String[] gDescs = gDescList.split("#");
                 String[] gTypes = gTypeList.split("#");
+                String [] gDates = gDatesList.split("#");
 
 
                 for(String val : gNames)
@@ -126,6 +128,7 @@ public class viewGoalsFragment extends Fragment
                     String gDesc= gDescs[index];
                     boolean gComp;
                     boolean gType;
+                    String gDate = gDates[index];
 
 
                     if (gComps[index].equals("1"))
@@ -146,13 +149,15 @@ public class viewGoalsFragment extends Fragment
                         gType = true;
                     }
 
+
+
                     if(gComp)
                     {
-                        cardView = new cardViewItem(tickImage, gName, gDesc,true,"");
+                        cardView = new cardViewItem(tickImage, gName, gDesc,true,gDate);
                     }
                     else
                     {
-                        cardView = new cardViewItem(exclamationImage, gName, gDesc,false, "");
+                        cardView = new cardViewItem(exclamationImage, gName, gDesc,false, gDate);
                     }
 
                     cardList.add(cardView);
@@ -459,9 +464,9 @@ public class viewGoalsFragment extends Fragment
 
                             try
                             {
-                                SharedPreferences sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+                                SharedPreferences sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                String goalNames = "", goalIds = "", goalDescs = "", goalCompleteds = "", goalTypes = "";
+                                String goalNames = "", goalIds = "", goalDescs = "", goalCompleteds = "", goalTypes = "", goalDates = "";
 
                                 int count = 0;
 
@@ -569,11 +574,15 @@ public class viewGoalsFragment extends Fragment
                                         if (goal.getNormalGoal())
                                         {
                                             goalTypes = "0";
+                                            goalDates = "";
                                         }
                                         else
                                         {
                                             goalTypes = "1";
+                                            goalDates = goal.getFinishDate();
                                         }
+
+
 
                                     }
                                     else
@@ -595,10 +604,12 @@ public class viewGoalsFragment extends Fragment
                                         if (goal.getNormalGoal())
                                         {
                                             goalTypes = goalTypes + "#" + "0";
+                                            goalDates = goalDates + "#" + "";
                                         }
                                         else
                                         {
                                             goalTypes = goalTypes + "#" + "1";
+                                            goalDates = goalDates + "#" + goal.getFinishDate();
                                         }
                                     }
 
@@ -612,6 +623,7 @@ public class viewGoalsFragment extends Fragment
                                 editor.putString(StaticClass.USER_GOALNAMES, goalNames);
                                 editor.putString(StaticClass.USER_GOALTYPE, goalTypes);
                                 editor.putString(StaticClass.USER_GOALDESCRIPTIONS, goalDescs);
+                                editor.putString(StaticClass.USER_GOALDATES, goalDates);
 
                                 editor.commit();
                             }
