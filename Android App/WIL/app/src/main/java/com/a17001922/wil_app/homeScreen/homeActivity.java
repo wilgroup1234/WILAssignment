@@ -33,8 +33,7 @@ public class homeActivity extends AppCompatActivity
         tabLayout = (TabLayout) findViewById(R.id.HtabLayout);
         adapter = new TabAdapter(getSupportFragmentManager());
 
-        if (StaticClass.hasInternet)
-        {
+
             adapter.addFragment(new goalsFragment(), "Goals");
             adapter.addFragment(new viewGoalsFragment(),"View Goals");
             adapter.addFragment(new viewLifeSkillsFragment(),"View LifeSkills");
@@ -47,25 +46,15 @@ public class homeActivity extends AppCompatActivity
             adapter.addFragment(new stepTrackerFragment(),"Step Tracker");
             adapter.addFragment(new socialMediaFragment(),"Social Media");
 
-            Toast.makeText(getApplicationContext(), "Working Online", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            adapter.addFragment(new viewGoalsFragment(),"View Goals");
-            adapter.addFragment(new viewLifeSkillsFragment(),"View LifeSkills");
-            adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
-            adapter.addFragment(new PlannerFragment(),"Planner");
-            adapter.addFragment(new cvUpload(),"CV");
-            adapter.addFragment(new socialMediaFragment(),"Social Media");
-            Toast.makeText(getApplicationContext(), "Offline, Limited functionality available...", Toast.LENGTH_LONG).show();
-        }
+
+
 
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+}
 
-    }
 
 
     //________Do nothing when the back button is pressed________

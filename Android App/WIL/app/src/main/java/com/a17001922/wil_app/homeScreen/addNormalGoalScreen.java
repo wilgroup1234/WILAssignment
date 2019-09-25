@@ -63,69 +63,6 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
         progressBar.setVisibility(View.VISIBLE);
 
         //Get goals
-        final Call<ReturnGoalObject> getGoals = service.getAllGoals();
-        try
-        {
-            getGoals.enqueue(new Callback<ReturnGoalObject>()
-            {
-                @Override
-                public void onResponse(Call<ReturnGoalObject> call, Response<ReturnGoalObject> response)
-                {
-                    if (response.isSuccessful())
-                    {
-                        ReturnGoalObject returnGoalObject = response.body();
-
-                        allListedGoals = returnGoalObject.getGoalList();
-
-
-                        Log.e(TAG, " user goals retrieved successfully");
-
-                        String [] arr = new String [allListedGoals.size()];
-
-                        int count = 0;
-
-                        for(Goal goal : allListedGoals)
-                        {
-                            String item = goal.getGoalID() + "-" + goal.getGoalName();
-                            Log.e(TAG, " ITEM: " + item);
-                            arr[count] = item;
-                            count++;
-                        }
-
-
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arr);
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        cmbListOfGoals.setAdapter(adapter);
-                        StaticClass.ongoingOperation = false;
-                        progressBar.setVisibility(View.INVISIBLE);
-
-                    }
-                    else
-                    {
-                        Log.e(TAG, "ERROR retrieving user goals successfully");
-                        StaticClass.ongoingOperation = false;
-                        progressBar.setVisibility(View.INVISIBLE);
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<ReturnGoalObject> call, Throwable t)
-                {
-                    StaticClass.ongoingOperation = false;
-                    progressBar.setVisibility(View.INVISIBLE);
-                }
-            });
-
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG).show();
-            Log.e(TAG, " Exception error: can't connect");
-            StaticClass.ongoingOperation = false;
-            progressBar.setVisibility(View.INVISIBLE);
-        }
-
-
 
 
 //_____________Add Goals button Click Event Listener_____________
@@ -135,106 +72,7 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
             public void onClick(View v)
             {
 
-                if (!StaticClass.ongoingOperation)
-                {
-                    StaticClass.ongoingOperation = true;
-                    progressBar.setVisibility(View.VISIBLE);
-
-
-                    boolean valid = false;
-                    String errorMessage = "Select a goal from the available list and try again..";
-
-
-
-                    UserGoalObject usersGoal = new UserGoalObject();
-
-                    try
-                    {
-                        usersGoal.setEmail(StaticClass.currentUser);
-
-                        String goalName = cmbListOfGoals.getSelectedItem().toString();
-
-                        String[] parts = goalName.split("-");
-                        String goalid = parts[0];
-
-                        int gID = Integer.parseInt(goalid);
-
-                        usersGoal.setGoalId(gID);
-
-                        if(usersGoal.getGoalId() > 0 && usersGoal.getEmail().length() > 7)
-                        {
-                            valid = true;
-                        }
-
-                    }
-                    catch(Exception e)
-                    {
-                        Toast.makeText(context, " getting user input: " + e.getMessage() , Toast.LENGTH_LONG).show();
-                    }
-
-
-                    if(valid)
-                    {
-                        Call<ReturnMessageObject> addingGoal = service.addingGoal(usersGoal);
-                        addingGoal.enqueue(new Callback<ReturnMessageObject>()
-                        {
-                            @Override
-                            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
-                            {
-                                if (response.isSuccessful())
-                                {
-                                    ReturnMessageObject returnMessage = response.body();
-
-                                    if(returnMessage.getResult())
-                                    {
-                                        Toast.makeText(getApplicationContext(), "Goal added",Toast.LENGTH_SHORT).show();
-                                        Log.e(TAG, "goal added: " + returnMessage.getErrorMessage());
-                                        StaticClass.ongoingOperation = false;
-                                        progressBar.setVisibility(View.INVISIBLE);
-                                    }
-                                    else
-                                    {
-                                        if(returnMessage.getErrorMessage().equals("duplicate"))
-                                        {
-                                            Toast.makeText(getApplicationContext(), "You already have this goal added...",Toast.LENGTH_SHORT).show();
-                                        }
-                                        else
-                                        {
-                                            Toast.makeText(getApplicationContext(), "Error, Goal not added",Toast.LENGTH_SHORT).show();
-                                        }
-                                        Log.e(TAG, "error: goal not added: " + returnMessage.getErrorMessage());
-                                        StaticClass.ongoingOperation = false;
-                                        progressBar.setVisibility(View.INVISIBLE);
-                                    }
-
-
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<ReturnMessageObject> call, Throwable t)
-                            {
-                                Toast.makeText(getApplicationContext(), "error: can't connect",Toast.LENGTH_LONG).show();
-                                Log.e(TAG, " OnFailure error: can't connect");
-                                StaticClass.ongoingOperation = false;
-                                progressBar.setVisibility(View.INVISIBLE);
-                            }
-                        });
-                    }
-                    else
-                    {
-                        Toast.makeText(context, errorMessage ,Toast.LENGTH_SHORT).show();
-                        Log.e(TAG, errorMessage);
-                        StaticClass.ongoingOperation = false;
-                        progressBar.setVisibility(View.INVISIBLE);
-                    }
-
-
-                }
-                else
-                {
-                    Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(context, "Goal was added", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -249,14 +87,7 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
             public void onClick(View v)
             {
 
-                if (!StaticClass.ongoingOperation)
-                {
-                    GoBack();
-                }
-                else
-                {
-                    Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
-                }
+                GoBack();
             }
         });
 

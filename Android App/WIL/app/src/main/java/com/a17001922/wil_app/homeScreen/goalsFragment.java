@@ -69,7 +69,7 @@ public class goalsFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(StaticClass.homeContext,addCustomGoalScreen.class);
+                Intent i = new Intent(getActivity().getApplicationContext(),addCustomGoalScreen.class);
                 startActivity(i);
             }
         });
@@ -78,7 +78,7 @@ public class goalsFragment extends Fragment
         btnAddGoals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(StaticClass.homeContext,addNormalGoalScreen.class);
+                Intent i = new Intent(getActivity().getApplicationContext(),addNormalGoalScreen.class);
                 startActivity(i);
             }
         });
@@ -89,31 +89,7 @@ public class goalsFragment extends Fragment
 
     public void ResetUser()
     {
-        //Set logged in user to false;
-        SharedPreferences sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
-        String type = sharedPreferences.getString(StaticClass.LOGGED_IN_TYPE, "");
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(StaticClass.LOGGED_IN_USER, false);
-        editor.commit();
 
-        if (type.equals("google"))
-        {
-            try
-            {
-                GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestEmail()
-                        .build();
-                GoogleSignInClient gSignInClient = GoogleSignIn.getClient(StaticClass.homeContext, googleSignInOptions);
-
-                gSignInClient.signOut();
-            }
-            catch(NullPointerException e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-        Toast.makeText(StaticClass.homeContext, "Signed Out...", Toast.LENGTH_LONG).show();
 
         OpenLogin();
     }

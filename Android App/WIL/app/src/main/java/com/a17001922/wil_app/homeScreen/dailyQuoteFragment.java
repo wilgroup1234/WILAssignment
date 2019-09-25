@@ -50,66 +50,7 @@ public class dailyQuoteFragment extends Fragment
         lblDailyYoutubeLink = v.findViewById(R.id.lbl_QuoteYoutubeLink);
         DailyImage = v.findViewById(R.id.imgDailyImage);
 
-        if(StaticClass.hasInternet)
-        {
-            try
-            {
-                Quote = new DailyObject();
-                DailyQuoteService service = StaticClass.retrofit.create(DailyQuoteService.class);
-                final Call<DailyObject> quoteCall = service.getQuote();
-                quoteCall.enqueue(new Callback<DailyObject>()
-                {
-                    @Override
-                    public void onResponse(Call<DailyObject> call, Response<DailyObject> response)
-                    {
-                        if (!response.isSuccessful())
-                        {
 
-                        }
-                        else
-                        {
-                            Quote = response.body();
-                            if(Quote == null)
-                            {
-                                Toast.makeText(StaticClass.homeContext, "Unfortunately we had an error retrieving the daily quote", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
-
-                                try
-                                {
-                                    templateID = Quote.getTemplateID();
-
-                                    String uri = "i" + templateID;  // where my resource (without the extension) is the file
-
-                                    int imageId = getResources().getIdentifier(uri, "drawable", StaticClass.homeContext.getPackageName());
-
-                                    DailyImage.setImageResource(imageId);
-
-                                    lblDailyQuote.setText(Quote.getQuoteText());
-                                    lblDailyYoutubeLink.setText(Quote.getYoutubeLink());
-                                }
-                                catch(Exception e)
-                                {
-                                    Log.e(TAG, "Exception caught: " + e.getMessage());
-                                }
-
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<DailyObject> call, Throwable t)
-                    {
-                        Toast.makeText(StaticClass.homeContext, "Response from API failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-            catch (NullPointerException e)
-            {
-                Toast.makeText(StaticClass.homeContext, "UNABLE TO GET DAILY QUOTE", Toast.LENGTH_LONG).show();
-            }
-        }
     }
 
 

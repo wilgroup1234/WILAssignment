@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="pixel" />
+        <device id="pixel_3_xl" />
+        <device id="pixel_xl" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8ecf85ec-acd2-4ee8-8f20-6abc9a92fd5a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/WIL/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/WIL/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/bin/WebApplication1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/bin/WebApplication1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/bin/WebApplication1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/bin/WebApplication1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.pdb" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/build/classes/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="QLF7N15928000669" />
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="WIL" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="WIL" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="WIL" type="f1a62948:ProjectNode" />
+                <item name="WIL" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="WIL" type="f1a62948:ProjectNode" />
+                <item name="WIL" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="WIL" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/mainLogin.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/GoogleSignInObject.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/DriveQuickStart.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/cvUpload.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/uploadDocsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/DriveServiceHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/dailyQuote/DailyObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/dailyQuote/DailyQuoteService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_logins/Pedometer.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/loginRegisterService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/Streak.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/UserStepsObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/StepListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/SensorFilterClass.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/StepDetectorClass.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/stepTrackerFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/Pedometer.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/GratitudeObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/LoginFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/gratitudeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_streak.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_step_tracker.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_gratitude.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_goals.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_quote.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_pedometer.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/ReturnMessageObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/goals.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/returnGoalObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goalsRecyclerView/CityAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/streakFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/Connection.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/dailyQuoteFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/goalsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/RegisterFragments.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/customGoalObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_custom_goal_screen.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/StaticClass.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/homeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/ReturnGoalObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/goalsService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_normal_goal_screen.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addNormalGoalScreen.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/viewGoalsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addCustomGoalScreen.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="97" />
+    <option name="y" value="182" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="e9137016:NonAndroidModuleNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="wil_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="LCL0218908000891" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-08-31T15:23:53.472Z" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jarrod\Desktop\androidappfolder\WIL\app\src\main\res\layout" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="com.a17001922.wil_logins" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jarrod\Desktop\androidappfolder\WIL\app\src\main\java\com\a17001922\wil_app" />
+      <recent name="C:\Users\Jarrod\Desktop\androidappfolder\WIL\app\src\main\res\layout" />
+      <recent name="C:\Users\Jarrod\Desktop\androidappfolder\WIL\app\src\main\java\com\a17001922\wil_app\homeScreen" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DriveQuickStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WIL:app [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingReport" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Application.DriveQuickStart" />
+      <item itemvalue="Gradle.WIL:app [signingReport]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.WIL:app [signingReport]" />
+        <item itemvalue="Application.DriveQuickStart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8ecf85ec-acd2-4ee8-8f20-6abc9a92fd5a" name="Default Changelist" comment="" />
+      <created>1566916485125</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1566916485125</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49808428" visible="true" weight="0.17697228" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" sideWeight="0.5019157" side_tool="true" weight="0.32980973" />
+      <window_info id="Build Variants" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Resources Explorer" order="7" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.32936078" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.7707889" weight="0.47562298" />
+      <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.49964765" weight="0.32827735" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49612403" weight="0.6381365" />
+      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.25692964" side_tool="true" visible="true" weight="0.42578548" />
+      <window_info anchor="bottom" id="Build" order="5" sideWeight="0.74307036" weight="0.5287107" />
+      <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.4989429" weight="0.36619717" />
+      <window_info anchor="bottom" id="Debug" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" sideWeight="0.49964765" weight="0.32827735" />
+      <window_info anchor="right" id="Preview" order="0" />
+      <window_info anchor="right" id="Device File Explorer" order="1" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="2" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.12846482" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info active="true" anchor="right" id="Assistant" order="6" visible="true" weight="0.32980973" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/StepDetectorClass.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/SensorFilterClass.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/StepListener.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/loginRegisterService.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/mainLogin.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/stepTrackerFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/GratitudeObject.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/Streak.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/PlannerFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/Pedometer.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/gratitudeFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload_docs.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/uploadDocsFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_planner.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_step_tracker.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_streak.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_gratitude.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_goals.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_quote.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pedometer.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_login.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_cv_upload.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_start.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/LoginFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/Goal.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/Connection.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_view_goals.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/dailyQuoteFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/goalsFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/RegisterFragments.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/streakFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goalsRecyclerView/CityAdapter.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/ReturnMessageObject.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/customGoalObject.java" />
+    <entry file="file://$PROJECT_DIR$/build.gradle" />
+    <entry file="file://$PROJECT_DIR$/app/build.gradle" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/StaticClass.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_normal_goal_screen.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addNormalGoalScreen.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/viewGoalsFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/homeActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addCustomGoalScreen.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/goalsService.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/userGoalObject.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/ReturnGoalObject.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_custom_goal_screen.xml" />
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

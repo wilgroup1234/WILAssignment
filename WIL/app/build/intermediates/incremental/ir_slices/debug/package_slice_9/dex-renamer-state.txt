@@ -1,0 +1,4 @@
+#Sun Aug 11 22:39:13 CAT 2019
+base.0=C\:\\Users\\User\\Desktop\\work_integrated_learning\\WIL\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\9
+path.0=classes.dex
+renamed.0=classes.dex
