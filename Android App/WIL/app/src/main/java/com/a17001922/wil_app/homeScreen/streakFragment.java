@@ -22,7 +22,7 @@ public class streakFragment extends Fragment
 {
     //_____________Declarations_________________
     View v;
-
+    goalsService goalService = StaticClass.retrofit.create(goalsService.class);
     int currentStreak = 0;
     private static final String TAG = "StreakActivity";
     TextView txtCurrentStreak;
@@ -46,8 +46,37 @@ public class streakFragment extends Fragment
 
         //_____________Binding fields and widgets_____________
         txtCurrentStreak = v.findViewById(R.id.txtCurrentStreak);
+        LoginUserObject loginUserObject = new LoginUserObject();
+        loginUserObject.setEmail(StaticClass.currentUser);
+
+        //API call to get user's streak
+        try
+        {
+            final Call<Streak> streakCall = goalService.getUserStreak(loginUserObject);
+            streakCall.enqueue(new Callback<Streak>() {
+                @Override
+                public void onResponse(Call<Streak> call, Response<Streak> response) {
+
+                    Streak returnStreak = response.body();
+                    currentStreak = returnStreak.getStreakLength();
+                    txtCurrentStreak.setText(currentStreak + "");
+
+                }
+
+                @Override
+                public void onFailure(Call<Streak> call, Throwable t)
+                {
+                    Log.e(TAG, "Connection onFailure Get user streak");
+                }
 
 
+            });
 
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "Error retrieving streak: " + e.toString());
+            txtCurrentStreak.setText("Cannot Get streak - No Internet connection :(");
+        }
     }
 }

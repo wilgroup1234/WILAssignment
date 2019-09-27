@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/new2"
+    android:background="@drawable/bgb3"
     tools:context="com.a17001922.wil_app.homeScreen.addCustomGoalScreen">
 
     <Button
         android:id="@+id/btnCreateCustomGoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="167dp"
+        android:layout_height="54dp"
         android:layout_marginTop="40dp"
+        android:background="@drawable/new1"
         android:text="Add Custom Goal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.463"
@@ -20,23 +21,26 @@
 
     <Button
         android:id="@+id/btnBackCustomGoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="97dp"
+        android:layout_height="54dp"
+        android:background="@drawable/new1"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnCreateCustomGoal"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCreateCustomGoal"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.151" />
 
     <DatePicker
         android:id="@+id/dpCustomGoalEndDate"
         android:layout_width="228dp"
         android:layout_height="135dp"
         android:layout_marginTop="20dp"
+        android:calendarTextColor="@color/colorEditTextbackground"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
+        android:yearListSelectorColor="@color/colorEditTextbackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +54,8 @@
         android:ems="10"
         android:hint="Goal Description"
         android:inputType="textPersonName"
+        android:textColor="@color/colorButtons"
+        android:textColorHint="@color/colorEditTextbackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,13 +65,16 @@
         android:id="@+id/et_CustomGoalName"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
         android:ems="10"
         android:hint="Goal Name"
         android:inputType="textPersonName"
+        android:textColor="@color/colorButtons"
+        android:textColorHint="@color/colorEditTextbackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="176dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/pBarAddCustomGoal"
@@ -85,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="Select goal Ending date below"
+        android:textColor="@color/colorEditTextbackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"

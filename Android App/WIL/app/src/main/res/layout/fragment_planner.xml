@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgb42"
     tools:context=".homeScreen.PlannerFragment">
 
     <ImageView
@@ -23,7 +24,7 @@
         android:layout_height="179dp"
         android:layout_marginTop="56dp"
         android:text="We recommend that you use the Google Calendar app for Planning your goals and important dates. Click the image below to open the app."
-        android:textColor="@color/colorBackground"
+        android:textColor="@color/colorEditText"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"

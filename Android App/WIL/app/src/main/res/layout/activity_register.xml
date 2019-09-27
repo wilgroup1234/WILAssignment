@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background4"
+    android:background="@drawable/bgb3"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".LoginScreen.RegisterFragments">
@@ -15,6 +15,7 @@
         android:layout_width="135dp"
         android:layout_height="48dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/new1"
         android:text="register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,14 +25,15 @@
         android:id="@+id/et_surname"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:hint="Last Name"
-        android:textColor="@color/colorBackground"
-        android:textColorHint="@color/common_google_signin_btn_text_light_default"
+        android:textColor="@color/colorButtons"
+        android:textColorHighlight="@color/colorButtonText"
+        android:textColorHint="@color/colorEditTextbackground"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/et_Age"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -40,8 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:hint="Email"
-        android:textColor="@color/colorBackground"
-        android:textColorHint="@color/common_google_signin_btn_text_light_default"
+        android:textColor="@color/colorButtons"
+        android:textColorHighlight="@color/colorButtonText"
+        android:textColorHint="@color/colorEditTextbackground"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/et_registerPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,13 +54,15 @@
         android:id="@+id/et_firstName"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:hint="First Name"
-        android:textColor="@color/colorBackground"
-        android:textColorHint="@color/common_google_signin_btn_text_light_default"
+        android:textColor="@color/colorButtons"
+        android:textColorHighlight="@color/colorButtonText"
+        android:textColorHint="@color/colorEditTextbackground"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/et_surname"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -68,8 +73,9 @@
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPassword"
-        android:textColor="@color/colorBackground"
-        android:textColorHint="@color/common_google_signin_btn_text_light_default"
+        android:textColor="@color/colorButtons"
+        android:textColorHighlight="@color/colorButtonText"
+        android:textColorHint="@color/colorEditTextbackground"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,8 +90,9 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@color/colorBackground"
-        android:textColorHint="@color/common_google_signin_btn_text_light_default"
+        android:textColor="@color/colorButtons"
+        android:textColorHighlight="@color/colorButtonText"
+        android:textColorHint="@color/colorEditTextbackground"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/et_confirmPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,24 +107,23 @@
         android:ems="10"
         android:hint="Age"
         android:inputType="number"
-        android:textColor="@color/colorBackground"
-        android:textColorHint="@color/common_google_signin_btn_text_light_default"
+        android:textColor="@color/colorButtons"
+        android:textColorHighlight="@color/colorButtonText"
+        android:textColorHint="@color/colorEditTextbackground"
         app:layout_constraintBottom_toTopOf="@+id/et_registerEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imgRegisterGoalPro"
-        android:layout_width="287dp"
-        android:layout_height="164dp"
-        android:layout_marginEnd="4dp"
+        android:id="@+id/imageView4"
+        android:layout_width="223dp"
+        android:layout_height="174dp"
+        android:src="@drawable/bluelogo"
         app:layout_constraintBottom_toTopOf="@+id/et_firstName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.831"
-        app:srcCompat="@drawable/log" />
+        app:layout_constraintVertical_bias="0.774" />
 
     <ProgressBar
         android:id="@+id/pBarRegister"
@@ -126,7 +132,9 @@
         android:layout_height="90dp"
         app:layout_constraintBottom_toBottomOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.566" />
 
 </android.support.constraint.ConstraintLayout>

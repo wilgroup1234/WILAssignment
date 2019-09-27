@@ -72,9 +72,78 @@ public class viewLifeSkillsFragment extends Fragment
         viewLifeSkillsRecyclerView = v.findViewById(R.id.viewLifeSkillsRecyclerView);
         viewLifeSkillsRecyclerView.setHasFixedSize(true);
         recyclerViewLayoutManager = new LinearLayoutManager(StaticClass.homeContext);
+        sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
 
 
+        //Display offline life skills if not connected to the internet
+        if(StaticClass.hasInternet)
+        {
+            StaticClass.ongoingOperation = true;
+            progressBar.setVisibility(View.VISIBLE);
+            GetAndDisplayLifeSkills();
+        }
+        else
+        {
+            try
+            {
+                sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+                String lNameList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSNAMES, "");
+                String lIDList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSIDS, "");
+                String lCompList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSCOMPLETED, "");
 
+                cardList = new ArrayList<>();
+                originalLifeSkillsList = new ArrayList<>();
+
+                int index = 0;
+
+                String[] lNames = lNameList.split("#");
+                String[] lIDs = lIDList.split("#");
+                String[] lComps = lCompList.split("#");
+
+
+                for(String val : lNames)
+                {
+                    cardViewItem2 cardView;
+                    String lID = lIDs[index];
+                    String lName = lNames[index];
+                    boolean lComp;
+
+
+                    if (lComps[index].equals("1"))
+                    {
+                        lComp = true;
+                    }
+                    else
+                    {
+                        lComp = false;
+                    }
+
+                    if(lComp)
+                    {
+                        cardView = new cardViewItem2(tickImage, lName, true);
+                    }
+                    else
+                    {
+                        cardView = new cardViewItem2(exclamationImage, lName,false);
+                    }
+
+                    cardList.add(cardView);
+
+                    index++;
+                }
+
+                recyclerViewAdapter = new ViewLifeSkillsAdapter(cardList, originalLifeSkillsList);
+                viewLifeSkillsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
+                viewLifeSkillsRecyclerView.setAdapter(recyclerViewAdapter);
+
+            }
+            catch(Exception e)
+            {
+                Toast.makeText(StaticClass.homeContext, "Error getting user goals offline..",Toast.LENGTH_LONG);
+                Log.e(TAG, " Error getting user goals offline: " + e.getMessage());
+            }
+
+        }
 
 
 
@@ -85,7 +154,168 @@ public class viewLifeSkillsFragment extends Fragment
             public void onClick(View v)
             {
 
-                Toast.makeText(getActivity().getApplicationContext(), "life skills updated", Toast.LENGTH_SHORT).show();
+                if(StaticClass.hasInternet)
+                {
+                    if (!StaticClass.ongoingOperation)
+                    {
+                        StaticClass.ongoingOperation = true;
+                        progressBar.setVisibility(View.VISIBLE);
+
+                        sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+                        String lNameList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSNAMES, "");
+                        String lIDList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSIDS, "");
+                        String lCompList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSCOMPLETED, "");
+
+                        ArrayList<LifeSkillChecked> originalList = new ArrayList<>();
+
+                        int index = 0;
+
+                        String[] lNames = lNameList.split("#");
+                        String[] lIDs = lIDList.split("#");
+                        String[] lComps = lCompList.split("#");
+
+
+                        for(String val : lNames)
+                        {
+                            String lID = lIDs[index];
+                            String lName = lNames[index];
+                            boolean lComp;
+
+
+                            if (lComps[index].equals("1"))
+                            {
+                                lComp = true;
+                            }
+                            else
+                            {
+                                lComp = false;
+                            }
+
+
+                            Log.e(TAG, " SP Life SKill: " + lID + " is Completed: " + lComp + "");
+
+                            LifeSkillChecked newLC = new LifeSkillChecked();
+                            newLC.setCompleted(lComp);
+                            newLC.setLifeSkillID(Integer.parseInt(lID));
+
+                            originalList.add(newLC);
+
+                            index++;
+                        }
+
+
+                        changedLifeSkillsList = recyclerViewAdapter.getChangedLifeSkillsList();
+                        updatedLifeSkillslList.clear();
+
+
+                        for (LifeSkillChecked l : changedLifeSkillsList)
+                        {
+                            Log.e(TAG, " Changed Life Skill: " + l.getLifeSkillID() + " isChecked: " + l.isCompleted());
+
+                            for (LifeSkillChecked LC: originalList)
+                            {
+                                if (l.getLifeSkillID() == LC.getLifeSkillID() && l.isCompleted() != LC.isCompleted())
+                                {
+                                    updatedLifeSkillslList.add(l);
+                                }
+                            }
+                        }
+
+
+                        for(LifeSkillChecked LC: updatedLifeSkillslList)
+                        {
+                            Log.e(TAG, " Updated Changed LIFE SKILLS LIST : " +LC.getLifeSkillID() + " isChecked: " + LC.isCompleted());
+                        }
+
+                        if(updatedLifeSkillslList.size() > 0)
+                        {
+                            //push new life skill
+
+                            try
+                            {
+                                itemCount = updatedLifeSkillslList.size();
+
+                                for (LifeSkillChecked lSkill : updatedLifeSkillslList)
+                                {
+                                    itemCount--;
+                                    LifeSkillObject object = new LifeSkillObject();
+                                    object.setEmail(StaticClass.currentUser);
+                                    object.setLifeSkillID(lSkill.getLifeSkillID());
+
+                                    try
+                                    {
+                                        final Call<ReturnMessageObject> markOffLifeSkill = service.markOffLifeSkill(object);
+                                        markOffLifeSkill.enqueue(new Callback<ReturnMessageObject>()
+                                        {
+                                            @Override
+                                            public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                                            {
+                                                if (response.isSuccessful())
+                                                {
+                                                    ReturnMessageObject returnMessageObject = response.body();
+
+                                                    if (returnMessageObject.getResult())
+                                                    {
+                                                        Log.e(TAG, " life skill marked off successfully");
+                                                    }
+                                                    else
+                                                    {
+                                                        Log.e(TAG, " life skill mark off unsuccessful :(");
+                                                    }
+
+                                                    if (itemCount == 0)
+                                                    {
+                                                        GetAndDisplayLifeSkills();
+                                                    }
+
+
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+                                            {
+                                                Log.e(TAG, " OnFailure error: can't mark off life skill");
+                                            }
+                                        });
+
+                                    }
+                                    catch(Exception e)
+                                    {
+                                        Log.e(TAG, " Exception error: " + e.getMessage());
+                                    }
+
+
+                                }
+
+
+
+                            }
+                            catch(Exception e)
+                            {
+                                Toast.makeText(StaticClass.homeContext, "An error occurred :(",Toast.LENGTH_LONG);
+                                Log.e(TAG, " Exception error: " + e.getMessage());
+                            }
+
+
+                        }
+                        else
+                        {
+                            StaticClass.ongoingOperation = false;
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+
+                    }
+                    else
+                    {
+                        Toast.makeText(StaticClass.homeContext, "Please Wait...", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else
+                {
+                    Toast.makeText(StaticClass.homeContext, "No Internet connection, connect, restart the app, and try again..", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -94,5 +324,151 @@ public class viewLifeSkillsFragment extends Fragment
 
 
     // This method gets the user's current life skills and displays them
+    public void GetAndDisplayLifeSkills()
+    {
+        allListedLifeSkills= new ArrayList<>();
+        originalLifeSkillsList = new ArrayList<>();
+        changedLifeSkillsList = new ArrayList<>();
+        updatedLifeSkillslList = new ArrayList<>();
+        cardList = new ArrayList<>();
 
+
+        LifeSkillObject lifeSkillObject = new LifeSkillObject();
+        lifeSkillObject.setEmail(StaticClass.currentUser);
+
+        final Call<ReturnLifeSkillsObject> getLifeSkills = service.getLifeSkills(lifeSkillObject);
+
+        try
+        {
+            getLifeSkills.enqueue(new Callback<ReturnLifeSkillsObject>()
+            {
+                @Override
+                public void onResponse(Call<ReturnLifeSkillsObject> call, Response<ReturnLifeSkillsObject> response)
+                {
+                    if (response.isSuccessful())
+                    {
+                        ReturnLifeSkillsObject returnObject = response.body();
+
+                        allListedLifeSkills = returnObject.getLifeSkillsList();
+                        Log.e(TAG, " user lifeSkills retrieved successfully");
+
+                        if (allListedLifeSkills.size() > 0)
+                        {
+                            cardList = new ArrayList<>();
+
+
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            String LifeSkillsNames = "", LifeSkillsIds = "", LifeSkillsCompleteds = "";
+
+                            int count = 0;
+
+                            for(LifeSkillObject lSkill: allListedLifeSkills)
+                            {
+
+                                LifeSkillChecked lifeSkillChecked = new LifeSkillChecked();
+                                lifeSkillChecked.setLifeSkillID(lSkill.getLifeSkillID());
+
+                                Log.e(TAG, "LifeSkill: " + lSkill.getLifeSkillName() + " is completed:" +  lSkill.getCompleted());
+
+                                if (lSkill.getCompleted() == 1)
+                                {
+                                    cardList.add(new cardViewItem2(tickImage, lSkill.getLifeSkillName(), true));
+                                    lifeSkillChecked.setCompleted(true);
+                                }
+                                else
+                                {
+                                    cardList.add(new cardViewItem2(exclamationImage, lSkill.getLifeSkillName(), false));
+                                    lifeSkillChecked.setCompleted(false);
+                                }
+
+
+
+
+                                originalLifeSkillsList.add(lifeSkillChecked);
+
+                                if(count == 0)
+                                {
+                                    LifeSkillsIds = lSkill.getLifeSkillID() + "";
+
+                                    if (lSkill.getCompleted() == 1)
+                                    {
+                                        LifeSkillsCompleteds = "1";
+                                    }
+                                    else
+                                    {
+                                        LifeSkillsCompleteds = "0";
+                                    }
+
+                                    LifeSkillsNames = lSkill.getLifeSkillName();
+
+
+                                }
+                                else
+                                {
+                                    LifeSkillsIds = LifeSkillsIds+ "#" + lSkill.getLifeSkillID();
+
+                                    if (lSkill.getCompleted() == 1)
+                                    {
+                                        LifeSkillsCompleteds = LifeSkillsCompleteds + "#" + "1";
+                                    }
+                                    else
+                                    {
+                                        LifeSkillsCompleteds = LifeSkillsCompleteds + "#" + "0";
+                                    }
+
+                                    LifeSkillsNames  = LifeSkillsNames  + "#" + lSkill.getLifeSkillName();
+
+                                }
+
+
+                                count ++;
+                            }
+
+                            sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+                            editor.putString(StaticClass.USER_LIFESKILLSIDS, LifeSkillsIds);
+                            editor.putString(StaticClass.USER_LIFESKILLSCOMPLETED, LifeSkillsCompleteds);
+                            editor.putString(StaticClass.USER_LIFESKILLSNAMES, LifeSkillsNames);
+                            editor.commit();
+
+                            recyclerViewAdapter = new ViewLifeSkillsAdapter(cardList, originalLifeSkillsList);
+                            viewLifeSkillsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
+                            viewLifeSkillsRecyclerView.setAdapter(recyclerViewAdapter);
+                            StaticClass.ongoingOperation = false;
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+                        else
+                        {
+                            StaticClass.ongoingOperation = false;
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+
+
+                    }
+                    else
+                    {
+                        Log.e(TAG, "ERROR retrieving user LIFE SKILLS successfully");
+                        StaticClass.ongoingOperation = false;
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ReturnLifeSkillsObject> call, Throwable t)
+                {
+                    Toast.makeText(StaticClass.homeContext, "error: can't connect",Toast.LENGTH_LONG);
+                    Log.e(TAG, " OnFailure error: can't connect");
+                    StaticClass.ongoingOperation = false;
+                    progressBar.setVisibility(View.INVISIBLE);
+                }
+            });
+
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(StaticClass.homeContext, "An error occurred :(",Toast.LENGTH_LONG);
+            Log.e(TAG, " Exception error: " + e.getMessage());
+            StaticClass.ongoingOperation = false;
+            progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
 }

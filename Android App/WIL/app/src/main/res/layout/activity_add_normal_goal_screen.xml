@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.a17001922.wil_app.homeScreen.addNormalGoalScreen">
+    tools:context="com.a17001922.wil_app.homeScreen.addNormalGoalScreen"
+    android:background="@drawable/bgb3">
 
     <Button
         android:id="@+id/btnBackNormalGoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="102dp"
+        android:layout_height="44dp"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="92dp"
+        android:background="@drawable/new1"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAddGoalScreen"
@@ -28,29 +30,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/btnAddGoalScreen"
-        android:layout_width="128dp"
-        android:layout_height="36dp"
+        android:layout_width="126dp"
+        android:layout_height="48dp"
         android:layout_marginTop="192dp"
+        android:background="@drawable/new1"
         android:text="Add Goal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cmbListOfGoals" />
 
     <ProgressBar
-    android:id="@+id/pBarAddNormalGoal"
-    style="?android:attr/progressBarStyle"
-    android:layout_width="90dp"
-    android:layout_height="90dp"
-    android:layout_marginTop="316dp"
-    app:layout_constraintBottom_toBottomOf="@+id/btnRegister"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.498"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/pBarAddNormalGoal"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="316dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
