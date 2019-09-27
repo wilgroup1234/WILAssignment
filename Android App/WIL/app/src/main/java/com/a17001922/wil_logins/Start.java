@@ -25,7 +25,7 @@ import java.net.URL;
 public class Start extends AppCompatActivity
 {
     //Declaration
-    private int splashLength = 800;
+    private int splashLength = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

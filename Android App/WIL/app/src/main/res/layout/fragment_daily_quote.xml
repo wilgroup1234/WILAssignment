@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:background="@drawable/background3"
+    android:background="@drawable/bgb42"
     tools:context=".homeScreen.dailyQuoteFragment">
 
     <EditText
@@ -23,7 +23,7 @@
         android:fontFamily="serif"
         android:text="Daily Quote"
         android:textAllCaps="true"
-        android:textColor="@color/colorBackground"
+        android:textColor="@color/colorEditText"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imgDailyImage"
@@ -53,7 +53,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         android:text="Video of the day:"
-        android:textColor="@color/colorBackground"
+        android:textColor="@color/colorEditText"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/lbl_QuoteYoutubeLink"

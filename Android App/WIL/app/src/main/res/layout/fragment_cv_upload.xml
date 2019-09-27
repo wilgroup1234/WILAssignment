@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homeScreen.cvUpload">
+    tools:context=".homeScreen.cvUpload"
+    android:background="@drawable/bgb42">
 
     <ImageView
         android:id="@+id/imgCV"
@@ -40,7 +41,7 @@
         android:layout_height="179dp"
         android:layout_marginTop="16dp"
         android:text="We recommend that you use the Intelligent CV app for creating and saving your CV. Click the image below to open the app."
-        android:textColor="@color/colorBackground"
+        android:textColor="@color/colorEditText"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

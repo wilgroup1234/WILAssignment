@@ -5,23 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.a17001922.wil_app.homeScreen.viewGoalsFragment"
-    android:background="@android:color/darker_gray">
+    android:background="@drawable/bgb4">
 
     <Button
         android:id="@+id/btnSaveGoalChanges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="134dp"
+        android:layout_height="42dp"
         android:layout_centerHorizontal="true"
-        android:layout_margin="5dp"
-        android:layout_marginTop="249dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/new1"
         android:text="Save Changes" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/viewGoalsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
         android:layout_below="@id/btnSaveGoalChanges"
+        android:background="@drawable/bgb4"
         android:padding="4dp"
         android:scrollbars="vertical" />
 
