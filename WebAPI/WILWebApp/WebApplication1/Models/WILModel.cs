@@ -37,6 +37,11 @@ namespace WebApplication1.Models
                 .Property(e => e.GoalDescription)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<CustomGoal>()
+                .HasMany(e => e.CustomUserGoals)
+                .WithRequired(e => e.CustomGoal)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<DailyQuote>()
                 .Property(e => e.QuoteText)
                 .IsUnicode(false);
@@ -52,11 +57,6 @@ namespace WebApplication1.Models
             modelBuilder.Entity<Goal>()
                 .Property(e => e.GoalDescription)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Goal>()
-                .HasMany(e => e.CustomUserGoals)
-                .WithRequired(e => e.Goal)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Goal>()
                 .HasMany(e => e.UserGoals)
@@ -83,11 +83,6 @@ namespace WebApplication1.Models
             modelBuilder.Entity<Template>()
                 .Property(e => e.TemplateName)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Template>()
-                .HasMany(e => e.DailyQuotes)
-                .WithRequired(e => e.Template)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.LastName)

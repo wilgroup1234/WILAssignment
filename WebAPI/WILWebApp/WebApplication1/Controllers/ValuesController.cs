@@ -35,20 +35,13 @@ namespace WebApplication1.Controllers
         //Create instance of database
         private WILModel db = new WILModel();
 
-        //Test Get method
-        [Route("api/values/GetNumber")]
-        [HttpGet]
-        public int GetNumber()
-        {
-            return 5;
-        }
 
         //This POST method allows users to Register (Create an account for the app)
         [Route("api/values/PostRegister")]
         [HttpPost]
         public ReturnMessageObject PostRegister(RegisterUserObject regUser)
         {
-
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
             
             try
@@ -58,13 +51,16 @@ namespace WebApplication1.Controllers
 
                 if (ModelState.IsValid)
                 {
+                    //if password and confirm password values match, proceed
                     if (regUser.Password.Equals(regUser.ConfirmPassword))
                     {
                         try
                         {
+                            //Hash and salt password
                             PasswordEncryption obj = PasswordEncryption.GetInstance;
                             regUser.Password = obj.GetHashedPassword(regUser.Password);
 
+                            //Create new user object
                             User user = new User
                             {
                                 Email = regUser.Email.Trim(),
@@ -73,14 +69,19 @@ namespace WebApplication1.Controllers
                                 Password = regUser.Password.Trim()
                             };
 
+                            //Add new user to db and save changes
+                            try
+                            {
+                                db.Users.Add(user);
 
+                                db.SaveChanges();
+                            }
+                            catch(Exception e)
+                            {
+                                Debug.WriteLine(e);
+                            }
 
-
-
-                            db.Users.Add(user);
-
-                            db.SaveChanges();
-
+                            //Create streak for new user
                             int streakUserID = 0;
 
                             foreach (User sUser in db.Users)
@@ -94,27 +95,46 @@ namespace WebApplication1.Controllers
                                 StreakLength = 0
                             };
 
-                            db.Streaks.Add(streak);
-
-                            db.SaveChanges();
-
-
-                            foreach (LifeSkill lifeSkill in db.LifeSkills)
+                            //add new streak item to db and save changes
+                            try
                             {
-                                UserLifeSkill userLifeSkill = new UserLifeSkill
+                                db.Streaks.Add(streak);
+
+                                db.SaveChanges();
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.WriteLine(e);
+                            }
+                           
+
+
+                            try
+                            {
+                                //add all lifeskills for the new user to the userlifeskills table and save changes
+                                foreach (LifeSkill lifeSkill in db.LifeSkills)
                                 {
-                                    LifeSKillID = lifeSkill.LifeSkillID,
-                                    UserID = streakUserID,
-                                    Completed = 0
+                                    UserLifeSkill userLifeSkill = new UserLifeSkill
+                                    {
+                                        LifeSKillID = lifeSkill.LifeSkillID,
+                                        UserID = streakUserID,
+                                        Completed = 0
 
-                                };
+                                    };
 
-                                db.UserLifeSkills.Add(userLifeSkill);
+                                    db.UserLifeSkills.Add(userLifeSkill);
+
+                                }
 
                             }
+                            catch (Exception e)
+                            {
+                                Debug.WriteLine(e);
+                            }
 
-                            db.SaveChanges();
 
+
+                            //Create userLoginDate object for new user
                             DateTime today = DateTime.Today;
 
                             UserLoginDate userLoginDate = new UserLoginDate
@@ -124,11 +144,21 @@ namespace WebApplication1.Controllers
 
                             };
 
-                            db.UserLoginDates.Add(userLoginDate);
+                            //add new userLoginDate to db and save changes
+                            try
+                            {
+                                db.UserLoginDates.Add(userLoginDate);
 
-                            db.SaveChanges();
+                                db.SaveChanges();
 
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.WriteLine(e);
+                            }
+                            
 
+                            //return success message
                             returnMessage.result = true;
                             returnMessage.errorMessage = "Success";
 
@@ -146,7 +176,7 @@ namespace WebApplication1.Controllers
                             return returnMessage;
                         }
 
-                    }
+                    }// if not, return error
                     else
                     {
                         Debug.WriteLine("Passwords Don't Match");
@@ -158,15 +188,13 @@ namespace WebApplication1.Controllers
                     }
 
 
-                }
+                } // if the register object sent to th api from the android app is not valid, return error
                 else
                 {
 
                     Debug.WriteLine("ERROR: Invalid Information Entered");
-
                     returnMessage.result = false;
                     returnMessage.errorMessage = "Invalid Information Entered";
-
                     return returnMessage;
 
                 }
@@ -174,39 +202,39 @@ namespace WebApplication1.Controllers
             }
             catch(Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
             }
 
-            
-
         }
 
 
 
-        //Custom POST
+
+
+        //This POST method allows users to login to their account
         [Route("api/values/PostLogin")]
         [HttpPost]
         public ReturnMessageObject PostLogin(LoginUserObject loginUser)
         {
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             try
             {
+                //Declarations
                 returnMessage.result = false;
                 returnMessage.errorMessage = "Invalid Details Entered";
-
                 Debug.WriteLine("OUR USER: " + loginUser.Email + " " + loginUser.Password);
-
                 List<User> usersList = db.Users.ToList();
-
                 Boolean userFound = false;
                 Boolean passFound = false;
                 String userPass = "";
                 int userID = 0;
 
-
+                //Search for user email using user ID
                 foreach (User searchUser in usersList)
                 {
                     if (searchUser.Email.Trim().Equals(loginUser.Email))
@@ -220,8 +248,7 @@ namespace WebApplication1.Controllers
                 }
 
 
-                //Find password
-
+                //Hash and salt entered password and check if it matches password in db
                 if (userFound)
                 {
                     PasswordEncryption obj = PasswordEncryption.GetInstance;
@@ -239,18 +266,16 @@ namespace WebApplication1.Controllers
                 }
 
 
-
+                //if email and password match, return success
                 if (userFound && passFound)
                 {
-                    db.SaveChanges();
-
                     Debug.WriteLine("SUCCESSSSSSSS!!!!!!!!!!!!!!");
-
                     returnMessage.result = true;
                     returnMessage.errorMessage = "Success";
                     return returnMessage;
                 }
                 else
+                //if email and password do not match, return error
                 {
 
                     Debug.WriteLine("INVALID Details Entered, Please Try again...");
@@ -263,6 +288,7 @@ namespace WebApplication1.Controllers
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
@@ -275,18 +301,25 @@ namespace WebApplication1.Controllers
 
 
 
-        //Custom POST
+        //This POST method allows users to retrieve their goals
         [Route("api/values/PostRetrieveGoals")]
         [HttpPost]
         public ReturnAllGoalObject PostRetrieveGoals(UserGoalObject userGoal)
         {
+            //Declarations
+
             ReturnAllGoalObject returnGoal = new ReturnAllGoalObject();
             DateTime today = DateTime.Today;
 
             try
             {
+                //Declarations
                 List<ReturnAnyTypeGoalObject> goalList = new List<ReturnAnyTypeGoalObject>();
-                String userEmail = userGoal.Email;
+                String userEmail = "";
+                if(userGoal.Email != null)
+                {
+                    userEmail = userGoal.Email;
+                }
                 int userID = 0;
 
                 //search for user and get userID
@@ -298,7 +331,7 @@ namespace WebApplication1.Controllers
                     }
                 }
 
-                //search and add goals for user
+                //search for and add goals for user
                 foreach (UserGoal goal in db.UserGoals)
                 {
                     if (goal.UserID == userID)
@@ -337,7 +370,7 @@ namespace WebApplication1.Controllers
                     }
                 }
 
-                //search and add custom goals for user
+                //search for and add custom goals for user
                 foreach (CustomUserGoal goal in db.CustomUserGoals)
                 {
                     if (goal.UserID == userID)
@@ -428,14 +461,14 @@ namespace WebApplication1.Controllers
                     }
                 }
 
+                //return object containing all user goals
                 returnGoal.goalList = goalList;
-
-
                 return returnGoal;
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnGoal.goalList = null;
                 Debug.WriteLine(e.Message);
                 return returnGoal;
@@ -447,17 +480,23 @@ namespace WebApplication1.Controllers
 
 
 
-        //Custom POST
+        //This POST method allows users to add a normal goal to their list of goals
         [Route("api/values/PostAddNormalGoal")]
         [HttpPost]
         public ReturnMessageObject PostAddNormalGoal(UserGoalObject userGoal)
         {
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             try
             {
+                //Declarations
                 bool valid;
-                String userEmail = userGoal.Email;
+                String userEmail = "";
+                if (userGoal.Email != null)
+                {
+                    userEmail = userGoal.Email;
+                }
                 int userID = 0;
                 UserGoal newUserGoal = new UserGoal();
 
@@ -472,8 +511,6 @@ namespace WebApplication1.Controllers
                     }
                 }
 
-
-
                 newUserGoal.UserID = userID;
                 newUserGoal.GoalID = userGoal.GoalId;
                 newUserGoal.Completed = 0;
@@ -483,7 +520,7 @@ namespace WebApplication1.Controllers
 
                 foreach(UserGoal userGoal1 in db.UserGoals)
                 {
-                    if(userGoal1.GoalID == userGoal.GoalId)
+                    if(userGoal1.GoalID == userGoal.GoalId && userGoal1.UserID == userID)
                     {
                         hasGoal = true;
                     }
@@ -498,6 +535,7 @@ namespace WebApplication1.Controllers
                 }
                 else
                 {
+                    //add new goal to db and save changes
                     try
                     {
 
@@ -512,14 +550,15 @@ namespace WebApplication1.Controllers
                         valid = false;
                     }
 
+                    //return success
                     returnMessage.result = valid;
-
                     return returnMessage;
                 }
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
@@ -531,17 +570,23 @@ namespace WebApplication1.Controllers
 
 
 
-        //Custom POST
+        //This POST method allows users to add a custom goal to their list of goals
         [Route("api/values/PostAddCustomGoal")]
         [HttpPost]
         public ReturnMessageObject PostAddCustomGoal(CustomGoalObject customGoal)
         {
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             try
             {
+                //Declarations
                 bool valid;
-                String userEmail = customGoal.Email;
+                String userEmail = "";
+                if (customGoal.Email != null)
+                {
+                    userEmail = customGoal.Email;
+                }
                 int userID = 0;
                 CustomUserGoal newUserGoal = new CustomUserGoal();
                 CustomGoal customGoal1 = new CustomGoal();
@@ -559,7 +604,7 @@ namespace WebApplication1.Controllers
                 customGoal1.GoalName = customGoal.goalName;
                 customGoal1.FinishDate = customGoal.finishDate;
 
-                //save custom goal
+                //add and save custom goal to db
                 try
                 {
                     db.CustomGoals.Add(customGoal1);
@@ -573,36 +618,36 @@ namespace WebApplication1.Controllers
                     valid = false;
                 }
 
+
+                //if custom goal was added successfully, the custom goal must now be added to the custom user goals table
                 if (valid == true)
                 {
                     //search for custom goal id
-
                     List<CustomGoal> cgList = new List<CustomGoal>();
-
                     int customGoalID = 0;
 
                     foreach (CustomGoal cg in db.CustomGoals)
                     {
-                        customGoalID = cg.GoalID;
+                        if(cg.GoalDescription.Equals(customGoal.goalDescription) && cg.GoalName.Equals(customGoal.goalName) && cg.FinishDate == customGoal.finishDate)
+                        {
+                            customGoalID = cg.GoalID;
+                        }
                     }
-
-
 
                     newUserGoal.UserID = userID;
                     newUserGoal.Completed = 0;
                     newUserGoal.GoalID = customGoalID;
 
-
-                    //save custom user goal
+                    //save custom user goal to db
                     try
                     {
-
                         db.CustomUserGoals.Add(newUserGoal);
                         db.SaveChanges();
                         valid = true;
                     }
                     catch (Exception e)
                     {
+                        //catch any error message and return error
                         Debug.WriteLine("Error: " + e.ToString());
                         returnMessage.errorMessage = "Error: " + e.ToString();
                         valid = false;
@@ -611,15 +656,14 @@ namespace WebApplication1.Controllers
 
                 }
 
-
-
+                //return success
                 returnMessage.result = valid;
-
                 return returnMessage;
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
@@ -631,22 +675,25 @@ namespace WebApplication1.Controllers
 
 
 
-        //Custom POST
+        //This POST method allows users to mark off goals
         [Route("api/values/PostMarkOffGoal")]
         [HttpPost]
         public ReturnMessageObject PostMarkOffGoal(UserGoalObject userGoal)
         {
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             try
             {
+                //Declarations
                 bool valid;
-                String userEmail;
                 int userSearchID = 0;
                 int goalSearchID = userGoal.GoalId;
-
-
-                userEmail = userGoal.Email;
+                String userEmail = "";
+                if (userGoal.Email != null)
+                {
+                    userEmail = userGoal.Email;
+                }
 
                 //search for user and get userID
                 foreach (User user in db.Users)
@@ -673,7 +720,7 @@ namespace WebApplication1.Controllers
                     }
                 }
 
-
+                //save changes to db
                 try
                 {
                     db.SaveChanges();
@@ -681,45 +728,47 @@ namespace WebApplication1.Controllers
                 }
                 catch (Exception e)
                 {
+                    //catch any error message and return error
                     Debug.WriteLine("Error: " + e.ToString());
                     returnMessage.errorMessage = "Error: " + e.ToString();
                     valid = false;
                 }
 
+                //return success
                 returnMessage.result = valid;
-
                 return returnMessage;
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
             }
 
-            
-
-
         }
 
 
-        //Custom POST
+        //This POST method allows users to mark off custom goals
         [Route("api/values/PostMarkOffCustomGoal")]
         [HttpPost]
         public ReturnMessageObject PostMarkOffCustomGoal(UserGoalObject userGoal)
         {
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             try
             {
+                //Declarations
                 bool valid;
-                String userEmail;
                 int userSearchID = 0;
                 int goalSearchID = userGoal.GoalId;
-
-
-                userEmail = userGoal.Email;
+                String userEmail = "";
+                if (userGoal.Email != null)
+                {
+                    userEmail = userGoal.Email;
+                }
 
                 //search for user and get userID
                 foreach (User user in db.Users)
@@ -746,7 +795,7 @@ namespace WebApplication1.Controllers
                     }
                 }
 
-
+                //save changes to db
                 try
                 {
                     db.SaveChanges();
@@ -754,18 +803,20 @@ namespace WebApplication1.Controllers
                 }
                 catch (Exception e)
                 {
+                    //catch any error message and return error
                     Debug.WriteLine("Error: " + e.ToString());
                     returnMessage.errorMessage = "Error: " + e.ToString();
                     valid = false;
                 }
 
+                //return success
                 returnMessage.result = valid;
-
                 return returnMessage;
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
@@ -776,13 +827,16 @@ namespace WebApplication1.Controllers
 
 
 
-        //Custom GET
+        //This GET method returns the latest daily quote
         [Route("api/values/GetDailyQuote")]
         [HttpGet]
         public DailyQuote GetDailyQuote()
         {
+            //declare return object
+
             DailyQuote dailyQuote = new DailyQuote();
 
+            //get and return dailyquote from db
             try
             {
                 foreach (DailyQuote quote in db.DailyQuotes)
@@ -798,26 +852,33 @@ namespace WebApplication1.Controllers
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 Debug.WriteLine(e.Message);
                 dailyQuote.QuoteText = null;
                 return dailyQuote;
             }
-
            
         }
 
 
-        //Custom POST
+        //This POST method returns all user life skills
         [Route("api/values/PostRetrieveLifeSkills")]
         [HttpPost]
         public ReturnLifeSkillsObject PostRetrieveLifeSkills(LifeSkillObject lifeSkillObject)
         {
+            //declare return object
             ReturnLifeSkillsObject returnlifeskills = new ReturnLifeSkillsObject();
 
             try
             {
+
+                //Declarations
                 List<LifeSkillObject> lifeskillsList = new List<LifeSkillObject>();
-                String userEmail = lifeSkillObject.Email;
+                String userEmail = "";
+                if (lifeSkillObject.Email != null)
+                {
+                    userEmail = lifeSkillObject.Email;
+                }
                 int userID = 0;
 
                 //search for user and get userID
@@ -829,7 +890,7 @@ namespace WebApplication1.Controllers
                     }
                 }
 
-                //search and add life skills for user
+                //search and add life skills for user to return list
                 foreach (UserLifeSkill userlifeskill in db.UserLifeSkills)
                 {
                     if (userlifeskill.UserID == userID)
@@ -864,41 +925,53 @@ namespace WebApplication1.Controllers
                     }
                 }
 
-
+                //return success
                 returnlifeskills.LifeSkillsList = lifeskillsList;
-
-
                 return returnlifeskills;
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 Debug.WriteLine(e.Message);
                 returnlifeskills.LifeSkillsList = null;
                 return returnlifeskills;
             }
 
-            
         }
 
 
 
-        //Custom POST
+        //This POST method allows users to mark off lifeskills
         [Route("api/values/PostMarkOffLifeSkill")]
         [HttpPost]
         public ReturnMessageObject PostMarkOffLifeSkill(LifeSkillObject lifeSkillObject)
         {
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             try
             {
+                //Declarations
                 bool valid;
-                String userEmail;
                 int userSearchID = 0;
-                int lifeskillSearchID = lifeSkillObject.LifeSkillID;
+                int lifeskillSearchID = 0;
 
+                try
+                {
+                    lifeskillSearchID = lifeSkillObject.LifeSkillID;
+                }
+                catch(Exception e)
+                {
+                    // in case of null exception
+                    Debug.WriteLine(e.Message);
+                }
+                String userEmail = "";
+                if (lifeSkillObject.Email != null)
+                {
+                    userEmail = lifeSkillObject.Email;
+                }
 
-                userEmail = lifeSkillObject.Email;
 
                 //search for user and get userID
                 foreach (User user in db.Users)
@@ -925,7 +998,7 @@ namespace WebApplication1.Controllers
                     }
                 }
 
-
+                //save changes to db
                 try
                 {
                     db.SaveChanges();
@@ -933,17 +1006,19 @@ namespace WebApplication1.Controllers
                 }
                 catch (Exception e)
                 {
+                    //catch any error message and return error
                     Debug.WriteLine("Error: " + e.ToString());
                     returnMessage.errorMessage = "Error: " + e.ToString();
                     valid = false;
                 }
 
+                //return success
                 returnMessage.result = valid;
-
                 return returnMessage;
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
@@ -954,16 +1029,17 @@ namespace WebApplication1.Controllers
 
 
 
-        //Custom POST
+        //This POST method updates the view number for dailyquote videos
         [Route("api/values/PostUpdateViews")]
         [HttpPost]
         public ReturnMessageObject PostUpdateViews()
         {
-            
+            //declare return object
             ReturnMessageObject returnMessageObject = new ReturnMessageObject();
 
             try
             {
+                //get last dailyquote in table
                 int count = 0;
 
                 foreach (DailyQuote dailyQuote in db.DailyQuotes)
@@ -973,6 +1049,7 @@ namespace WebApplication1.Controllers
 
                 int count2 = 0;
 
+                //update views value for latest dailyquote
                 try
                 {
                     foreach (DailyQuote dailyQuote in db.DailyQuotes)
@@ -982,27 +1059,29 @@ namespace WebApplication1.Controllers
                         if (count2 == count)
                         {
                             dailyQuote.Views = dailyQuote.Views + 1;
-
-
                             returnMessageObject.result = true;
                         }
 
-
                     }
+
+                    //save changes to db
                     db.SaveChanges();
                 }
                 catch (Exception e)
                 {
+                    //catch any error message and return error
                     Debug.WriteLine("Exception: " + e.ToString());
                     returnMessageObject.result = false;
                     returnMessageObject.errorMessage = e.ToString();
                 }
 
+                //return success
                 return returnMessageObject;
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessageObject.result = false;
                 returnMessageObject.errorMessage = e.Message;
                 return returnMessageObject;
@@ -1012,17 +1091,18 @@ namespace WebApplication1.Controllers
         }
 
 
-        //Custom POST
+        //This POST method creates a new account for a google user
         [Route("api/values/PostGoogleSignIn")]
         [HttpPost]
         public ReturnMessageObject PostGoogleSignIn(GoogleSignInObject googleSignInObject)
         {
+            //declare return object
             ReturnMessageObject returnMessageObject = new ReturnMessageObject();
 
             try
             {
+                //check if user already exists
                 Boolean exists = false;
-
                 foreach (User user in db.Users)
                 {
                     if (user.Email.Equals(googleSignInObject.Email.Trim()))
@@ -1031,11 +1111,13 @@ namespace WebApplication1.Controllers
                     }
                 }
 
+                //if they do, proceed
                 if (exists)
                 {
                     returnMessageObject.result = true;
                     returnMessageObject.errorMessage = "Account exists already";
                 }
+                //if not, add new user to db.
                 else
                 {
                     //Create New account
@@ -1050,9 +1132,18 @@ namespace WebApplication1.Controllers
                             Password = googleSignInObject.Password.Trim()
                         };
 
-                        db.Users.Add(user);
+                        //add new user to db
+                        try
+                        {
+                            db.Users.Add(user);
 
-                        db.SaveChanges();
+                            db.SaveChanges();
+                        }
+                        catch(Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        }
+                        
 
                         int streakUserID = 0;
 
@@ -1067,26 +1158,42 @@ namespace WebApplication1.Controllers
                             StreakLength = 0
                         };
 
-                        db.Streaks.Add(streak);
-
-                        db.SaveChanges();
-
-
-                        foreach (LifeSkill lifeSkill in db.LifeSkills)
+                        //add new user streak item to db
+                        try
                         {
-                            UserLifeSkill userLifeSkill = new UserLifeSkill
-                            {
-                                LifeSKillID = lifeSkill.LifeSkillID,
-                                UserID = streakUserID,
-                                Completed = 0
+                            db.Streaks.Add(streak);
 
-                            };
-
-                            db.UserLifeSkills.Add(userLifeSkill);
-
+                            db.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
                         }
 
-                        db.SaveChanges();
+
+                        //add all lifeskills for user in db and save
+                        try
+                        {
+                            foreach (LifeSkill lifeSkill in db.LifeSkills)
+                            {
+                                UserLifeSkill userLifeSkill = new UserLifeSkill
+                                {
+                                    LifeSKillID = lifeSkill.LifeSkillID,
+                                    UserID = streakUserID,
+                                    Completed = 0
+
+                                };
+
+                                db.UserLifeSkills.Add(userLifeSkill);
+
+                            }
+
+                            db.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        }
 
                         DateTime today = DateTime.Today;
 
@@ -1097,11 +1204,20 @@ namespace WebApplication1.Controllers
 
                         };
 
-                        db.UserLoginDates.Add(userLoginDate);
+                        //add user login date to db
+                        try
+                        {
+                            db.UserLoginDates.Add(userLoginDate);
+                            db.SaveChanges();
 
-                        db.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        }
 
-
+                        
+                        //return success
                         returnMessageObject.result = false;
                         returnMessageObject.errorMessage = "New Account created";
 
@@ -1109,20 +1225,21 @@ namespace WebApplication1.Controllers
                     }
                     catch (Exception e)
                     {
+                        //catch any error message and return error
                         Debug.WriteLine("Error: " + e.ToString());
-
                         returnMessageObject.result = true;
                         returnMessageObject.errorMessage = "Account exists already";
                     }
 
                 }
 
-
+                //return success
                 return returnMessageObject;
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessageObject.result = false;
                 returnMessageObject.errorMessage = e.Message;
                 return returnMessageObject;
@@ -1132,20 +1249,22 @@ namespace WebApplication1.Controllers
         }
 
 
-        //Custom POST
+        //This POST method updates a user's streak
         [Route("api/values/PostUpdateStreak")]
         [HttpPost]
         public ReturnMessageObject PostUpdateStreak(LoginUserObject loginUserObject)
         {
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             try
             {
-                String userEmail;
                 int userSearchID = 0;
-
-
-                userEmail = loginUserObject.Email;
+                String userEmail = "";
+                if (loginUserObject.Email != null)
+                {
+                    userEmail = loginUserObject.Email;
+                }
 
                 //search for user and get userID
                 foreach (User user in db.Users)
@@ -1157,21 +1276,17 @@ namespace WebApplication1.Controllers
                 }
 
                 //Update streak if first login for today
-
                 try
                 {
                     Boolean updateStreak = false;
                     Boolean setToZero = false;
-
                     DateTime today = DateTime.Today;
 
                     //Check if user streak must be updated or set to 0;
-
                     foreach (UserLoginDate userLoginDate in db.UserLoginDates)
                     {
                         if (userLoginDate.UserID == userSearchID && userLoginDate.UserLoginDate1 != today)
                         {
-
                             if ((today - userLoginDate.UserLoginDate1).TotalDays < 2)
                             {
 
@@ -1188,9 +1303,17 @@ namespace WebApplication1.Controllers
 
                     }
 
-
-                    db.SaveChanges();
-
+                    //save changes to db
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch(Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
+                    
+                    //update streak if it needs to be updated
                     if (updateStreak)
                     {
                         foreach (Streak streak in db.Streaks)
@@ -1210,8 +1333,17 @@ namespace WebApplication1.Controllers
                         }
                     }
 
-                    db.SaveChanges();
+                    //save changes to db
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
 
+                    //return success
                     returnMessage.result = true;
 
 
@@ -1219,16 +1351,19 @@ namespace WebApplication1.Controllers
 
                 catch (Exception e)
                 {
+                    //catch any error message and return error
                     Debug.WriteLine(e.ToString());
                     returnMessage.result = false;
                     returnMessage.errorMessage = e.ToString();
                 }
 
+                //return success
                 return returnMessage;
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
@@ -1237,20 +1372,23 @@ namespace WebApplication1.Controllers
         }
 
 
-        //Custom POST
+        //This POST method returns a user's current streak
         [Route("api/values/PostUserStreak")]
         [HttpPost]
         public Streak PostUserStreak(LoginUserObject loginUserObject)
         {
-
+            //declare return object
             Streak returnStreak = new Streak(); 
 
             try
             {
-                String userEmail;
+                //Declarations
                 int userSearchID = 0;
-
-                userEmail = loginUserObject.Email;
+                String userEmail = "";
+                if (loginUserObject.Email != null)
+                {
+                    userEmail = loginUserObject.Email;
+                }
 
                 //search for user and get userID
                 foreach (User user in db.Users)
@@ -1261,7 +1399,7 @@ namespace WebApplication1.Controllers
                     }
                 }
 
-                //Get streak for user
+                //Get streak for user from db
 
                 foreach (Streak streak in db.Streaks)
                 {
@@ -1271,11 +1409,13 @@ namespace WebApplication1.Controllers
                     }
                 }
 
+                //return success
                 return returnStreak;
 
             }
             catch(Exception e)
             {
+                //catch any error message and return error
                 Debug.WriteLine(e.Message);
                 returnStreak.StreakLength = 0;
                 return returnStreak;
@@ -1286,21 +1426,25 @@ namespace WebApplication1.Controllers
 
 
 
-        //Custom POST
+        //This POST method returns a users step count for the day
         [Route("api/values/PostUserSteps")]
         [HttpPost]
         public UserStepsObject PostUserSteps(UserStepsObject userStepsObject)
         {
 
+            //declare return object
             UserStepsObject returnSteps = new UserStepsObject();
 
             try
             {
-                String userEmail;
+                //Declarations
                 int userSearchID = 0;
                 DateTime today = DateTime.Today;
-
-                userEmail = userStepsObject.Email;
+                String userEmail = "";
+                if (userStepsObject.Email != null)
+                {
+                    userEmail = userStepsObject.Email;
+                }
 
                 //search for user and get userID
                 foreach (User user in db.Users)
@@ -1329,17 +1473,18 @@ namespace WebApplication1.Controllers
                     returnSteps.numSteps = 0;
                 }
 
+
+                //return success
                 return returnSteps;
 
             }
             catch(Exception e)
             {
+                //catch any error message and return error
                 Debug.WriteLine(e.Message);
                 returnSteps.numSteps = 0;
                 return returnSteps;
             }
-
-            
 
         }
 
@@ -1347,20 +1492,24 @@ namespace WebApplication1.Controllers
 
 
 
-        //Custom POST
+        //This POST method updates a user's steps for today
         [Route("api/values/PostUpdateSteps")]
         [HttpPost]
         public ReturnMessageObject PostUpdateSteps(UserStepsObject userStepsObject)
         {
-
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             try
             {
-                String userEmail;
+                //Declarations
                 int userSearchID = 0;
                 DateTime today = DateTime.Today;
-                userEmail = userStepsObject.Email;
+                String userEmail = "";
+                if (userStepsObject.Email != null)
+                {
+                    userEmail = userStepsObject.Email;
+                }
 
                 //search for user and get userID
                 foreach (User user in db.Users)
@@ -1372,8 +1521,6 @@ namespace WebApplication1.Controllers
                 }
 
                 //Check if user has steps for today
-
-
                 try
                 {
                     Boolean hasSteps = false;
@@ -1386,16 +1533,33 @@ namespace WebApplication1.Controllers
                             hasSteps = true;
                         }
 
-                        //delete old steps
-                        if (userSteps.UserID == userSearchID && userSteps.UserStepsDate != today)
+                        try
                         {
-                            db.UserSteps.Remove(userSteps);
+                            //delete old steps
+                            if (userSteps.UserID == userSearchID && userSteps.UserStepsDate != today)
+                            {
+                                db.UserSteps.Remove(userSteps);
+                            }
                         }
+                        catch(Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        }
+                        
                     }
 
-                    db.SaveChanges();
+                    //save changes to db
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch(Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
+                    
 
-
+                    //create steps object for today for user is one doesn't already exist
                     if (!hasSteps)
                     {
                         UserStep userStep = new UserStep
@@ -1405,11 +1569,22 @@ namespace WebApplication1.Controllers
                             UserStepsDate = today
                         };
 
-                        db.UserSteps.Add(userStep);
-                        db.SaveChanges();
+                        //add steps object and save to db
+                        try
+                        {
+                            db.UserSteps.Add(userStep);
+                            db.SaveChanges();
+                        }
+                        catch(Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        }
+                       
 
                     }
 
+
+                    //return success
                     returnMessage.result = true;
 
 
@@ -1417,16 +1592,18 @@ namespace WebApplication1.Controllers
                 }
                 catch (Exception e)
                 {
+                    //catch any error message and return error
                     returnMessage.result = false;
                     returnMessage.errorMessage = e.ToString();
                 }
 
-
+                //return success
                 return returnMessage;
 
             }
             catch (Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
@@ -1436,21 +1613,24 @@ namespace WebApplication1.Controllers
         }
 
 
-        //Custom POST
+        //This POST method returns user gratitude items for today
         [Route("api/values/PostUserGratitude")]
         [HttpPost]
         public GratitudeObject PostUserGratitude(GratitudeObject gratitudeObject)
         {
-
+            //declare return object
             GratitudeObject returnGratitude = new GratitudeObject();
 
             try
             {
-                String userEmail;
+                //Declarations
                 int userSearchID = 0;
                 DateTime today = DateTime.Today;
-
-                userEmail = gratitudeObject.Email;
+                String userEmail = "";
+                if (gratitudeObject.Email != null)
+                {
+                    userEmail = gratitudeObject.Email;
+                }
 
                 //search for user and get userID
                 foreach (User user in db.Users)
@@ -1462,7 +1642,6 @@ namespace WebApplication1.Controllers
                 }
 
                 //Get user Gratitude for today
-
                 Boolean hasGratitude = false;
 
                 foreach (Gratitude gratitude in db.Gratitudes)
@@ -1479,36 +1658,39 @@ namespace WebApplication1.Controllers
                     returnGratitude.Items = "No_Items";
                 }
 
+                //return success
                 return returnGratitude;
 
             }
             catch(Exception e)
             {
+                //catch any error message and return error
                 Debug.WriteLine(e.Message);
                 returnGratitude.Items = null;
                 return returnGratitude;
             }
 
-            
-
         }
 
 
-        //Custom POST
+        //This POST method updates user gratitude items for today
         [Route("api/values/PostUpdateGratitude")]
         [HttpPost]
         public ReturnMessageObject PostUpdateGratitude(GratitudeObject gratitudeObject)
         {
+            //declare return object
             ReturnMessageObject returnMessage = new ReturnMessageObject();
 
             try
             {
-                String userEmail;
+                //Declarations
                 int userSearchID = 0;
                 DateTime today = DateTime.Today;
-
-
-                userEmail = gratitudeObject.Email;
+                String userEmail = "";
+                if (gratitudeObject.Email != null)
+                {
+                    userEmail = gratitudeObject.Email;
+                }
 
                 //search for user and get userID
                 foreach (User user in db.Users)
@@ -1533,16 +1715,35 @@ namespace WebApplication1.Controllers
                             hasGratitude = true;
                         }
 
+
                         //delete old steps
-                        if (gratitude.UserID == userSearchID && gratitude.GratitudeDate != today)
+                        try
                         {
-                            db.Gratitudes.Remove(gratitude);
+                            if (gratitude.UserID == userSearchID && gratitude.GratitudeDate != today)
+                            {
+                                db.Gratitudes.Remove(gratitude);
+                            }
                         }
+                        catch(Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        }
+
+                        
                     }
 
-                    db.SaveChanges();
+                    //save changes to db
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
+                   
 
-
+                    //create new gratitude item and save to db if one doesn't exist for today
                     if (!hasGratitude)
                     {
                         Gratitude userGratitude = new Gratitude
@@ -1552,11 +1753,20 @@ namespace WebApplication1.Controllers
                             GratitudeDate = today
                         };
 
-                        db.Gratitudes.Add(userGratitude);
-                        db.SaveChanges();
+                        try
+                        {
+                            db.Gratitudes.Add(userGratitude);
+                            db.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        }
+
 
                     }
 
+                    //return success
                     returnMessage.result = true;
 
 
@@ -1564,16 +1774,18 @@ namespace WebApplication1.Controllers
                 }
                 catch (Exception e)
                 {
+                    //catch any error message and return error
                     returnMessage.result = false;
                     returnMessage.errorMessage = e.ToString();
                 }
 
-
+                //return success
                 return returnMessage;
 
             }
             catch(Exception e)
             {
+                //catch any error message and return error
                 returnMessage.result = false;
                 returnMessage.errorMessage = e.Message;
                 return returnMessage;
@@ -1585,16 +1797,19 @@ namespace WebApplication1.Controllers
         }
 
 
+        //This POST method returns all goals in the goals table that users can add
         [Route("api/values/GetAllGoals")]
         [HttpPost]
         public ReturnGoalObject GetAllGoals()
         {
+            //declare return object
             ReturnGoalObject returnGoalObject = new ReturnGoalObject();
 
             try
             {
-                List<Goal> goalList = new List<Goal>();
 
+                //Declarations
+                List<Goal> goalList = new List<Goal>();
                 foreach (Goal goal in db.Goals)
                 {
                     Goal goal1 = new Goal
@@ -1607,10 +1822,12 @@ namespace WebApplication1.Controllers
                 }
 
 
+                //return success
                 returnGoalObject.goalList = goalList;
-
                 return returnGoalObject;
+
             }
+            //catch any error message and return error
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
@@ -1619,10 +1836,6 @@ namespace WebApplication1.Controllers
             }
             
         }
-
-
-
-
 
 
     }

@@ -266,141 +266,158 @@ public class viewGoalsFragment extends Fragment
                         }
 
 
-                        changedGoalList = recyclerViewAdapter.getChangedGoalList();
-                        updatedChangedGoalList.clear();
-
-
-                        for (GoalsCheckedClass g : changedGoalList)
+                        boolean hasNoGoals = true;
+                        try
                         {
-                            Log.e(TAG, " Changed GOAL: " + g.getGoalID() + " isNormal" + g.isNormalGoal() + " isChecked: " + g.isChecked());
+                            changedGoalList = recyclerViewAdapter.getChangedGoalList();
+                            hasNoGoals = false;
+                        }
+                        catch(Exception e)
+                        {
 
-                            for (GoalsCheckedClass GCC: originalList)
-                            {
-                                if (g.getGoalID() == GCC.getGoalID() && g.isChecked() != GCC.isChecked())
-                                {
-                                    updatedChangedGoalList.add(g);
-                                }
-                            }
                         }
 
-
-                        for(GoalsCheckedClass GCC: updatedChangedGoalList)
+                        if(!hasNoGoals)
                         {
-                            Log.e(TAG, " Updated Changed GOAL LIST : " + GCC.getGoalID() + " isNormal" + GCC.isNormalGoal() + " isChecked: " + GCC.isChecked());
-                        }
+                            updatedChangedGoalList.clear();
 
-                        if(updatedChangedGoalList.size() > 0)
-                        {
-                            try
+                            for (GoalsCheckedClass g : changedGoalList)
                             {
-                                itemCount = updatedChangedGoalList.size();
+                                Log.e(TAG, " Changed GOAL: " + g.getGoalID() + " isNormal" + g.isNormalGoal() + " isChecked: " + g.isChecked());
 
-                                for (GoalsCheckedClass goal : updatedChangedGoalList)
+                                for (GoalsCheckedClass GCC: originalList)
                                 {
-                                    itemCount--;
-                                    UserGoalObject userGoalObject1 = new UserGoalObject();
-                                    userGoalObject1.setEmail(StaticClass.currentUser);
-                                    userGoalObject1.setGoalId(goal.getGoalID());
-
-                                    if (goal.isNormalGoal())
+                                    if (g.getGoalID() == GCC.getGoalID() && g.isChecked() != GCC.isChecked())
                                     {
-                                        try
-                                        {
-                                            final Call<ReturnMessageObject> markOffNormalGoal = service.markOffNormalGoal(userGoalObject1);
-                                            markOffNormalGoal.enqueue(new Callback<ReturnMessageObject>()
-                                            {
-                                                @Override
-                                                public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
-                                                {
-                                                    if (response.isSuccessful())
-                                                    {
-                                                        ReturnMessageObject returnMessageObject = response.body();
-
-                                                        if (returnMessageObject.getResult())
-                                                        {
-                                                            Log.e(TAG, " normal goal marked off successfully");
-                                                        }
-                                                        else
-                                                        {
-                                                            Log.e(TAG, " normal goal mark off unsuccessful :(");
-                                                        }
-
-                                                        if (itemCount == 0)
-                                                        {
-                                                            GetAndDisplayUserGoals();
-                                                        }
-
-
-                                                    }
-                                                }
-
-                                                @Override
-                                                public void onFailure(Call<ReturnMessageObject> call, Throwable t)
-                                                {
-                                                    Log.e(TAG, " OnFailure error: can't mark off normal goal");
-                                                }
-                                            });
-
-                                        }
-                                        catch(Exception e)
-                                        {
-                                            Log.e(TAG, " Exception error: " + e.getMessage());
-                                        }
+                                        updatedChangedGoalList.add(g);
                                     }
-                                    else
+                                }
+                            }
+
+
+                            for(GoalsCheckedClass GCC: updatedChangedGoalList)
+                            {
+                                Log.e(TAG, " Updated Changed GOAL LIST : " + GCC.getGoalID() + " isNormal" + GCC.isNormalGoal() + " isChecked: " + GCC.isChecked());
+                            }
+
+                            if(updatedChangedGoalList.size() > 0)
+                            {
+                                try
+                                {
+                                    itemCount = updatedChangedGoalList.size();
+
+                                    for (GoalsCheckedClass goal : updatedChangedGoalList)
                                     {
-                                        try
+                                        itemCount--;
+                                        UserGoalObject userGoalObject1 = new UserGoalObject();
+                                        userGoalObject1.setEmail(StaticClass.currentUser);
+                                        userGoalObject1.setGoalId(goal.getGoalID());
+
+                                        if (goal.isNormalGoal())
                                         {
-                                            final Call<ReturnMessageObject> markOffCustomGoal = service.markOffCustomGoal(userGoalObject1);
-                                            markOffCustomGoal.enqueue(new Callback<ReturnMessageObject>()
+                                            try
                                             {
-                                                @Override
-                                                public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                                                final Call<ReturnMessageObject> markOffNormalGoal = service.markOffNormalGoal(userGoalObject1);
+                                                markOffNormalGoal.enqueue(new Callback<ReturnMessageObject>()
                                                 {
-                                                    if (response.isSuccessful())
+                                                    @Override
+                                                    public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
                                                     {
-                                                        ReturnMessageObject returnMessageObject = response.body();
-
-                                                        if (returnMessageObject.getResult())
+                                                        if (response.isSuccessful())
                                                         {
-                                                            Log.e(TAG, " custom goal marked off successfully");
-                                                        }
-                                                        else
-                                                        {
-                                                            Log.e(TAG, " custom goal mark off unsuccessful :(");
-                                                        }
+                                                            ReturnMessageObject returnMessageObject = response.body();
 
-                                                        if (itemCount == 0)
-                                                        {
-                                                            GetAndDisplayUserGoals();
-                                                        }
+                                                            if (returnMessageObject.getResult())
+                                                            {
+                                                                Log.e(TAG, " normal goal marked off successfully");
+                                                            }
+                                                            else
+                                                            {
+                                                                Log.e(TAG, " normal goal mark off unsuccessful :(");
+                                                            }
 
+                                                            if (itemCount == 0)
+                                                            {
+                                                                GetAndDisplayUserGoals();
+                                                            }
+
+
+                                                        }
                                                     }
-                                                }
 
-                                                @Override
-                                                public void onFailure(Call<ReturnMessageObject> call, Throwable t)
-                                                {
-                                                    Log.e(TAG, " OnFailure error: can't mark off custom goal");
-                                                }
-                                            });
+                                                    @Override
+                                                    public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+                                                    {
+                                                        Log.e(TAG, " OnFailure error: can't mark off normal goal");
+                                                    }
+                                                });
+
+                                            }
+                                            catch(Exception e)
+                                            {
+                                                Log.e(TAG, " Exception error: " + e.getMessage());
+                                            }
                                         }
-                                        catch(Exception e)
+                                        else
                                         {
-                                            Log.e(TAG, " Exception error: " + e.getMessage());
+                                            try
+                                            {
+                                                final Call<ReturnMessageObject> markOffCustomGoal = service.markOffCustomGoal(userGoalObject1);
+                                                markOffCustomGoal.enqueue(new Callback<ReturnMessageObject>()
+                                                {
+                                                    @Override
+                                                    public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                                                    {
+                                                        if (response.isSuccessful())
+                                                        {
+                                                            ReturnMessageObject returnMessageObject = response.body();
+
+                                                            if (returnMessageObject.getResult())
+                                                            {
+                                                                Log.e(TAG, " custom goal marked off successfully");
+                                                            }
+                                                            else
+                                                            {
+                                                                Log.e(TAG, " custom goal mark off unsuccessful :(");
+                                                            }
+
+                                                            if (itemCount == 0)
+                                                            {
+                                                                GetAndDisplayUserGoals();
+                                                            }
+
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+                                                    {
+                                                        Log.e(TAG, " OnFailure error: can't mark off custom goal");
+                                                    }
+                                                });
+                                            }
+                                            catch(Exception e)
+                                            {
+                                                Log.e(TAG, " Exception error: " + e.getMessage());
+                                            }
                                         }
+
+
                                     }
+
 
 
                                 }
-
-
-
+                                catch(Exception e)
+                                {
+                                    Toast.makeText(StaticClass.homeContext, "An error occurred :(",Toast.LENGTH_LONG);
+                                    Log.e(TAG, " Exception error: " + e.getMessage());
+                                    StaticClass.ongoingOperation = false;
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                }
                             }
-                            catch(Exception e)
+                            else
                             {
-                                Toast.makeText(StaticClass.homeContext, "An error occurred :(",Toast.LENGTH_LONG);
-                                Log.e(TAG, " Exception error: " + e.getMessage());
                                 StaticClass.ongoingOperation = false;
                                 progressBar.setVisibility(View.INVISIBLE);
                             }
