@@ -80,7 +80,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-                        item1 = txtItem1.getText().toString();
+                        item1 = txtItem1.getText().toString().trim();
                     }
                     catch(Exception e)
                     {
@@ -89,7 +89,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-                        item2 = txtItem2.getText().toString();
+                        item2 = txtItem2.getText().toString().trim();
                     }
                     catch(Exception e)
                     {
@@ -98,7 +98,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-                        item3 = txtItem3.getText().toString();
+                        item3 = txtItem3.getText().toString().trim();
                     }
                     catch(Exception e)
                     {
@@ -107,7 +107,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-                        item4 = txtItem4.getText().toString();
+                        item4 = txtItem4.getText().toString().trim();
                     }
                     catch(Exception e)
                     {
@@ -116,7 +116,7 @@ public class gratitudeFragment extends Fragment
 
                     try
                     {
-                        item5 = txtItem5.getText().toString();
+                        item5 = txtItem5.getText().toString().trim();
                     }
                     catch(Exception e)
                     {

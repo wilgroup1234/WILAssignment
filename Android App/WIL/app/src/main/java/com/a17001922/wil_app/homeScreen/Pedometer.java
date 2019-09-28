@@ -115,12 +115,13 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
             {
                 if (!StaticClass.ongoingOperation)
                 {
+                    Toast.makeText(context, "Start walking :)", Toast.LENGTH_SHORT).show();
                     numSteps = 0;
                     sensorManager.registerListener(Pedometer.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
                 }
                 else
                 {
-                    Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Please Wait...", Toast.LENGTH_SHORT).show();
                 }
             }
         });

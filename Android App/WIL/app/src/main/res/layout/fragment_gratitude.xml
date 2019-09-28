@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/bgb42"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".homeScreen.gratitudeFragment">
@@ -103,9 +103,10 @@
 
     <Button
         android:id="@+id/btnSaveGratitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="114dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/new1"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

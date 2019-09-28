@@ -6,12 +6,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="4dp"
     app:contentPadding= "5dp"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:background="@drawable/bgb4">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="4dp">
+        android:layout_height="144dp"
+        android:layout_margin="4dp"
+        android:background="@color/common_google_signin_btn_text_dark_pressed">
 
         <ImageView
             android:id="@+id/imgIconCardView"
@@ -40,7 +42,7 @@
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@id/imgIconCardView"
             android:text="Line 2"
-            android:textColor="@color/colorBackground"
+            android:textColor="@color/colorEditText"
             android:textSize="20sp"
 
             />

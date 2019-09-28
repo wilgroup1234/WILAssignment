@@ -13,6 +13,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.OpenableColumns;
 import android.support.v4.util.Pair;
+import android.widget.ImageView;
+
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.api.client.http.ByteArrayContent;
@@ -34,20 +36,41 @@ import com.a17001922.wil_app.R;
  */
 public class cvUpload extends Fragment
 {
+    //_____________Declarations_________________
+    ImageView cvButton;
+    View v;
+    Uri uri;
 
-
-    public cvUpload()
+    //____________________OnCreate Method_____________
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Required empty public constructor
+        // Inflate the layout for this fragment
+        v = inflater.inflate(R.layout.fragment_cv_upload,container,false);
+        return v;
     }
 
 
+    //____________________OnStart Method_____________
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
+    public void onStart()
     {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cv_upload, container, false);
+        super.onStart();
+        //_____________Binding fields and widgets_____________
+        cvButton = v.findViewById(R.id.imgCV);
+
+        cvButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                String cvlink = "https://play.google.com/store/apps/details?id=icv.resume.curriculumvitae&hl=en";
+                uri = Uri.parse(cvlink);
+                Intent intentFIVE = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intentFIVE);
+            }
+        });
+
     }
 
 }
