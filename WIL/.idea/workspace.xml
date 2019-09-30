@@ -3,34 +3,17 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
-        <device id="pixel" />
         <device id="pixel_3_xl" />
-        <device id="pixel_xl" />
+        <device id="pixel" />
       </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ecf85ec-acd2-4ee8-8f20-6abc9a92fd5a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android App/WIL/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android App/WIL/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android App/WIL/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/WIL/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/bin/WebApplication1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/bin/WebApplication1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/bin/WebApplication1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/bin/WebApplication1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../WebAPI/WILWebApp/WebApplication1/obj/Debug/WebApplication1.pdb" afterDir="false" />
-    </list>
+    <list default="true" id="be659786-1735-4bd6-9b8c-585fe9a68341" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,58 +24,107 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="QLF7N15928000669" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="LCL0218908000891" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <task path="$PROJECT_DIR$/app">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="WIL" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="WIL" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="WIL" type="f1a62948:ProjectNode" />
-                <item name="WIL" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="WIL" type="f1a62948:ProjectNode" />
-                <item name="WIL" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
+        <projects_view />
       </state>
     </system>
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="WIL" />
-  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+          <provider editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/StaticClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="153">
+              <caret line="48" column="61" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/viewGoalsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="38" column="47" lean-forward="true" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_normal_goal_screen.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_view_goals.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_quote.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/goal_card_item.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_view_life_skills.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_custom_goal_screen.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -101,6 +133,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="layoutResourceFile" />
         <option value="Class" />
       </list>
     </option>
@@ -111,65 +144,64 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/mainLogin.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/GoogleSignInObject.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/DriveQuickStart.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/cvUpload.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/uploadDocsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/DriveServiceHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/dailyQuote/DailyObject.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/dailyQuote/DailyQuoteService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_logins/Pedometer.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/loginRegisterService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/Streak.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/UserStepsObject.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/StepListener.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/SensorFilterClass.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/StepDetectorClass.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/stepTrackerFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/Pedometer.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/GratitudeObject.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/LoginFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/gratitudeFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_streak.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_step_tracker.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_gratitude.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_goals.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_quote.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_pedometer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/ReturnMessageObject.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/goals.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/returnGoalObject.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goalsRecyclerView/CityAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/streakFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/Connection.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/dailyQuoteFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/goalsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/RegisterFragments.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/customGoalObject.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_custom_goal_screen.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/StaticClass.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/homeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/ReturnGoalObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/ReturnAnyTypeGoalObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/LifeSkillsObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/ReturnLifeSkillsObject.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/goalsService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_normal_goal_screen.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addNormalGoalScreen.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/viewGoalsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/ViewLifeSkillsViewHolder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/cardViewItem2.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/lifeskills_card_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/mainLogin.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/RegisterFragments.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/LoginFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/goalsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addCustomGoalScreen.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/streakFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/ViewLifeSkillsAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/dailyQuoteFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/cardViewItem.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/ViewGoalsViewHolder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/ViewGoalsAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/viewLifeSkillsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/gratitudeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/socialMediaFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/homeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/PlannerFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/cvUpload.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/StaticClass.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_logins/Start.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_planner.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_pedometer.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addNormalGoalScreen.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_cv_upload.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_social_media.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_streak.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_gratitude.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload_docs.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_goals.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_start.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_step_tracker.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_quote.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_normal_goal_screen.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_view_goals.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_view_life_skills.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/goal_card_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_custom_goal_screen.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/Pedometer.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/viewGoalsFragment.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="97" />
-    <option name="y" value="182" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="x" value="-14" />
+    <option name="width" value="1724" />
+    <option name="height" value="1400" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -177,55 +209,93 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="e9137016:NonAndroidModuleNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
               <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
             </path>
             <path>
               <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="a17001922" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="a17001922" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="wil_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="a17001922" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="wil_app" type="462c0819:PsiDirectoryNode" />
+              <item name="homeScreen" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="a17001922" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="wil_logins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="WIL" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="LCL0218908000891" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-08-31T15:23:53.472Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-27T11:26:21.732Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Jarrod\Desktop\androidappfolder\WIL\app\src\main\res\layout" />
-    </key>
-    <key name="android.template.packageName">
-      <recent name="com.a17001922.wil_logins" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Jarrod\Desktop\androidappfolder\WIL\app\src\main\java\com\a17001922\wil_app" />
-      <recent name="C:\Users\Jarrod\Desktop\androidappfolder\WIL\app\src\main\res\layout" />
-      <recent name="C:\Users\Jarrod\Desktop\androidappfolder\WIL\app\src\main\java\com\a17001922\wil_app\homeScreen" />
-    </key>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -239,7 +309,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android App.app">
+  <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -300,151 +370,449 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DriveQuickStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <module name="app" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WIL:app [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="signingReport" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Android App.app" />
-      <item itemvalue="Application.DriveQuickStart" />
-      <item itemvalue="Gradle.WIL:app [signingReport]" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.WIL:app [signingReport]" />
-        <item itemvalue="Application.DriveQuickStart" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8ecf85ec-acd2-4ee8-8f20-6abc9a92fd5a" name="Default Changelist" comment="" />
-      <created>1566916485125</created>
+      <changelist id="be659786-1735-4bd6-9b8c-585fe9a68341" name="Default Changelist" comment="" />
+      <created>1568365061700</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1566916485125</updated>
+      <updated>1568365061700</updated>
     </task>
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1477" height="797" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49808428" visible="true" weight="0.17697228" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2572234" />
       <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" sideWeight="0.5019157" side_tool="true" weight="0.32980973" />
+      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="0" weight="0.32936078" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.7707889" weight="0.47562298" />
-      <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.49964765" weight="0.32827735" />
-      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49612403" weight="0.6381365" />
-      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.25692964" side_tool="true" visible="true" weight="0.42578548" />
-      <window_info anchor="bottom" id="Build" order="5" sideWeight="0.74307036" weight="0.5287107" />
-      <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.4989429" weight="0.36619717" />
-      <window_info anchor="bottom" id="Debug" order="8" />
-      <window_info anchor="bottom" id="Find" order="9" sideWeight="0.49964765" weight="0.32827735" />
-      <window_info anchor="right" id="Preview" order="0" />
-      <window_info anchor="right" id="Device File Explorer" order="1" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="2" />
-      <window_info anchor="right" id="Gradle" order="3" weight="0.12846482" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info active="true" anchor="right" id="Assistant" order="6" visible="true" weight="0.32980973" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.32882884" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.124624625" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.5675676" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.36636636" />
+      <window_info anchor="bottom" id="Find" order="8" weight="0.32882884" />
+      <window_info anchor="bottom" id="Android Profiler" order="9" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Assistant" order="5" weight="0.32980973" />
+      <window_info anchor="right" id="Preview" order="6" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/StepDetectorClass.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/SensorFilterClass.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/StepListener.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/loginRegisterService.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/mainLogin.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/stepTrackerFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/GratitudeObject.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/Streak.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/PlannerFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/Pedometer.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/gratitudeFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload_docs.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/uploadDocsFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_planner.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_step_tracker.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_streak.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_gratitude.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_goals.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_quote.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pedometer.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_login.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_cv_upload.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_start.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/LoginFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/Goal.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/Connection.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_view_goals.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/dailyQuoteFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/goalsFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/RegisterFragments.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/streakFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goalsRecyclerView/CityAdapter.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/ReturnMessageObject.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/customGoalObject.java" />
-    <entry file="file://$PROJECT_DIR$/build.gradle" />
-    <entry file="file://$PROJECT_DIR$/app/build.gradle" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/StaticClass.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_normal_goal_screen.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addNormalGoalScreen.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/viewGoalsFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/homeActivity.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addCustomGoalScreen.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/goalsService.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/userGoalObject.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/ReturnGoalObject.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_custom_goal_screen.xml" />
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/a17001922/wil_app/BuildConfig.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/goals/ReturnLifeSkillsObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/ViewLifeSkillsViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="76" selection-start-line="18" selection-start-column="76" selection-end-line="18" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/ReturnMessageObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/RegisterUserObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/LoginFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="39" column="61" lean-forward="true" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/goalsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#1772#1773#0" expanded="true" />
+            <element signature="e#1815#1816#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/mainLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/LoginScreen/RegisterFragments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/streakFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/dailyQuoteFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="111" column="9" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/cardViewItem2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/cardViewItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="47" lean-forward="true" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding>
+            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/ViewLifeSkillsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="41" column="70" lean-forward="true" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+            <element signature="e#3252#3253#0" expanded="true" />
+            <element signature="e#3310#3311#0" expanded="true" />
+            <element signature="e#3346#3347#0" expanded="true" />
+            <element signature="e#3415#3416#0" expanded="true" />
+            <element signature="e#3459#3460#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/ViewGoalsViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/viewLifeSkillsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="29" column="51" lean-forward="true" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/gratitudeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="123" column="21" lean-forward="true" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/cvUpload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="64" column="39" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/PlannerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="27" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/socialMediaFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="18" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/ViewGoalsAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/homeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_logins/Start.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1870">
+          <caret line="133" column="83" selection-start-line="133" selection-start-column="83" selection-end-line="133" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_planner.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pedometer.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_login.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addNormalGoalScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/addCustomGoalScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_social_media.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_streak.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_gratitude.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_cv_upload.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload_docs.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_start.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_goals.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_step_tracker.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/Pedometer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lifeskills_card_item.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_normal_goal_screen.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_view_goals.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_daily_quote.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/goal_card_item.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_view_life_skills.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_custom_goal_screen.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/StaticClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="48" column="61" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/a17001922/wil_app/homeScreen/viewGoalsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="38" column="47" lean-forward="true" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
         </state>
       </provider>
     </entry>
