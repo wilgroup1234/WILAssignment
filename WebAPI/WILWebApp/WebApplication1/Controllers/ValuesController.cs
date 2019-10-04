@@ -1838,6 +1838,102 @@ namespace WebApplication1.Controllers
         }
 
 
+
+        //This POST method deletes a goal
+        [Route("api/values/PostDeleteGoal")]
+        [HttpPost]
+        public ReturnMessageObject PostDeleteGoal(DeleteGoalObject deleteGoalObject)
+        {
+            //declare return object
+            ReturnMessageObject returnobject = new ReturnMessageObject();
+            int deleteUserGoalID = 0;
+
+            try
+            {
+                //Declarations
+                int userSearchID = 0;
+                String userEmail = "";
+                if (deleteGoalObject.email != null)
+                {
+                    userEmail = deleteGoalObject.email;
+                }
+
+                //search for user and get userID
+                foreach (User user in db.Users)
+                {
+                    if (user.Email.Equals(userEmail))
+                    {
+                        userSearchID = user.UserID;
+                    }
+                }
+
+                //check if goal is custom or normal and delete accordingly
+                if(deleteGoalObject.isNormal)
+                {
+                    //Delete normal goal
+                    try
+                    {
+                        foreach(UserGoal userGoal in db.UserGoals)
+                        {
+                            if(userGoal.GoalID == deleteGoalObject.goalID && userGoal.UserID == userSearchID)
+                            {
+                                db.UserGoals.Remove(userGoal);
+                                db.SaveChanges();
+                                //Success in deleting normal goal
+                                returnobject.errorMessage = "";
+                                returnobject.result = true;
+                            }
+                        }
+
+                    }
+                    catch(Exception e )
+                    {
+                        returnobject.result = false;
+                        returnobject.errorMessage = e.Message;
+                    }
+                }
+                else
+                {
+                    //Delete custom goal
+                    try
+                    {
+                        foreach (CustomUserGoal userGoal in db.CustomUserGoals)
+                        {
+                            if (userGoal.GoalID == deleteGoalObject.goalID && userGoal.UserID == userSearchID)
+                            {
+                                
+                                db.CustomUserGoals.Remove(userGoal);
+                                db.SaveChanges();
+                                //Success in deleting custom goal
+                                returnobject.errorMessage = "";
+                                returnobject.result = true;
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        returnobject.result = false;
+                        returnobject.errorMessage = e.Message;
+                    }
+                }
+
+                return returnobject;
+
+
+            }
+            catch (Exception e)
+            {
+                //catch any error message and return error
+                Debug.WriteLine(e.Message);
+                returnobject.errorMessage = e.Message;
+                returnobject.result = false;
+                return returnobject;
+            }
+
+
+        }
+
+
     }
  
 }

@@ -10,6 +10,7 @@
     android:background="@drawable/bgb4">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="144dp"
         android:layout_margin="4dp"
@@ -23,16 +24,12 @@
             android:layout_marginTop="-1dp"
             android:padding="5dp" />
 
-        <TextView
-            android:id="@+id/txtGoalNameCardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@id/imgIconCardView"
-            android:text="Line 1"
-            android:textColor="@android:color/black"
-
-            android:textSize="25sp" />
+        <ImageView
+            android:id="@+id/imgDelete"
+            android:layout_width="35dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/deleteicon" />
 
         <TextView
             android:id="@+id/txtGoalDescriptionCardView"
@@ -59,6 +56,17 @@
             android:textSize="20sp"
 
             />
+
+        <TextView
+            android:id="@+id/txtGoalNameCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/imgIconCardView"
+            android:text="Line 1"
+            android:textColor="@android:color/black"
+
+            android:textSize="25sp" />
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/cBoxIsCompleted"
