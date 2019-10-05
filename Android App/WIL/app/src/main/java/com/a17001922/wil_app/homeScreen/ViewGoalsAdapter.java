@@ -1,4 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,9 +11,17 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
+import com.a17001922.wil_app.goals.DeleteGoalObject;
+import com.a17001922.wil_app.goals.goalsService;
+
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ViewGoalsAdapter extends RecyclerView.Adapter<ViewGoalsViewHolder>
 {
@@ -106,21 +116,100 @@ public class ViewGoalsAdapter extends RecyclerView.Adapter<ViewGoalsViewHolder>
         @Override
         public void onDeleteClick(View v, int pos)
         {
-            String normal = "";
-            String id = "";
 
-            if(originalGoalsList.get(pos).isNormalGoal())
-            {
-                normal = "normal goal";
-            }
-            else
-            {
-                normal = "custom goal";
-            }
+           if(StaticClass.hasInternet)
+           {
+               if(StaticClass.ongoingOperation == false)
+               {
+                   try
+                   {
+                       //StaticClass.ongoingOperation = true;
 
-            id = originalGoalsList.get(pos).getGoalID() + "";
+                       String normal = "";
+                       String id = "";
 
-            Log.e("DELETE ", "CLICKED!" + pos + " " + normal + " ID: " + id );
+                       if(originalGoalsList.get(pos).isNormalGoal())
+                       {
+                           normal = "normal goal";
+                       }
+                       else
+                       {
+                           normal = "custom goal";
+                       }
+
+                       id = originalGoalsList.get(pos).getGoalID() + "";
+
+                       Log.e("DELETE ", "CLICKED!" + pos + " " + normal + " ID: " + id );
+
+                       DeleteGoalObject deleteGoalObject = new DeleteGoalObject();
+                       deleteGoalObject.setEmail(StaticClass.currentUser);
+                       deleteGoalObject.setGoalID(originalGoalsList.get(pos).getGoalID());
+                       deleteGoalObject.setNormal(originalGoalsList.get(pos).isNormalGoal());
+
+
+                       final goalsService service = StaticClass.retrofit.create(goalsService.class);
+
+                       final String TAG = "ViewGoalsAdapter Class";
+
+
+                       /*
+                       try
+                       {
+                           final Call<ReturnMessageObject> deleteGoal = service.deleteGoal(deleteGoalObject);
+                           deleteGoal .enqueue(new Callback<ReturnMessageObject>()
+                           {
+                               @Override
+                               public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                               {
+                                   if (response.isSuccessful())
+                                   {
+                                       ReturnMessageObject returnMessageObject = response.body();
+
+                                       if (returnMessageObject.getResult())
+                                       {
+                                           Log.e(TAG, "goal deleted successfully");
+
+
+
+                                           StaticClass.ongoingOperation = false;
+                                       }
+                                       else
+                                       {
+                                           Log.e(TAG, " goal delete unsuccessful :(");
+                                           StaticClass.ongoingOperation = false;
+                                       }
+
+
+                                   }
+                               }
+
+                               @Override
+                               public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+                               {
+                                   Log.e(TAG, " OnFailure error: can't delete goal");
+                                   StaticClass.ongoingOperation = false;
+                               }
+                           });
+                       }
+                       catch(Exception e)
+                       {
+                           Log.e(TAG, " Exception error: " + e.getMessage());
+                           StaticClass.ongoingOperation = false;
+                       }
+                          */
+
+                   }
+                   catch(Exception e)
+                   {
+                       Log.e("ViewGoalsAdapter Class", " " + e.getMessage());
+                       StaticClass.ongoingOperation = false;
+                   }
+               }
+               else
+               {
+                   Log.e("ViewGoalsAdapter Class", " ongoing operation");
+               }
+           }
 
 
         }

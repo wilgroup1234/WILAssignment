@@ -24,6 +24,7 @@
         <activity android:name=".homeScreen.homeActivity" />
         <activity android:name=".homeScreen.addNormalGoalScreen" />
         <activity android:name=".homeScreen.addCustomGoalScreen" />
+        <activity android:name=".homeScreen.deleteGoals" />
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />

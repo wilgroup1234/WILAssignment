@@ -1868,25 +1868,26 @@ namespace WebApplication1.Controllers
                 }
 
                 //check if goal is custom or normal and delete accordingly
-                if(deleteGoalObject.isNormal)
+                if (deleteGoalObject.isNormal)
                 {
                     //Delete normal goal
                     try
                     {
-                        foreach(UserGoal userGoal in db.UserGoals)
+                        foreach (UserGoal userGoal in db.UserGoals)
                         {
-                            if(userGoal.GoalID == deleteGoalObject.goalID && userGoal.UserID == userSearchID)
+                            if (userGoal.GoalID == deleteGoalObject.goalID && userGoal.UserID == userSearchID)
                             {
                                 db.UserGoals.Remove(userGoal);
-                                db.SaveChanges();
+                                
                                 //Success in deleting normal goal
                                 returnobject.errorMessage = "";
                                 returnobject.result = true;
                             }
                         }
+                        db.SaveChanges();
 
                     }
-                    catch(Exception e )
+                    catch (Exception e)
                     {
                         returnobject.result = false;
                         returnobject.errorMessage = e.Message;
@@ -1901,14 +1902,15 @@ namespace WebApplication1.Controllers
                         {
                             if (userGoal.GoalID == deleteGoalObject.goalID && userGoal.UserID == userSearchID)
                             {
-                                
+
                                 db.CustomUserGoals.Remove(userGoal);
-                                db.SaveChanges();
+                                
                                 //Success in deleting custom goal
                                 returnobject.errorMessage = "";
                                 returnobject.result = true;
                             }
                         }
+                        db.SaveChanges();
                     }
                     catch (Exception e)
                     {
