@@ -164,6 +164,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Classes\CustomGoalObject.cs" />
     <Compile Include="Classes\DailyObject.cs" />
+    <Compile Include="Classes\DeleteGoalObject.cs" />
     <Compile Include="Classes\GoogleSignInObject.cs" />
     <Compile Include="Classes\GratitudeObject.cs" />
     <Compile Include="Classes\LifeSkillObject.cs" />

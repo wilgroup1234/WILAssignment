@@ -50,5 +50,8 @@ public interface goalsService
     @POST("api/values/PostMarkOffLifeSkill")
     Call<ReturnMessageObject> markOffLifeSkill(@Body LifeSkillObject lifeSkillObject);
 
+    @POST("api/values/PostDeleteGoal")
+    Call<ReturnMessageObject> deleteGoal(@Body DeleteGoalObject deleteGoalObject);
+
 
 }
