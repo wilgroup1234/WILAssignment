@@ -91,6 +91,12 @@ public class ViewLifeSkillsAdapter extends RecyclerView.Adapter<ViewLifeSkillsVi
                 }
 
             }
+
+            @Override
+            public void onDeleteClick(View v, int pos)
+            {
+
+            }
         });
     }
 

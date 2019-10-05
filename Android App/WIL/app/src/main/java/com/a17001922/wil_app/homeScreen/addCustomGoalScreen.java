@@ -51,7 +51,7 @@ public class addCustomGoalScreen extends AppCompatActivity
         btnCustomGoal = findViewById(R.id.btnCreateCustomGoal);
         et_GoalName = findViewById(R.id.et_CustomGoalName);
         et_GoalDescription = findViewById(R.id.et_CustomGoalDescription);
-        btnBack = findViewById(R.id.btnBackCustomGoal);
+        btnBack = findViewById(R.id.btnBackCustomeGoals);
         //#TODO ADDED THE FOLLOWING TO CUSTOM GOAL
         DatePicker datePicker = findViewById(R.id.dpCustomGoalEndDate);
         Calendar cal = Calendar.getInstance();
@@ -62,7 +62,7 @@ public class addCustomGoalScreen extends AppCompatActivity
         datePicker.updateDate(year,month,day);
         datePicker.setMinDate(date.getTime());
         context = getApplicationContext();
-        progressBar = findViewById(R.id.pBarAddCustomGoal);
+        progressBar = findViewById(R.id.pBarAddCustomGoals);
         progressBar.setVisibility(View.INVISIBLE);
 
 

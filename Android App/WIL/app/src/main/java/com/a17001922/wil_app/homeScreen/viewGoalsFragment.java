@@ -1,5 +1,7 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,8 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
@@ -21,14 +21,12 @@ import com.a17001922.wil_app.goals.ReturnAllGoalObject;
 import com.a17001922.wil_app.goals.ReturnAnyTypeGoalObject;
 import com.a17001922.wil_app.goals.UserGoalObject;
 import com.a17001922.wil_app.goals.goalsService;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -733,6 +731,8 @@ public class viewGoalsFragment extends Fragment
 
         return goalExpired;
     }
+
+
 
 
 }

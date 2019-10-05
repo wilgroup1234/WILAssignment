@@ -42,7 +42,7 @@ public class StaticClass
 
     public static String currentUser = "No_User";
 
-    public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://10.0.0.11:45456/").addConverterFactory(GsonConverterFactory.create())
+    public static Retrofit retrofit = new Retrofit.Builder().baseUrl("https://192.168.43.178:45456/").addConverterFactory(GsonConverterFactory.create())
             .client(getUnsafeOkHttpClient().build()).build();
 
 
