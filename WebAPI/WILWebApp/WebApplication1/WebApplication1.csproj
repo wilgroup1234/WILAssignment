@@ -167,6 +167,7 @@
     <Compile Include="Classes\DeleteGoalObject.cs" />
     <Compile Include="Classes\GoogleSignInObject.cs" />
     <Compile Include="Classes\GratitudeObject.cs" />
+    <Compile Include="Classes\LeaderboardObject.cs" />
     <Compile Include="Classes\LifeSkillObject.cs" />
     <Compile Include="Classes\LoginUserObject.cs" />
     <Compile Include="Classes\PasswordEncryption.cs" />
@@ -176,6 +177,7 @@
     <Compile Include="Classes\ReturnGoalObject.cs" />
     <Compile Include="Classes\ReturnLifeSkillsObject.cs" />
     <Compile Include="Classes\ReturnMessageObject.cs" />
+    <Compile Include="Classes\ReturnTopEight.cs" />
     <Compile Include="Classes\StaticClass.cs" />
     <Compile Include="Classes\UserGoalObject.cs" />
     <Compile Include="Classes\UserStepsObject.cs" />
@@ -189,6 +191,7 @@
     <Compile Include="Models\DailyQuote.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\Gratitude.cs" />
+    <Compile Include="Models\Leaderboard.cs" />
     <Compile Include="Models\LifeSkill.cs" />
     <Compile Include="Models\PasswordReset.cs" />
     <Compile Include="Models\Streak.cs" />

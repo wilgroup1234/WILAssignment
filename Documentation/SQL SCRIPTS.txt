@@ -116,6 +116,13 @@ CREATE TABLE Gratitude
  
 ); 
 
+CREATE TABLE Leaderboards
+(
+    ID int NOT NULL IDENTITY PRIMARY KEY,
+    Score int NOT NULL,
+    UserID int NOT NULL
+); 
+
 
 
  ALTER TABLE UserGoals
@@ -163,6 +170,10 @@ ALTER TABLE CustomUserGoals
 
  ALTER TABLE Gratitude
   ADD CONSTRAINT FK_UserID8
+   FOREIGN KEY (UserID) REFERENCES Users(UserID);
+
+ ALTER TABLE Leaderboards
+  ADD CONSTRAINT FK_UserID9
    FOREIGN KEY (UserID) REFERENCES Users(UserID);
 
 

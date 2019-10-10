@@ -13,6 +13,7 @@ namespace WebApplication1.Models
         {
             CustomUserGoals = new HashSet<CustomUserGoal>();
             Gratitudes = new HashSet<Gratitude>();
+            Leaderboards = new HashSet<Leaderboard>();
             Streaks = new HashSet<Streak>();
             UserGoals = new HashSet<UserGoal>();
             UserLifeSkills = new HashSet<UserLifeSkill>();
@@ -43,6 +44,9 @@ namespace WebApplication1.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gratitude> Gratitudes { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Leaderboard> Leaderboards { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Streak> Streaks { get; set; }

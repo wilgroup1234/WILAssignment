@@ -142,7 +142,7 @@ public class LoginFragment extends Fragment
                                         else
                                         {
                                             Log.e(TAG, "GetResult false");
-                                            Toast.makeText(StaticClass.loginContext, "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(StaticClass.loginContext, "Login Failed Invalid Details entered :(", Toast.LENGTH_SHORT).show();
                                             StaticClass.ongoingOperation = false;
                                             progressBar.setVisibility(View.INVISIBLE);
                                         }
@@ -165,7 +165,7 @@ public class LoginFragment extends Fragment
                             catch (Exception e)
                             {
                                 Log.e(TAG, "Exception " + e.toString());
-                                Toast.makeText(StaticClass.loginContext, "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+                                Toast.makeText(StaticClass.loginContext, "Login Failed Invalid Details entered :(", Toast.LENGTH_LONG).show();
                             }
 
                         }
@@ -293,7 +293,7 @@ public class LoginFragment extends Fragment
         catch (Exception e)
         {
             Log.e(TAG, "Exception " + e.toString());
-            Toast.makeText(StaticClass.loginContext, "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+            Toast.makeText(StaticClass.loginContext, "Login Failed Invalid Details entered :(", Toast.LENGTH_LONG).show();
             StaticClass.ongoingOperation = false;
             progressBar.setVisibility(View.INVISIBLE);
         }
@@ -416,7 +416,7 @@ public class LoginFragment extends Fragment
             catch (Exception e)
             {
                 Log.e(TAG, "Exception " + e.toString());
-                Toast.makeText(StaticClass.loginContext, "Login Failed Invalid Details entered Bro :(", Toast.LENGTH_LONG).show();
+                Toast.makeText(StaticClass.loginContext, "Login Failed Invalid Details entered :(", Toast.LENGTH_LONG).show();
             }
 
 
@@ -436,7 +436,7 @@ public class LoginFragment extends Fragment
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
             Log.e(TAG, "Exception " + e.toString());
-            Toast.makeText(StaticClass.loginContext, "Google Login Failed (API EXCEPTION) :(", Toast.LENGTH_LONG).show();
+            Toast.makeText(StaticClass.loginContext, "Google Login Failed :(", Toast.LENGTH_LONG).show();
 
         }
 

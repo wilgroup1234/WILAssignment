@@ -17,6 +17,7 @@ namespace WebApplication1.Models
         public virtual DbSet<DailyQuote> DailyQuotes { get; set; }
         public virtual DbSet<Goal> Goals { get; set; }
         public virtual DbSet<Gratitude> Gratitudes { get; set; }
+        public virtual DbSet<Leaderboard> Leaderboards { get; set; }
         public virtual DbSet<LifeSkill> LifeSkills { get; set; }
         public virtual DbSet<PasswordReset> PasswordResets { get; set; }
         public virtual DbSet<Streak> Streaks { get; set; }
@@ -107,6 +108,11 @@ namespace WebApplication1.Models
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Gratitudes)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Leaderboards)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
 
