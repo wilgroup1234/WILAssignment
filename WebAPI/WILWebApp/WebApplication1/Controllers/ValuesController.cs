@@ -31,6 +31,10 @@ namespace WebApplication1.Controllers
         //Get All Goals                   https://localhost:44317/api/values/GetAllGoals
         //Get user lifeskills             https://localhost:44317/api/values/PostRetrieveLifeSkills
         //Mark off life skill             https://localhost:44317/api/values/PostMarkOffLifeSkill
+        //Get All Goals                   https://localhost:44317/api/values/GetAllGoals
+        //Delete Goal                     https://localhost:44317/api/values/PostDeleteGoal
+        //Get Top 8 Scores                https://localhost:44317/api/values/PostGetTopEight
+        //Add Score To Leaderboard        https://localhost:44317/api/values/PostUploadScore
 
         //Create instance of database
         private WILModel db = new WILModel();
@@ -1934,6 +1938,202 @@ namespace WebApplication1.Controllers
 
 
         }
+
+
+
+
+        //This POST method returns the top 8 users in the leaderboards
+        [Route("api/values/PostGetTopEight")]
+        [HttpPost]
+        public ReturnTopEight PostGetTopEight()
+        {
+            //declare return object
+            ReturnTopEight returnObject = new ReturnTopEight();
+            try
+            {
+
+                //Declarations
+                List<String> returnList = new List<String>();
+                List<Leaderboard> leaderboards = db.Leaderboards.OrderByDescending(x => x.Score).ToList();
+
+                for (int i = 0; i < leaderboards.Count; i++)
+                {
+                    int searchUserID = leaderboards[i].UserID;
+
+
+                    User searchUser = db.Users.FirstOrDefault(x => x.UserID == searchUserID);
+                    int userScore = leaderboards[i].Score;
+                    String FullName = searchUser.FirstName + " " + searchUser.LastName;
+
+                    String line = (i + 1) + "@" + FullName + "@" + userScore;
+                    returnList.Add(line);
+                }
+
+
+                foreach(String item in returnList)
+                {
+                    returnObject.TopEight = returnObject.TopEight + "#" + item;
+                }
+
+
+
+                //return success
+                return returnObject;
+
+            }
+            //catch any error message and return error
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                returnObject.TopEight = "";
+                return returnObject;
+            }
+
+        }
+
+
+
+
+        //This POST method allows users to upload their score to the leaderboards
+        [Route("api/values/PostUploadScore")]
+        [HttpPost]
+        public ReturnMessageObject PostUploadScore(LeaderboardObject leaderboardObject)
+        {
+            //declare return object
+            ReturnMessageObject returnObject = new ReturnMessageObject();
+            try
+            {
+                //Declarations
+                int userSearchID = 0;
+                String userEmail = "";
+                int numscores = 0;
+                Boolean userInList = false;
+                int userinListScore = 0;
+                int userinListID = 0;
+                Boolean proceed = true;
+
+                if (leaderboardObject.Email != null)
+                {
+                    userEmail = leaderboardObject.Email;
+                }
+
+                //search for user and get userID
+                foreach (User user in db.Users)
+                {
+                    if (user.Email.Equals(userEmail))
+                    {
+                        userSearchID = user.UserID;
+                    }
+                }
+
+                Boolean addScore = false;
+
+                foreach (Leaderboard leaderboard in db.Leaderboards)
+                {
+                    if(leaderboard.UserID == userSearchID)
+                    {
+                        userInList = true;
+                        userinListScore = leaderboard.Score;
+                        userinListID = leaderboard.ID;
+                    }
+                    numscores++;
+
+                    if(leaderboardObject.Score > leaderboard.Score)
+                    {
+                        addScore = true;
+                    }
+                }
+                
+                if(numscores < 8)
+                {
+                    addScore = true;
+                }
+
+                //delete preious score by this user if it is less than new score and is in the top 8
+                if(userInList)
+                {
+                    if(userinListScore < leaderboardObject.Score)
+                    {
+                        try
+                        {
+                            //Leaderboard leaderboard = db.Leaderboards.FirstOrDefault(x => x.UserID == userinListID);
+                            Leaderboard leaderboard = new Leaderboard();
+                            foreach(Leaderboard l in db.Leaderboards)
+                            {
+                                if(l.UserID == userSearchID)
+                                {
+                                    leaderboard = l;
+                                }
+                            }
+
+                            db.Leaderboards.Remove(leaderboard);
+                            db.SaveChanges();
+
+                            //add new score
+                            Leaderboard newLeaderboardObject = new Leaderboard
+                            {
+                                Score = leaderboardObject.Score,
+                                UserID = userSearchID
+                            };
+
+                            db.Leaderboards.Add(newLeaderboardObject);
+
+                            db.SaveChanges();
+                            proceed = false;
+                        }
+                        catch(Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        }
+                    }
+                    else
+                    {
+                        proceed = false;
+                    }
+                }
+                
+
+                if(addScore && proceed)
+                {
+                    if (db.Leaderboards.ToList().Count >= 8)
+                    {
+                        //remove lowest score
+                        List<Leaderboard> leaderboards = db.Leaderboards.OrderBy(x => x.Score).ToList();
+                        Leaderboard removeObject = leaderboards[0];
+                        db.Leaderboards.Remove(removeObject);
+                    }
+
+                    //add new score
+                    Leaderboard newLeaderboardObject = new Leaderboard
+                    {
+                        Score = leaderboardObject.Score,
+                        UserID = userSearchID
+                    };
+
+                    db.Leaderboards.Add(newLeaderboardObject);
+
+                    db.SaveChanges();
+                }
+
+
+
+                //return success
+                returnObject.result = true;
+                return returnObject;
+
+            }
+            //catch any error message and return error
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                returnObject.errorMessage = e.Message;
+                returnObject.result = false;
+                return returnObject;
+            }
+
+        }
+
+
 
 
     }

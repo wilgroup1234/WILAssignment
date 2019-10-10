@@ -1,30 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace WILWebAppNetCore.Models
 {
     public partial class Users
     {
-        public int UserID { get; set; }
+        public Users()
+        {
+            CustomUserGoals = new HashSet<CustomUserGoals>();
+            Streaks = new HashSet<Streaks>();
+            UserGoals = new HashSet<UserGoals>();
+            UserLifeSkills = new HashSet<UserLifeSkills>();
+        }
 
-        [Required]
-        [StringLength(255)]
+        public int UserId { get; set; }
         public string LastName { get; set; }
-
-        [Required]
-        [StringLength(255)]
         public string FirstName { get; set; }
-
-        public int Age { get; set; }
-
-        [Required]
-        [StringLength(255)]
-        [EmailAddress]
         public string Email { get; set; }
-
-        [Required]
-        [StringLength(255)]
         public string Password { get; set; }
+
+        public ICollection<CustomUserGoals> CustomUserGoals { get; set; }
+        public ICollection<Streaks> Streaks { get; set; }
+        public ICollection<UserGoals> UserGoals { get; set; }
+        public ICollection<UserLifeSkills> UserLifeSkills { get; set; }
     }
 }

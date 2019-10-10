@@ -5,6 +5,7 @@ C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\bin\Debug\netcore
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\bin\Debug\netcoreapp2.1\WILWebAppNetCore.pdb
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\bin\Debug\netcoreapp2.1\WILWebAppNetCore.Views.dll
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\bin\Debug\netcoreapp2.1\WILWebAppNetCore.Views.pdb
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csprojAssemblyReference.cache
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csproj.CoreCompileInputs.cache
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.RazorAssemblyInfo.cache
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.RazorAssemblyInfo.cs
@@ -21,13 +22,19 @@ C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcore
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\AdminPortal.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Create.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\DailyQuote.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Delete.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Details.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Edit.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Goals.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Index.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Login.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Register.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\ResetPassword.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\SkillsList.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Streaks.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.RazorTargetAssemblyInfo.cache
@@ -36,4 +43,3 @@ C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcore
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.dll
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.pdb
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csproj.CopyComplete
-C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csprojAssemblyReference.cache

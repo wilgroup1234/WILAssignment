@@ -35,7 +35,7 @@ public class RegisterFragments extends Fragment
 
     ProgressBar progressBar;
     Button btnRegister;
-    EditText et_registerFirstName,et_registerSurname,et_registerEmail,et_age,et_registerPassword,et_confirmPassword;
+    EditText et_registerFirstName,et_registerSurname,et_registerEmail,et_registerPassword,et_confirmPassword;
     RegisterUserObject user;
     loginRegisterService loginRegisterService = StaticClass.retrofit.create(loginRegisterService.class);
     View v;
@@ -65,7 +65,6 @@ public class RegisterFragments extends Fragment
         et_registerFirstName = v.findViewById(R.id.et_firstName);
         et_registerSurname = v.findViewById(R.id.et_surname);
         et_registerEmail=v.findViewById(R.id.et_registerEmail);
-        et_age=v.findViewById(R.id.et_Age);
         et_registerPassword=v.findViewById(R.id.et_registerPassword);
         et_confirmPassword=v.findViewById(R.id.et_confirmPassword);
         btnRegister=v.findViewById(R.id.btnRegister);
@@ -94,14 +93,12 @@ public class RegisterFragments extends Fragment
                     {
                         name = et_registerFirstName.getText().toString();
                         surname = et_registerSurname.getText().toString();
-                        int age = Integer.parseInt(et_age.getText().toString());
                         email= et_registerEmail.getText().toString();
                         password = et_registerPassword.getText().toString();
                         confirmPassword = et_confirmPassword.getText().toString();
 
                         user.setFirstName(name);
                         user.setSurname(surname);
-                        user.setAge(age);
                         user.setEmail(email);
                         user.setPassword(password);
                         user.setConfirmPassword(confirmPassword);
@@ -111,7 +108,7 @@ public class RegisterFragments extends Fragment
                         //_____________Validate User Input_____________
                         if (password.equals(confirmPassword))
                         {
-                            if(name.length() > 1 && surname.length()> 1 && age > 5 && email.length() > 7 && email.contains("@") && password.length() > 2)
+                            if(name.length() > 1 && surname.length()> 1 && email.length() > 7 && email.contains("@") && password.length() > 2)
                             {
                                 valid = true;
                             }

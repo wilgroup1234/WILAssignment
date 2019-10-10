@@ -12,7 +12,7 @@
         android:layout_width="162dp"
         android:layout_height="47dp"
         android:layout_marginBottom="180dp"
-        android:background="@drawable/new1"
+        android:background="@drawable/mybutton"
         android:text="Open Pedometer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

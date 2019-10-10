@@ -35,7 +35,7 @@ public class homeActivity extends AppCompatActivity
 
         if (StaticClass.hasInternet)
         {
-            adapter.addFragment(new goalsFragment(), "Goals");
+            adapter.addFragment(new goalsFragment(), "Home");
             adapter.addFragment(new viewGoalsFragment(),"View Goals");
             adapter.addFragment(new viewLifeSkillsFragment(),"View LifeSkills");
             adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
@@ -46,6 +46,7 @@ public class homeActivity extends AppCompatActivity
             adapter.addFragment(new cvUpload(),"CV");
             adapter.addFragment(new stepTrackerFragment(),"Step Tracker");
             adapter.addFragment(new socialMediaFragment(),"Social Media");
+            adapter.addFragment(new GameScreen(),"Game");
 
             Toast.makeText(getApplicationContext(), "Working Online", Toast.LENGTH_LONG).show();
         }

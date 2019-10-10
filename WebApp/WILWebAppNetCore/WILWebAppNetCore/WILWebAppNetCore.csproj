@@ -1,8 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\Style.css" />
+    <Content Remove="wwwroot\images\person.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\Style.css" />
+    <None Include="wwwroot\images\person.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.2.0" />

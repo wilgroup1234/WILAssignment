@@ -35,6 +35,8 @@ public class StaticClass
 
     public static boolean hasInternet = false;
     public static boolean ongoingOperation = false;
+    public static boolean gameOver = false;
+    public static int playerScore = 0;
 
     public static Context homeContext;
     public static Context loginContext;

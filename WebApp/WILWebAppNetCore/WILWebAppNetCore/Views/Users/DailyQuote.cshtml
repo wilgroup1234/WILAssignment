@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewData["Title"] = "DailyQuote";
+    @using WILWebAppNetCore.Classes
+}
+
+
+<h2 align="center">DailyQuote</h2>
+
+@{
+    if (!StaticClass.errorMessage.Equals("NO_ERROR"))
+    {
+        <h2 class="text-danger">@ViewBag.Message</h2>
+    }
+}
+
+<br>
+<br>
+<br>
+
+@{
+    List<String> numbers = new List<string>();
+
+    for (int i = 0; i < 30; i++)
+    {
+        numbers.Add((i + 1) + "");
+    }
+}
+
+<h3 align="center"> Enter information for Daily Quote:</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DailyQuote">
+
+            <div class="form-group">
+                <label>Image Number:</label>
+                @Html.DropDownList("ImageNumber", numbers.Select(m => new SelectListItem { Value = m.ToString(), Text = m.ToString() }), new { @class = "form-control", @name = "imageNumber" })
+            </div>
+            <div class="form-group">
+                <label>Quote:</label>
+                <input type="text" name="quote" class=" form-control" />
+            </div>
+            <div class="form-group">
+                <label>Youtube Link:</label>
+                <input type="text" name="link" class=" form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update Daily Quote" class="btnsubmit" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+<h3 align="center"> Background Images:</h3>
+
+<br>
+<table class="table">
+    <tbody>
+        @for (int i = 0; i < 5; i++)
+        {
+        <tr style="width:50%">
+            <td>
+                @{
+                    string imageName = "Image Number: " + (i + 1);
+
+                    string imageLocation = "/images/dailyquote/" + (i + 1) + ".jpg";
+
+                }
+                <label>@imageName</label>
+                <br>
+                <img src="@imageLocation" alt="backgroundImage" width="100" height="100">
+            </td>
+
+            <td>
+                @{
+                    string imageName2 = "Image Number: " + (i + 6);
+
+                    string imageLocation2 = "/images/dailyquote/" + (i + 6) + ".jpg";
+
+                }
+                <label>@imageName2</label>
+                <br>
+                <img src="@imageLocation2" alt="backgroundImage" width="100" height="100">
+            </td>
+
+            <td>
+                @{
+                    string imageName3 = "Image Number: " + (i + 11);
+
+                    string imageLocation3 = "/images/dailyquote/" + (i + 11) + ".jpg";
+
+                }
+                <label>@imageName3</label>
+                <br>
+                <img src="@imageLocation3" alt="backgroundImage" width="100" height="100">
+            </td>
+
+            <td>
+                @{
+                    string imageName4 = "Image Number: " + (i + 16);
+
+                    string imageLocation4 = "/images/dailyquote/" + (i + 16) + ".jpg";
+
+                }
+                <label>@imageName4</label>
+                <br>
+                <img src="@imageLocation4" alt="backgroundImage" width="100" height="100">
+            </td>
+
+            <td>
+                @{
+                    string imageName5 = "Image Number: " + (i + 21);
+
+                    string imageLocation5 = "/images/dailyquote/" + (i + 21) + ".jpg";
+
+                }
+                <label>@imageName5</label>
+                <br>
+                <img src="@imageLocation5" alt="backgroundImage" width="100" height="100">
+            </td>
+
+            <td>
+                @{
+                    string imageName6 = "Image Number: " + (i + 26);
+
+                    string imageLocation6 = "/images/dailyquote/" + (i + 26) + ".jpg";
+
+                }
+                <label>@imageName6</label>
+                <br>
+                <img src="@imageLocation6" alt="backgroundImage" width="100" height="100">
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
