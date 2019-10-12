@@ -45,8 +45,8 @@ public class viewGoalsFragment extends Fragment
     RecyclerView viewGoalsRecyclerView;
     private final String TAG = "View Goals Page";
     private final static int tickImage = R.drawable.greentick;
-    private final static int exclamationImage = R.drawable.exclamationmark;
-    private final static int crossImage = R.drawable.redx;
+    private final static int exclamationImage = R.drawable.hourglass;
+    private final static int crossImage = R.drawable.clockicon;
     final goalsService service = StaticClass.retrofit.create(goalsService.class);
     List<ReturnAnyTypeGoalObject> allListedGoals;
     ArrayList<GoalsCheckedClass> originalGoalList = new ArrayList<>();

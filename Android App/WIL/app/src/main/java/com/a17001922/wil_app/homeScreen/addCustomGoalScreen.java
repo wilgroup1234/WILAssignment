@@ -88,6 +88,16 @@ public class addCustomGoalScreen extends AppCompatActivity
                         goalName = et_GoalName.getText().toString();
                         goalDescription = et_GoalDescription.getText().toString();
 
+                        if(goalName.contains("-"))
+                        {
+                            goalName = goalName.replace('-',' ');
+                        }
+
+                        if(goalDescription.contains("-"))
+                        {
+                            goalDescription = goalDescription.replace('-',' ');
+                        }
+
                         String stringDay = "", stringMonth = "";
                         int thisMonth = month, dayOfMonth = day, thisYear = year;
 

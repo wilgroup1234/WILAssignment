@@ -53,5 +53,14 @@ public interface goalsService
     @POST("api/values/PostDeleteGoal")
     Call<ReturnMessageObject> deleteGoal(@Body DeleteGoalObject deleteGoalObject);
 
+    @POST("api/values/PostGetTopEight")
+    Call<ReturnTopEight> GetTopScores();
+
+    @POST("api/values/PostUploadScore")
+    Call<ReturnMessageObject> uploadScore (@Body LeaderboardObject leaderboardObject);
+
+    @POST("api/values/PostUpdateViews")
+    Call<ReturnMessageObject> updateViews ();
+
 
 }
