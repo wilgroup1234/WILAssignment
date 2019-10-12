@@ -41,7 +41,7 @@ public class viewLifeSkillsFragment extends Fragment
     RecyclerView viewLifeSkillsRecyclerView;
     private final String TAG = "View LifeSkills Page";
     private final static int tickImage = R.drawable.greentick;
-    private final static int exclamationImage = R.drawable.exclamationmark;
+    private final static int exclamationImage = R.drawable.hourglass;
     final goalsService service = StaticClass.retrofit.create(goalsService.class);
     List<LifeSkillObject> allListedLifeSkills;
     int itemCount = 0;

@@ -1,17 +1,17 @@
-﻿@model WILWebAppNetCore.Classes.UserStreak
+﻿@model WILWebAppNetCore.Classes.UserScore
 @using WILWebAppNetCore.Classes
 
 @{
-    ViewData["Title"] = "Streaks";
+    ViewData["Title"] = "Leaderboards";
 }
 
-<h2 align="center">Streaks</h2>
+<h2 align="center">Game Leaderboards</h2>
 
 
 <br>
 <br>
 
-<h3 align="center"> These are the User Streaks:</h3>
+<h3 align="center"> These are the Top Scorers for the Goal Pro Game:</h3>
 
 <br>
 <br>
@@ -27,23 +27,23 @@
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Streak)
+                    @Html.DisplayNameFor(model => model.Score)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (UserStreak streak in ViewBag.StreaksList)
+            @foreach (UserScore score in ViewBag.ScoresList)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => streak.Email)
+                        @Html.DisplayFor(modelItem => score.Email)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => streak.Name)
+                        @Html.DisplayFor(modelItem => score.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => streak.Streak)
+                        @Html.DisplayFor(modelItem => score.Score)
                     </td>
 
 

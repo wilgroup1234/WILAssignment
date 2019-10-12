@@ -10,7 +10,7 @@ namespace WILWebAppNetCore.Models
         public int GoalId { get; set; }
         public int Completed { get; set; }
 
-        public Goals Goal { get; set; }
+        public CustomGoals Goal { get; set; }
         public Users User { get; set; }
     }
 }

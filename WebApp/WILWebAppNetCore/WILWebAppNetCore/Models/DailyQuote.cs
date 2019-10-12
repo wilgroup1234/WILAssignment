@@ -11,7 +11,5 @@ namespace WILWebAppNetCore.Models
         public string YoutubeLink { get; set; }
         public int TemplateId { get; set; }
         public int Views { get; set; }
-
-        public Template Template { get; set; }
     }
 }

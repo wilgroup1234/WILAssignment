@@ -1949,6 +1949,7 @@ namespace WebApplication1.Controllers
         {
             //declare return object
             ReturnTopEight returnObject = new ReturnTopEight();
+            returnObject.TopEight = "";
             try
             {
 
@@ -1972,7 +1973,15 @@ namespace WebApplication1.Controllers
 
                 foreach(String item in returnList)
                 {
-                    returnObject.TopEight = returnObject.TopEight + "#" + item;
+                    if(returnObject.TopEight.Length <= 2)
+                    {
+                        returnObject.TopEight = item;
+                    }
+                    else
+                    {
+                        returnObject.TopEight = returnObject.TopEight + "#" + item;
+                    }
+                    
                 }
 
 

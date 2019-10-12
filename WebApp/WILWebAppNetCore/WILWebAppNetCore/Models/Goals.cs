@@ -7,7 +7,6 @@ namespace WILWebAppNetCore.Models
     {
         public Goals()
         {
-            CustomUserGoals = new HashSet<CustomUserGoals>();
             UserGoals = new HashSet<UserGoals>();
         }
 
@@ -15,7 +14,6 @@ namespace WILWebAppNetCore.Models
         public string GoalName { get; set; }
         public string GoalDescription { get; set; }
 
-        public ICollection<CustomUserGoals> CustomUserGoals { get; set; }
         public ICollection<UserGoals> UserGoals { get; set; }
     }
 }

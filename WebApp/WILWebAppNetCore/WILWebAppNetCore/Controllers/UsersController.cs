@@ -299,6 +299,24 @@ namespace WILWebAppNetCore.Controllers
                         obj.YoutubeLink = link;
 
                     }
+                    else
+                    {
+                        Boolean val = false;
+
+                        if(link.Contains("http://") || link.Contains("https://"))
+                        {
+                            if(link.Contains(".") && link.Length > 12)
+                            {
+                                val = true;
+                            }
+                        }
+
+                        if(!val)
+                        {
+                            obj.YoutubeLink = "https://youtu.be/oLbZTyDyssg";
+                        }
+                    }
+
 
                     _context.DailyQuote.Add(obj);
                     _context.SaveChanges();
@@ -377,6 +395,16 @@ namespace WILWebAppNetCore.Controllers
 
                 try
                 {
+                    if(goalName.Contains('-'))
+                    {
+                        goalName = goalName.Replace('-', ' ');
+                    }
+
+                    if (goalDescription.Contains('-'))
+                    {
+                        goalDescription = goalDescription.Replace('-', ' ');
+                    }
+
                     goal.GoalName = goalName;
                     goal.GoalDescription = goalDescription;
 
@@ -486,11 +514,12 @@ namespace WILWebAppNetCore.Controllers
                             };
 
                             _context.UserLifeSkills.Add(userLifeSkills);
-                            _context.SaveChanges();
+                            
 
 
                         };
                     }
+                    _context.SaveChanges();
 
 
                     valid = true;
@@ -534,18 +563,21 @@ namespace WILWebAppNetCore.Controllers
                     Debug.WriteLine("Streak!! " + str.StreakId + " " + str.UserId + " " + str.UserId);
 
                     String userMail = "";
+                    String userName = "";
 
                     foreach (Users users in _context.Users)
                     {
                         if (users.UserId == str.UserId)
                         {
                             userMail = users.Email;
+                            userName = users.FirstName;
                         }
                     }
 
                     UserStreak userStreak = new UserStreak
                     {
                         Email = userMail,
+                        Name = userName,
                         Streak = str.StreakLength
 
                     };
@@ -570,6 +602,80 @@ namespace WILWebAppNetCore.Controllers
             
         }
 
+
+        // GET: Users/Leaderboards
+        public ActionResult Leaderboards()
+        {
+            if (StaticClass.loggedIn)
+            {
+                List<Leaderboards> scoresList = new List<Leaderboards>();
+                scoresList = _context.Leaderboards.ToList();
+
+                List<UserScore> scores = new List<UserScore>();
+
+                foreach (Leaderboards score in scoresList)
+                {
+
+                    String userMail = "";
+                    String userName = "";
+
+                    foreach (Users users in _context.Users)
+                    {
+                        if (users.UserId == score.UserId)
+                        {
+                            userMail = users.Email;
+                            userName = users.FirstName;
+                        }
+                    }
+
+                    UserScore userScore = new UserScore
+                    {
+                        Email = userMail,
+                        Name = userName,
+                        Score = score.Score
+
+                    };
+
+                    if (score.UserId != 1)
+                    {
+                        scores.Add(userScore);
+                    }
+                }
+
+                List<UserScore> scores2 = scores.OrderByDescending(c => c.Score).ToList();
+
+                ViewBag.ScoresList = scores2;
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+        }
+
+
+
+        // GET: Users/Streaks
+        public ActionResult VideoViews()
+        {
+            if (StaticClass.loggedIn)
+            {
+                List<DailyQuote> views = new List<DailyQuote>();
+                views = _context.DailyQuote.ToList();
+                ViewBag.ViewsList = views;
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+        }
 
 
     }
