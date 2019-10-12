@@ -40,13 +40,14 @@ public class homeActivity extends AppCompatActivity
             adapter.addFragment(new viewLifeSkillsFragment(),"View LifeSkills");
             adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
             adapter.addFragment(new streakFragment(),"Streak");
+            adapter.addFragment(new GameScreen(),"Game");
             adapter.addFragment(new gratitudeFragment(),"Gratitude Page");
+            adapter.addFragment(new stepTrackerFragment(),"Step Tracker");
             adapter.addFragment(new PlannerFragment(),"Planner");
             adapter.addFragment(new uploadDocsFragment(),"Upload");
             adapter.addFragment(new cvUpload(),"CV");
-            adapter.addFragment(new stepTrackerFragment(),"Step Tracker");
             adapter.addFragment(new socialMediaFragment(),"Social Media");
-            adapter.addFragment(new GameScreen(),"Game");
+
 
             Toast.makeText(getApplicationContext(), "Working Online", Toast.LENGTH_LONG).show();
         }
@@ -55,8 +56,10 @@ public class homeActivity extends AppCompatActivity
             adapter.addFragment(new viewGoalsFragment(),"View Goals");
             adapter.addFragment(new viewLifeSkillsFragment(),"View LifeSkills");
             adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
+            adapter.addFragment(new GameScreen(),"Game");
             adapter.addFragment(new PlannerFragment(),"Planner");
             adapter.addFragment(new cvUpload(),"CV");
+            adapter.addFragment(new uploadDocsFragment(),"Upload");
             adapter.addFragment(new socialMediaFragment(),"Social Media");
             Toast.makeText(getApplicationContext(), "Offline, Limited functionality available...", Toast.LENGTH_LONG).show();
         }
