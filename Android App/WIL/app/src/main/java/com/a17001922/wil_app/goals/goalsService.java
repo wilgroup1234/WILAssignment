@@ -59,5 +59,8 @@ public interface goalsService
     @POST("api/values/PostUploadScore")
     Call<ReturnMessageObject> uploadScore (@Body LeaderboardObject leaderboardObject);
 
+    @POST("api/values/PostUpdateViews")
+    Call<ReturnMessageObject> updateViews ();
+
 
 }

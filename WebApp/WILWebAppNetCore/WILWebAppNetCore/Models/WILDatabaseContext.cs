@@ -19,13 +19,17 @@ namespace WILWebAppNetCore.Models
         public virtual DbSet<CustomUserGoals> CustomUserGoals { get; set; }
         public virtual DbSet<DailyQuote> DailyQuote { get; set; }
         public virtual DbSet<Goals> Goals { get; set; }
+        public virtual DbSet<Gratitude> Gratitude { get; set; }
+        public virtual DbSet<Leaderboards> Leaderboards { get; set; }
         public virtual DbSet<LifeSkills> LifeSkills { get; set; }
         public virtual DbSet<PasswordReset> PasswordReset { get; set; }
         public virtual DbSet<Streaks> Streaks { get; set; }
         public virtual DbSet<Template> Template { get; set; }
         public virtual DbSet<UserGoals> UserGoals { get; set; }
         public virtual DbSet<UserLifeSkills> UserLifeSkills { get; set; }
+        public virtual DbSet<UserLoginDates> UserLoginDates { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<UserSteps> UserSteps { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -99,12 +103,6 @@ namespace WILWebAppNetCore.Models
                     .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.Template)
-                    .WithMany(p => p.DailyQuote)
-                    .HasForeignKey(d => d.TemplateId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemplateID");
             });
 
             modelBuilder.Entity<Goals>(entity =>
@@ -122,6 +120,39 @@ namespace WILWebAppNetCore.Models
                     .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Gratitude>(entity =>
+            {
+                entity.Property(e => e.GratitudeId).HasColumnName("GratitudeID");
+
+                entity.Property(e => e.GratitudeDate).HasColumnType("date");
+
+                entity.Property(e => e.GratitudeItems)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Gratitude)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserID8");
+            });
+
+            modelBuilder.Entity<Leaderboards>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Leaderboards)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserID9");
             });
 
             modelBuilder.Entity<LifeSkills>(entity =>
@@ -218,6 +249,21 @@ namespace WILWebAppNetCore.Models
                     .HasConstraintName("FK_UserID3");
             });
 
+            modelBuilder.Entity<UserLoginDates>(entity =>
+            {
+                entity.Property(e => e.UserLoginDatesId).HasColumnName("UserLoginDatesID");
+
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.Property(e => e.UserLoginDate).HasColumnType("date");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.UserLoginDates)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserID6");
+            });
+
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.HasKey(e => e.UserId);
@@ -247,6 +293,25 @@ namespace WILWebAppNetCore.Models
                     .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<UserSteps>(entity =>
+            {
+                entity.HasIndex(e => e.Steps)
+                    .HasName("UQ__UserStep__541AF9EBB9D15B9F")
+                    .IsUnique();
+
+                entity.Property(e => e.UserStepsId).HasColumnName("UserStepsID");
+
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.Property(e => e.UserStepsDate).HasColumnType("date");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.UserSteps)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserID7");
             });
         }
     }

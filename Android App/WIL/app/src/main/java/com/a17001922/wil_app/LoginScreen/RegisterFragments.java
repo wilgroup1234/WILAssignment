@@ -97,6 +97,27 @@ public class RegisterFragments extends Fragment
                         password = et_registerPassword.getText().toString();
                         confirmPassword = et_confirmPassword.getText().toString();
 
+
+
+                        if(name.contains("#"))
+                        {
+                            name = name.replace('#',' ');
+                        }
+                        if(name.contains("@"))
+                        {
+                            name = name.replace('@',' ');
+                        }
+
+                        if(surname.contains("#"))
+                        {
+                            surname = surname.replace('#',' ');
+                        }
+                        if(surname.contains("@"))
+                        {
+                            surname = surname.replace('@',' ');
+                        }
+
+
                         user.setFirstName(name);
                         user.setSurname(surname);
                         user.setEmail(email);
