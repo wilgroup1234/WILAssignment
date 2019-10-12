@@ -17,7 +17,7 @@ namespace WebApplication1.Models
 
         public int Completed { get; set; }
 
-        public virtual Goal Goal { get; set; }
+        public virtual CustomGoal CustomGoal { get; set; }
 
         public virtual User User { get; set; }
     }

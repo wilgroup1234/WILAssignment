@@ -8,6 +8,12 @@ namespace WebApplication1.Models
 
     public partial class CustomGoal
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CustomGoal()
+        {
+            CustomUserGoals = new HashSet<CustomUserGoal>();
+        }
+
         [Key]
         public int GoalID { get; set; }
 
@@ -18,5 +24,11 @@ namespace WebApplication1.Models
         [Required]
         [StringLength(255)]
         public string GoalDescription { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? FinishDate { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomUserGoal> CustomUserGoals { get; set; }
     }
 }

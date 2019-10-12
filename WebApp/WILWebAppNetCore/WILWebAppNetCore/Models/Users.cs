@@ -8,9 +8,13 @@ namespace WILWebAppNetCore.Models
         public Users()
         {
             CustomUserGoals = new HashSet<CustomUserGoals>();
+            Gratitude = new HashSet<Gratitude>();
+            Leaderboards = new HashSet<Leaderboards>();
             Streaks = new HashSet<Streaks>();
             UserGoals = new HashSet<UserGoals>();
             UserLifeSkills = new HashSet<UserLifeSkills>();
+            UserLoginDates = new HashSet<UserLoginDates>();
+            UserSteps = new HashSet<UserSteps>();
         }
 
         public int UserId { get; set; }
@@ -20,8 +24,12 @@ namespace WILWebAppNetCore.Models
         public string Password { get; set; }
 
         public ICollection<CustomUserGoals> CustomUserGoals { get; set; }
+        public ICollection<Gratitude> Gratitude { get; set; }
+        public ICollection<Leaderboards> Leaderboards { get; set; }
         public ICollection<Streaks> Streaks { get; set; }
         public ICollection<UserGoals> UserGoals { get; set; }
         public ICollection<UserLifeSkills> UserLifeSkills { get; set; }
+        public ICollection<UserLoginDates> UserLoginDates { get; set; }
+        public ICollection<UserSteps> UserSteps { get; set; }
     }
 }

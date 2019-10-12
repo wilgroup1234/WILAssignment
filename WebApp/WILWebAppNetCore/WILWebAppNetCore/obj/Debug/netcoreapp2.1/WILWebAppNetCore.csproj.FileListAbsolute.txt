@@ -5,7 +5,6 @@ C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\bin\Debug\netcore
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\bin\Debug\netcoreapp2.1\WILWebAppNetCore.pdb
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\bin\Debug\netcoreapp2.1\WILWebAppNetCore.Views.dll
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\bin\Debug\netcoreapp2.1\WILWebAppNetCore.Views.pdb
-C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csprojAssemblyReference.cache
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csproj.CoreCompileInputs.cache
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.RazorAssemblyInfo.cache
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.RazorAssemblyInfo.cs
@@ -43,3 +42,6 @@ C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcore
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.dll
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.pdb
 C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csproj.CopyComplete
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\Leaderboards.g.cshtml.cs
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\WILWebAppNetCore.csprojAssemblyReference.cache
+C:\Users\Jarrod\source\repos\WILWebAppNetCore\WILWebAppNetCore\obj\Debug\netcoreapp2.1\Razor\Views\Users\VideoViews.g.cshtml.cs

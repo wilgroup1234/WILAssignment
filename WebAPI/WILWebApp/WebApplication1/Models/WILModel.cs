@@ -14,15 +14,19 @@ namespace WebApplication1.Models
 
         public virtual DbSet<CustomGoal> CustomGoals { get; set; }
         public virtual DbSet<CustomUserGoal> CustomUserGoals { get; set; }
-        public virtual DbSet<CV> CVs { get; set; }
         public virtual DbSet<DailyQuote> DailyQuotes { get; set; }
         public virtual DbSet<Goal> Goals { get; set; }
+        public virtual DbSet<Gratitude> Gratitudes { get; set; }
+        public virtual DbSet<Leaderboard> Leaderboards { get; set; }
         public virtual DbSet<LifeSkill> LifeSkills { get; set; }
+        public virtual DbSet<PasswordReset> PasswordResets { get; set; }
+        public virtual DbSet<Streak> Streaks { get; set; }
         public virtual DbSet<Template> Templates { get; set; }
-        public virtual DbSet<UserCV> UserCVs { get; set; }
         public virtual DbSet<UserGoal> UserGoals { get; set; }
         public virtual DbSet<UserLifeSkill> UserLifeSkills { get; set; }
+        public virtual DbSet<UserLoginDate> UserLoginDates { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserStep> UserSteps { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,57 +38,9 @@ namespace WebApplication1.Models
                 .Property(e => e.GoalDescription)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CV>()
-                .Property(e => e.LifeSkillName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.IDNumber)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.HighSchoolName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.PreviousWorkExperience)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.WorkReferences)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.Languages)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.Achievements)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.Nationality)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.Interests)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.Email)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.PhoneNumber)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .Property(e => e.Address)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CV>()
-                .HasMany(e => e.UserCVs)
-                .WithRequired(e => e.CV)
+            modelBuilder.Entity<CustomGoal>()
+                .HasMany(e => e.CustomUserGoals)
+                .WithRequired(e => e.CustomGoal)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DailyQuote>()
@@ -104,14 +60,13 @@ namespace WebApplication1.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Goal>()
-                .HasMany(e => e.CustomUserGoals)
-                .WithRequired(e => e.Goal)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Goal>()
                 .HasMany(e => e.UserGoals)
                 .WithRequired(e => e.Goal)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Gratitude>()
+                .Property(e => e.GratitudeItems)
+                .IsUnicode(false);
 
             modelBuilder.Entity<LifeSkill>()
                 .Property(e => e.LifeSkillName)
@@ -122,14 +77,13 @@ namespace WebApplication1.Models
                 .WithRequired(e => e.LifeSkill)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Template>()
-                .Property(e => e.TemplateName)
+            modelBuilder.Entity<PasswordReset>()
+                .Property(e => e.passwordCode)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Template>()
-                .HasMany(e => e.DailyQuotes)
-                .WithRequired(e => e.Template)
-                .WillCascadeOnDelete(false);
+                .Property(e => e.TemplateName)
+                .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.LastName)
@@ -153,7 +107,17 @@ namespace WebApplication1.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
-                .HasMany(e => e.UserCVs)
+                .HasMany(e => e.Gratitudes)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Leaderboards)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Streaks)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
 
@@ -164,6 +128,16 @@ namespace WebApplication1.Models
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.UserLifeSkills)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.UserLoginDates)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.UserSteps)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
         }

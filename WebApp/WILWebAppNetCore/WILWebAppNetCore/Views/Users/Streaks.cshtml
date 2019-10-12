@@ -5,7 +5,7 @@
     ViewData["Title"] = "Streaks";
 }
 
-<h2>Streaks</h2>
+<h2 align="center">Streaks</h2>
 
 
 <br>
@@ -13,6 +13,8 @@
 
 <h3 align="center"> These are the User Streaks:</h3>
 
+<br>
+<br>
 
 @{
     <table class="table">
@@ -20,6 +22,9 @@
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Streak)
@@ -35,9 +40,12 @@
                         @Html.DisplayFor(modelItem => streak.Email)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => streak.Name)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => streak.Streak)
                     </td>
-                    
+
 
 
                 </tr>

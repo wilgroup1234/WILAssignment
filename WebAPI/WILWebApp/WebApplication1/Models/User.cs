@@ -12,9 +12,13 @@ namespace WebApplication1.Models
         public User()
         {
             CustomUserGoals = new HashSet<CustomUserGoal>();
-            UserCVs = new HashSet<UserCV>();
+            Gratitudes = new HashSet<Gratitude>();
+            Leaderboards = new HashSet<Leaderboard>();
+            Streaks = new HashSet<Streak>();
             UserGoals = new HashSet<UserGoal>();
             UserLifeSkills = new HashSet<UserLifeSkill>();
+            UserLoginDates = new HashSet<UserLoginDate>();
+            UserSteps = new HashSet<UserStep>();
         }
 
         public int UserID { get; set; }
@@ -26,8 +30,6 @@ namespace WebApplication1.Models
         [Required]
         [StringLength(255)]
         public string FirstName { get; set; }
-
-        public int Age { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -41,12 +43,24 @@ namespace WebApplication1.Models
         public virtual ICollection<CustomUserGoal> CustomUserGoals { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserCV> UserCVs { get; set; }
+        public virtual ICollection<Gratitude> Gratitudes { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Leaderboard> Leaderboards { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Streak> Streaks { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserGoal> UserGoals { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserLifeSkill> UserLifeSkills { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserLoginDate> UserLoginDates { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserStep> UserSteps { get; set; }
     }
 }

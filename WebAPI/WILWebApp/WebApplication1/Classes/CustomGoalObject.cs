@@ -12,5 +12,7 @@ namespace WebApplication1.Classes
         public String goalDescription { get; set; }
 
         public String Email { get; set; }
+
+        public DateTime finishDate { get; set; }
     }
 }

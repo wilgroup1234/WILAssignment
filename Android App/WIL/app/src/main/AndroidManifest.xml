@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.a17001922.wil_app">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Goal Pro"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".homeScreen.Pedometer"></activity>
+        <activity android:name="com.a17001922.wil_logins.Start">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginScreen.mainLogin" />
+        <activity android:name=".LoginScreen.RegisterFragments" />
+        <activity android:name=".homeScreen.homeActivity" />
+        <activity android:name=".homeScreen.addNormalGoalScreen" />
+        <activity android:name=".homeScreen.addCustomGoalScreen" />
+        <activity android:name=".homeScreen.deleteGoals" />
+        <activity android:name=".homeScreen.Game" />
+        <activity android:name=".homeScreen.Leaderboard" />
+        <activity android:name=".homeScreen.gameOver" />
+        <activity android:name=".homeScreen.helpScreen" />
+        <activity android:name=".homeScreen.gameActivity" />
+    </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+</manifest>

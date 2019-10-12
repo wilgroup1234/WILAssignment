@@ -164,15 +164,23 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Classes\CustomGoalObject.cs" />
     <Compile Include="Classes\DailyObject.cs" />
+    <Compile Include="Classes\DeleteGoalObject.cs" />
+    <Compile Include="Classes\GoogleSignInObject.cs" />
+    <Compile Include="Classes\GratitudeObject.cs" />
+    <Compile Include="Classes\LeaderboardObject.cs" />
     <Compile Include="Classes\LifeSkillObject.cs" />
     <Compile Include="Classes\LoginUserObject.cs" />
     <Compile Include="Classes\PasswordEncryption.cs" />
     <Compile Include="Classes\RegisterUserObject.cs" />
+    <Compile Include="Classes\ReturnAllGoalObject.cs" />
+    <Compile Include="Classes\ReturnAnyTypeGoalObject.cs" />
     <Compile Include="Classes\ReturnGoalObject.cs" />
     <Compile Include="Classes\ReturnLifeSkillsObject.cs" />
     <Compile Include="Classes\ReturnMessageObject.cs" />
+    <Compile Include="Classes\ReturnTopEight.cs" />
     <Compile Include="Classes\StaticClass.cs" />
     <Compile Include="Classes\UserGoalObject.cs" />
+    <Compile Include="Classes\UserStepsObject.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,16 +188,19 @@
     </Compile>
     <Compile Include="Models\CustomGoal.cs" />
     <Compile Include="Models\CustomUserGoal.cs" />
-    <Compile Include="Models\CV.cs" />
     <Compile Include="Models\DailyQuote.cs" />
     <Compile Include="Models\Goal.cs" />
+    <Compile Include="Models\Gratitude.cs" />
+    <Compile Include="Models\Leaderboard.cs" />
     <Compile Include="Models\LifeSkill.cs" />
+    <Compile Include="Models\PasswordReset.cs" />
+    <Compile Include="Models\Streak.cs" />
     <Compile Include="Models\Template.cs" />
-    <Compile Include="Classes\UpdateCVObject.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserCV.cs" />
     <Compile Include="Models\UserGoal.cs" />
     <Compile Include="Models\UserLifeSkill.cs" />
+    <Compile Include="Models\UserLoginDate.cs" />
+    <Compile Include="Models\UserStep.cs" />
     <Compile Include="Models\WILModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -223,6 +234,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
