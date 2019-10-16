@@ -35,6 +35,8 @@ namespace WebApplication1.Controllers
         //Delete Goal                     https://localhost:44317/api/values/PostDeleteGoal
         //Get Top 8 Scores                https://localhost:44317/api/values/PostGetTopEight
         //Add Score To Leaderboard        https://localhost:44317/api/values/PostUploadScore
+        //Reset User Password             https://localhost:44317/api/values/PostResetPassword
+
 
         //Create instance of database
         private WILModel db = new WILModel();
@@ -53,6 +55,8 @@ namespace WebApplication1.Controllers
                 returnMessage.result = false;
                 returnMessage.errorMessage = "Invalid Details Entered";
 
+               
+
                 if (ModelState.IsValid)
                 {
                     //if password and confirm password values match, proceed
@@ -67,116 +71,159 @@ namespace WebApplication1.Controllers
                             //Create new user object
                             User user = new User
                             {
-                                Email = regUser.Email.Trim(),
+                                Email = regUser.Email.Trim().ToUpper(),
                                 FirstName = regUser.FirstName.Trim(),
                                 LastName = regUser.LastName.Trim(),
                                 Password = regUser.Password.Trim()
                             };
 
-                            //Add new user to db and save changes
-                            try
+
+                            //Check if user with this email already exists
+                            Boolean uniqueUser = true;
+                            List<User> userList = new List<User>();
+                            String email = regUser.Email.Trim().ToUpper();
+                            foreach (User u in db.Users)
                             {
-                                db.Users.Add(user);
-
-                                db.SaveChanges();
-                            }
-                            catch(Exception e)
-                            {
-                                Debug.WriteLine(e);
-                            }
-
-                            //Create streak for new user
-                            int streakUserID = 0;
-
-                            foreach (User sUser in db.Users)
-                            {
-                                streakUserID = sUser.UserID;
-                            }
-
-                            Streak streak = new Streak
-                            {
-                                UserID = streakUserID,
-                                StreakLength = 0
-                            };
-
-                            //add new streak item to db and save changes
-                            try
-                            {
-                                db.Streaks.Add(streak);
-
-                                db.SaveChanges();
-                            }
-                            catch (Exception e)
-                            {
-                                Debug.WriteLine(e);
-                            }
-                           
-
-
-                            try
-                            {
-                                //add all lifeskills for the new user to the userlifeskills table and save changes
-                                foreach (LifeSkill lifeSkill in db.LifeSkills)
+                                if(u.Email.Equals(email))
                                 {
-                                    UserLifeSkill userLifeSkill = new UserLifeSkill
-                                    {
-                                        LifeSKillID = lifeSkill.LifeSkillID,
-                                        UserID = streakUserID,
-                                        Completed = 0
+                                    uniqueUser = false;
+                                }
+                            }
 
-                                    };
+                            if (!uniqueUser)
+                            {
+                                returnMessage.errorMessage = "User already exists :(";
+                                returnMessage.result = false;
+                                return returnMessage;
 
-                                    db.UserLifeSkills.Add(userLifeSkill);
+                            }
+                            else
+                            {
+                                //Add new user to db and save changes
+                                try
+                                {
+                                    db.Users.Add(user);
 
+                                    db.SaveChanges();
+                                }
+                                catch (Exception e)
+                                {
+                                    Debug.WriteLine(e);
                                 }
 
-                            }
-                            catch (Exception e)
-                            {
-                                Debug.WriteLine(e);
-                            }
+                                //Create streak for new user
+                                int streakUserID = 0;
+
+                                foreach (User sUser in db.Users)
+                                {
+                                    streakUserID = sUser.UserID;
+                                }
+
+                                Streak streak = new Streak
+                                {
+                                    UserID = streakUserID,
+                                    StreakLength = 0
+                                };
+
+                                //add new streak item to db and save changes
+                                try
+                                {
+                                    db.Streaks.Add(streak);
+
+                                    db.SaveChanges();
+                                }
+                                catch (Exception e)
+                                {
+                                    Debug.WriteLine(e);
+                                }
 
 
 
-                            //Create userLoginDate object for new user
-                            DateTime today = DateTime.Today;
+                                try
+                                {
+                                    //add all lifeskills for the new user to the userlifeskills table and save changes
+                                    foreach (LifeSkill lifeSkill in db.LifeSkills)
+                                    {
+                                        UserLifeSkill userLifeSkill = new UserLifeSkill
+                                        {
+                                            LifeSKillID = lifeSkill.LifeSkillID,
+                                            UserID = streakUserID,
+                                            Completed = 0
 
-                            UserLoginDate userLoginDate = new UserLoginDate
-                            {
-                                UserID = streakUserID,
-                                UserLoginDate1 = today
+                                        };
 
-                            };
+                                        db.UserLifeSkills.Add(userLifeSkill);
 
-                            //add new userLoginDate to db and save changes
-                            try
-                            {
-                                db.UserLoginDates.Add(userLoginDate);
+                                    }
 
-                                db.SaveChanges();
+                                }
+                                catch (Exception e)
+                                {
+                                    Debug.WriteLine(e);
+                                }
 
-                            }
-                            catch (Exception e)
-                            {
-                                Debug.WriteLine(e);
+
+
+                                //Create userLoginDate object for new user
+                                DateTime today = DateTime.Today;
+
+                                UserLoginDate userLoginDate = new UserLoginDate
+                                {
+                                    UserID = streakUserID,
+                                    UserLoginDate1 = today
+
+                                };
+
+                                //add new userLoginDate to db and save changes
+                                try
+                                {
+                                    db.UserLoginDates.Add(userLoginDate);
+
+                                    db.SaveChanges();
+
+                                }
+                                catch (Exception e)
+                                {
+                                    Debug.WriteLine(e);
+                                }
+
+                                //add new security quesion to db
+
+                                try
+                                {
+                                    SecurityQuestion securityQuestion = new SecurityQuestion
+                                    {
+                                        UserID = streakUserID,
+                                        Question = regUser.SecurityQuestion,
+                                        Answer = regUser.Answer
+                                    };
+
+                                    db.SecurityQuestions.Add(securityQuestion);
+
+                                    db.SaveChanges();
+                                }
+                                catch(Exception e)
+                                {
+                                    Debug.WriteLine(e);
+                                }
+                                
+
+
+
+                                //return success message
+                                returnMessage.result = true;
+                                returnMessage.errorMessage = "Success";
+                                return returnMessage;
                             }
                             
-
-                            //return success message
-                            returnMessage.result = true;
-                            returnMessage.errorMessage = "Success";
-
-                            return returnMessage;
 
 
                         }
                         catch (Exception e)
                         {
                             Debug.WriteLine("Error: " + e.ToString());
-
                             returnMessage.result = false;
                             returnMessage.errorMessage = "Error";
-
                             return returnMessage;
                         }
 
@@ -184,10 +231,8 @@ namespace WebApplication1.Controllers
                     else
                     {
                         Debug.WriteLine("Passwords Don't Match");
-
                         returnMessage.result = false;
                         returnMessage.errorMessage = "Passwords Don't Match";
-
                         return returnMessage;
                     }
 
@@ -241,7 +286,7 @@ namespace WebApplication1.Controllers
                 //Search for user email using user ID
                 foreach (User searchUser in usersList)
                 {
-                    if (searchUser.Email.Trim().Equals(loginUser.Email))
+                    if (searchUser.Email.Trim().ToUpper().Equals(loginUser.Email.ToUpper()))
                     {
                         Debug.WriteLine("USER FOUND");
                         userFound = true;
@@ -322,7 +367,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if(userGoal.Email != null)
                 {
-                    userEmail = userGoal.Email;
+                    userEmail = userGoal.Email.ToUpper();
                 }
                 int userID = 0;
 
@@ -499,7 +544,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (userGoal.Email != null)
                 {
-                    userEmail = userGoal.Email;
+                    userEmail = userGoal.Email.ToUpper();
                 }
                 int userID = 0;
                 UserGoal newUserGoal = new UserGoal();
@@ -589,7 +634,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (customGoal.Email != null)
                 {
-                    userEmail = customGoal.Email;
+                    userEmail = customGoal.Email.ToUpper();
                 }
                 int userID = 0;
                 CustomUserGoal newUserGoal = new CustomUserGoal();
@@ -696,7 +741,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (userGoal.Email != null)
                 {
-                    userEmail = userGoal.Email;
+                    userEmail = userGoal.Email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -771,7 +816,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (userGoal.Email != null)
                 {
-                    userEmail = userGoal.Email;
+                    userEmail = userGoal.Email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -881,7 +926,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (lifeSkillObject.Email != null)
                 {
-                    userEmail = lifeSkillObject.Email;
+                    userEmail = lifeSkillObject.Email.ToUpper();
                 }
                 int userID = 0;
 
@@ -973,7 +1018,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (lifeSkillObject.Email != null)
                 {
-                    userEmail = lifeSkillObject.Email;
+                    userEmail = lifeSkillObject.Email.ToUpper();
                 }
 
 
@@ -1109,7 +1154,7 @@ namespace WebApplication1.Controllers
                 Boolean exists = false;
                 foreach (User user in db.Users)
                 {
-                    if (user.Email.Equals(googleSignInObject.Email.Trim()))
+                    if (user.Email.Equals(googleSignInObject.Email.Trim().ToUpper()))
                     {
                         exists = true;
                     }
@@ -1130,7 +1175,7 @@ namespace WebApplication1.Controllers
                     {
                         User user = new User
                         {
-                            Email = googleSignInObject.Email.Trim(),
+                            Email = googleSignInObject.Email.Trim().ToUpper(),
                             FirstName = googleSignInObject.FirstName.Trim(),
                             LastName = googleSignInObject.LastName.Trim(),
                             Password = googleSignInObject.Password.Trim()
@@ -1267,7 +1312,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (loginUserObject.Email != null)
                 {
-                    userEmail = loginUserObject.Email;
+                    userEmail = loginUserObject.Email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -1391,7 +1436,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (loginUserObject.Email != null)
                 {
-                    userEmail = loginUserObject.Email;
+                    userEmail = loginUserObject.Email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -1447,7 +1492,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (userStepsObject.Email != null)
                 {
-                    userEmail = userStepsObject.Email;
+                    userEmail = userStepsObject.Email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -1512,7 +1557,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (userStepsObject.Email != null)
                 {
-                    userEmail = userStepsObject.Email;
+                    userEmail = userStepsObject.Email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -1633,7 +1678,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (gratitudeObject.Email != null)
                 {
-                    userEmail = gratitudeObject.Email;
+                    userEmail = gratitudeObject.Email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -1693,7 +1738,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (gratitudeObject.Email != null)
                 {
-                    userEmail = gratitudeObject.Email;
+                    userEmail = gratitudeObject.Email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -1859,7 +1904,7 @@ namespace WebApplication1.Controllers
                 String userEmail = "";
                 if (deleteGoalObject.email != null)
                 {
-                    userEmail = deleteGoalObject.email;
+                    userEmail = deleteGoalObject.email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -2023,7 +2068,7 @@ namespace WebApplication1.Controllers
 
                 if (leaderboardObject.Email != null)
                 {
-                    userEmail = leaderboardObject.Email;
+                    userEmail = leaderboardObject.Email.ToUpper();
                 }
 
                 //search for user and get userID
@@ -2104,24 +2149,35 @@ namespace WebApplication1.Controllers
 
                 if(addScore && proceed)
                 {
-                    if (db.Leaderboards.ToList().Count >= 8)
+                    try
                     {
-                        //remove lowest score
-                        List<Leaderboard> leaderboards = db.Leaderboards.OrderBy(x => x.Score).ToList();
-                        Leaderboard removeObject = leaderboards[0];
-                        db.Leaderboards.Remove(removeObject);
+                        if (db.Leaderboards.ToList().Count >= 8)
+                        {
+                            //remove lowest score
+                            List<Leaderboard> leaderboards = db.Leaderboards.OrderBy(x => x.Score).ToList();
+                            Leaderboard removeObject = leaderboards[0];
+                            db.Leaderboards.Remove(removeObject);
+                        }
+
+                        //add new score
+                        Leaderboard newLeaderboardObject = new Leaderboard
+                        {
+                            Score = leaderboardObject.Score,
+                            UserID = userSearchID
+                        };
+
+                        db.Leaderboards.Add(newLeaderboardObject);
+
+                        db.SaveChanges();
                     }
-
-                    //add new score
-                    Leaderboard newLeaderboardObject = new Leaderboard
+                    catch(Exception e)
                     {
-                        Score = leaderboardObject.Score,
-                        UserID = userSearchID
-                    };
-
-                    db.Leaderboards.Add(newLeaderboardObject);
-
-                    db.SaveChanges();
+                        Debug.WriteLine(e.ToString());
+                        returnObject.errorMessage = e.Message;
+                        returnObject.result = false;
+                        return returnObject;
+                    }
+                   
                 }
 
 
@@ -2129,6 +2185,108 @@ namespace WebApplication1.Controllers
                 //return success
                 returnObject.result = true;
                 return returnObject;
+
+            }
+            //catch any error message and return error
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                returnObject.errorMessage = e.Message;
+                returnObject.result = false;
+                return returnObject;
+            }
+
+        }
+
+
+
+
+
+        //This POST method returns the top 8 users in the leaderboards
+        [Route("api/values/PostResetPassword")]
+        [HttpPost]
+        public ReturnMessageObject PostResetPassword(ResetPasswordObject resetPasswordObject)
+        {
+            //declare return object
+            ReturnMessageObject returnObject = new ReturnMessageObject();
+
+            try
+            {
+
+                //Declarations
+                int userSearchID = 0;
+                String userEmail = "";
+                Boolean found = false;
+                int foundItemID = 0;
+
+                if (resetPasswordObject.Email != null)
+                {
+                    userEmail = resetPasswordObject.Email.ToUpper();
+                }
+
+                //search for user and get userID
+                foreach (User user in db.Users)
+                {
+                    if (user.Email.Equals(userEmail))
+                    {
+                        userSearchID = user.UserID;
+                    }
+                }
+
+                foreach(SecurityQuestion securityQuestion in db.SecurityQuestions)
+                {
+                    if(securityQuestion.UserID == userSearchID)
+                    {
+                        if(securityQuestion.Question.Equals(resetPasswordObject.Question) && securityQuestion.Answer.Equals(resetPasswordObject.Answer))
+                        {
+                            found = true;
+                        }
+                    }
+                }
+
+                //If security question answer is correct, update password
+                if(found)
+                {
+
+                    try
+                    {
+                        foreach (User user in db.Users)
+                        {
+                            if (user.UserID == userSearchID)
+                            {
+                                //Hash and salt password
+                                PasswordEncryption obj = PasswordEncryption.GetInstance;
+                                String newHashedPassword = obj.GetHashedPassword(resetPasswordObject.NewPassword);
+
+                                user.Password = newHashedPassword;
+                            }
+                        }
+
+                        db.SaveChanges();
+                    }
+                    catch(Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                        returnObject.errorMessage = e.Message;
+                        returnObject.result = false;
+                        return returnObject;
+                    }
+
+                    //return success
+                    returnObject.errorMessage = "";
+                    returnObject.result = true;
+                    return returnObject;
+
+                }
+                else
+                {
+                    returnObject.errorMessage = "Security Question or answer is wrong :(";
+                    returnObject.result = false;
+                    return returnObject;
+                }
+
+                
+
 
             }
             //catch any error message and return error

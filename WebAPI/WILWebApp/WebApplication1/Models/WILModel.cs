@@ -20,6 +20,7 @@ namespace WebApplication1.Models
         public virtual DbSet<Leaderboard> Leaderboards { get; set; }
         public virtual DbSet<LifeSkill> LifeSkills { get; set; }
         public virtual DbSet<PasswordReset> PasswordResets { get; set; }
+        public virtual DbSet<SecurityQuestion> SecurityQuestions { get; set; }
         public virtual DbSet<Streak> Streaks { get; set; }
         public virtual DbSet<Template> Templates { get; set; }
         public virtual DbSet<UserGoal> UserGoals { get; set; }
@@ -81,6 +82,14 @@ namespace WebApplication1.Models
                 .Property(e => e.passwordCode)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<SecurityQuestion>()
+                .Property(e => e.Question)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<SecurityQuestion>()
+                .Property(e => e.Answer)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Template>()
                 .Property(e => e.TemplateName)
                 .IsUnicode(false);
@@ -113,6 +122,11 @@ namespace WebApplication1.Models
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Leaderboards)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.SecurityQuestions)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
 
