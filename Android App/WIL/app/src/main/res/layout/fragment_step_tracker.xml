@@ -9,11 +9,13 @@
 
     <Button
         android:id="@+id/btnOpenPedometer"
-        android:layout_width="162dp"
-        android:layout_height="47dp"
+        android:layout_width="176dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="180dp"
         android:background="@drawable/mybutton"
         android:text="Open Pedometer"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

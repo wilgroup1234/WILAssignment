@@ -40,7 +40,7 @@ public class homeActivity extends AppCompatActivity
             adapter.addFragment(new viewLifeSkillsFragment(),"View LifeSkills");
             adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
             adapter.addFragment(new streakFragment(),"Streak");
-            //adapter.addFragment(new GameScreen(),"Game");
+            adapter.addFragment(new GameScreen(),"Game");
             adapter.addFragment(new gratitudeFragment(),"Gratitude Page");
             adapter.addFragment(new stepTrackerFragment(),"Step Tracker");
             adapter.addFragment(new PlannerFragment(),"Planner");
@@ -56,7 +56,7 @@ public class homeActivity extends AppCompatActivity
             adapter.addFragment(new viewGoalsFragment(),"View Goals");
             adapter.addFragment(new viewLifeSkillsFragment(),"View LifeSkills");
             adapter.addFragment(new dailyQuoteFragment(), "Daily Quote");
-            //adapter.addFragment(new GameScreen(),"Game");
+            adapter.addFragment(new GameScreen(),"Game");
             adapter.addFragment(new PlannerFragment(),"Planner");
             adapter.addFragment(new cvUpload(),"CV");
             adapter.addFragment(new uploadDocsFragment(),"Upload");

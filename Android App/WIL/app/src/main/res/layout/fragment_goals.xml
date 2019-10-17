@@ -10,54 +10,6 @@
     android:orientation="vertical"
     tools:context=".homeScreen.goalsFragment">
 
-    <Button
-        android:id="@+id/btn_AddCustomGoal"
-        android:layout_width="287dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#ECB900"
-        android:text="Add Custom Goal"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btn_DeleteGoals"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.427"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="334dp" />
-
-    <Button
-        android:id="@+id/btn_DeleteGoals"
-        android:layout_width="287dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="76dp"
-        android:backgroundTint="#ECB900"
-        android:text="Delete Goals"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="334dp" />
-
-    <Button
-        android:id="@+id/btn_AddGoal"
-        android:layout_width="287dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="28dp"
-        android:backgroundTint="#ECB900"
-        android:text="Add Goals"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/btn_AddCustomGoal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.37"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="334dp" />
-
     <ImageView
         android:id="@+id/btnLogoutGoals"
         android:layout_width="59dp"
@@ -71,23 +23,69 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="296dp"
-        android:layout_height="83dp"
+        android:layout_width="250dp"
+        android:layout_height="229dp"
         android:layout_marginBottom="52dp"
-        android:src="@drawable/bluelogo2"
+        android:src="@drawable/yellowlogo"
         app:layout_constraintBottom_toTopOf="@+id/btn_AddGoal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.984" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="300dp"
-        android:layout_height="195dp"
-        android:layout_marginBottom="80dp"
-        android:src="@drawable/newlog"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+    <Button
+        android:id="@+id/btn_DeleteGoals"
+        android:layout_width="287dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/mybutton"
+        android:text="Delete Goals"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="334dp" />
+
+    <Button
+        android:id="@+id/btn_AddCustomGoal"
+        android:layout_width="287dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/mybutton"
+        android:text="Add Custom Goal"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_DeleteGoals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.424"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="334dp" />
+
+    <Button
+        android:id="@+id/btn_AddGoal"
+        android:layout_width="287dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/mybutton"
+        android:text="Add Goals"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_AddCustomGoal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="334dp" />
+
 </android.support.constraint.ConstraintLayout>
