@@ -43,20 +43,20 @@
         android:layout_marginTop="32dp"
         android:text="Tap the screen to Make Goalie Jump."
         android:textColor="@color/colorEditText"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="221dp"
-        android:layout_height="68dp"
+        android:layout_width="223dp"
+        android:layout_height="84dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="12dp"
         android:text="Avoid the Bombs of procrastination. If you touch one, you will lose a life. You only have 3 lives."
         android:textColor="@color/colorEditText"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -66,10 +66,10 @@
         android:layout_width="227dp"
         android:layout_height="28dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:text="Goalie must get to all his goals."
         android:textColor="@color/colorEditText"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -82,7 +82,7 @@
         android:layout_marginTop="12dp"
         android:text="His goals are Doggy Biscuits. (Each worth 10 points)"
         android:textColor="@color/colorEditText"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -95,7 +95,7 @@
         android:layout_marginTop="16dp"
         android:text="Your score will be recorded and uploaded to the leaderboards."
         android:textColor="@color/colorEditText"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />

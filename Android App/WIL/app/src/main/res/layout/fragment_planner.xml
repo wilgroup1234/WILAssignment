@@ -10,24 +10,29 @@
 
     <ImageView
         android:id="@+id/imgCalendar"
-        android:layout_width="201dp"
-        android:layout_height="186dp"
-        android:layout_marginTop="92dp"
+        android:layout_width="133dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/gcal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toEndOf="@+id/imageView26"
+        app:layout_constraintTop_toBottomOf="@+id/imageView25" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="308dp"
-        android:layout_height="179dp"
-        android:layout_marginTop="56dp"
-        android:text="We recommend that you use the Google Calendar app for Planning your goals and important dates. Click the image below to open the app."
-        android:textColor="@color/colorEditText"
-        android:textSize="24sp"
+    <ImageView
+        android:id="@+id/imageView25"
+        android:layout_width="297dp"
+        android:layout_height="252dp"
+        android:src="@drawable/calendarbubble"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView26"
+        android:layout_width="146dp"
+        android:layout_height="181dp"
+        android:src="@drawable/dog3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView25" />
+
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="WILModel-Web.config Connection String" description="WILModel Connection String used in web.config by the application to access the database." defaultValue="data source=willgroup1234srv.database.windows.net;initial catalog=willgroup1234db;user id=willgroup1234admin;password=Catherine44;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jarrod\\source\\repos\\WILWebApp\\WebApplication1\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='WILModel']/@connectionString" />
+  </parameter>
+</parameters>

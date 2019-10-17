@@ -12,8 +12,8 @@
 
     <Button
         android:id="@+id/btnOpenLink"
-        android:layout_width="188dp"
-        android:layout_height="51dp"
+        android:layout_width="201dp"
+        android:layout_height="52dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/mybutton"
         android:text="Open Youtube Link"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
         android:text="Video of the day:"
-        android:textColor="@color/colorButtons"
+        android:textColor="@color/colorEditText"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnOpenLink"
@@ -54,7 +54,7 @@
         android:layout_width="251dp"
         android:layout_height="116dp"
         android:text="Always Stay Positive"
-        android:textColor="@color/colorEditTextbackground"
+        android:textColor="@color/colorEditText"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imgDailyImage"
