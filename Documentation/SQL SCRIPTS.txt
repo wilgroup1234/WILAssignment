@@ -123,6 +123,15 @@ CREATE TABLE Leaderboards
     UserID int NOT NULL
 ); 
 
+CREATE TABLE SecurityQuestions
+(
+    ID int NOT NULL IDENTITY PRIMARY KEY,
+    Question Varchar(255) NOT NULL,
+    Answer Varchar(255) NOT NULL,
+    UserID int NOT NULL
+); 
+
+
 
 
  ALTER TABLE UserGoals
@@ -174,6 +183,10 @@ ALTER TABLE CustomUserGoals
 
  ALTER TABLE Leaderboards
   ADD CONSTRAINT FK_UserID9
+   FOREIGN KEY (UserID) REFERENCES Users(UserID);
+
+ALTER TABLE SecurityQuestions
+  ADD CONSTRAINT FK_UserID10
    FOREIGN KEY (UserID) REFERENCES Users(UserID);
 
 
