@@ -8,43 +8,46 @@
     android:background="@drawable/bgb42"
     tools:context=".homeScreen.cvUpload">
 
-    <TextView
-        android:id="@+id/lbl_EnneagramLink"
-        android:layout_width="260dp"
-        android:layout_height="61dp"
+    <ImageView
+        android:id="@+id/imgCV"
+        android:layout_width="122dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/cvicon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toEndOf="@+id/imageView24"
+        app:layout_constraintTop_toBottomOf="@+id/imageView23" />
+
+    <Button
+        android:id="@+id/btnEnneagramLink"
+        android:layout_width="218dp"
+        android:layout_height="53dp"
         android:layout_marginTop="20dp"
-        android:autoLink="web"
-        android:clickable="true"
-        android:text=" https://enneagramtest.net/"
-        android:textColor="#0A0707"
+        android:background="@drawable/mybutton"
+        android:text="Do Enneagram Test"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgCV" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="300dp"
-        android:layout_height="179dp"
+    <ImageView
+        android:id="@+id/imageView23"
+        android:layout_width="283dp"
+        android:layout_height="201dp"
         android:layout_marginTop="16dp"
-        android:text="We recommend that you use the Intelligent CV app for creating and saving your CV. Click the image below to open the app."
-        android:textColor="@color/colorEditText"
-        android:textSize="24sp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/cvbubble"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgCV"
-        android:layout_width="270dp"
-        android:layout_height="267dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/cvicon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        android:id="@+id/imageView24"
+        android:layout_width="135dp"
+        android:layout_height="141dp"
+        android:src="@drawable/dog4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView23" />
+
 </android.support.constraint.ConstraintLayout>

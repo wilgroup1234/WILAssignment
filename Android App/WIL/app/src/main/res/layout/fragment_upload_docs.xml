@@ -10,27 +10,31 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="305dp"
-        android:layout_height="182dp"
-        android:layout_marginTop="40dp"
-        android:text="We recommend that you use the Google Drive app to upload and download files that you want to store online. Click the image below to open the app."
-        android:textColor="@color/colorEditText"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="127dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/drivelogo"
+        app:layout_constraintEnd_toStartOf="@+id/imageView30"
+        app:layout_constraintTop_toBottomOf="@+id/imageView29" />
+
+    <ImageView
+        android:id="@+id/imageView29"
+        android:layout_width="289dp"
+        android:layout_height="233dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/gdrivebubble"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="238dp"
-        android:layout_height="192dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/drivelogo"
+        android:id="@+id/imageView30"
+        android:layout_width="143dp"
+        android:layout_height="157dp"
+        android:src="@drawable/dog2a"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView29" />
 
 </android.support.constraint.ConstraintLayout>

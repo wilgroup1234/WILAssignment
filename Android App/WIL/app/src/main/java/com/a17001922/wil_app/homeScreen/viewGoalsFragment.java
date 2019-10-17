@@ -54,6 +54,7 @@ public class viewGoalsFragment extends Fragment
     ArrayList<GoalsCheckedClass> updatedChangedGoalList = new ArrayList<>();
     int itemCount = 0;
     ArrayList<cardViewItem> cardList = new ArrayList<>();
+    SharedPreferences sharedPreferences;
 
 
     //____________________OnCreate Method_____________
@@ -77,6 +78,7 @@ public class viewGoalsFragment extends Fragment
         viewGoalsRecyclerView = v.findViewById(R.id.viewGoalsRecyclerView);
         viewGoalsRecyclerView.setHasFixedSize(true);
         recyclerViewLayoutManager = new LinearLayoutManager(StaticClass.homeContext);
+        sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
 
         //Display offline goals if not connected to the internet
         if(StaticClass.hasInternet)
@@ -89,7 +91,7 @@ public class viewGoalsFragment extends Fragment
         {
             try
             {
-                SharedPreferences sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+                sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
                 String gNameList = sharedPreferences.getString(StaticClass.USER_GOALNAMES, "");
                 String gIDList = sharedPreferences.getString(StaticClass.USER_GOALIDS, "");
                 String gCompList = sharedPreferences.getString(StaticClass.USER_GOALCOMPLETED, "");
@@ -97,12 +99,12 @@ public class viewGoalsFragment extends Fragment
                 String gTypeList = sharedPreferences.getString(StaticClass.USER_GOALTYPE, "");
                 String gDatesList = sharedPreferences.getString(StaticClass.USER_GOALDATES, "");
 
-                String [] typesArr = gTypeList.split("#");
+                /*String [] typesArr = gTypeList.split("#");
 
                 for (int i = 0; i< typesArr.length; i++)
                 {
                     Log.e("After Commit ", "type " + typesArr[i]);
-                }
+                }*/
 
                 cardList = new ArrayList<>();
                 originalGoalList = new ArrayList<>();
@@ -126,7 +128,17 @@ public class viewGoalsFragment extends Fragment
                     String gDesc= gDescs[index];
                     boolean gComp;
                     boolean gType;
-                    String gDate = gDates[index];
+                    String gDate;
+
+                    if(gDates[index] == null)
+                    {
+                        gDate = gDates[index];
+                    }
+                    else
+                    {
+                        gDate = " ";
+                    }
+
 
 
                     if (gComps[index].equals("1"))
@@ -192,7 +204,7 @@ public class viewGoalsFragment extends Fragment
                         StaticClass.ongoingOperation = true;
                         progressBar.setVisibility(View.VISIBLE);
 
-                        SharedPreferences sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+                        sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
                         String gNameList = sharedPreferences.getString(StaticClass.USER_GOALNAMES, "");
                         String gIDList = sharedPreferences.getString(StaticClass.USER_GOALIDS, "");
                         String gCompList = sharedPreferences.getString(StaticClass.USER_GOALCOMPLETED, "");
@@ -479,7 +491,7 @@ public class viewGoalsFragment extends Fragment
 
                             try
                             {
-                                SharedPreferences sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 String goalNames = "", goalIds = "", goalDescs = "", goalCompleteds = "", goalTypes = "", goalDates = "";
 
@@ -589,7 +601,7 @@ public class viewGoalsFragment extends Fragment
                                         if (goal.getNormalGoal())
                                         {
                                             goalTypes = "0";
-                                            goalDates = "";
+                                            goalDates = " ";
                                         }
                                         else
                                         {
@@ -619,7 +631,7 @@ public class viewGoalsFragment extends Fragment
                                         if (goal.getNormalGoal())
                                         {
                                             goalTypes = goalTypes + "#" + "0";
-                                            goalDates = goalDates + "#" + "";
+                                            goalDates = goalDates + "#" + " ";
                                         }
                                         else
                                         {
@@ -632,13 +644,20 @@ public class viewGoalsFragment extends Fragment
                                     count ++;
                                 }
 
-
+                                sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
                                 editor.putString(StaticClass.USER_GOALIDS, goalIds);
                                 editor.putString(StaticClass.USER_GOALCOMPLETED, goalCompleteds);
                                 editor.putString(StaticClass.USER_GOALNAMES, goalNames);
                                 editor.putString(StaticClass.USER_GOALTYPE, goalTypes);
                                 editor.putString(StaticClass.USER_GOALDESCRIPTIONS, goalDescs);
                                 editor.putString(StaticClass.USER_GOALDATES, goalDates);
+
+                                Log.e(TAG, " GOAL IDS AFTER LOADING: " + goalIds);
+                                Log.e(TAG, " GOAL Complteds AFTER LOADING: " + goalCompleteds);
+                                Log.e(TAG, " GOAL nameS AFTER LOADING: " + goalNames);
+                                Log.e(TAG, " GOAL types AFTER LOADING: " + goalTypes);
+                                Log.e(TAG, " GOAL descsS AFTER LOADING: " + goalDescs);
+                                Log.e(TAG, " GOAL dateS AFTER LOADING: " + goalDates);
 
                                 editor.commit();
                             }

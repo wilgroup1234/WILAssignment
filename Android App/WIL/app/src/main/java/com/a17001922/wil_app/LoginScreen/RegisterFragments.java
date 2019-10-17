@@ -176,7 +176,7 @@ public class RegisterFragments extends Fragment
                                     else
                                     {
                                         Log.e(TAG,"GetResult false");
-                                        Toast.makeText(StaticClass.loginContext, "Register Failed: A Server error occurred :(" , Toast.LENGTH_LONG).show();
+                                        Toast.makeText(StaticClass.loginContext, "Invalid Details Entered, or this email is already being used." , Toast.LENGTH_LONG).show();
                                         StaticClass.ongoingOperation = false;
                                         progressBar.setVisibility(View.INVISIBLE);
                                     }

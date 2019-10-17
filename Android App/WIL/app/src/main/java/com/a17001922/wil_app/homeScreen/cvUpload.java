@@ -13,6 +13,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.OpenableColumns;
 import android.support.v4.util.Pair;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.android.gms.tasks.Task;
@@ -40,6 +41,7 @@ public class cvUpload extends Fragment
     ImageView cvButton;
     View v;
     Uri uri;
+    Button btnEnneagram;
 
     //____________________OnCreate Method_____________
     @Override
@@ -58,6 +60,7 @@ public class cvUpload extends Fragment
         super.onStart();
         //_____________Binding fields and widgets_____________
         cvButton = v.findViewById(R.id.imgCV);
+        btnEnneagram = v.findViewById(R.id.btnEnneagramLink);
 
         cvButton.setOnClickListener(new View.OnClickListener()
         {
@@ -68,6 +71,18 @@ public class cvUpload extends Fragment
                 uri = Uri.parse(cvlink);
                 Intent intentFIVE = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intentFIVE);
+            }
+        });
+
+        btnEnneagram.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                String link = " https://enneagramtest.net/";
+                uri = Uri.parse(link);
+                Intent intentSIX = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intentSIX);
             }
         });
 

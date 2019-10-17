@@ -31,6 +31,11 @@ namespace WebApplication1.Classes
             [StringLength(255)]
             public string ConfirmPassword { get; set; }
 
+            public string SecurityQuestion{ get; set; }
+
+            public string Answer { get; set; }
+
+
 
 
     }

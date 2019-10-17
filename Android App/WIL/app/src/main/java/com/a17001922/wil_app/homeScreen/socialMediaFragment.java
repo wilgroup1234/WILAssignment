@@ -43,7 +43,8 @@ public class socialMediaFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                String youtubelink = "https://www.youtube.com";
+                //String youtubelink = "https://www.youtube.com";
+                String youtubelink = "https://www.youtube.com/channel/UC_uNfeblBglyjftYLHa0dfA";
                 uri = Uri.parse(youtubelink);
                 Intent intentONE = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intentONE);
