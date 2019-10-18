@@ -10,6 +10,7 @@ namespace WILWebAppNetCore.Models
             CustomUserGoals = new HashSet<CustomUserGoals>();
             Gratitude = new HashSet<Gratitude>();
             Leaderboards = new HashSet<Leaderboards>();
+            SecurityQuestions = new HashSet<SecurityQuestions>();
             Streaks = new HashSet<Streaks>();
             UserGoals = new HashSet<UserGoals>();
             UserLifeSkills = new HashSet<UserLifeSkills>();
@@ -26,6 +27,7 @@ namespace WILWebAppNetCore.Models
         public ICollection<CustomUserGoals> CustomUserGoals { get; set; }
         public ICollection<Gratitude> Gratitude { get; set; }
         public ICollection<Leaderboards> Leaderboards { get; set; }
+        public ICollection<SecurityQuestions> SecurityQuestions { get; set; }
         public ICollection<Streaks> Streaks { get; set; }
         public ICollection<UserGoals> UserGoals { get; set; }
         public ICollection<UserLifeSkills> UserLifeSkills { get; set; }

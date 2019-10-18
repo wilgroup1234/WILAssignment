@@ -26,5 +26,7 @@ namespace WebApplication1.Models
         public int TemplateID { get; set; }
 
         public int Views { get; set; }
+
+        public virtual Template Template { get; set; }
     }
 }

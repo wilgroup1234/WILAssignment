@@ -11,17 +11,6 @@
     tools:context=".homeScreen.goalsFragment">
 
     <ImageView
-        android:id="@+id/btnLogoutGoals"
-        android:layout_width="59dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/logoutbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
         android:id="@+id/imageView6"
         android:layout_width="250dp"
         android:layout_height="229dp"

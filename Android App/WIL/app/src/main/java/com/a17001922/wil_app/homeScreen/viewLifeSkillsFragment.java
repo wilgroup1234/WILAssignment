@@ -78,8 +78,6 @@ public class viewLifeSkillsFragment extends Fragment
         //Display offline life skills if not connected to the internet
         if(StaticClass.hasInternet)
         {
-            StaticClass.ongoingOperation = true;
-            progressBar.setVisibility(View.VISIBLE);
             GetAndDisplayLifeSkills();
         }
         else

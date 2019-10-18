@@ -25,6 +25,9 @@ public interface loginRegisterService
     @POST("api/values/PostUpdateStreak")
     Call<ReturnMessageObject> updateStreak(@Body LoginUserObject user);
 
+    @POST("api/values/PostResetPassword")
+    Call<ReturnMessageObject> resetPassword(@Body ResetPasswordObject resetPasswordObject);
+
 
 
 }

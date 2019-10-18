@@ -52,6 +52,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "639157099470-ruhpldet0gs7n51vlank1j46p59pmojo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.a17001922.wil_logins",
+            "certificate_hash": "71fbd85982b4ddc880c336d262b33effc08303e0"
+          }
+        },
+        {
           "client_id": "639157099470-i5rn3t70bnt31knd7j464418agso8c6v.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

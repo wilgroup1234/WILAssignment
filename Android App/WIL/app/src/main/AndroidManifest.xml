@@ -30,6 +30,9 @@
         <activity android:name=".homeScreen.gameOver" />
         <activity android:name=".homeScreen.helpScreen" />
         <activity android:name=".homeScreen.gameActivity" />
+        <activity android:name=".homeScreen.offlineHelpActivity" />
+        <activity android:name=".homeScreen.onlineHelpActivity" />
+        <activity android:name=".LoginScreen.ResetPassword" />
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />

@@ -27,14 +27,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WILWebAppNetCore</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+
 
 
 
@@ -52,10 +49,10 @@
                             <li>@Html.ActionLink("Streaks", "Streaks", "Users", new { area = "" }, null)</li>
                             <li>@Html.ActionLink("Leaderboards", "Leaderboards", "Users", new { area = "" }, null)</li>
                             <li>@Html.ActionLink("VideoViews", "VideoViews", "Users", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Notifications", "Notifications", "Users", new { area = "" }, null)</li>
                         }
                         else
                         {
-                            <li>@Html.ActionLink("Register", "Register", "Users", new { area = "" }, null)</li>
                             <li>@Html.ActionLink("Login", "Login", "Users", new { area = "" }, null)</li>
                         }
 

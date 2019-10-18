@@ -33,7 +33,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class LoginFragment extends Fragment
 {
     //_____________Declarations_________________
-    Button btnLogin;
+    Button btnLogin, btnForgotPassword;
     EditText et_email, et_password;
     LoginUserObject user;
     View v;
@@ -79,6 +79,7 @@ public class LoginFragment extends Fragment
         googleSignInButton = v.findViewById(R.id.imgGoogleLogin);
         progressBar = v.findViewById(R.id.pBarLogin);
         progressBar.setVisibility(View.INVISIBLE);
+        btnForgotPassword = v.findViewById(R.id.btnForgotPassword);
 
         CheckForLoggedInUser();
 
@@ -197,6 +198,41 @@ public class LoginFragment extends Fragment
 
 
 
+            }
+        });
+
+
+        btnForgotPassword.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(!StaticClass.ongoingOperation)
+                {
+                    StaticClass.ongoingOperation = true;
+                    progressBar.setVisibility(View.VISIBLE);
+
+                    if (StaticClass.hasInternet)
+                    {
+                        StaticClass.ongoingOperation = false;
+                        progressBar.setVisibility(View.INVISIBLE);
+
+                        //Open Login activity
+                        Intent intent = new Intent(StaticClass.loginContext, ResetPassword.class);
+                        startActivity(intent);
+
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity().getApplicationContext(), "Cannot Reset Password - No Internet connection :(", Toast.LENGTH_LONG).show();
+                        StaticClass.ongoingOperation = false;
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
+                }
+                else
+                {
+                    Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

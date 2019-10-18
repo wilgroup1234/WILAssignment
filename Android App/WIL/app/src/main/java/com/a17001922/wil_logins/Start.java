@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.a17001922.wil_app.LoginScreen.mainLogin;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -47,7 +48,7 @@ public class Start extends AppCompatActivity
 
 
         context = getApplicationContext();
-
+        FirebaseMessaging.getInstance().subscribeToTopic("updates");
 
 
         //Check if device has an internet connection

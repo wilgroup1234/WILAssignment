@@ -11,7 +11,7 @@ namespace WILWebAppNetCore.Classes
 
         public static String currentUser = "NO_USER";
 
-        public static String connection = "Server=DESKTOP-6J4LFB4;Database=WILDatabase;Trusted_Connection=True;ConnectRetryCount=0";
+        public static String connection = "Server=tcp:willgroup1234srv.database.windows.net,1433;Initial Catalog=willgroup1234db;Persist Security Info=False;User ID=willgroup1234admin;Password=Catherine44;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public static Boolean loggedIn = false;
     }

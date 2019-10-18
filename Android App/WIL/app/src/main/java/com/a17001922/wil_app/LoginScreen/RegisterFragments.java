@@ -11,9 +11,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.a17001922.wil_app.R;
@@ -35,11 +37,12 @@ public class RegisterFragments extends Fragment
 
     ProgressBar progressBar;
     Button btnRegister;
-    EditText et_registerFirstName,et_registerSurname,et_registerEmail,et_registerPassword,et_confirmPassword;
+    EditText et_registerFirstName,et_registerSurname,et_registerEmail,et_registerPassword,et_confirmPassword, answer;
     RegisterUserObject user;
     loginRegisterService loginRegisterService = StaticClass.retrofit.create(loginRegisterService.class);
     View v;
-    String name,surname,email,password,confirmPassword="",message;
+    String name,surname,email,password,confirmPassword="",message, enteredAnswer, question;
+    Spinner cmbListOfSecurityQuestions;
     private static final String TAG = "RegisterActivity";
 
 
@@ -69,6 +72,18 @@ public class RegisterFragments extends Fragment
         et_confirmPassword=v.findViewById(R.id.et_confirmPassword);
         btnRegister=v.findViewById(R.id.btnRegister);
         user = new RegisterUserObject();
+        answer = v.findViewById(R.id.et_answer);
+        cmbListOfSecurityQuestions = v.findViewById(R.id.cmbListSecurityQuestions);
+
+        String [] arr = new String [3];
+        arr[0] = "What is your pet's name?";
+        arr[1] = "What is the name of your first friend?";
+        arr[2] = "Who is your favourite superhero?";
+
+        //populate list of security questions
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(StaticClass.loginContext, android.R.layout.simple_spinner_item, arr);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cmbListOfSecurityQuestions.setAdapter(adapter);
 
 
 
@@ -96,6 +111,8 @@ public class RegisterFragments extends Fragment
                         email= et_registerEmail.getText().toString();
                         password = et_registerPassword.getText().toString();
                         confirmPassword = et_confirmPassword.getText().toString();
+                        enteredAnswer = answer.getText().toString();
+                        question = cmbListOfSecurityQuestions.getSelectedItem().toString();
 
 
 
@@ -123,13 +140,15 @@ public class RegisterFragments extends Fragment
                         user.setEmail(email);
                         user.setPassword(password);
                         user.setConfirmPassword(confirmPassword);
+                        user.setAnswer(enteredAnswer);
+                        user.setSecurityQuestion(question);
 
 
 
                         //_____________Validate User Input_____________
                         if (password.equals(confirmPassword))
                         {
-                            if(name.length() > 1 && surname.length()> 1 && email.length() > 7 && email.contains("@") && password.length() > 2)
+                            if(name.length() > 1 && surname.length()> 1 && email.length() > 7 && email.contains("@") && password.length() > 2 && answer.length() > 0 && question.length() > 0)
                             {
                                 valid = true;
                             }
@@ -167,9 +186,13 @@ public class RegisterFragments extends Fragment
                                     if (registeredAuth.getResult())
                                     {
                                         Log.e(TAG,"GetResult true");
-                                        Toast.makeText(StaticClass.loginContext, "Register Successful" , Toast.LENGTH_LONG).show();
+                                        Toast.makeText(StaticClass.loginContext, "Register Successful, You can now Login to your account..." , Toast.LENGTH_LONG).show();
 
-                                        LogUserIn(email, "email");
+                                        Intent intent = new Intent(getActivity().getApplicationContext(), mainLogin.class);
+                                        StaticClass.currentUser = email;
+                                        startActivity(intent);
+                                        //LogUserIn(email, "email");
+
                                         StaticClass.ongoingOperation = false;
                                         progressBar.setVisibility(View.INVISIBLE);
                                     }

@@ -99,12 +99,6 @@ public class viewGoalsFragment extends Fragment
                 String gTypeList = sharedPreferences.getString(StaticClass.USER_GOALTYPE, "");
                 String gDatesList = sharedPreferences.getString(StaticClass.USER_GOALDATES, "");
 
-                /*String [] typesArr = gTypeList.split("#");
-
-                for (int i = 0; i< typesArr.length; i++)
-                {
-                    Log.e("After Commit ", "type " + typesArr[i]);
-                }*/
 
                 cardList = new ArrayList<>();
                 originalGoalList = new ArrayList<>();

@@ -156,6 +156,8 @@ namespace WebApplication1.Controllers
 
                                     }
 
+                                    db.SaveChanges();
+
                                 }
                                 catch (Exception e)
                                 {
@@ -191,11 +193,13 @@ namespace WebApplication1.Controllers
 
                                 try
                                 {
+                                    Debug.WriteLine("ADDING SECURITY QUESTION!!!");
+                                    Debug.WriteLine("USerID: " + streakUserID + " Question: " + regUser.SecurityQuestion + " Answer: " + regUser.Answer);
                                     SecurityQuestion securityQuestion = new SecurityQuestion
                                     {
                                         UserID = streakUserID,
                                         Question = regUser.SecurityQuestion,
-                                        Answer = regUser.Answer
+                                        Answer = regUser.Answer.ToUpper().Trim()
                                     };
 
                                     db.SecurityQuestions.Add(securityQuestion);
@@ -204,7 +208,7 @@ namespace WebApplication1.Controllers
                                 }
                                 catch(Exception e)
                                 {
-                                    Debug.WriteLine(e);
+                                    Debug.WriteLine(e.ToString());
                                 }
                                 
 
@@ -2219,9 +2223,11 @@ namespace WebApplication1.Controllers
                 Boolean found = false;
                 int foundItemID = 0;
 
+                Debug.WriteLine("UserEMAIL: " + resetPasswordObject.Email.ToUpper());
+
                 if (resetPasswordObject.Email != null)
                 {
-                    userEmail = resetPasswordObject.Email.ToUpper();
+                    userEmail = resetPasswordObject.Email.ToUpper().Trim();
                 }
 
                 //search for user and get userID
@@ -2233,11 +2239,12 @@ namespace WebApplication1.Controllers
                     }
                 }
 
+                Debug.WriteLine("userID: " + userSearchID + " question: " + resetPasswordObject.Question + " Answer: " + resetPasswordObject.Answer.ToUpper());
                 foreach(SecurityQuestion securityQuestion in db.SecurityQuestions)
                 {
                     if(securityQuestion.UserID == userSearchID)
                     {
-                        if(securityQuestion.Question.Equals(resetPasswordObject.Question) && securityQuestion.Answer.Equals(resetPasswordObject.Answer))
+                        if(securityQuestion.Question.Equals(resetPasswordObject.Question) && securityQuestion.Answer.Equals(resetPasswordObject.Answer.ToUpper().Trim()))
                         {
                             found = true;
                         }

@@ -90,7 +90,7 @@ namespace WILWebAppNetCore.Controllers
                 StaticClass.errorMessage = "NO_ERROR";
                 StaticClass.currentUser = username;
                 StaticClass.loggedIn = true;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("DailyQuote", "Users");
 
             }
             else
@@ -658,7 +658,7 @@ namespace WILWebAppNetCore.Controllers
 
 
 
-        // GET: Users/Streaks
+        // GET: Users/VideoViews
         public ActionResult VideoViews()
         {
             if (StaticClass.loggedIn)
@@ -666,6 +666,22 @@ namespace WILWebAppNetCore.Controllers
                 List<DailyQuote> views = new List<DailyQuote>();
                 views = _context.DailyQuote.ToList();
                 ViewBag.ViewsList = views;
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+        }
+
+        // GET: Users/Notifications
+        public ActionResult Notifications()
+        {
+            if (StaticClass.loggedIn)
+            {
 
                 return View();
             }

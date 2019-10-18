@@ -28,9 +28,6 @@ public class goalsFragment extends Fragment
     //_____________Declarations_________________
     Button btnAddGoals, btnAddCustomGoals, btnDeleteGoals;
     View v;
-    ImageView btnLogout;
-    GoogleSignInOptions gso;
-    GoogleSignInClient mGoogleSignInClient;
 
     //____________________OnCreate Method_____________
     @Nullable
@@ -50,19 +47,9 @@ public class goalsFragment extends Fragment
 
         btnAddGoals = v.findViewById(R.id.btn_AddGoal);
         btnAddCustomGoals = v.findViewById(R.id.btn_AddCustomGoal);
-        btnLogout = v.findViewById(R.id.btnLogoutGoals);
         btnDeleteGoals = v.findViewById(R.id.btn_DeleteGoals);
 
 
-        //_____________Logout button Click Event Listener_____________
-        btnLogout.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                ResetUser();
-            }
-        });
 
         //_____________Add Custom Goals button Click Event Listener_____________
         btnAddCustomGoals.setOnClickListener(new View.OnClickListener()
