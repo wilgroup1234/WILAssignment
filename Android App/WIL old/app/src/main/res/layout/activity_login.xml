@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgb3"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".LoginScreen.LoginFragment">
+
+    <ImageView
+        android:id="@+id/imgLoginGoalPro"
+        android:layout_width="205dp"
+        android:layout_height="177dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/yellowlogo" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="104dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/mybutton"
+        android:text="Login"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imgGoogleLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnForgotPassword"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="164dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/mybutton"
+        android:text="Forgot Password"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_LoginPassword"
+        android:layout_width="273dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/colorRegister"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@color/colorButtons"
+        android:textColorHint="@color/colorBackground"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_Email"
+        android:layout_width="275dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/colorRegister"
+        android:hint="Email"
+        android:inputType="textWebEmailAddress"
+        android:textColor="@color/colorButtons"
+        android:textColorHint="@color/colorBackground"
+        android:textColorLink="@color/colorRegister"
+        app:layout_constraintBottom_toTopOf="@+id/et_LoginPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pBarLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="364dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgGoogleLogin"
+        android:layout_width="123dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnForgotPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/gmail" />
+
+
+</android.support.constraint.ConstraintLayout>

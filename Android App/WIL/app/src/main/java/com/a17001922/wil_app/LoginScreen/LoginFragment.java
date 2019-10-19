@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
+import com.a17001922.wil_app.homeScreen.LoadingActivity;
 import com.a17001922.wil_app.homeScreen.homeActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -339,7 +340,7 @@ public class LoginFragment extends Fragment
 
 
         //Open Home activity
-        Intent intent = new Intent(StaticClass.loginContext, homeActivity.class);
+        Intent intent = new Intent(StaticClass.loginContext, LoadingActivity.class);
         StaticClass.currentUser = email;
         startActivity(intent);
     }

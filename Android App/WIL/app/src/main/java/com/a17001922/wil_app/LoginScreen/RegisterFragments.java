@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
+import com.a17001922.wil_app.homeScreen.LoadingActivity;
 import com.a17001922.wil_app.homeScreen.homeActivity;
 
 import retrofit2.Call;
@@ -188,10 +189,8 @@ public class RegisterFragments extends Fragment
                                         Log.e(TAG,"GetResult true");
                                         Toast.makeText(StaticClass.loginContext, "Register Successful, You can now Login to your account..." , Toast.LENGTH_LONG).show();
 
-                                        Intent intent = new Intent(getActivity().getApplicationContext(), mainLogin.class);
-                                        StaticClass.currentUser = email;
-                                        startActivity(intent);
-                                        //LogUserIn(email, "email");
+
+                                        LogUserIn(email, "email");
 
                                         StaticClass.ongoingOperation = false;
                                         progressBar.setVisibility(View.INVISIBLE);
@@ -260,7 +259,7 @@ public class RegisterFragments extends Fragment
         Toast.makeText(StaticClass.loginContext, "You are logged in...", Toast.LENGTH_LONG).show();
 
         //Open Home activity
-        Intent intent = new Intent(getActivity().getApplicationContext(), homeActivity.class);
+        Intent intent = new Intent(getActivity().getApplicationContext(), LoadingActivity.class);
         StaticClass.currentUser = email;
         startActivity(intent);
     }

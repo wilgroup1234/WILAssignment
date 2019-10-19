@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -20,6 +21,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class gratitudeFragment extends Fragment
 {
     //_____________Declarations_________________
@@ -31,6 +34,7 @@ public class gratitudeFragment extends Fragment
     private static final String TAG = "Gratitude Fragment";
     goalsService goalService = StaticClass.retrofit.create(goalsService.class);
     ProgressBar progressBar;
+    SharedPreferences sharedPreferences;
 
     //____________________OnCreate Method_____________
     @Override
@@ -57,11 +61,71 @@ public class gratitudeFragment extends Fragment
         txtItem5 = v.findViewById(R.id.et_Item5);
         progressBar = v.findViewById(R.id.pBarGratitude);
         progressBar.setVisibility(View.INVISIBLE);
+        sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
 
         // Call method to show user's gratitude items for today
-        StaticClass.ongoingOperation = true;
-        progressBar.setVisibility(View.VISIBLE);
-        GetGratitudeItems();
+        try
+        {
+            String gratItems = sharedPreferences.getString(StaticClass.USER_Grats, "");
+
+            if (!gratItems.equals("No_Items"))
+            {
+                String[] items;
+
+                items = gratItems.split("#");
+
+                try
+                {
+                    txtItem1.setText(items[0]);
+                }
+                catch(Exception e)
+                {
+
+                }
+
+                try
+                {
+                    txtItem2.setText(items[1]);
+                }
+                catch(Exception e)
+                {
+
+                }
+
+                try
+                {
+                    txtItem3.setText(items[2]);
+                }
+                catch(Exception e)
+                {
+
+                }
+
+                try
+                {
+                    txtItem4.setText(items[3]);
+                }
+                catch(Exception e)
+                {
+
+                }
+
+                try
+                {
+                    txtItem5.setText(items[4]);
+                }
+                catch(Exception e)
+                {
+
+                }
+
+            }
+
+        }
+        catch(Exception e)
+        {
+
+        }
 
 
         //_____________Save button Click Event Listener_____________

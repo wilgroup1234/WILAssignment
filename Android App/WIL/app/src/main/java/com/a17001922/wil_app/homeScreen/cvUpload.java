@@ -7,28 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
-import android.provider.OpenableColumns;
-import android.support.v4.util.Pair;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
-import com.google.api.client.http.ByteArrayContent;
-import com.google.api.services.drive.Drive;
-import com.google.api.services.drive.model.File;
-import com.google.api.services.drive.model.FileList;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Collections;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import com.a17001922.wil_app.StaticClass;
 
 import com.a17001922.wil_app.R;
 
@@ -60,7 +45,7 @@ public class cvUpload extends Fragment
         super.onStart();
         //_____________Binding fields and widgets_____________
         cvButton = v.findViewById(R.id.imgCV);
-        btnEnneagram = v.findViewById(R.id.btnEnneagramLink);
+        btnEnneagram = v.findViewById(R.id.btnELink);
 
         cvButton.setOnClickListener(new View.OnClickListener()
         {
@@ -79,10 +64,18 @@ public class cvUpload extends Fragment
             @Override
             public void onClick(View v)
             {
-                String link = " https://enneagramtest.net/";
-                uri = Uri.parse(link);
-                Intent intentSIX = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intentSIX);
+                try
+                {
+                    String link = "https://enneagramtest.net";
+                    uri = Uri.parse(link);
+                    Intent intentSIX = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intentSIX);
+                }
+                catch(Exception e)
+                {
+                    Toast.makeText(StaticClass.homeContext, "Unable to open link :(", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

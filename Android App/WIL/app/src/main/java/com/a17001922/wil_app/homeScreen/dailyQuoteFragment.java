@@ -1,6 +1,7 @@
 package com.a17001922.wil_app.homeScreen;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,12 +18,13 @@ import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.dailyQuote.DailyObject;
-import com.a17001922.wil_app.dailyQuote.DailyQuoteService;
 import com.a17001922.wil_app.goals.goalsService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class dailyQuoteFragment extends Fragment
@@ -37,6 +39,7 @@ public class dailyQuoteFragment extends Fragment
     Button btnLink;
     String link = "https://youtu.be/oLbZTyDyssg";
     Uri uri;
+    SharedPreferences sharedPreferences;
 
     //____________________OnCreate Method_____________
     @Override
@@ -57,74 +60,39 @@ public class dailyQuoteFragment extends Fragment
         lblDailyQuote = v.findViewById(R.id.lblQuote);
         DailyImage = v.findViewById(R.id.imgDailyImage);
         btnLink = v.findViewById(R.id.btnOpenLink);
+        sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
 
-        if(StaticClass.hasInternet)
+
+        try
         {
+            Quote = new DailyObject();
+            Quote.setQuoteText(sharedPreferences.getString(StaticClass.USER_DAILYQUOTETEXT, ""));
+
             try
             {
-                Quote = new DailyObject();
-                DailyQuoteService service = StaticClass.retrofit.create(DailyQuoteService.class);
-                final Call<DailyObject> quoteCall = service.getQuote();
-                quoteCall.enqueue(new Callback<DailyObject>()
-                {
-                    @Override
-                    public void onResponse(Call<DailyObject> call, Response<DailyObject> response)
-                    {
-                        if (!response.isSuccessful())
-                        {
-
-                        }
-                        else
-                        {
-                            Quote = response.body();
-
-                            if(Quote == null)
-                            {
-                                Toast.makeText(StaticClass.homeContext, "There was an error retrieving the daily quote", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
-
-                                if(Quote.getQuoteText() == null)
-                                {
-                                    Toast.makeText(StaticClass.homeContext, "There is no new daily quote available :(", Toast.LENGTH_SHORT).show();
-                                }
-                                else
-                                {
-                                    try
-                                    {
-                                        templateID = Quote.getTemplateID();
-
-                                        String uri = "i" + templateID;  // where my resource (without the extension) is the file
-
-                                        int imageId = getResources().getIdentifier(uri, "drawable", StaticClass.homeContext.getPackageName());
-
-                                        DailyImage.setImageResource(imageId);
-
-                                        lblDailyQuote.setText(Quote.getQuoteText());
-                                        link = Quote.getYoutubeLink();
-                                    }
-                                    catch(Exception e)
-                                    {
-                                        Log.e(TAG, "Exception caught: " + e.getMessage());
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<DailyObject> call, Throwable t)
-                    {
-                        Toast.makeText(StaticClass.homeContext, "Response from API failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                Quote.setTemplateID(Integer.parseInt(sharedPreferences.getString(StaticClass.USER_DAILYQUOTEImage, "")));
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-                Toast.makeText(StaticClass.homeContext, "UNABLE TO GET DAILY QUOTE", Toast.LENGTH_LONG).show();
+
             }
+
+            Quote.setYoutubeLink(sharedPreferences.getString(StaticClass.USER_DAILYQUOTELINK, ""));
+
+            templateID = Quote.getTemplateID();
+
+            String uri = "i" + templateID;  // where my resource (without the extension) is the file
+
+            int imageId = getResources().getIdentifier(uri, "drawable", StaticClass.homeContext.getPackageName());
+
+            DailyImage.setImageResource(imageId);
+
+            lblDailyQuote.setText(Quote.getQuoteText());
+            link = Quote.getYoutubeLink();
+        }
+        catch(Exception e)
+        {
+            Log.e(TAG, "Exception caught: " + e.getMessage());
         }
 
 

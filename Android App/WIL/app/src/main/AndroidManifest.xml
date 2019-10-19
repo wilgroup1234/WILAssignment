@@ -33,6 +33,8 @@
         <activity android:name=".homeScreen.offlineHelpActivity" />
         <activity android:name=".homeScreen.onlineHelpActivity" />
         <activity android:name=".LoginScreen.ResetPassword" />
+        <activity android:name=".homeScreen.LoadingActivity" />
+        <activity android:name=".homeScreen.LoadingScreen" />
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />

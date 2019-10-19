@@ -57,7 +57,10 @@ public class goalsFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(StaticClass.homeContext,addCustomGoalScreen.class);
+                //Intent i = new Intent(StaticClass.homeContext,addCustomGoalScreen.class);
+                //startActivity(i);
+
+                Intent i = new Intent(StaticClass.homeContext, LoadingActivity.class);
                 startActivity(i);
             }
         });

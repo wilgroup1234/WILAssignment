@@ -24,6 +24,7 @@ public class StaticClass
     public static final String LOGGED_IN_USER_EMAIL = "Logged in user email";
     public static final String LOGGED_IN_TYPE = "Logged in type";
     public static final String USER_GOALIDS = "user_goal_IDS";
+    public static final String USER_GOALCURRENTDATES = "user_goal_CurrentDates";
     public static final String USER_GOALNAMES = "user_goal_NAMES";
     public static final String USER_GOALDESCRIPTIONS = "user_goal_DESCRIPTIONS";
     public static final String USER_GOALTYPE = "user_goal_TYPES";
@@ -32,6 +33,10 @@ public class StaticClass
     public static final String USER_LIFESKILLSIDS = "user_LIFESKILLS_IDS";
     public static final String USER_LIFESKILLSNAMES = "user_LIFESKILLS_NAMES";
     public static final String USER_LIFESKILLSCOMPLETED = "user_LIFESKILLS_COMPLETED";
+    public static final String USER_DAILYQUOTETEXT= "user_DQ_Text";
+    public static final String USER_DAILYQUOTELINK= "user_DQ_LINK";
+    public static final String USER_DAILYQUOTEImage= "user_DQ_IMAGE";
+    public static final String USER_Grats= "user_Grats";
 
     public static boolean hasInternet = false;
     public static boolean ongoingOperation = false;
@@ -41,6 +46,7 @@ public class StaticClass
     public static Context homeContext;
     public static Context loginContext;
 
+    public static boolean loaded = false;
 
     public static String currentUser = "No_User";
 

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 
@@ -69,7 +71,15 @@ public class GameScreen extends Fragment
             @Override
             public void onClick(View v)
             {
-                OpenLeaderboards();
+                if(StaticClass.hasInternet)
+                {
+                    OpenLeaderboards();
+                }
+                else
+                {
+                    Toast.makeText(StaticClass.homeContext, "Cannot view Leaderboards when offline :(", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

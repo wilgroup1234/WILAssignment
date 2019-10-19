@@ -107,7 +107,7 @@ public class Game extends View
         //______________________Set Screen Size And Y Boundary________________________
         SetScreenSizeAndYBoundary(canvasHeight);
 
-        //______________________Move Bird________________________
+        //______________________Move Dog________________________
         MoveDog();
 
         //______________________Draw Background_______________________

@@ -76,71 +76,71 @@ public class viewLifeSkillsFragment extends Fragment
 
 
         //Display offline life skills if not connected to the internet
-        if(StaticClass.hasInternet)
+        try
         {
-            GetAndDisplayLifeSkills();
-        }
-        else
-        {
-            try
+            sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+            String lNameList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSNAMES, "");
+            String lIDList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSIDS, "");
+            String lCompList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSCOMPLETED, "");
+
+            cardList = new ArrayList<>();
+            originalLifeSkillsList = new ArrayList<>();
+
+            int index = 0;
+
+            String[] lNames = lNameList.split("#");
+            String[] lIDs = lIDList.split("#");
+            String[] lComps = lCompList.split("#");
+
+
+            for(String val : lNames)
             {
-                sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
-                String lNameList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSNAMES, "");
-                String lIDList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSIDS, "");
-                String lCompList = sharedPreferences.getString(StaticClass.USER_LIFESKILLSCOMPLETED, "");
 
-                cardList = new ArrayList<>();
-                originalLifeSkillsList = new ArrayList<>();
-
-                int index = 0;
-
-                String[] lNames = lNameList.split("#");
-                String[] lIDs = lIDList.split("#");
-                String[] lComps = lCompList.split("#");
+                LifeSkillChecked lifeSkillChecked = new LifeSkillChecked();
 
 
-                for(String val : lNames)
+                cardViewItem2 cardView;
+                String lID = lIDs[index];
+                String lName = lNames[index];
+                boolean lComp;
+
+                lifeSkillChecked.setLifeSkillID(Integer.parseInt(lID));
+
+                if (lComps[index].equals("1"))
                 {
-                    cardViewItem2 cardView;
-                    String lID = lIDs[index];
-                    String lName = lNames[index];
-                    boolean lComp;
-
-
-                    if (lComps[index].equals("1"))
-                    {
-                        lComp = true;
-                    }
-                    else
-                    {
-                        lComp = false;
-                    }
-
-                    if(lComp)
-                    {
-                        cardView = new cardViewItem2(tickImage, lName, true);
-                    }
-                    else
-                    {
-                        cardView = new cardViewItem2(exclamationImage, lName,false);
-                    }
-
-                    cardList.add(cardView);
-
-                    index++;
+                    lComp = true;
+                }
+                else
+                {
+                    lComp = false;
                 }
 
-                recyclerViewAdapter = new ViewLifeSkillsAdapter(cardList, originalLifeSkillsList);
-                viewLifeSkillsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
-                viewLifeSkillsRecyclerView.setAdapter(recyclerViewAdapter);
+                if(lComp)
+                {
+                    cardView = new cardViewItem2(tickImage, lName, true);
+                    lifeSkillChecked.setCompleted(true);
+                }
+                else
+                {
+                    cardView = new cardViewItem2(exclamationImage, lName,false);
+                    lifeSkillChecked.setCompleted(false);
+                }
 
-            }
-            catch(Exception e)
-            {
-                Toast.makeText(StaticClass.homeContext, "Error getting user goals offline..",Toast.LENGTH_LONG);
-                Log.e(TAG, " Error getting user goals offline: " + e.getMessage());
+                originalLifeSkillsList.add(lifeSkillChecked);
+                cardList.add(cardView);
+
+                index++;
             }
 
+            recyclerViewAdapter = new ViewLifeSkillsAdapter(cardList, originalLifeSkillsList);
+            viewLifeSkillsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
+            viewLifeSkillsRecyclerView.setAdapter(recyclerViewAdapter);
+
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(StaticClass.homeContext, "Error getting user goals offline..",Toast.LENGTH_LONG);
+            Log.e(TAG, " Error getting user goals offline: " + e.getMessage());
         }
 
 

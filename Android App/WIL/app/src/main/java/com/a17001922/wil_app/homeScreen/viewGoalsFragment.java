@@ -81,105 +81,127 @@ public class viewGoalsFragment extends Fragment
         sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
 
         //Display offline goals if not connected to the internet
-        if(StaticClass.hasInternet)
+        try
         {
-            StaticClass.ongoingOperation = true;
-            progressBar.setVisibility(View.VISIBLE);
-            GetAndDisplayUserGoals();
-        }
-        else
-        {
-            try
+            sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+            String gNameList = sharedPreferences.getString(StaticClass.USER_GOALNAMES, "");
+            String gIDList = sharedPreferences.getString(StaticClass.USER_GOALIDS, "");
+            String gCompList = sharedPreferences.getString(StaticClass.USER_GOALCOMPLETED, "");
+            String gDescList = sharedPreferences.getString(StaticClass.USER_GOALDESCRIPTIONS, "");
+            String gTypeList = sharedPreferences.getString(StaticClass.USER_GOALTYPE, "");
+            String gDatesList = sharedPreferences.getString(StaticClass.USER_GOALDATES, "");
+            String gCDatesList = sharedPreferences.getString(StaticClass.USER_GOALCURRENTDATES, "");
+
+            cardList = new ArrayList<>();
+            originalGoalList = new ArrayList<>();
+
+            int index = 0;
+
+            String[] gNames = gNameList.split("#");
+            String[] gIDs = gIDList.split("#");
+            String[] gComps = gCompList.split("#");
+            String[] gDescs = gDescList.split("#");
+            String[] gTypes = gTypeList.split("#");
+            String [] gDates = gDatesList.split("#");
+            String [] CDates = gCDatesList.split("#");
+
+
+            for(String val : gNames)
             {
-                sharedPreferences = StaticClass.homeContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
-                String gNameList = sharedPreferences.getString(StaticClass.USER_GOALNAMES, "");
-                String gIDList = sharedPreferences.getString(StaticClass.USER_GOALIDS, "");
-                String gCompList = sharedPreferences.getString(StaticClass.USER_GOALCOMPLETED, "");
-                String gDescList = sharedPreferences.getString(StaticClass.USER_GOALDESCRIPTIONS, "");
-                String gTypeList = sharedPreferences.getString(StaticClass.USER_GOALTYPE, "");
-                String gDatesList = sharedPreferences.getString(StaticClass.USER_GOALDATES, "");
+
+                GoalsCheckedClass goalsCheckedClass = new GoalsCheckedClass();
 
 
-                cardList = new ArrayList<>();
-                originalGoalList = new ArrayList<>();
+                cardViewItem cardView;
 
-                int index = 0;
+                String gID = gIDs[index];
+                String gName = gNames[index];
+                String gDesc= gDescs[index];
+                boolean gComp;
+                boolean gType;
+                String gDate, cDate;
 
-                String[] gNames = gNameList.split("#");
-                String[] gIDs = gIDList.split("#");
-                String[] gComps = gCompList.split("#");
-                String[] gDescs = gDescList.split("#");
-                String[] gTypes = gTypeList.split("#");
-                String [] gDates = gDatesList.split("#");
+                goalsCheckedClass.setGoalID(Integer.parseInt(gID));
 
 
-                for(String val : gNames)
+                if(CDates[index] == null)
                 {
-                    cardViewItem cardView;
-
-                    String gID = gIDs[index];
-                    String gName = gNames[index];
-                    String gDesc= gDescs[index];
-                    boolean gComp;
-                    boolean gType;
-                    String gDate;
-
-                    if(gDates[index] == null)
-                    {
-                        gDate = gDates[index];
-                    }
-                    else
-                    {
-                        gDate = " ";
-                    }
-
-
-
-                    if (gComps[index].equals("1"))
-                    {
-                        gComp = true;
-                    }
-                    else
-                    {
-                        gComp = false;
-                    }
-
-                    if (gTypes[index].contains("1"))
-                    {
-                        gType = false;
-                    }
-                    else
-                    {
-                        gType = true;
-                    }
-
-
-
-                    if(gComp)
-                    {
-                        cardView = new cardViewItem(tickImage, gName, gDesc,true,gDate);
-                    }
-                    else
-                    {
-                        cardView = new cardViewItem(exclamationImage, gName, gDesc,false, gDate);
-                    }
-
-                    cardList.add(cardView);
-
-                    index++;
-
-
+                    cDate = CDates[index];
+                }
+                else
+                {
+                    cDate = " ";
                 }
 
-                recyclerViewAdapter = new ViewGoalsAdapter(cardList, originalGoalList);
-                viewGoalsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
-                viewGoalsRecyclerView.setAdapter(recyclerViewAdapter);
+                if(gDates[index] == null)
+                {
+                    gDate = gDates[index];
+                }
+                else
+                {
+                    gDate = " ";
+                }
+
+
+
+                if (gComps[index].equals("1"))
+                {
+                    gComp = true;
+                }
+                else
+                {
+                    gComp = false;
+                }
+
+                if (gTypes[index].contains("1"))
+                {
+                    gType = false;
+                    goalsCheckedClass.setNormalGoal(false);
+                }
+                else
+                {
+                    gType = true;
+                    goalsCheckedClass.setNormalGoal(true);
+                }
+
+
+
+                if(gComp)
+                {
+                    cardView = new cardViewItem(tickImage, gName, gDesc,true,gDate);
+
+                }
+                else
+                {
+                    cardView = new cardViewItem(exclamationImage, gName, gDesc,false, gDate);
+                }
+
+                if(goalsCheckedClass.isNormalGoal() == false && !cDate.equals(" "))
+                {
+                    Boolean goalExpired = IsGoalExpired(gDate, cDate);
+
+                    if(goalExpired)
+                    {
+                        cardView = new cardViewItem(crossImage, gName, gDesc,false, gDate);
+                    }
+                }
+
+                cardList.add(cardView);
+                originalGoalList.add(goalsCheckedClass);
+
+                index++;
+
+
             }
-            catch(Exception e)
-            {
-                Toast.makeText(StaticClass.homeContext, "Error getting user goals offline..",Toast.LENGTH_LONG);
-                Log.e(TAG, " Error getting user goals offline: " + e.getMessage());
-            }
+
+            recyclerViewAdapter = new ViewGoalsAdapter(cardList, originalGoalList);
+            viewGoalsRecyclerView.setLayoutManager(recyclerViewLayoutManager);
+            viewGoalsRecyclerView.setAdapter(recyclerViewAdapter);
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(StaticClass.homeContext, "Error getting user goals offline..",Toast.LENGTH_LONG);
+            Log.e(TAG, " Error getting user goals offline: " + e.getMessage());
         }
 
 
@@ -487,7 +509,7 @@ public class viewGoalsFragment extends Fragment
                             {
 
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                String goalNames = "", goalIds = "", goalDescs = "", goalCompleteds = "", goalTypes = "", goalDates = "";
+                                String goalNames = "", goalIds = "", goalDescs = "", goalCompleteds = "", goalTypes = "", goalDates = "", goalCurrentDates = "";
 
                                 int count = 0;
 
@@ -499,6 +521,9 @@ public class viewGoalsFragment extends Fragment
                                     goalsCheckedClass.setNormalGoal(goal.getNormalGoal());
 
                                     Log.e(TAG, "Goal: " + goal.getGoalName() + " " +  goal.getGoalDescription() + " " + goal.getCompleted() + " is normal: " + goal.getNormalGoal());
+
+
+
 
                                     if (goal.getCompleted() == 1)
                                     {
@@ -578,6 +603,16 @@ public class viewGoalsFragment extends Fragment
 
                                     if(count == 0)
                                     {
+
+                                        if(goal.getNormalGoal())
+                                        {
+                                            goalCurrentDates = " ";
+                                        }
+                                        else
+                                        {
+                                            goalCurrentDates = goal.getCurrentDate();
+                                        }
+
                                         goalIds = goal.getGoalID() + "";
 
                                         if (goal.getCompleted() == 1)
@@ -626,11 +661,13 @@ public class viewGoalsFragment extends Fragment
                                         {
                                             goalTypes = goalTypes + "#" + "0";
                                             goalDates = goalDates + "#" + " ";
+                                            goalCurrentDates = goalCurrentDates + "#" + " ";
                                         }
                                         else
                                         {
                                             goalTypes = goalTypes + "#" + "1";
                                             goalDates = goalDates + "#" + goal.getFinishDate();
+                                            goalCurrentDates = goalCurrentDates + "#" + goal.getCurrentDate();
                                         }
                                     }
 
@@ -645,6 +682,7 @@ public class viewGoalsFragment extends Fragment
                                 editor.putString(StaticClass.USER_GOALTYPE, goalTypes);
                                 editor.putString(StaticClass.USER_GOALDESCRIPTIONS, goalDescs);
                                 editor.putString(StaticClass.USER_GOALDATES, goalDates);
+                                editor.putString(StaticClass.USER_GOALCURRENTDATES, goalCurrentDates);
 
                                 Log.e(TAG, " GOAL IDS AFTER LOADING: " + goalIds);
                                 Log.e(TAG, " GOAL Complteds AFTER LOADING: " + goalCompleteds);
