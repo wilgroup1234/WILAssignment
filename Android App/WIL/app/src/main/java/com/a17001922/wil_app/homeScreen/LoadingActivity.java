@@ -251,6 +251,10 @@ public class LoadingActivity extends AppCompatActivity
 
                             }
                         }
+                        else
+                        {
+                            GetLifeSkills();
+                        }
 
 
                     }

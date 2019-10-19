@@ -190,6 +190,28 @@ public class RegisterFragments extends Fragment
                                         Toast.makeText(StaticClass.loginContext, "Register Successful, You can now Login to your account..." , Toast.LENGTH_LONG).show();
 
 
+                                        SharedPreferences sharedPreferences = StaticClass.loginContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                        editor.putString(StaticClass.USER_GOALIDS, "");
+                                        editor.putString(StaticClass.USER_GOALCOMPLETED, "");
+                                        editor.putString(StaticClass.USER_GOALNAMES, "");
+                                        editor.putString(StaticClass.USER_GOALTYPE, "");
+                                        editor.putString(StaticClass.USER_GOALDESCRIPTIONS, "");
+                                        editor.putString(StaticClass.USER_GOALDATES, "");
+                                        editor.putString(StaticClass.USER_GOALCURRENTDATES, "");
+
+                                        editor.putString(StaticClass.USER_LIFESKILLSIDS, "");
+                                        editor.putString(StaticClass.USER_LIFESKILLSCOMPLETED, "");
+                                        editor.putString(StaticClass.USER_LIFESKILLSNAMES, "");
+
+                                        editor.putString(StaticClass.USER_DAILYQUOTEImage, "");
+                                        editor.putString(StaticClass.USER_DAILYQUOTELINK, "");
+                                        editor.putString(StaticClass.USER_DAILYQUOTETEXT, "");
+                                        editor.putString(StaticClass.USER_Grats, "");
+                                        editor.commit();
+
+
                                         LogUserIn(email, "email");
 
                                         StaticClass.ongoingOperation = false;
