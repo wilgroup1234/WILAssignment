@@ -1,0 +1,142 @@
+﻿*, html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 3000px;
+}
+
+.logo {
+    margin-top: 20px;
+    width: 200px;
+    height: 100px;
+}
+
+header {
+    background-color: #0AABE1;
+    height: 112px;
+    line-height: 112px;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+l {
+    list-style: none;
+}
+
+ul li {
+    display: inline-block;
+}
+
+header nav {
+    float: right;
+}
+header nav ul li a
+{
+    padding-right: 20px;
+    font-weight: bold;
+    color: white;
+    transition: all 0.5s ease-in;
+}
+
+ header nav ul li a:hover 
+ {
+     text-decoration: none;
+     color: red;
+
+ }
+
+.sub-heading {
+    position: relative;
+    margin-bottom: 75px;
+}
+
+.img-responsive {
+    width: 650px;
+    height: 450px;
+}
+
+.more-feature-area .title h2 
+{
+    color: black;
+}
+
+.more-feature-area .title .sub-heading p 
+{
+    color: darkgrey;
+}
+
+.more-feature-area {
+    background-image: url(../images/white.jpg);
+    background-size: 100% 100%;
+    position: relative;
+    padding: 100px 0px;
+    text-align: center;
+    top: 2%;
+}
+.feature-details p 
+{
+    font: 400;
+    color: black;
+}
+
+.feature-list ul
+{
+    list-style: none;
+}
+
+.feature-list li
+{
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 80px;
+}
+
+.feature-list li:hover i
+{
+    color: white;
+    background: #00a7dd;
+     transition: .5s ease;
+    -webkit-transition: .5s ease;
+    -moz-transition: .5s ease;
+    -o-transition: .5s ease;
+    -ms-transition: .5s ease;
+}
+
+.feature-icon
+{
+    position: absolute;
+    left:0;
+}
+
+.feature-icon i
+{
+    width: 63px;
+    height: 63px;
+    text-align: center;
+    font-size: 30px;
+    background: white;
+    color: deepskyblue;
+    border-radius: 50%;
+    border: 2px solid deepskyblue;
+    line-height:63px;
+}
+
+.feature-details h3
+{
+    color: deepskyblue;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.feature-details p
+{
+    color: #616161;
+    font-weight: 200;
+}
+
+.more-feature-area img
+{
+    margin-left: 70px;
+}

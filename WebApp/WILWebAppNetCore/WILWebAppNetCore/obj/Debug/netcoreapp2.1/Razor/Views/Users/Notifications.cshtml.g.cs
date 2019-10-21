@@ -66,12 +66,12 @@ using WILWebAppNetCore.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(55, 70, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f695736c442a4bcc92631d12d46c6b6f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "253b17ebe0a74cc4a35218ed88ea4459", async() => {
                 BeginContext(61, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(67, 49, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "3721cd75f1fb4621b0f638d3576ac3c3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a8feaf211a814d9b9506dae30808a7fb", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -105,7 +105,7 @@ using WILWebAppNetCore.Models;
             WriteLiteral("\r\n\r\n<h2 align=\"center\">Notifications</h2>\r\n\r\n\r\n<br>\r\n<br>\r\n\r\n<h3 align=\"center\"> Click The link below to Send Notifications:</h3>\r\n\r\n<br>\r\n<br>\r\n\r\n\r\n\r\n<a href=\"https://console.firebase.google.com/\">");
             EndContext();
             BeginContext(323, 39, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "11286d6ffd6544439b4cfb65005f70d1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "6e5125057fa34ec3911b3d8e1974c49b", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

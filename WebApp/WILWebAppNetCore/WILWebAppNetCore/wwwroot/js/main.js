@@ -25,9 +25,9 @@
         }
 
     });
-    $(window).scroll(function () {
+    $(window).scroll(function(){
         var top = $(window).scrollTop();
-        if (top >= 60) {
+        if (top>= 60) {
             $("header").addClass('secondary');
         }
         else

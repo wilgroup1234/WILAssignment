@@ -1,0 +1,164 @@
+﻿ *, html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 3000px;
+}
+
+.logo {
+    margin-top: 20px;
+    width: 200px;
+    height: 100px;
+}
+
+header {
+    background-color: #0AABE1;
+    height: 112px;
+    line-height: 112px;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+l {
+    list-style: none;
+}
+
+ul li {
+    display: inline-block;
+}
+
+header nav {
+    float: right;
+}
+header nav ul li a
+{
+    padding-right: 20px;
+    font-weight: bold;
+    color: white;
+    transition: all 0.5s ease-in;
+}
+
+ header nav ul li a:hover 
+ {
+     text-decoration: none;
+     color: red;
+
+ }
+
+.intro-area {
+    color:white;
+    background-image: url(../images/sunrise.jpg);
+    background-size: 100% 100%;
+    position: relative;
+    padding: 100px 0px;
+    text-align: center;
+    top: 2%;
+}
+
+.sub-heading {
+    position: relative;
+    margin-bottom: 75px;
+}
+
+    .sub-heading:before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -3%;
+        width: 6%;
+        background-color: deepskyblue;
+        z-index: 1;
+        -webkit-transition: 0.3s ease;
+        -moz-transition: 0.3s ease;
+        -ms-transition: 0.3s ease;
+        -o-transition: 0.3s ease;
+        transition: 0.3s ease;
+    }
+
+    .sub-heading:hover:before {
+        width: 24%;
+        margin-left: -12px;
+    }
+
+    .sub-heading::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -12%;
+        width: 24%;
+        height: 1px;
+        background-color: red;
+    }
+
+    .sub-heading p {
+        color: white;
+        display: inline-block;
+        padding: 0px 0px 20px;
+        position: relative;
+        line-height: 24px;
+        letter-spacing: 0.025em;
+    }
+
+.intro-block {
+    position: relative;
+    background: #f7f7f7;
+    margin: 50px 0px 0px;
+    text-align: center;
+    padding: 70px 25px 40px;
+}
+
+    .intro-block:hover, .intro-block.active {
+        background: #0AABE1;
+    }
+
+    .intro-block:hover {
+        transition: .6s ease;
+        -webkit-transition: .6s ease;
+        -moz-transition: .6s ease;
+        -o-transition: .6s ease;
+        -ms-transition: .6s ease;
+    }
+
+    .intro-block .intro-icon {
+        position: absolute;
+        top: -31px;
+        left: 50%;
+        margin-left: -31px;
+    }
+
+    .intro-block .fa {
+        width: 63px;
+        height: 63px;
+        font-size: 30px;
+        color: white;
+        line-height: 2;
+        background: deepskyblue;
+        border-radius: 50%;
+        box-shadow: 0px 0px 0px 10px #CCEEF9;
+    }
+
+    .intro-block:hover .fa, .intro-block.action .fa {
+        background: white;
+        color: deepskyblue;
+        box-shadow: 0px 0px 0px 10px deepskyblue;
+    }
+
+    .intro-block h3 {
+        font-size: 18px;
+        color: deepskyblue;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .intro-block p {
+        color: #505050;
+    }
+
+    .intro-block:hover h3, .intro-block:hover p {
+        color: #f6f6f6;
+    }

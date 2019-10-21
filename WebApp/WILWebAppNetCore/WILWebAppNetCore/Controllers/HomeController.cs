@@ -29,7 +29,7 @@ namespace WILWebAppNetCore.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult App()
         {
             return View();
         }

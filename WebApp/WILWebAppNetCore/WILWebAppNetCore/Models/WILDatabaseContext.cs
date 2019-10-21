@@ -23,6 +23,7 @@ namespace WILWebAppNetCore.Models
         public virtual DbSet<Leaderboards> Leaderboards { get; set; }
         public virtual DbSet<LifeSkills> LifeSkills { get; set; }
         public virtual DbSet<PasswordReset> PasswordReset { get; set; }
+        public virtual DbSet<SecurityQuestions> SecurityQuestions { get; set; }
         public virtual DbSet<Streaks> Streaks { get; set; }
         public virtual DbSet<Template> Template { get; set; }
         public virtual DbSet<UserGoals> UserGoals { get; set; }
@@ -36,7 +37,7 @@ namespace WILWebAppNetCore.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-6J4LFB4;Database=WILDatabase;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=tcp:willgroup1234srv.database.windows.net,1433;Initial Catalog=willgroup1234db;Persist Security Info=False;User ID=willgroup1234admin;Password=Catherine44;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -103,6 +104,12 @@ namespace WILWebAppNetCore.Models
                     .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Template)
+                    .WithMany(p => p.DailyQuote)
+                    .HasForeignKey(d => d.TemplateId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_TemplateID");
             });
 
             modelBuilder.Entity<Goals>(entity =>
@@ -176,6 +183,29 @@ namespace WILWebAppNetCore.Models
                     .HasColumnName("passwordCode")
                     .HasMaxLength(255)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<SecurityQuestions>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Answer)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Question)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.SecurityQuestions)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserID10");
             });
 
             modelBuilder.Entity<Streaks>(entity =>
@@ -269,7 +299,7 @@ namespace WILWebAppNetCore.Models
                 entity.HasKey(e => e.UserId);
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__Users__A9D1053412E71E45")
+                    .HasName("UQ__Users__A9D10534E3C64732")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");
@@ -298,7 +328,7 @@ namespace WILWebAppNetCore.Models
             modelBuilder.Entity<UserSteps>(entity =>
             {
                 entity.HasIndex(e => e.Steps)
-                    .HasName("UQ__UserStep__541AF9EBB9D15B9F")
+                    .HasName("UQ__UserStep__541AF9EB0D72C1D0")
                     .IsUnique();
 
                 entity.Property(e => e.UserStepsId).HasColumnName("UserStepsID");
