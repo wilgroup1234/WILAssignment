@@ -4,10 +4,12 @@ import com.a17001922.wil_app.LoginScreen.LoginUserObject;
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.homeScreen.GratitudeObject;
 import com.a17001922.wil_app.homeScreen.UserStepsObject;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+
+//This class contains GET and POST methods that are used to send and receive data from the API.
+//This class is an interface with the method signatures of methods used by the app that relate to the API
 
 public interface goalsService
 {
@@ -61,6 +63,5 @@ public interface goalsService
 
     @POST("api/values/PostUpdateViews")
     Call<ReturnMessageObject> updateViews ();
-
 
 }

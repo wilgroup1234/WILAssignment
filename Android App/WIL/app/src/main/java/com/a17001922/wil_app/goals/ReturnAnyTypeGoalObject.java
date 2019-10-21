@@ -1,9 +1,10 @@
 package com.a17001922.wil_app.goals;
 
-import com.google.api.client.util.DateTime;
-
+//This class is an Object used to send/ receive data from the API
 public class ReturnAnyTypeGoalObject
 {
+
+    //_____________Declarations_________________
     private int GoalID;
     private String GoalName;
     private String GoalDescription;
@@ -12,6 +13,9 @@ public class ReturnAnyTypeGoalObject
     private String finishDate;
     private String currentDate;
 
+
+
+    //_____________Get and Set methods_________________
     public int getGoalID() {
         return GoalID;
     }

@@ -25,12 +25,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//This class manages the Loading Screen
 public class LoadingActivity extends AppCompatActivity
 {
     //_____________Declarations_________________
     private static final String TAG = "LoadingActivityActivity";
     Context context;
-
     LoadingScreen View;
     private final static long TIMER_INTERVAL = 18;
     private Timer timer;
@@ -101,13 +101,14 @@ public class LoadingActivity extends AppCompatActivity
 
     }
 
-    //________Open HOme Activity________
+    //________Open Home Activity________
     public void OpenHomeActivity()
     {
         Intent intent = new Intent(context, homeActivity.class);
         startActivity(intent);
     }
 
+    //Get all user Goals from API
     public void GetGoals()
     {
         UserGoalObject userGoalObject = new UserGoalObject();
@@ -281,7 +282,7 @@ public class LoadingActivity extends AppCompatActivity
 
 
 
-
+    //Get all USer Life Skills from API
     public void GetLifeSkills()
     {
         LifeSkillObject lifeSkillObject = new LifeSkillObject();
@@ -394,10 +395,10 @@ public class LoadingActivity extends AppCompatActivity
         }
     }
 
+
+    //Get the latest Daily Quote from API
     public void GetDailyQuote()
     {
-
-
 
         try
         {
@@ -466,6 +467,8 @@ public class LoadingActivity extends AppCompatActivity
         }
     }
 
+
+    //Get User Gratitude Items from API
     public void GetGratitude()
     {
         GratitudeObject gratitudeObject = new GratitudeObject();
@@ -524,7 +527,6 @@ public class LoadingActivity extends AppCompatActivity
             StaticClass.loaded = true;
         }
     }
-
 
 
 }

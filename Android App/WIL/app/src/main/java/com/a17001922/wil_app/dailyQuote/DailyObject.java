@@ -1,11 +1,15 @@
 package com.a17001922.wil_app.dailyQuote;
 
-public class DailyObject {
+//This class is an Object used to send/ receive data from the API
+public class DailyObject
+{
+    //_____________Declarations_________________
     protected int TemplateID;
     protected String QuoteText;
     protected String YoutubeLink;
     protected int Views;
 
+    //_____________Get and Set methods_________________
     public int getTemplateID() {
         return TemplateID;
     }

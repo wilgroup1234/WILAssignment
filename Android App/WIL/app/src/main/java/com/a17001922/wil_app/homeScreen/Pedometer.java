@@ -14,13 +14,10 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
-import com.a17001922.wil_app.goals.Streak;
 import com.a17001922.wil_app.goals.goalsService;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +32,7 @@ import retrofit2.Response;
 
 //this class counts the user's steps.
 
+//This class manages the Pedometer Screen
 public class Pedometer extends AppCompatActivity implements SensorEventListener, StepListener
 {
     //_____________Declarations_________________

@@ -1,16 +1,13 @@
 package com.a17001922.wil_app.LoginScreen;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 
-/*
-SIMPLE INTERFACE STRICTLY TO DEAL WITH USER LOGIN AND REGISTER NO OTHER CALLS TO BE ADDED HERE TO KEEP THIS SECTION CLEAN
+//This class contains GET and POST methods that are used to send and receive data from the API.
+//This class is an interface with the method signatures of methods used by the app that relate to the API
 
- */
 public interface loginRegisterService
 {
     @POST("api/values/PostLogin")
@@ -27,7 +24,5 @@ public interface loginRegisterService
 
     @POST("api/values/PostResetPassword")
     Call<ReturnMessageObject> resetPassword(@Body ResetPasswordObject resetPasswordObject);
-
-
 
 }

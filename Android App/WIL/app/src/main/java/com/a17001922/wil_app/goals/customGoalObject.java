@@ -3,11 +3,17 @@ package com.a17001922.wil_app.goals;
 
 import com.google.api.client.util.DateTime;
 
-public class CustomGoalObject {
+//This class is an Object used to send/ receive data from the API
+public class CustomGoalObject
+{
+
+    //_____________Declarations_________________
     private String goalName;
     private String goalDescription;
     private String Email;
     private String finishDate;
+
+    //_____________Get and Set methods_________________
 
     public String getGoalName() {
         return goalName;
@@ -21,7 +27,8 @@ public class CustomGoalObject {
         return goalDescription;
     }
 
-    public void setGoalDescription(String goalDescription) {
+    public void setGoalDescription(String goalDescription)
+    {
         this.goalDescription = goalDescription;
     }
 

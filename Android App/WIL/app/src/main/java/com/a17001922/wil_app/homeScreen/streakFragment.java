@@ -7,17 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.a17001922.wil_app.LoginScreen.LoginUserObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.Streak;
 import com.a17001922.wil_app.goals.goalsService;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//This class manages the Streaks Screen
 public class streakFragment extends Fragment
 {
     //_____________Declarations_________________
@@ -55,7 +54,8 @@ public class streakFragment extends Fragment
             final Call<Streak> streakCall = goalService.getUserStreak(loginUserObject);
             streakCall.enqueue(new Callback<Streak>() {
                 @Override
-                public void onResponse(Call<Streak> call, Response<Streak> response) {
+                public void onResponse(Call<Streak> call, Response<Streak> response)
+                {
 
                     Streak returnStreak = response.body();
                     currentStreak = returnStreak.getStreakLength();

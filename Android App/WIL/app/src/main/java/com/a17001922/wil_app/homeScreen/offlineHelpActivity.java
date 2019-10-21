@@ -6,19 +6,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.a17001922.wil_app.R;
 
+//This class manages the Offline Help Screen
 public class offlineHelpActivity extends AppCompatActivity
 {
-
+    //_____________Declarations_________________
     Button btnBack;
 
+
+    //____________________OnCreate Method_____________
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offline_help);
+
+        //_____________Binding fields and widgets_____________
         TextView txtOfflineHelp = findViewById(R.id.txtOfflineText);
         btnBack = findViewById(R.id.btnofflineBack);
 
@@ -41,7 +45,7 @@ public class offlineHelpActivity extends AppCompatActivity
         txtOfflineHelp.setText(toShow);
 
 
-
+        //_____________Back button Click Event Listener_____________
         btnBack.setOnClickListener(new View.OnClickListener()
         {
             @Override

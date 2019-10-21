@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 
-
+//This class manages the Login Fragment Screen
 public class LoginFragment extends Fragment
 {
     //_____________Declarations_________________
@@ -196,13 +196,11 @@ public class LoginFragment extends Fragment
                     Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
                 }
 
-
-
-
             }
         });
 
 
+        //_____________Forgot Password button Click Event Listener_____________
         btnForgotPassword.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -246,7 +244,6 @@ public class LoginFragment extends Fragment
             {
                 if (!StaticClass.ongoingOperation)
                 {
-
                         if (StaticClass.hasInternet)
                         {
                             GoogleSignIn();
@@ -255,20 +252,15 @@ public class LoginFragment extends Fragment
                         {
                             Toast.makeText(StaticClass.loginContext, "Cannot Log in - No Internet connection :(", Toast.LENGTH_LONG).show();
                         }
-
                 }
                 else
                 {
                     Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
                 }
 
-
-
             }
         });
-
     }
-
 
     //_____________This Method logs a user into the app_____________
     public void LogUserIn()
@@ -280,7 +272,6 @@ public class LoginFragment extends Fragment
         editor.putString(StaticClass.LOGGED_IN_USER_EMAIL, email);
         editor.putString(StaticClass.LOGGED_IN_TYPE, type);
         editor.commit();
-
 
         LoginUserObject loginUserObject = new LoginUserObject();
         loginUserObject.email = email;
@@ -309,8 +300,6 @@ public class LoginFragment extends Fragment
                         StaticClass.ongoingOperation = false;
                         progressBar.setVisibility(View.INVISIBLE);
                     }
-
-
                 }
 
                 @Override
@@ -319,12 +308,9 @@ public class LoginFragment extends Fragment
                     Log.e(TAG, "UpdateStreak OnFailure - Cannot update Streak");
                     StaticClass.ongoingOperation = false;
                     progressBar.setVisibility(View.INVISIBLE);
-
                 }
 
-
             });
-
 
         }
         catch (Exception e)
@@ -368,7 +354,6 @@ public class LoginFragment extends Fragment
         }
     }
 
-
     //Google Sign-in Methods
     private void GoogleSignIn()
     {
@@ -390,14 +375,11 @@ public class LoginFragment extends Fragment
         }
     }
 
-
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask)
     {
         try
         {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
-
             email = account.getEmail();
             String name = account.getDisplayName();
             String surname = "a";
@@ -412,7 +394,6 @@ public class LoginFragment extends Fragment
             googleSignInObject.setFirstName(name);
             googleSignInObject.setLastName(surname);
             googleSignInObject.setPassword(password);
-
 
             //Create account if it doesn't exist
             try
@@ -435,7 +416,6 @@ public class LoginFragment extends Fragment
                             Log.e(TAG, "Google sign in - Account already exists");
                         }
 
-
                     }
 
                     @Override
@@ -445,9 +425,7 @@ public class LoginFragment extends Fragment
                         Toast.makeText(StaticClass.loginContext, " Google sign in OUR API No Internet connection :(", Toast.LENGTH_LONG).show();
                     }
 
-
                 });
-
 
             }
             catch (Exception e)
@@ -456,14 +434,10 @@ public class LoginFragment extends Fragment
                 Toast.makeText(StaticClass.loginContext, "Login Failed Invalid Details entered :(", Toast.LENGTH_LONG).show();
             }
 
-
-
             //Call login method to log user in
             type = "google";
             Toast.makeText(StaticClass.loginContext, "Google Sign-in Successful", Toast.LENGTH_LONG).show();
             LogUserIn();
-
-
 
 
         }

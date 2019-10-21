@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.a17001922.wil_app.R;
 
+//This class manages the Social Media Screen
 public class socialMediaFragment extends Fragment
 {
     //_____________Declarations_________________

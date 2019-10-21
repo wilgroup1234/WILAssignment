@@ -20,19 +20,18 @@ import android.text.util.Linkify;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.LoginScreen.mainLogin;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.google.firebase.messaging.FirebaseMessaging;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+//This class manages the Start/Splash Screen
 public class Start extends AppCompatActivity
 {
-    //Declaration
+    //Declarations
     private int splashLength = 1500;
     private final String TAG = "SplashScreen";
     SharedPreferences sharedPreferences;
@@ -40,13 +39,14 @@ public class Start extends AppCompatActivity
     final int PERMISSIONS_ALL = 10;
     String Permissions [] = {Manifest.permission.INTERNET, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NETWORK_STATE};
 
+    //____________________OnCreate Method_____________
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-
+        //Declarations
         context = getApplicationContext();
         FirebaseMessaging.getInstance().subscribeToTopic("updates");
 
@@ -77,6 +77,7 @@ public class Start extends AppCompatActivity
 
         new Handler().postDelayed(new Runnable()
         {
+            //Run splash screen for 1.5 seconds
             @Override
             public void run()
             {
@@ -164,7 +165,7 @@ public class Start extends AppCompatActivity
     }
 
 
-    //____________________________METHOD FOR CREATING EULA_______________________________________
+    //____________________________METHOD FOR CREATING EULA (End User License Agreement)_______________________________________
     private void showEula()
     {
 

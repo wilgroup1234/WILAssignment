@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
@@ -20,14 +19,13 @@ import com.a17001922.wil_app.goals.Goal;
 import com.a17001922.wil_app.goals.goalsService;
 import com.a17001922.wil_app.goals.ReturnGoalObject;
 import com.a17001922.wil_app.goals.UserGoalObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//This class manages the Add Normal Goals Screen
 public class addNormalGoalScreen extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
 

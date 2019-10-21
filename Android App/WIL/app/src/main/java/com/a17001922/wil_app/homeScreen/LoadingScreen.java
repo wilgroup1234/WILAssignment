@@ -8,9 +8,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.view.View;
-
 import com.a17001922.wil_app.R;
 
+//This class manages the Loading Screen Animations
 public class LoadingScreen extends View
 {
 
@@ -19,7 +19,7 @@ public class LoadingScreen extends View
 
     //Bitmaps
     private Bitmap background;
-    private Bitmap [] dog = new Bitmap[5];
+    private Bitmap [] dog = new Bitmap[8];
 
     //Dog
     private int dogY = 600;
@@ -36,12 +36,15 @@ public class LoadingScreen extends View
 
         //________________Initialising Bitmaps_________________
 
-        background = BitmapFactory.decodeResource(getResources(), R.drawable.bgb8);
+        background = BitmapFactory.decodeResource(getResources(), R.drawable.bgl);
         dog[0] = BitmapFactory.decodeResource(getResources(),R.drawable.t1);
         dog[1] = BitmapFactory.decodeResource(getResources(),R.drawable.t2);
         dog[2] = BitmapFactory.decodeResource(getResources(),R.drawable.t3);
         dog[3] = BitmapFactory.decodeResource(getResources(),R.drawable.t4);
         dog[4] = BitmapFactory.decodeResource(getResources(),R.drawable.t5);
+        dog[5] = BitmapFactory.decodeResource(getResources(),R.drawable.t6);
+        dog[6] = BitmapFactory.decodeResource(getResources(),R.drawable.t7);
+        dog[7] = BitmapFactory.decodeResource(getResources(),R.drawable.t8);
 
         //_________________Setting up Paints_________________
         loading = new Paint();
@@ -69,47 +72,51 @@ public class LoadingScreen extends View
 
         }
 
-
-
-        //______________________display loading at the top of the screen_______________________
-        canvas.drawText("Loading...",(canvas.getWidth()/2) - 200,430, loading);
-
-        canvas.drawBitmap(dog[currentDogPosition], dogX, dogY, null);
-        dogX = dogX + 2;
-
-        if(dogX >= canvas.getWidth() - 20)
+        try
         {
-            dogX = 80;
-        }
+            //______________________display loading at the top of the screen_______________________
+            canvas.drawText("Loading...",(canvas.getWidth()/2) - 200,430, loading);
 
-        if(count > 5)
-        {
-            count = 0;
+            canvas.drawBitmap(dog[currentDogPosition], dogX, dogY, null);
+            dogX = dogX + 1;
 
-
-            if(currentDogPosition == 3)
+            if(dogX >= canvas.getWidth() - 20)
             {
-                currentDogPosition = 0;
+                dogX = 80;
+            }
+
+            if(count > 5)
+            {
+                count = 0;
+
+
+                if(currentDogPosition == 7)
+                {
+                    currentDogPosition = 0;
+                }
+                else
+                {
+                    currentDogPosition++;
+                }
+
+
+
+
             }
             else
             {
-                currentDogPosition++;
+                count++;
             }
 
-
-
-
         }
-        else
+        catch(Exception e)
         {
-            count++;
-        }
 
+        }
 
 
 
     }
-
 
 
 }

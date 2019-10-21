@@ -1,6 +1,4 @@
 package com.a17001922.wil_app.LoginScreen;
-
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,25 +15,22 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.homeScreen.LoadingActivity;
-import com.a17001922.wil_app.homeScreen.homeActivity;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
  */
+
+//This class manages the Register  Screen
 public class RegisterFragments extends Fragment
 {
     //_____________Declarations_________________
-
     ProgressBar progressBar;
     Button btnRegister;
     EditText et_registerFirstName,et_registerSurname,et_registerEmail,et_registerPassword,et_confirmPassword, answer;
@@ -53,7 +48,6 @@ public class RegisterFragments extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         v = inflater.inflate(R.layout.activity_register,container,false);
-
         return v;
     }
 
@@ -76,15 +70,23 @@ public class RegisterFragments extends Fragment
         answer = v.findViewById(R.id.et_answer);
         cmbListOfSecurityQuestions = v.findViewById(R.id.cmbListSecurityQuestions);
 
-        String [] arr = new String [3];
-        arr[0] = "What is your pet's name?";
-        arr[1] = "What is the name of your first friend?";
-        arr[2] = "Who is your favourite superhero?";
+        try
+        {
+            String [] arr = new String [3];
+            arr[0] = "What is your pet's name?";
+            arr[1] = "What is the name of your first friend?";
+            arr[2] = "Who is your favourite superhero?";
 
-        //populate list of security questions
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(StaticClass.loginContext, android.R.layout.simple_spinner_item, arr);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        cmbListOfSecurityQuestions.setAdapter(adapter);
+            //populate list of security questions
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(StaticClass.loginContext, android.R.layout.simple_spinner_item, arr);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            cmbListOfSecurityQuestions.setAdapter(adapter);
+        }
+        catch(Exception e)
+        {
+
+        }
+
 
 
 
@@ -94,171 +96,175 @@ public class RegisterFragments extends Fragment
             @Override
             public void onClick(View v)
             {
-                if (!StaticClass.ongoingOperation)
+                if(StaticClass.hasInternet)
                 {
-                    StaticClass.ongoingOperation = true;
-                    progressBar.setVisibility(View.VISIBLE);
-
-
-                    //_____________Get data from fields_____________
-
-                    Boolean valid = false;
-                    String errorMessage = "Invalid Information Entered, Please correct this and try again...";
-
-                    try
+                    if (!StaticClass.ongoingOperation)
                     {
-                        name = et_registerFirstName.getText().toString();
-                        surname = et_registerSurname.getText().toString();
-                        email= et_registerEmail.getText().toString();
-                        password = et_registerPassword.getText().toString();
-                        confirmPassword = et_confirmPassword.getText().toString();
-                        enteredAnswer = answer.getText().toString();
-                        question = cmbListOfSecurityQuestions.getSelectedItem().toString();
+                        StaticClass.ongoingOperation = true;
+                        progressBar.setVisibility(View.VISIBLE);
 
 
+                        //_____________Get data from fields_____________
 
-                        if(name.contains("#"))
+                        Boolean valid = false;
+                        String errorMessage = "Invalid Information Entered, Please correct this and try again...";
+
+                        try
                         {
-                            name = name.replace('#',' ');
-                        }
-                        if(name.contains("@"))
-                        {
-                            name = name.replace('@',' ');
-                        }
+                            name = et_registerFirstName.getText().toString();
+                            surname = et_registerSurname.getText().toString();
+                            email= et_registerEmail.getText().toString();
+                            password = et_registerPassword.getText().toString();
+                            confirmPassword = et_confirmPassword.getText().toString();
+                            enteredAnswer = answer.getText().toString();
+                            question = cmbListOfSecurityQuestions.getSelectedItem().toString();
 
-                        if(surname.contains("#"))
-                        {
-                            surname = surname.replace('#',' ');
-                        }
-                        if(surname.contains("@"))
-                        {
-                            surname = surname.replace('@',' ');
-                        }
-
-
-                        user.setFirstName(name);
-                        user.setSurname(surname);
-                        user.setEmail(email);
-                        user.setPassword(password);
-                        user.setConfirmPassword(confirmPassword);
-                        user.setAnswer(enteredAnswer);
-                        user.setSecurityQuestion(question);
-
-
-
-                        //_____________Validate User Input_____________
-                        if (password.equals(confirmPassword))
-                        {
-                            if(name.length() > 1 && surname.length()> 1 && email.length() > 7 && email.contains("@") && password.length() > 2 && answer.length() > 0 && question.length() > 0)
+                            if(name.contains("#"))
                             {
-                                valid = true;
+                                name = name.replace('#',' ');
+                            }
+                            if(name.contains("@"))
+                            {
+                                name = name.replace('@',' ');
+                            }
+
+                            if(surname.contains("#"))
+                            {
+                                surname = surname.replace('#',' ');
+                            }
+                            if(surname.contains("@"))
+                            {
+                                surname = surname.replace('@',' ');
+                            }
+
+                            user.setFirstName(name);
+                            user.setSurname(surname);
+                            user.setEmail(email);
+                            user.setPassword(password);
+                            user.setConfirmPassword(confirmPassword);
+                            user.setAnswer(enteredAnswer);
+                            user.setSecurityQuestion(question);
+
+
+
+                            //_____________Validate User Input_____________
+                            if (password.equals(confirmPassword))
+                            {
+                                if(name.length() > 1 && surname.length()> 1 && email.length() > 7 && email.contains("@") && password.length() > 2 && answer.length() > 0 && question.length() > 0)
+                                {
+                                    valid = true;
+                                }
+                                else
+                                {
+                                    errorMessage = "Invalid Information Entered, Please correct this and try again...";
+                                }
                             }
                             else
                             {
-                                errorMessage = "Invalid Information Entered, Please correct this and try again...";
+                                errorMessage = "Passwords Don't Match";
+                            }
+
+                        }
+                        catch(Exception e)
+                        {
+                            Log.e(TAG, " Trying to get and validate user input: " + e.getMessage());
+                        }
+
+
+                        //_____________If user input is valid, make API call to register User_____________
+                        if (valid)
+                        {
+                            try
+                            {
+                                final Call<ReturnMessageObject> registerUserCall = loginRegisterService.userRegister(user);
+                                registerUserCall.enqueue(new Callback<ReturnMessageObject>()
+                                {
+                                    @Override
+                                    public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
+                                    {
+                                        //_____________If response is successful, log user in_____________
+
+                                        ReturnMessageObject registeredAuth = response.body();
+                                        if (registeredAuth.getResult())
+                                        {
+                                            Log.e(TAG,"GetResult true");
+                                            Toast.makeText(StaticClass.loginContext, "Register Successful, You can now Login to your account..." , Toast.LENGTH_LONG).show();
+
+
+                                            SharedPreferences sharedPreferences = StaticClass.loginContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                            editor.putString(StaticClass.USER_GOALIDS, "");
+                                            editor.putString(StaticClass.USER_GOALCOMPLETED, "");
+                                            editor.putString(StaticClass.USER_GOALNAMES, "");
+                                            editor.putString(StaticClass.USER_GOALTYPE, "");
+                                            editor.putString(StaticClass.USER_GOALDESCRIPTIONS, "");
+                                            editor.putString(StaticClass.USER_GOALDATES, "");
+                                            editor.putString(StaticClass.USER_GOALCURRENTDATES, "");
+
+                                            editor.putString(StaticClass.USER_LIFESKILLSIDS, "");
+                                            editor.putString(StaticClass.USER_LIFESKILLSCOMPLETED, "");
+                                            editor.putString(StaticClass.USER_LIFESKILLSNAMES, "");
+
+                                            editor.putString(StaticClass.USER_DAILYQUOTEImage, "");
+                                            editor.putString(StaticClass.USER_DAILYQUOTELINK, "");
+                                            editor.putString(StaticClass.USER_DAILYQUOTETEXT, "");
+                                            editor.putString(StaticClass.USER_Grats, "");
+                                            editor.commit();
+
+
+                                            LogUserIn(email, "email");
+
+                                            StaticClass.ongoingOperation = false;
+                                            progressBar.setVisibility(View.INVISIBLE);
+                                        }
+                                        else
+                                        {
+                                            Log.e(TAG,"GetResult false");
+                                            Toast.makeText(StaticClass.loginContext, "Invalid Details Entered, or this email is already being used." , Toast.LENGTH_LONG).show();
+                                            StaticClass.ongoingOperation = false;
+                                            progressBar.setVisibility(View.INVISIBLE);
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ReturnMessageObject> call, Throwable t)
+                                    {
+                                        Log.e(TAG,"Connection onFailure");
+                                        Toast.makeText(StaticClass.loginContext, "No Internet connection :(" , Toast.LENGTH_LONG).show();
+                                        StaticClass.ongoingOperation = false;
+                                        progressBar.setVisibility(View.INVISIBLE);
+                                    }
+                                });
+
+
+
+                            }
+                            catch (Exception e)
+                            {
+                                Log.e(TAG," Exception caught while calling API register user method: " + e.getMessage());
+                                Toast.makeText(StaticClass.loginContext ,message , Toast.LENGTH_LONG).show();
+                                StaticClass.ongoingOperation = false;
+                                progressBar.setVisibility(View.INVISIBLE);
                             }
                         }
                         else
                         {
-                            errorMessage = "Passwords Don't Match";
-                        }
-
-                    }
-                    catch(Exception e)
-                    {
-                        Log.e(TAG, " Trying to get and validate user input: " + e.getMessage());
-                    }
-
-
-                    //_____________If user input is valid, make API call to register User_____________
-                    if (valid)
-                    {
-                        try
-                        {
-                            final Call<ReturnMessageObject> registerUserCall = loginRegisterService.userRegister(user);
-                            registerUserCall.enqueue(new Callback<ReturnMessageObject>()
-                            {
-                                @Override
-                                public void onResponse(Call<ReturnMessageObject> call, Response<ReturnMessageObject> response)
-                                {
-                                    //_____________If response is successful, log user in_____________
-
-                                    ReturnMessageObject registeredAuth = response.body();
-                                    if (registeredAuth.getResult())
-                                    {
-                                        Log.e(TAG,"GetResult true");
-                                        Toast.makeText(StaticClass.loginContext, "Register Successful, You can now Login to your account..." , Toast.LENGTH_LONG).show();
-
-
-                                        SharedPreferences sharedPreferences = StaticClass.loginContext.getSharedPreferences(StaticClass.SHARED_PREFS, MODE_PRIVATE);
-                                        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                                        editor.putString(StaticClass.USER_GOALIDS, "");
-                                        editor.putString(StaticClass.USER_GOALCOMPLETED, "");
-                                        editor.putString(StaticClass.USER_GOALNAMES, "");
-                                        editor.putString(StaticClass.USER_GOALTYPE, "");
-                                        editor.putString(StaticClass.USER_GOALDESCRIPTIONS, "");
-                                        editor.putString(StaticClass.USER_GOALDATES, "");
-                                        editor.putString(StaticClass.USER_GOALCURRENTDATES, "");
-
-                                        editor.putString(StaticClass.USER_LIFESKILLSIDS, "");
-                                        editor.putString(StaticClass.USER_LIFESKILLSCOMPLETED, "");
-                                        editor.putString(StaticClass.USER_LIFESKILLSNAMES, "");
-
-                                        editor.putString(StaticClass.USER_DAILYQUOTEImage, "");
-                                        editor.putString(StaticClass.USER_DAILYQUOTELINK, "");
-                                        editor.putString(StaticClass.USER_DAILYQUOTETEXT, "");
-                                        editor.putString(StaticClass.USER_Grats, "");
-                                        editor.commit();
-
-
-                                        LogUserIn(email, "email");
-
-                                        StaticClass.ongoingOperation = false;
-                                        progressBar.setVisibility(View.INVISIBLE);
-                                    }
-                                    else
-                                    {
-                                        Log.e(TAG,"GetResult false");
-                                        Toast.makeText(StaticClass.loginContext, "Invalid Details Entered, or this email is already being used." , Toast.LENGTH_LONG).show();
-                                        StaticClass.ongoingOperation = false;
-                                        progressBar.setVisibility(View.INVISIBLE);
-                                    }
-
-                                }
-
-                                @Override
-                                public void onFailure(Call<ReturnMessageObject> call, Throwable t)
-                                {
-                                    Log.e(TAG,"Connection onFailure");
-                                    Toast.makeText(StaticClass.loginContext, "No Internet connection :(" , Toast.LENGTH_LONG).show();
-                                    StaticClass.ongoingOperation = false;
-                                    progressBar.setVisibility(View.INVISIBLE);
-                                }
-                            });
-
-
-
-                        }
-                        catch (Exception e)
-                        {
-                            Log.e(TAG," Exception caught while calling API register user method: " + e.getMessage());
-                            Toast.makeText(StaticClass.loginContext ,message , Toast.LENGTH_LONG).show();
+                            Log.e(TAG, errorMessage);
+                            Toast.makeText(StaticClass.loginContext, errorMessage, Toast.LENGTH_LONG).show();
                             StaticClass.ongoingOperation = false;
                             progressBar.setVisibility(View.INVISIBLE);
                         }
                     }
                     else
                     {
-                        Log.e(TAG, errorMessage);
-                        Toast.makeText(StaticClass.loginContext, errorMessage, Toast.LENGTH_LONG).show();
-                        StaticClass.ongoingOperation = false;
-                        progressBar.setVisibility(View.INVISIBLE);
+                        Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else
                 {
-                    Toast.makeText(StaticClass.loginContext, "Please Wait...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StaticClass.loginContext, "Cannot Register, No internet connection :(", Toast.LENGTH_SHORT).show();
                 }
 
             }

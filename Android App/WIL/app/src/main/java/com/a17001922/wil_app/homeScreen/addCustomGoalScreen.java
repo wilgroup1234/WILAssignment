@@ -11,24 +11,22 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.CustomGoalObject;
 import com.a17001922.wil_app.goals.goalsService;
 import com.google.api.client.util.DateTime;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//This class manages the Add Custom Goals Screen
 public class addCustomGoalScreen extends AppCompatActivity
 {
     //_____________Declarations_________________

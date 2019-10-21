@@ -13,20 +13,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.dailyQuote.DailyObject;
 import com.a17001922.wil_app.goals.goalsService;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 
-
+//This class manages the Daily Quote Screen
 public class dailyQuoteFragment extends Fragment
 {
     //_____________Declarations_________________
@@ -155,13 +153,6 @@ public class dailyQuoteFragment extends Fragment
                     Toast.makeText(StaticClass.homeContext, "Invalid Youtube Link provided :(", Toast.LENGTH_SHORT);
                     Log.e(TAG, "Invalid Youtube Link provided :( ");
                 }
-
-
-
-
-
-
-
 
             }
         });

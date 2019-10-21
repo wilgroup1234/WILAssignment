@@ -6,19 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
-
 import java.util.ArrayList;
 
+//This class is used as a part of the recycler view functionality in the View Life skills Page
 public class ViewLifeSkillsAdapter extends RecyclerView.Adapter<ViewLifeSkillsViewHolder>
 {
+    //_____________Declarations_________________
     private ArrayList<cardViewItem2> cardViewItems;
     private ArrayList<LifeSkillChecked> changedLifeSkillsList = new ArrayList<>();
     private ArrayList<LifeSkillChecked> originalLifeSkillsList;
 
-
+    //_____________Binding fields and widgets_____________
     public ViewLifeSkillsAdapter(ArrayList<cardViewItem2> cvItems,  ArrayList<LifeSkillChecked> ogItems)
     {
         cardViewItems = cvItems;
@@ -49,6 +49,7 @@ public class ViewLifeSkillsAdapter extends RecyclerView.Adapter<ViewLifeSkillsVi
             viewHolder.checkBox.setChecked(false);
         }
 
+        //On Click Listener for when a card item is clicked in the recycler view
         viewHolder.setItemClickListener(new CardViewItemClickListener()
         {
             @Override
@@ -92,15 +93,12 @@ public class ViewLifeSkillsAdapter extends RecyclerView.Adapter<ViewLifeSkillsVi
 
             }
 
-            @Override
-            public void onDeleteClick(View v, int pos)
-            {
 
-            }
         });
     }
 
 
+    //Get Methods
     @Override
     public int getItemCount()
     {

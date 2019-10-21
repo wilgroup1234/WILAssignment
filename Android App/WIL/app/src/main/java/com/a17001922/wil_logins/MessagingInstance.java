@@ -5,11 +5,16 @@ import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
-public class MessagingInstance extends FirebaseInstanceIdService {
+//This class manages the app's subscription to Firebase
+public class MessagingInstance extends FirebaseInstanceIdService
+{
+    //_____________Declarations_________________
     private static final String TAG = "FirebaseIDService";
 
+    //_____________This Method refreshes the app's access token_____________
     @Override
-    public void onTokenRefresh() {
+    public void onTokenRefresh()
+    {
         // Get updated InstanceID token.
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
         Log.d(TAG, "Refreshed token: " + refreshedToken);
@@ -26,7 +31,8 @@ public class MessagingInstance extends FirebaseInstanceIdService {
      *
      * @param token The new token.
      */
-    private void sendRegistrationToServer(String token) {
+    private void sendRegistrationToServer(String token)
+    {
         // Add custom implementation, as needed.
     }
 }

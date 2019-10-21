@@ -9,17 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.LeaderboardObject;
 import com.a17001922.wil_app.goals.goalsService;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//This class manages the Game Over Screen
 public class gameOver extends AppCompatActivity
 {
     //_____________Declarations_________________

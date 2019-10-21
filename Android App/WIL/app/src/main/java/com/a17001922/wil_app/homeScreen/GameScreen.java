@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 
+//This class manages the Game Screen Fragment
 public class GameScreen extends Fragment
 {
     //_____________Declarations_________________

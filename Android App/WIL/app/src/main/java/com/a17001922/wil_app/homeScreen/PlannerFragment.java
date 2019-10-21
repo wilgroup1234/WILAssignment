@@ -1,6 +1,5 @@
 package com.a17001922.wil_app.homeScreen;
 
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.a17001922.wil_app.R;
 
+//This class manages the Planner Screen
 public class PlannerFragment extends Fragment
 {
     //_____________Declarations_________________
@@ -22,8 +21,8 @@ public class PlannerFragment extends Fragment
     //____________________OnCreate Method_____________
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         v = inflater.inflate(R.layout.fragment_planner,container,false);
         return v;
     }

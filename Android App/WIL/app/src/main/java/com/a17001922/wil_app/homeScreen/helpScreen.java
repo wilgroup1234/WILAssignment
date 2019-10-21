@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-
 import com.a17001922.wil_app.R;
 
+//This class manages the Game Help Screen
 public class helpScreen extends AppCompatActivity
 {
     //_____________Declarations_________________

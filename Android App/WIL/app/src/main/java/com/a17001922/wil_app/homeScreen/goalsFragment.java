@@ -10,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.LoginScreen.mainLogin;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
@@ -22,7 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 import static android.content.Context.MODE_PRIVATE;
 
-
+//This class manages the Home Screen
 public class goalsFragment extends Fragment
 {
     //_____________Declarations_________________
@@ -57,10 +55,7 @@ public class goalsFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                //Intent i = new Intent(StaticClass.homeContext,addCustomGoalScreen.class);
-                //startActivity(i);
-
-                Intent i = new Intent(StaticClass.homeContext, LoadingActivity.class);
+                Intent i = new Intent(StaticClass.homeContext,addCustomGoalScreen.class);
                 startActivity(i);
             }
         });

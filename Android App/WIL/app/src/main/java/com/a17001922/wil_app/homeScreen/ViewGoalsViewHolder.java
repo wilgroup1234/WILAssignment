@@ -6,20 +6,21 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.a17001922.wil_app.R;
-import com.a17001922.wil_app.StaticClass;
 
+//This class is used as a part of the recycler view functionality in the View Goals Page
 public class ViewGoalsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
+    //_____________Declarations_________________
     public ImageView imageView;
     public TextView textView1;
     public TextView textView2;
     public TextView textView3;
     public CheckBox checkBox;
-
     CardViewItemClickListener itemClickListener;
 
+
+    //_____________Binding fields and widgets_____________
     public ViewGoalsViewHolder(@NonNull View itemView)
     {
         super(itemView);
@@ -28,8 +29,6 @@ public class ViewGoalsViewHolder extends RecyclerView.ViewHolder implements View
         textView2 = itemView.findViewById(R.id.txtGoalDescriptionCardView);
         textView3 = itemView.findViewById(R.id.txtGoalDateCardView);
         checkBox = itemView.findViewById(R.id.cBoxIsCompleted);
-
-
         checkBox.setOnClickListener(this);
     }
 
@@ -42,7 +41,5 @@ public class ViewGoalsViewHolder extends RecyclerView.ViewHolder implements View
     public void onClick(View v)
     {
         this.itemClickListener.onItemClick(v, getLayoutPosition());
-
-        this.itemClickListener.onDeleteClick(v, getLayoutPosition());
     }
 }

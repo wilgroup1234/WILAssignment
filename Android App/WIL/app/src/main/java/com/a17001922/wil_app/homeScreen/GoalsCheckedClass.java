@@ -1,12 +1,14 @@
 package com.a17001922.wil_app.homeScreen;
 
+//This class is an Object used to send/ receive data from the API
 public class GoalsCheckedClass
 {
+    //_____________Declarations_________________
     private boolean checked;
-
     private int GoalID;
-
     private boolean isNormalGoal;
+
+    //_____________Get and Set methods_________________
 
     public boolean isChecked()
     {

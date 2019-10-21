@@ -3,8 +3,6 @@ package com.a17001922.wil_app.homeScreen;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.TabLayout.TabLayoutOnPageChangeListener;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +10,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 import android.content.Intent;
-
 import com.a17001922.wil_app.LoginScreen.mainLogin;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
@@ -20,12 +17,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
+//This class manages the creation of the home screen Fragments
 public class homeActivity extends AppCompatActivity
 {
+    //_____________Declarations_________________
     private TabAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Toolbar homeToolbar;
+
+    //____________________OnCreate Method_____________
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,14 +34,15 @@ public class homeActivity extends AppCompatActivity
         Intent i = getIntent();
         setContentView(R.layout.activity_home);
 
+        //Declarations
         Context thisContext = getApplicationContext();
         StaticClass.homeContext = thisContext;
-
         viewPager = (ViewPager) findViewById(R.id.pager);
         tabLayout = (TabLayout) findViewById(R.id.HtabLayout);
         adapter = new TabAdapter(getSupportFragmentManager());
         homeToolbar = findViewById(R.id.hometoolbar);
 
+        //Adds fragments to screen
         if (StaticClass.hasInternet)
         {
             adapter.addFragment(new goalsFragment(), "Home");
@@ -55,7 +57,6 @@ public class homeActivity extends AppCompatActivity
             adapter.addFragment(new uploadDocsFragment(),"Upload");
             adapter.addFragment(new cvUpload(),"CV");
             adapter.addFragment(new socialMediaFragment(),"Social Media");
-
 
             Toast.makeText(getApplicationContext(), "Working Online", Toast.LENGTH_LONG).show();
         }
@@ -79,18 +80,22 @@ public class homeActivity extends AppCompatActivity
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
 
+
+        //_____________Toolbar Items Click Event Listener_____________
         homeToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener()
         {
             @Override
             public boolean onMenuItemClick(MenuItem item)
             {
-                if(item.getTitle().equals("Help")){
-                    if(StaticClass.hasInternet){
+                if(item.getTitle().equals("Help"))
+                {
+                    if(StaticClass.hasInternet)
+                    {
                         Intent i = new Intent(getApplicationContext(),onlineHelpActivity.class);
                         startActivity(i);
                     }
                     else
-                        {
+                    {
                         Intent i = new Intent(getApplicationContext(),offlineHelpActivity.class);
                         startActivity(i);
                     }

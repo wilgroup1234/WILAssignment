@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.a17001922.wil_app.R;
 
+//This class manages the Online Help Screen
 public class onlineHelpActivity extends AppCompatActivity
 {
+    //_____________Declarations_________________
     Button btnBack;
 
+    //____________________OnCreate Method_____________
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -43,13 +45,14 @@ public class onlineHelpActivity extends AppCompatActivity
                 "CV Page- This page provides a link to a sophisticated cv app that has access to multiple templates to give you an option for all situations.\n" +
                 "\n" +
                 "Planner Page- This page provides a link to the google play store to download google calendar.\n";
-        TextView txtShow = findViewById(R.id.txtOnlineBody);
 
+        //_____________Binding fields and widgets_____________
+        TextView txtShow = findViewById(R.id.txtOnlineBody);
         txtShow.setText(toShow);
 
 
 
-
+        //_____________Back button Click Event Listener_____________
         btnBack.setOnClickListener(new View.OnClickListener()
         {
             @Override

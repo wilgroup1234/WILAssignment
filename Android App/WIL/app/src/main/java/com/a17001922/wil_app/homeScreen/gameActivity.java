@@ -4,14 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
-
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
+//This class manages the Play Game Screen
 public class gameActivity extends AppCompatActivity
 {
     //_____________Declarations_________________

@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+// Used for Step-Tracker functionality
 // Will listen to step alerts
 public interface StepListener
 {

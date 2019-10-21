@@ -1,7 +1,5 @@
 package com.a17001922.wil_app.homeScreen;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,10 +28,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import static android.content.Context.MODE_PRIVATE;
 
-
+//This class manages the View Goals Screen
 public class viewGoalsFragment extends Fragment
 {
     //_____________Declarations_________________

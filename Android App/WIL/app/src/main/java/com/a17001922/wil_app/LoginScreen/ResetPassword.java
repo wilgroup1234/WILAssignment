@@ -11,17 +11,16 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//This class is manages the Reset Password Screen
 public class ResetPassword extends AppCompatActivity
 {
-
+    //_____________Declarations_________________
     EditText answer, emailAddress, password, confirmPassword;
     Spinner questions;
     Button save, cancel;
@@ -31,12 +30,14 @@ public class ResetPassword extends AppCompatActivity
     String email, pass, confirmPass, Question = "", Answer;
     ResetPasswordObject user;
 
+    //____________________OnCreate Method_____________
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
 
+        //_____________Declarations_________________
         answer = findViewById(R.id.et_answer2);
         questions = findViewById(R.id.cmbQuestions);
         save = findViewById(R.id.btnSave);
@@ -47,33 +48,38 @@ public class ResetPassword extends AppCompatActivity
         password = findViewById(R.id.et_newPassword);
         confirmPassword = findViewById(R.id.et_confirmnewPassword2);
 
-        String [] arr = new String [3];
-        arr[0] = "What is your pet's name?";
-        arr[1] = "What is the name of your first friend?";
-        arr[2] = "Who is your favourite superhero?";
+        try
+        {
+            String [] arr = new String [3];
+            arr[0] = "What is your pet's name?";
+            arr[1] = "What is the name of your first friend?";
+            arr[2] = "Who is your favourite superhero?";
 
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(ResetPassword.this, android.R.layout.simple_spinner_item, arr);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            questions.setAdapter(adapter);
+        }
+        catch(Exception e)
+        {
 
+        }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ResetPassword.this, android.R.layout.simple_spinner_item, arr);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        questions.setAdapter(adapter);
-
-
+        //_____________Save button Click Event Listener_____________
         save.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                //Updates user password if all entered information is valid.
                 if (!StaticClass.ongoingOperation)
                 {
+                    //Declarations
                     StaticClass.ongoingOperation = true;
                     progressBar.setVisibility(View.VISIBLE);
-
-                    //_____________Get data from fields_____________
-
                     Boolean valid = false;
                     String errorMessage = "Invalid Information Entered, Please correct this and try again...";
 
+                    //_____________Get data from fields_____________
                     try
                     {
                         email = emailAddress.getText().toString();
@@ -82,15 +88,11 @@ public class ResetPassword extends AppCompatActivity
                         Answer = answer.getText().toString();
                         Question = questions.getSelectedItem().toString();
 
-
-
                         user = new ResetPasswordObject();
                         user.setQuestion(Question);
                         user.setAnswer(Answer);
                         user.setEmail(email);
                         user.setNewPassword(pass);
-
-
 
 
                         //_____________Validate User Input_____________
@@ -191,6 +193,7 @@ public class ResetPassword extends AppCompatActivity
         });
 
 
+        //_____________Cancel button Click Event Listener_____________
         cancel.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -212,5 +215,7 @@ public class ResetPassword extends AppCompatActivity
                 }
             }
         });
+
+
     }
 }

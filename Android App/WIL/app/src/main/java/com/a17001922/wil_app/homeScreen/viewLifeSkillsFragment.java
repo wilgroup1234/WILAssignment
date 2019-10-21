@@ -12,23 +12,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
 import com.a17001922.wil_app.goals.LifeSkillObject;
 import com.a17001922.wil_app.goals.ReturnLifeSkillsObject;
 import com.a17001922.wil_app.goals.goalsService;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import static android.content.Context.MODE_PRIVATE;
 
+//This class manages the View Life Skills Screen
 public class viewLifeSkillsFragment extends Fragment
 {
     //_____________Declarations_________________

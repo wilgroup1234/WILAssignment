@@ -1,13 +1,17 @@
 package com.a17001922.wil_app.LoginScreen;
 /*
-#TODO THIS IS THE MODEL FOR THE REGISTERATION OF A USER IF ANY NEW FIELDS ARE ADDED DATABASE SIDE NEW FIELDS WILL BE REQUIRED IN THIS SECTION
+#TODO THIS IS THE MODEL FOR THE REGISTRATION OF A USER IF ANY NEW FIELDS ARE ADDED DATABASE SIDE NEW FIELDS WILL BE REQUIRED IN THIS SECTION
  */
+
+//This class is an Object used to send/ receive data from the API
 public class RegisterUserObject
 {
+    //_____________Declarations_________________
     private int userID;
     private String firstName,LastName,email,password,confirmPassword, SecurityQuestion, Answer;
     private int age;
 
+    //_____________Get and Set methods_________________
 
     public int getUserID() {
         return userID;
@@ -85,9 +89,8 @@ public class RegisterUserObject
         Answer = answer;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
+    public void setConfirmPassword(String confirmPassword)
+    {
         this.confirmPassword = confirmPassword;
-
-
     }
 }

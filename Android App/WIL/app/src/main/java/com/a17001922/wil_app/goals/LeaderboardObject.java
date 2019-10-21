@@ -1,11 +1,16 @@
 package com.a17001922.wil_app.goals;
 
+//This class is an Object used to send/ receive data from the API
+
 public class LeaderboardObject
 {
-    private int Score;
 
+    //_____________Declarations_________________
+    private int Score;
     private String Email;
 
+
+    //_____________Get and Set methods_________________
     public int getScore() {
         return Score;
     }
