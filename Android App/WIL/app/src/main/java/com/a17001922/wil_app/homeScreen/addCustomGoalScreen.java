@@ -187,6 +187,10 @@ public class addCustomGoalScreen extends AppCompatActivity
                                             Log.e(TAG, "custom goal added successfully");
                                             StaticClass.ongoingOperation = false;
                                             progressBar.setVisibility(View.INVISIBLE);
+
+                                            //Open Loading activity
+                                            Intent intent = new Intent(context, LoadingActivity.class);
+                                            startActivity(intent);
                                         }
                                         else
                                         {

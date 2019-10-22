@@ -173,7 +173,10 @@ public class deleteGoals extends AppCompatActivity  implements AdapterView.OnIte
                                         Log.e(TAG, "goal deleted: " + returnMessage.getErrorMessage());
                                         StaticClass.ongoingOperation = false;
                                         progressBar.setVisibility(View.INVISIBLE);
-                                        GoBack();
+
+                                        //Open Loading activity
+                                        Intent intent = new Intent(context, LoadingActivity.class);
+                                        startActivity(intent);
                                     }
                                     else
                                     {

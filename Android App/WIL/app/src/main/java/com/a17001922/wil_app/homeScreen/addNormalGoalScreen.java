@@ -189,6 +189,10 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
                                         Log.e(TAG, "goal added: " + returnMessage.getErrorMessage());
                                         StaticClass.ongoingOperation = false;
                                         progressBar.setVisibility(View.INVISIBLE);
+
+                                        //Open Loading activity
+                                        Intent intent = new Intent(context, LoadingActivity.class);
+                                        startActivity(intent);
                                     }
                                     else
                                     {
