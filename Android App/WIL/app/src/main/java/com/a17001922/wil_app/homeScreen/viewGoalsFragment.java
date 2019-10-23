@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -373,7 +374,15 @@ public class viewGoalsFragment extends Fragment
                                                         @Override
                                                         public void onFailure(Call<ReturnMessageObject> call, Throwable t)
                                                         {
+                                                            StaticClass.hasInternet = false;
                                                             Log.e(TAG, " OnFailure error: can't mark off normal goal");
+                                                            Toast.makeText(StaticClass.homeContext, "Cannot connect to server :(",Toast.LENGTH_LONG);
+                                                            StaticClass.ongoingOperation = false;
+                                                            progressBar.setVisibility(View.INVISIBLE);
+
+                                                            //Open Login activity
+                                                            Intent intent = new Intent(StaticClass.homeContext, LoadingActivity.class);
+                                                            startActivity(intent);
                                                         }
                                                     });
 
@@ -417,13 +426,24 @@ public class viewGoalsFragment extends Fragment
                                                         @Override
                                                         public void onFailure(Call<ReturnMessageObject> call, Throwable t)
                                                         {
+                                                            StaticClass.hasInternet = false;
                                                             Log.e(TAG, " OnFailure error: can't mark off custom goal");
+                                                            Toast.makeText(StaticClass.homeContext, "Cannot connect to server :(",Toast.LENGTH_LONG);
+                                                            StaticClass.ongoingOperation = false;
+                                                            progressBar.setVisibility(View.INVISIBLE);
+
+                                                            //Open Login activity
+                                                            Intent intent = new Intent(StaticClass.homeContext, LoadingActivity.class);
+                                                            startActivity(intent);
                                                         }
                                                     });
                                                 }
                                                 catch(Exception e)
                                                 {
+                                                    Toast.makeText(StaticClass.homeContext, "An error occurred :(",Toast.LENGTH_LONG);
                                                     Log.e(TAG, " Exception error: " + e.getMessage());
+                                                    StaticClass.ongoingOperation = false;
+                                                    progressBar.setVisibility(View.INVISIBLE);
                                                 }
                                             }
 

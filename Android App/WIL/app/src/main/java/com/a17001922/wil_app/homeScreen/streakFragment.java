@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -7,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.a17001922.wil_app.LoginScreen.LoginUserObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
@@ -67,6 +70,11 @@ public class streakFragment extends Fragment
                 public void onFailure(Call<Streak> call, Throwable t)
                 {
                     Log.e(TAG, "Connection onFailure Get user streak");
+
+                    StaticClass.hasInternet = false;
+                    //Open Login activity
+                    Intent intent = new Intent(StaticClass.homeContext, LoadingActivity.class);
+                    startActivity(intent);
                 }
 
 

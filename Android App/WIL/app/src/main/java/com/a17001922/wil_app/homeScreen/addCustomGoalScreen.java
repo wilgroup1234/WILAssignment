@@ -11,6 +11,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.a17001922.wil_app.LoginScreen.ResetPassword;
 import com.a17001922.wil_app.LoginScreen.ReturnMessageObject;
 import com.a17001922.wil_app.R;
 import com.a17001922.wil_app.StaticClass;
@@ -211,6 +213,11 @@ public class addCustomGoalScreen extends AppCompatActivity
                                     Log.e(TAG, "error: not connected to api");
                                     StaticClass.ongoingOperation = false;
                                     progressBar.setVisibility(View.INVISIBLE);
+
+                                    StaticClass.hasInternet = false;
+                                    //Open Login activity
+                                    Intent intent = new Intent(context, LoadingActivity.class);
+                                    startActivity(intent);
                                 }
 
 

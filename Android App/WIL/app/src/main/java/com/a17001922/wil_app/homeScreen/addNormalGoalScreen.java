@@ -220,6 +220,11 @@ public class addNormalGoalScreen extends AppCompatActivity implements AdapterVie
                                 Log.e(TAG, " OnFailure error: can't connect");
                                 StaticClass.ongoingOperation = false;
                                 progressBar.setVisibility(View.INVISIBLE);
+
+                                StaticClass.hasInternet = false;
+                                //Open Login activity
+                                Intent intent = new Intent(context, LoadingActivity.class);
+                                startActivity(intent);
                             }
                         });
                     }

@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -144,6 +145,11 @@ public class gratitudeFragment extends Fragment
                     try
                     {
                         item1 = txtItem1.getText().toString().trim();
+
+                        if(item1.contains("#"))
+                        {
+                            item1.replace('#', ' ');
+                        }
                     }
                     catch(Exception e)
                     {
@@ -153,6 +159,11 @@ public class gratitudeFragment extends Fragment
                     try
                     {
                         item2 = txtItem2.getText().toString().trim();
+
+                        if(item2.contains("#"))
+                        {
+                            item2.replace('#', ' ');
+                        }
                     }
                     catch(Exception e)
                     {
@@ -162,6 +173,11 @@ public class gratitudeFragment extends Fragment
                     try
                     {
                         item3 = txtItem3.getText().toString().trim();
+
+                        if(item3.contains("#"))
+                        {
+                            item3.replace('#', ' ');
+                        }
                     }
                     catch(Exception e)
                     {
@@ -171,6 +187,11 @@ public class gratitudeFragment extends Fragment
                     try
                     {
                         item4 = txtItem4.getText().toString().trim();
+
+                        if(item4.contains("#"))
+                        {
+                            item4.replace('#', ' ');
+                        }
                     }
                     catch(Exception e)
                     {
@@ -180,6 +201,11 @@ public class gratitudeFragment extends Fragment
                     try
                     {
                         item5 = txtItem5.getText().toString().trim();
+
+                        if(item5.contains("#"))
+                        {
+                            item5.replace('#', ' ');
+                        }
                     }
                     catch(Exception e)
                     {
@@ -307,6 +333,11 @@ public class gratitudeFragment extends Fragment
                     Log.e(TAG, "Connection onFailure Get user gratitude");
                     StaticClass.ongoingOperation = false;
                     progressBar.setVisibility(View.INVISIBLE);
+
+                    StaticClass.hasInternet = false;
+                    //Open Login activity
+                    Intent intent = new Intent(StaticClass.homeContext, LoadingActivity.class);
+                    startActivity(intent);
                 }
 
 

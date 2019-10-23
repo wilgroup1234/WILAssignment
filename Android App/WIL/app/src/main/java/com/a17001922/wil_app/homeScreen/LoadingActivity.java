@@ -269,6 +269,7 @@ public class LoadingActivity extends AppCompatActivity
                 @Override
                 public void onFailure(Call<ReturnAllGoalObject> call, Throwable t)
                 {
+                    StaticClass.hasInternet = false;
                     GetLifeSkills();
                 }
             });
@@ -383,6 +384,7 @@ public class LoadingActivity extends AppCompatActivity
                 public void onFailure(Call<ReturnLifeSkillsObject> call, Throwable t)
                 {
                     Log.e(TAG, " OnFailure error: can't connect");
+                    StaticClass.hasInternet = false;
                     GetDailyQuote();
                 }
             });
@@ -457,7 +459,9 @@ public class LoadingActivity extends AppCompatActivity
                 public void onFailure(Call<DailyObject> call, Throwable t)
                 {
                     Toast.makeText(getApplicationContext(), "Response from API failed", Toast.LENGTH_SHORT).show();
+                    StaticClass.hasInternet = false;
                     GetGratitude();
+
                 }
             });
         }
@@ -515,6 +519,7 @@ public class LoadingActivity extends AppCompatActivity
                 {
                     Log.e(TAG, "Connection onFailure Get user gratitude");
                     StaticClass.loaded = true;
+                    StaticClass.hasInternet = false;
                 }
 
 

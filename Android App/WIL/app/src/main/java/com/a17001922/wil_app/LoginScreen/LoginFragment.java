@@ -216,7 +216,7 @@ public class LoginFragment extends Fragment
                         StaticClass.ongoingOperation = false;
                         progressBar.setVisibility(View.INVISIBLE);
 
-                        //Open Login activity
+                        //Open Reset Password activity
                         Intent intent = new Intent(StaticClass.loginContext, ResetPassword.class);
                         startActivity(intent);
 

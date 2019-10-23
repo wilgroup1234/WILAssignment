@@ -197,6 +197,11 @@ public class deleteGoals extends AppCompatActivity  implements AdapterView.OnIte
                                 Log.e(TAG, " OnFailure error: can't connect");
                                 StaticClass.ongoingOperation = false;
                                 progressBar.setVisibility(View.INVISIBLE);
+
+                                StaticClass.hasInternet = false;
+                                //Open Login activity
+                                Intent intent = new Intent(context, LoadingActivity.class);
+                                startActivity(intent);
                             }
                         });
                     }

@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/txtOnlineBody"
-        android:layout_width="260dp"
-        android:layout_height="476dp"
+        android:layout_width="264dp"
+        android:layout_height="514dp"
         android:layout_marginTop="44dp"
         android:text="TextView"
         android:textColor="@color/colorEditText"

@@ -83,7 +83,16 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
 
         StaticClass.ongoingOperation = true;
         progressBar.setVisibility(View.VISIBLE);
-        GetCurrentSteps();
+
+        if(StaticClass.hasInternet)
+        {
+          GetCurrentSteps();
+        }
+        else
+        {
+            StaticClass.ongoingOperation = false;
+            progressBar.setVisibility(View.INVISIBLE);
+        }
 
 
         //_____________Back button Click Event Listener_____________
@@ -223,6 +232,11 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
                     Log.e(TAG, "Connection onFailure Get user steps");
                     StaticClass.ongoingOperation = false;
                     progressBar.setVisibility(View.INVISIBLE);
+
+                    StaticClass.hasInternet = false;
+                    //Open Login activity
+                    Intent intent = new Intent(context, LoadingActivity.class);
+                    startActivity(intent);
                 }
 
 
@@ -289,7 +303,11 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
                     Log.e(TAG, "Connection onFailure Update user steps");
                     StaticClass.ongoingOperation = false;
                     progressBar.setVisibility(View.INVISIBLE);
-                    ChangeFormHome();
+
+                    StaticClass.hasInternet = false;
+                    //Open Login activity
+                    Intent intent = new Intent(context, LoadingActivity.class);
+                    startActivity(intent);
                 }
 
 

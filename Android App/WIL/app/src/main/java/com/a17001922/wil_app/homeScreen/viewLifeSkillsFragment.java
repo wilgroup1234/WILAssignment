@@ -1,5 +1,6 @@
 package com.a17001922.wil_app.homeScreen;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -272,14 +273,25 @@ public class viewLifeSkillsFragment extends Fragment
                                                 @Override
                                                 public void onFailure(Call<ReturnMessageObject> call, Throwable t)
                                                 {
+                                                    StaticClass.hasInternet = false;
                                                     Log.e(TAG, " OnFailure error: can't mark off life skill");
+                                                    Toast.makeText(StaticClass.homeContext, "Cannot connect to server :(",Toast.LENGTH_LONG);
+                                                    StaticClass.ongoingOperation = false;
+                                                    progressBar.setVisibility(View.INVISIBLE);
+
+                                                    //Open Login activity
+                                                    Intent intent = new Intent(StaticClass.homeContext, LoadingActivity.class);
+                                                    startActivity(intent);
                                                 }
                                             });
 
                                         }
                                         catch(Exception e)
                                         {
+                                            Toast.makeText(StaticClass.homeContext, "An error occurred :(",Toast.LENGTH_LONG);
                                             Log.e(TAG, " Exception error: " + e.getMessage());
+                                            StaticClass.ongoingOperation = false;
+                                            progressBar.setVisibility(View.INVISIBLE);
                                         }
 
 
@@ -292,6 +304,8 @@ public class viewLifeSkillsFragment extends Fragment
                                 {
                                     Toast.makeText(StaticClass.homeContext, "An error occurred :(",Toast.LENGTH_LONG);
                                     Log.e(TAG, " Exception error: " + e.getMessage());
+                                    StaticClass.ongoingOperation = false;
+                                    progressBar.setVisibility(View.INVISIBLE);
                                 }
 
 
@@ -316,7 +330,10 @@ public class viewLifeSkillsFragment extends Fragment
                 }
                 catch(Exception e)
                 {
+                    Toast.makeText(StaticClass.homeContext, "An error occurred :(",Toast.LENGTH_LONG);
                     Log.e(TAG, " Exception error: " + e.getMessage());
+                    StaticClass.ongoingOperation = false;
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
 
             }
@@ -458,10 +475,15 @@ public class viewLifeSkillsFragment extends Fragment
                 @Override
                 public void onFailure(Call<ReturnLifeSkillsObject> call, Throwable t)
                 {
+                    StaticClass.hasInternet = false;
                     Toast.makeText(StaticClass.homeContext, "error: can't connect",Toast.LENGTH_LONG);
                     Log.e(TAG, " OnFailure error: can't connect");
                     StaticClass.ongoingOperation = false;
                     progressBar.setVisibility(View.INVISIBLE);
+
+                    //Open Login activity
+                    Intent intent = new Intent(StaticClass.homeContext, LoadingActivity.class);
+                    startActivity(intent);
                 }
             });
 
