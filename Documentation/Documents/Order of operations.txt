@@ -1,0 +1,97 @@
+1.Login/Register. (Tabbed activity)                                TABLES (User)  
+
+ANDROID- Send Post resquest (RegisterUser/ LoginUser Object)  Receive ReturnMessage Object, Allow Google logins
+API-  Get POST request (RegisterUser/ LoginUser Object)  RETURN ReturnMessage Object , Allow Google reg, create FB storage container
+WEBAPP-   Login using "Admin", "AdMinPasSword1" ResetCode: "aJwb92Omsqp2"
+When user registers, add all lifeskills to userlifeskills table and mark as incomplete.
+Privacy policy before reg.
+
+2. HOME or GOALS PAGE                                               TABLES (User, UserGoals, Goals,) (User, CustomUserGoals, CustomGoals,)
+
+RETRIEVING GOALS
+ANDROID- Send Post resquest (UserGoal (email, "goal" ))  Receive ReturnGoal Object ([goalObjects])
+API-  Get POST request (UserGoal (email, "goal" )) RETURN ReturnGoal Object ([goalObjects])
+
+
+ADDING GOALS
+ANDROID- Send Post resquest of normal goal (UserGoal Object for normal goal)/custom goal CustomGoal Object) 
+	  Receive ReturnMessage Object
+API-  Get POST request  normal goal (UserGoal Object)/custom goal CustomGoal Object) 
+	  RETURN ReturnMessage Object
+
+
+MARK GOAL AS COMPLETED
+
+ANDROID- Send Post resquest UserGoal Object/CustomGoal Object
+	  Receive ReturnMessage Object
+API-  Get POST request  UserGoalObject/CustomGoal Object
+	  RETURN ReturnMessage Object
+
+
+3. DAILY QUOTE (youtube too)			     Table(DailyQuote)
+
+ANDROID- Send empty GET resquest  Receive DailyObject
+API-  Get empty GET request  RETURN DailyObject
+WEBAPP-  Add new message (choosing template, choose message), youtube link
+
+
+4.UPLOAD - (User clicks View uploads button and Upload fragment opens)
+                 
+
+               {UPLOAD SCREEN}
+ Allow user to upload docs/images, allow user to view uploaded docs/images                    
+                   Firebase for storing images and docs. SQL for storing firebase links.
+
+ WHEN USER CLICKS BROWSE BUTTON, THEN UPLOAD
+ ANDROID- upload file to user container in FB storage
+
+
+
+                {VIEW UPLOADS SCREEN}	
+RETREIVING  UPLOADS
+ ANDROID- fetch and display all user uploads from FB storage
+
+
+5.LIFE SKILLS -    			                      Table(LifeSkills)
+
+        RETRIEVE LIFE SKILLS FOR A USER
+   ANDROID- Send empty GET resquest  Receive LifeSkillsList Object (LifeSkill [])
+   API-  Get empty GET request  RETURN LifeSkillsList Object (LifeSkill [])
+
+
+     MARK LIFE SKILL AS COMPLETED
+   ANDROID- Send Post resquest LifeSkill Object (UserID, LifeSkillID)
+	  Receive ReturnMessage Object
+   API-  Get POST request LifeSkill Object (UserID, LifeSkillID)
+	  RETURN ReturnMessage Object
+
+
+6. CV - Provide links to CV templates, Allow users to fill in cv details and save. TABLE (USERCVS)[BRIDGE], CVs
+            
+    WHEN USER UPDATES CV INFO
+   ANDROID- Send Post resquest CVUpdate obj (UserID, CVID, IDNumber, DateOfBIrth, HighSchoolName, Previous Work Experience, WorkReferences, Languages, Achievements, Nationality, Interests, Email, PhoneNumber, Address)
+	  Receive ReturnMessage Object
+   API-  Get POST request CVUpdate obj (UserID, CVID, IDNumber, DateOfBIrth, HighSchoolName, Previous Work Experience, WorkReferences, Languages, Achievements, Nationality, Interests, Email, PhoneNumber, Address)
+	  RETURN ReturnMessage Object
+
+    WHEN USER VIEWS THEIR CV
+
+    ANDROID- Send GET Request(Email)
+	  Receive CV Object
+   API-  Get  GET Request(Email)
+	  RETURN CV Object
+
+7. Calendar - Save event to user's calender (On user device)
+	Android - open calendar, store info.
+
+8. ACHEIVEMENTS/LEADERBOARD (may leave out)
+
+
+9. PEDOMETER - figure out how to implement this
+
+
+10. Social Media - Add links to android layout file. (Design + links only)
+
+
+
+EXTRAS- mascot, sounds, events - DISCUSS
