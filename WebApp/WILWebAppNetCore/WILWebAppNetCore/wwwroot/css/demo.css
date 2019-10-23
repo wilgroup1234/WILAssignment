@@ -5,11 +5,12 @@
 
 body {
     height: 3000px;
+    overflow: hidden;
 }
 
 .logo {
-    margin-top: 20px;
-    width: 200px;
+    margin-top: 1px;
+    width: 100px;
     height: 100px;
 }
 
@@ -64,7 +65,7 @@ header nav ul li a
 
 .more-feature-area .title .sub-heading p 
 {
-    color: darkgrey;
+    color: black;
 }
 
 .more-feature-area {
@@ -77,6 +78,7 @@ header nav ul li a
 }
 .feature-details p 
 {
+    font-weight: bold;
     font: 400;
     color: black;
 }
@@ -139,4 +141,9 @@ header nav ul li a
 .more-feature-area img
 {
     margin-left: 70px;
+}
+
+.feature-list a {
+    padding: 10px 40px;
+    background-color: lawngreen;
 }

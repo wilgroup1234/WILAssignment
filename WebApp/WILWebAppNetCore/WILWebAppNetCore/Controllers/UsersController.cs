@@ -356,7 +356,7 @@ namespace WILWebAppNetCore.Controllers
                         valid = true;
                         StaticClass.errorMessage = "NO_ERROR";
                         Debug.WriteLine("Daily Quote updated");
-                        return RedirectToAction("DailyQuote", "Home");
+                        return RedirectToAction("DailyQuote", "Users");
 
 
                     }

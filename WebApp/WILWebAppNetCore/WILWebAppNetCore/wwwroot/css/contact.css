@@ -1,16 +1,16 @@
-﻿ *, html, body {
+﻿*, html, body {
     margin: 0;
     padding: 0;
 }
 
 body {
-    color:red;
     height: 3000px;
+    overflow:hidden;
 }
 
 .logo {
-    margin-top: 20px;
-    width: 200px;
+    margin-top: 1px;
+    width: 100px;
     height: 100px;
 }
 
@@ -49,6 +49,7 @@ header nav ul li a
  }
 
 .contacts {
+    color: white;
     background-image: url(../images/telephone.jpg);
     background-size: 100% 100%;
     position: relative;
@@ -58,11 +59,7 @@ header nav ul li a
 }
 
 .sub-heading {
+    color: white;
     position: relative;
     margin-bottom: 75px;
-}
-
-.contacts p
-{
-    color: black;
 }

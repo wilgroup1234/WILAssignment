@@ -4,12 +4,11 @@
 }
 
 body {
-    height: 3000px;
 }
 
 .logo {
-    margin-top: 20px;
-    width: 200px;
+    margin-top: 5px;
+    width: 100px;
     height: 100px;
 }
 
@@ -52,22 +51,49 @@ header nav {
         }
 
 .img1 {
-    background-image: url(../images/students.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,0.3),rgba(0,0,0,0.0)),url(../images/students.jpg);
     background-size: 100% 100%;
 }
 
 .slider, .slider ul, .slider ul li {
     height: 800px;
     width: 100%;
+    color: white;
     text-align: center;
 }
 
-    .slider h2 {
-        margin-top: 250px;
-    }
+ .slider h2 {
+     color: yellow;
+     margin-top: 250px;
+ }
+
+ .slider a
+ {
+     padding: 10px 40px;
+     background-color: gold;
+     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+     animation-name: example;
+     animation-duration: 4s;
+ }
+
+ @-webkit-keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+
+/* Standard syntax */
+@keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+
+
+
+
 
 .img2 {
-    background-image: url(../images/student2.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,0.4),rgba(0,0,0,0.0)),url(../images/student2.jpg);
     background-size: 100% 100%;
 }
 
@@ -78,11 +104,12 @@ header nav {
 }
 
 .img3 {
-    background-image: url(../images/jumping.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,0.4),rgba(0,0,0,0.0)),url(../images/jumping.jpg);
     background-size: 100% 100%;
 }
 
 .intro-area {
+    height: 800px;
     position: relative;
     padding: 100px 0px;
     text-align: center;
@@ -407,6 +434,7 @@ header nav {
 }
 
 .testimonials {
+    height: 700px;
     background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9)),url(../images/supplies2.jpg);
     background-size: cover;
     background-position: center;
@@ -461,7 +489,8 @@ header nav {
     position: absolute;
     left: 50%;
     margin-left: -50px;
-    top: -50px;
+    top: -40px;
+    bottom: 20px;
     overflow: hidden;
     min-height: 100px;
     height: 100px;
