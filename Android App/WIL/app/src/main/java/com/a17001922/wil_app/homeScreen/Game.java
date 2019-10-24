@@ -105,69 +105,101 @@ public class Game extends View
 
         //______________________Draw Background_______________________
 
-        switch(screenSize)
+        try
         {
-            //draw background for normal 1080p screen height (level 1)
-            case "normal" :
-                canvas.drawBitmap(background, 0,0, null);
-                break;
+            switch(screenSize)
+            {
+                //draw background for normal 1080p screen height (level 1)
+                case "normal" :
+                    canvas.drawBitmap(background, 0,0, null);
+                    break;
 
-            //draw background for tall 1080p screen height (level 1)
-            case "tall" :
-                canvas.drawBitmap(backgroundlong, 0,0, null);
-                break;
+                //draw background for tall 1080p screen height (level 1)
+                case "tall" :
+                    canvas.drawBitmap(backgroundlong, 0,0, null);
+                    break;
+
+            }
+        }
+        catch(Exception e)
+        {
 
         }
 
 
         //______________________Make Dog Jump if screen is touched_______________________
-        if (touched)
+        try
         {
-            //draw dog jumping
-            canvas.drawBitmap(dog[4], dogX, dogY, null);
-            jumptimer = 20;
-            touched = false;
-        }
-
-
-        //______________________display score at the top of the screen_______________________
-        canvas.drawText("Score: " + currentScore,20,60, score);
-
-
-        //______________________Set Co-ordinates for balls and keep ball within bounds______________________
-
-        SetBiscuitAndBombCoordinates(canvasWidth);
-
-
-        //______________________Draw Biscuit, Bomb and Dog______________________
-        canvas.drawBitmap(biscuit, biscuitX, biscuitY, null);
-        canvas.drawBitmap(bomb, bombX, bombY, null);
-
-
-
-        if(jumptimer == 0)
-        {
-            switch(currentDogPosition)
+            if (touched)
             {
-                case 1:
-                    canvas.drawBitmap(dog[0], dogX, dogY, null);
-                    break;
-                case 2:
-                    canvas.drawBitmap(dog[1], dogX, dogY, null);
-                    break;
-                case 3:
-                    canvas.drawBitmap(dog[2], dogX, dogY, null);
-                    break;
-                case 4:
-                    canvas.drawBitmap(dog[3], dogX, dogY, null);
-                    break;
+                //draw dog jumping
+                canvas.drawBitmap(dog[4], dogX, dogY, null);
+                jumptimer = 20;
+                touched = false;
             }
         }
-        else
+        catch(Exception e)
         {
-            canvas.drawBitmap(dog[4], dogX, dogY, null);
-            jumptimer --;
+
         }
+
+
+
+        try
+        {
+            //______________________display score at the top of the screen_______________________
+            canvas.drawText("Score: " + currentScore,20,60, score);
+
+
+            //______________________Set Co-ordinates for balls and keep ball within bounds______________________
+
+            SetBiscuitAndBombCoordinates(canvasWidth);
+
+
+            //______________________Draw Biscuit, Bomb and Dog______________________
+            canvas.drawBitmap(biscuit, biscuitX, biscuitY, null);
+            canvas.drawBitmap(bomb, bombX, bombY, null);
+
+        }
+        catch(Exception e)
+        {
+
+        }
+
+        try
+        {
+            if(jumptimer == 0)
+            {
+                switch(currentDogPosition)
+                {
+                    case 1:
+                        canvas.drawBitmap(dog[0], dogX, dogY, null);
+                        break;
+                    case 2:
+                        canvas.drawBitmap(dog[1], dogX, dogY, null);
+                        break;
+                    case 3:
+                        canvas.drawBitmap(dog[2], dogX, dogY, null);
+                        break;
+                    case 4:
+                        canvas.drawBitmap(dog[3], dogX, dogY, null);
+                        break;
+                }
+            }
+            else
+            {
+                canvas.drawBitmap(dog[4], dogX, dogY, null);
+                jumptimer --;
+            }
+
+
+        }
+        catch(Exception e)
+        {
+
+        }
+
+
 
 
 
@@ -204,50 +236,61 @@ public class Game extends View
 
 
 
-
-
-        //____________________Update lives____________________
-        switch(currentLives)
+        try
         {
-            case 0:
-                //if all lives are lost
+            //____________________Update lives____________________
+            switch(currentLives)
+            {
+                case 0:
+                    //if all lives are lost
 
-                canvas.drawBitmap(lives[1], 800,0, null);
-                canvas.drawBitmap(lives[1], 900,0, null);
-                canvas.drawBitmap(lives[1], 1000,0, null);
+                    canvas.drawBitmap(lives[1], 800,0, null);
+                    canvas.drawBitmap(lives[1], 900,0, null);
+                    canvas.drawBitmap(lives[1], 1000,0, null);
 
 
-                //stop everything on screen
-                StopAnimation();
-                //end game;
-                run = false;
+                    //stop everything on screen
+                    StopAnimation();
+                    //end game;
+                    run = false;
 
-                break;
-            case 1:
-                //if 1 life is left
+                    break;
+                case 1:
+                    //if 1 life is left
 
-                canvas.drawBitmap(lives[0], 800,0, null);
-                canvas.drawBitmap(lives[1], 900,0, null);
-                canvas.drawBitmap(lives[1], 1000,0, null);
+                    canvas.drawBitmap(lives[0], 800,0, null);
+                    canvas.drawBitmap(lives[1], 900,0, null);
+                    canvas.drawBitmap(lives[1], 1000,0, null);
 
-                break;
-            case 2:
-                //if 2 lives are left
+                    break;
+                case 2:
+                    //if 2 lives are left
 
-                canvas.drawBitmap(lives[0], 800,0, null);
-                canvas.drawBitmap(lives[0], 900,0, null);
-                canvas.drawBitmap(lives[1], 1000,0, null);
+                    canvas.drawBitmap(lives[0], 800,0, null);
+                    canvas.drawBitmap(lives[0], 900,0, null);
+                    canvas.drawBitmap(lives[1], 1000,0, null);
 
-                break;
-            case 3:
-                //if all lives are left
+                    break;
+                case 3:
+                    //if all lives are left
 
-                canvas.drawBitmap(lives[0], 800,0, null);
-                canvas.drawBitmap(lives[0], 900,0, null);
-                canvas.drawBitmap(lives[0], 1000,0, null);
+                    canvas.drawBitmap(lives[0], 800,0, null);
+                    canvas.drawBitmap(lives[0], 900,0, null);
+                    canvas.drawBitmap(lives[0], 1000,0, null);
 
-                break;
+                    break;
+            }
+
+
         }
+        catch(Exception e)
+        {
+
+        }
+
+
+
+
 
 
         //____________________Check if Game is over and display result____________________

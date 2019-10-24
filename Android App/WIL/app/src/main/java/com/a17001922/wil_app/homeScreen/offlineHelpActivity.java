@@ -34,13 +34,7 @@ public class offlineHelpActivity extends AppCompatActivity
                 "\n" +
                 "Gratitude Page- This page allows you to enter the things that you are grateful for the day and submit them. You don’t have to enter them all at once, you can come back and fill in more later.\n" +
                 "\n" +
-                "Streak Page- This page just shows how many days (in a row) you have been logged in for.\n" +
-                "\n" +
-                "Upload Page- This page provides a link to the google drive app so that you can make use of your personal google drive to store the documents and have them wherever you need them.\n" +
-                "\n" +
-                "CV Page- This page provides a link to a sophisticated cv app that has access to multiple templates to give you an option for all situations.\n" +
-                "\n" +
-                "Planner Page- This page provides a link to the google play store to download google calendar.\n";
+                "Streak Page- This page just shows how many days (in a row) you have been logged in for.\n";
 
         txtOfflineHelp.setText(toShow);
 

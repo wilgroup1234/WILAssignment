@@ -156,6 +156,13 @@ public class Pedometer extends AppCompatActivity implements SensorEventListener,
 
                         UpdateSteps();
                     }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "No steps made...", Toast.LENGTH_SHORT).show();
+                        StaticClass.ongoingOperation = false;
+                        progressBar.setVisibility(View.INVISIBLE);
+                        ChangeFormHome();
+                    }
                 }
                 else
                 {

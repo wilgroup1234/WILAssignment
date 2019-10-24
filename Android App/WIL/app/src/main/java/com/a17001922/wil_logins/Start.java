@@ -51,40 +51,56 @@ public class Start extends AppCompatActivity
         FirebaseMessaging.getInstance().subscribeToTopic("updates");
 
 
-        //Check if device has an internet connection
-        Thread thread = new Thread
-                (new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        if (hasActiveInternetConnection())
-                        {
-                            StaticClass.hasInternet = true;
-                            Log.e("INTERNET: : ", "Internet connection detected");
-                        }
-                        else
-                        {
-                            StaticClass.hasInternet = false;
-                            Log.e("NO INTERNET: : ", "NO Internet connection detected");
-
-                        }
-                    }
-                });
-
-        thread.start();
-
-
-        new Handler().postDelayed(new Runnable()
+        try
         {
-            //Run splash screen for 1.5 seconds
-            @Override
-            public void run()
-            {
-                showEula();
-            }
-        }, splashLength);
+            //Check if device has an internet connection
+            Thread thread = new Thread
+                    (new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            if (hasActiveInternetConnection())
+                            {
+                                StaticClass.hasInternet = true;
+                                Log.e("INTERNET: : ", "Internet connection detected");
+                            }
+                            else
+                            {
+                                StaticClass.hasInternet = false;
+                                Log.e("NO INTERNET: : ", "NO Internet connection detected");
 
+                            }
+                        }
+                    });
+
+            thread.start();
+
+        }
+        catch(Exception e)
+        {
+            Log.e("Start Exception: ", e.getMessage());
+        }
+
+
+        try
+        {
+
+            new Handler().postDelayed(new Runnable()
+            {
+                //Run splash screen for 1.5 seconds
+                @Override
+                public void run()
+                {
+                    showEula();
+                }
+            }, splashLength);
+
+        }
+        catch(Exception e)
+        {
+            Log.e("Start Exception: ", e.getMessage());
+        }
 
 
     }

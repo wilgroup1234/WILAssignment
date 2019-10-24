@@ -26,25 +26,19 @@ public class onlineHelpActivity extends AppCompatActivity
                 "\n" +
                 "Home Page – This page where you can add custom and pre-set goals to your list of goals and also remove goals once you have completed them.\n" +
                 "\n" +
-                "View goals Page- This page allows you to see a list of your goals, are also able to mark off goals and save the changes from this page.\n" +
+                "View goals Page- This page allows you to see a list of your goals and mark them off.\n" +
                 "\n" +
-                "View life skills page – This page shows you a list of important life skills you should be aiming to accomplish at some time. You are able to check off and save the changes you make on this screen as well.\n" +
+                "View life skills page – This page allows you to see a list of your Life skills and mark them off.\n" +
                 "\n" +
                 "Daily Quote page- This page shows you a daily quote and provides a YouTube link to a motivational video as well.\n" +
                 "\n" +
                 "Game Page- This page allows you to go to the game leaderboards or to start the game.\n" +
                 "\n" +
-                "Gratitude Page- This page allows you to enter the things that you are grateful for the day and submit them. You don’t have to enter them all at once you can come back and fill in more later.\n" +
+                "Gratitude Page- This page allows you to enter the things that you are grateful for the day and submit them. You don’t have to enter them all at once.\n" +
                 "\n" +
-                "Steps Page- This page tracks the number of steps that you take using your device's pedometer. It also allows you to your track steps for the day. Be sure to click the start button to start counting.\n" +
+                "Steps Page- This page tracks the number of steps that you take for the day using your device's pedometer.=\n" +
                 "\n" +
-                "Streak Page- This page just shows how many days (in a row) you have been logged in for.\n" +
-                "\n" +
-                "Upload Page- This page provides a link to the google drive app so that you can make use of your personal google drive to store the documents and have them wherever you need them.\n" +
-                "\n" +
-                "CV Page- This page provides a link to a sophisticated cv app that has access to multiple templates to give you an option for all situations.\n" +
-                "\n" +
-                "Planner Page- This page provides a link to the google play store to download google calendar.\n";
+                "Streak Page- This page just shows how many days (in a row) you have been logged in for.";
 
         //_____________Binding fields and widgets_____________
         TextView txtShow = findViewById(R.id.txtOnlineBody);

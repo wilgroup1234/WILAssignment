@@ -4,34 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.a17001922.wil_app.homeScreen.onlineHelpActivity"
-    android:background="@drawable/bgb42">
+    android:background="@drawable/bgb42"
+    tools:context="com.a17001922.wil_app.homeScreen.onlineHelpActivity">
 
-    <TextView
-        android:id="@+id/txtOnlineBody"
-        android:layout_width="264dp"
-        android:layout_height="514dp"
-        android:layout_marginTop="44dp"
-        android:text="TextView"
-        android:textColor="@color/colorEditText"
-        android:textSize="15sp"
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="270dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="32dp"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtOnlineBody"
+            android:layout_width="264dp"
+            android:layout_height="514dp"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textColor="@color/colorEditText"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </ScrollView>
 
     <Button
         android:id="@+id/btnOnlineBack"
         android:layout_width="114dp"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/mybutton"
         android:text="Back"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtOnlineBody" />
+        app:layout_constraintTop_toBottomOf="@+id/SCROLLER_ID" />
 
 </android.support.constraint.ConstraintLayout>
